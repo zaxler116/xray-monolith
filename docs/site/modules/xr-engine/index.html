@@ -3191,23 +3191,23 @@
 </tr>
 <tr>
 <td><a href="xr-object/">Объект (xr_object)</a></td>
-<td><em>(порцион 6)</em> — <code>CGameObject</code>, <code>xr_object_list</code>, <code>ObjectAnimator</code></td>
+<td><code>CObject</code> (каркас: трансформ, <code>H_SetParent</code>, crow, <code>net_*</code>), <code>CObjectList</code> (active/sleeping/crow/destroy, <code>net_Export/Import</code>), <code>CObjectAnimator</code> (.anm/.anms)</td>
 </tr>
 <tr>
 <td><a href="level/">Уровень</a></td>
-<td><em>(порцион 6)</em> — <code>IGame_Level</code>, <code>xrLevel</code>, <code>IGame_Level_check_textures</code></td>
+<td><code>IGame_Level</code> (контейнер + жизненный цикл: <code>Load</code>, <code>OnFrame/OnRender</code>, <code>SetEntity/ViewEntity</code>, <code>SoundEvent_*</code>), <code>CServerInfo</code>, <code>xrLevel.h</code> (бинарные структуры)</td>
 </tr>
 <tr>
 <td><a href="object-pool/">Пул объектов</a></td>
-<td><em>(порцион 6)</em> — <code>IGame_ObjectPool</code></td>
+<td><code>IGame_ObjectPool</code> (фабрика + prefetch; не пул — закомментирован)</td>
 </tr>
 <tr>
 <td><a href="persistent/">Persistent</a></td>
-<td><em>(порцион 6)</em> — <code>IGame_Persistent</code></td>
+<td><code>IGame_Persistent</code> (персистентный слой: <code>CEnvironment</code>, <code>ObjectPool</code>, партиклы <code>CPS_Instance</code>, <code>GrassBenders</code>, <code>params</code>, <code>g_pGamePersistent</code>)</td>
 </tr>
 <tr>
 <td><a href="skeleton-motion/">Скелет и анимация</a></td>
-<td><em>(порцион 7)</em> — <code>bone</code>, <code>SkeletonMotions</code>, <code>motion</code>, <code>ObjectAnimator</code></td>
+<td><code>bone.h/.cpp</code> (<code>CBoneInstance</code>/<code>CBone</code>/<code>CBoneData</code>/<code>IBoneData</code>, <code>SBoneShape</code>, <code>SJointIKData</code>, <code>vertBoned1W..4W</code>), <code>SkeletonMotions.h/.cpp</code> (<code>CMotion</code>/<code>CMotionDef</code>/<code>CPartition</code>/<code>motion_marks</code>, <code>shared_motions</code>/<code>motions_container</code>), <code>motion.h/.cpp</code> (<code>CCustomMotion</code>/<code>COMotion</code>/<code>CSMotion</code>/<code>SAnimParams</code>), <code>envelope.h/.cpp</code> (<code>CEnvelope</code>/<code>st_Key</code>), <code>ObjectAnimator.h/.cpp</code>, <code>cf_dynamic_mesh</code></td>
 </tr>
 <tr>
 <td><a href="environment/">Окружение</a></td>
@@ -3344,13 +3344,13 @@
 <td>6</td>
 <td>Объекты и уровень</td>
 <td><code>xr-object.md</code>, <code>level.md</code>, <code>object-pool.md</code>, <code>persistent.md</code></td>
-<td>⬜</td>
+<td>✅ готово</td>
 </tr>
 <tr>
 <td>7</td>
 <td>Скелет и анимация</td>
 <td><code>skeleton-motion.md</code></td>
-<td>⬜</td>
+<td>✅ готово</td>
 </tr>
 <tr>
 <td>8</td>
