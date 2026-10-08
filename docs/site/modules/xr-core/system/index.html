@@ -1,0 +1,3902 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Полная документация игрового движка X-Ray Monolith (fork X-Ray 1.6.0.8, S.T.A.L.K.E.R. Anomaly)">
+      
+      
+      
+      
+        <link rel="prev" href="../locator/">
+      
+      
+        <link rel="next" href="../../xr-engine/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Временны́е/системные - X-Ray Monolith — Документация движка</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#xrcore" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href="../../.." title="X-Ray Monolith — Документация движка" class="md-header__button md-logo" aria-label="X-Ray Monolith — Документация движка" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            X-Ray Monolith — Документация движка
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Временны́е/системные
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистить" aria-label="Очистить" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Главная
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../getting-started/installation/" class="md-tabs__link">
+          
+  
+  
+  Начало работы
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../architecture/overview/" class="md-tabs__link">
+          
+  
+  
+  Архитектура
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  Модули
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../data/ltx-format/" class="md-tabs__link">
+          
+  
+  
+  Данные
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../api/lua-reference/" class="md-tabs__link">
+          
+  
+  
+  API
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../reference/changelog/" class="md-tabs__link">
+          
+  
+  
+  Справочник
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="X-Ray Monolith — Документация движка" class="md-nav__button md-logo" aria-label="X-Ray Monolith — Документация движка" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    X-Ray Monolith — Документация движка
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Главная
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Начало работы
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Начало работы
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Установка
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/building/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Сборка
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Диагностика
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Архитектура
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Архитектура
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Обзор
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/module-map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Карта модулей
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/dependencies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Зависимости
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/frame-loop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Цикл кадра
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/object-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Модель объектов
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/scripting-boundary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Граница скриптинга
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Модули
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Модули
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    xrCore (фундамент)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    xrCore (фундамент)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Обзор
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../types-math/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Типы и математика
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Память
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../strings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Строки
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Логирование
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filesystem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Файловая система
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inifile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    INI / конфиги
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../compression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Сжатие
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../locator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Локализатор (архивы)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Временны́е/системные
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Временны́е/системные
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ответственность
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Место в архитектуре
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Публичный API
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Публичный API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Таймеры
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Таймеры">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ctimerbase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CTimerBase
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ctimer-time-factor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CTimer (с time factor)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ctimer_paused_ex-ctimer_paused" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CTimer_paused_ex / CTimer_paused
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pausemngr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pauseMngr
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cstattimer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CStatTimer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Синхронизация
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Синхронизация">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xrcriticalsection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xrCriticalSection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xrcriticalsectionguard-raii" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xrCriticalSectionGuard (RAII)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xrcriticalsectiontryguard-non-blocking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xrCriticalSectionTryGuard (non-blocking)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xrsrwlock-reader-writer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xrSRWLock (Reader-Writer)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lock (простой)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CPU
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CPU">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpu-namespace-_mathh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CPU namespace (_math.h)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_processor_info-cpuidh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        _processor_info (cpuid.h)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Отладка
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Отладка">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xrdebug-singleton-debug" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xrDebug (singleton Debug)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xrdebug_macrosh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Макросы (xrDebug_macros.h)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#misc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Misc
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Misc">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#class_id-clsidh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLASS_ID (clsid.h)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intrusive_ptr-intrusive_ptrh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        intrusive_ptr (intrusive_ptr.h)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#net_packet-net_utilsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NET_Packet (net_utils.h)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clientid-client_idh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ClientID (client_id.h)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profilerh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        profiler.h
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crc32cpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        crc32.cpp
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xrpoolh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xrPool.h
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Внутреннее устройство
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Внутреннее устройство">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Файлы
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Взаимодействие
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Потоки данных
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Конфигурация
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ограничения / дебаг
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    xrEngine (ядро)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    xrEngine (ядро)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Обзор
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/device/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Device
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/scheduler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sheduler
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/lua-binding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lua-биндинг
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/console/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Консоль
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Renderer
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Renderer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../renderer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Обзор
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../renderer/pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../renderer/postprocessing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Постобработка
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../renderer/shader-bus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shader Bus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-particles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    xrParticles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-sound/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    xrSound
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    xrGame
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    xrGame
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../game/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Обзор
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../game/objects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Объекты (Actor/GameObject)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../game/alife/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ALIFE (AI)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../game/pathfinding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Пейтфиндинг
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../game/physics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Физика
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../game/weapons/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оружие
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../game/inventory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Инвентарь
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../game/zones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Зоны и эффекты
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../game/ui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Сервер
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Сеть
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Данные
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Данные
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data/ltx-format/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Формат LTX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data/gamedata-layout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Раскладка gamedata
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/lua-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lua Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Справочник
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Справочник
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/patches/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Патчи
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ответственность
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Место в архитектуре
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Публичный API
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Публичный API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Таймеры
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Таймеры">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ctimerbase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CTimerBase
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ctimer-time-factor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CTimer (с time factor)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ctimer_paused_ex-ctimer_paused" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CTimer_paused_ex / CTimer_paused
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pausemngr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pauseMngr
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cstattimer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CStatTimer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Синхронизация
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Синхронизация">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xrcriticalsection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xrCriticalSection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xrcriticalsectionguard-raii" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xrCriticalSectionGuard (RAII)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xrcriticalsectiontryguard-non-blocking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xrCriticalSectionTryGuard (non-blocking)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xrsrwlock-reader-writer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xrSRWLock (Reader-Writer)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lock (простой)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CPU
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CPU">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpu-namespace-_mathh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CPU namespace (_math.h)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_processor_info-cpuidh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        _processor_info (cpuid.h)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Отладка
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Отладка">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xrdebug-singleton-debug" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xrDebug (singleton Debug)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xrdebug_macrosh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Макросы (xrDebug_macros.h)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#misc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Misc
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Misc">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#class_id-clsidh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLASS_ID (clsid.h)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intrusive_ptr-intrusive_ptrh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        intrusive_ptr (intrusive_ptr.h)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#net_packet-net_utilsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NET_Packet (net_utils.h)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clientid-client_idh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ClientID (client_id.h)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profilerh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        profiler.h
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crc32cpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        crc32.cpp
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xrpoolh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xrPool.h
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Внутреннее устройство
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Внутреннее устройство">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Файлы
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Взаимодействие
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Потоки данных
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Конфигурация
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ограничения / дебаг
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="xrcore">xrCore: Временны́е/системные<a class="headerlink" href="#xrcore" title="Permanent link">&para;</a></h1>
+<p>Таймеры, синхронизация, CPU, отладка, misc.</p>
+<h2 id="_1">Ответственность<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Таймеры</strong> (<code>FTimer.h</code>): <code>CTimerBase</code>, <code>CTimer</code>, <code>CTimer_paused</code>, <code>CStatTimer</code>, <code>pauseMngr</code>.</li>
+<li><strong>Синхронизация</strong> (<code>xrSyncronize.h</code>, <code>Lock.hpp</code>, <code>ScopeLock.hpp</code>): критические секции, RAII-guard'ы, SRW-locks.</li>
+<li><strong>CPU</strong> (<code>_math.h</code>, <code>cpuid.h</code>): <code>CPU::QPC()</code>, <code>CPU::GetCLK()</code>, <code>_processor_info</code>, <code>_initialize_cpu</code>.</li>
+<li><strong>Отладка</strong> (<code>xrDebug.h</code>, <code>xrDebug_macros.h</code>): <code>Debug.fail</code>, <code>R_ASSERT</code>, <code>VERIFY</code>, <code>FATAL</code>, <code>soft_fail</code>.</li>
+<li><strong>Misc</strong>: <code>clsid.h</code> (CLASS_ID), <code>intrusive_ptr.h</code>, <code>net_utils.h</code> (NET_Packet), <code>profiler.h</code>, <code>crc32.cpp</code>, <code>xrPool.h</code>, <code>SubAlloc.hpp</code>.</li>
+</ul>
+<h2 id="_2">Место в архитектуре<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>Нижний слой. Эти компоненты — <strong>инфраструктура</strong>, используемая всеми другими модулями.</p>
+<h2 id="api">Публичный API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
+<h3 id="_3">Таймеры<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="ctimerbase"><code>CTimerBase</code><a class="headerlink" href="#ctimerbase" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">XRCORE_API</span><span class="w"> </span><span class="n">CTimerBase</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">u64</span><span class="w"> </span><span class="n">qwStartTime</span><span class="p">,</span><span class="w"> </span><span class="n">qwPausedTime</span><span class="p">,</span><span class="w"> </span><span class="n">qwPauseAccum</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">bPause</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">ICF</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">Start</span><span class="p">();</span>
+<span class="w">    </span><span class="n">ICF</span><span class="w"> </span><span class="n">u64</span><span class="w"> </span><span class="n">GetElapsed_ticks</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ICF</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">GetElapsed_ms</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ICF</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">GetElapsed_sec</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w">  </span><span class="c1">// FPU m64 → float</span>
+<span class="w">    </span><span class="n">ICF</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">Dump</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w">  </span><span class="c1">// Msg</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Основано на <code>CPU::QPC()</code> (QueryPerformanceCounter).</p>
+<h4 id="ctimer-time-factor"><code>CTimer</code> (с time factor)<a class="headerlink" href="#ctimer-time-factor" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">XRCORE_API</span><span class="w"> </span><span class="n">CTimer</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">CTimerBase</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">m_time_factor</span><span class="p">;</span><span class="w">  </span><span class="c1">// масштаб времени (1.0 = реалтайм)</span>
+<span class="w">    </span><span class="n">u64</span><span class="w"> </span><span class="n">m_real_ticks</span><span class="p">,</span><span class="w"> </span><span class="n">m_ticks</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">ICF</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">Start</span><span class="p">();</span>
+<span class="w">    </span><span class="n">ICF</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="o">&amp;</span><span class="w"> </span><span class="n">time_factor</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ICF</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">time_factor</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tf</span><span class="p">);</span><span class="w">  </span><span class="c1">// изменить масштаб</span>
+<span class="w">    </span><span class="n">ICF</span><span class="w"> </span><span class="n">u64</span><span class="w"> </span><span class="n">GetElapsed_ticks</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ICF</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">GetElapsed_ms</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ICF</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">GetElapsed_sec</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p><code>time_factor(2.0)</code> — время идёт в 2 раза быстрее.</p>
+<h4 id="ctimer_paused_ex-ctimer_paused"><code>CTimer_paused_ex</code> / <code>CTimer_paused</code><a class="headerlink" href="#ctimer_paused_ex-ctimer_paused" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">XRCORE_API</span><span class="w"> </span><span class="n">CTimer_paused_ex</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">CTimer</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">u64</span><span class="w"> </span><span class="n">save_clock</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">ICF</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">Paused</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ICF</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">Pause</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w">  </span><span class="c1">// пауза/резюме</span>
+<span class="p">};</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">XRCORE_API</span><span class="w"> </span><span class="n">CTimer_paused</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">CTimer_paused_ex</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">CTimer_paused</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">g_pauseMngr</span><span class="p">().</span><span class="n">Register</span><span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="o">~</span><span class="n">CTimer_paused</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">g_pauseMngr</span><span class="p">().</span><span class="n">UnRegister</span><span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+<h4 id="pausemngr"><code>pauseMngr</code><a class="headerlink" href="#pausemngr" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">XRCORE_API</span><span class="w"> </span><span class="n">pauseMngr</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">xr_vector</span><span class="o">&lt;</span><span class="n">CTimer_paused</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">m_timers</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">m_paused</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">Paused</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">m_paused</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">Pause</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w">  </span><span class="c1">// пауза всех зарегистрированных</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">Register</span><span class="p">(</span><span class="n">CTimer_paused</span><span class="o">&amp;</span><span class="w"> </span><span class="n">t</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">UnRegister</span><span class="p">(</span><span class="n">CTimer_paused</span><span class="o">&amp;</span><span class="w"> </span><span class="n">t</span><span class="p">);</span>
+<span class="p">};</span>
+<span class="k">extern</span><span class="w"> </span><span class="n">XRCORE_API</span><span class="w"> </span><span class="n">pauseMngr</span><span class="o">&amp;</span><span class="w"> </span><span class="n">g_pauseMngr</span><span class="p">();</span>
+</code></pre></div>
+<h4 id="cstattimer"><code>CStatTimer</code><a class="headerlink" href="#cstattimer" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="k">extern</span><span class="w"> </span><span class="n">XRCORE_API</span><span class="w"> </span><span class="n">BOOL</span><span class="w"> </span><span class="n">g_bEnableStatGather</span><span class="p">;</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">XRCORE_API</span><span class="w"> </span><span class="n">CStatTimer</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">CTimer</span><span class="w"> </span><span class="n">T</span><span class="p">;</span>
+<span class="w">    </span><span class="n">u64</span><span class="w"> </span><span class="n">accum</span><span class="p">;</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">result</span><span class="p">;</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">FrameStart</span><span class="p">();</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">FrameEnd</span><span class="p">();</span>
+<span class="w">    </span><span class="n">ICF</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">Begin</span><span class="p">();</span><span class="w">  </span><span class="c1">// если g_bEnableStatGather</span>
+<span class="w">    </span><span class="n">ICF</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">End</span><span class="p">();</span>
+<span class="w">    </span><span class="n">ICF</span><span class="w"> </span><span class="n">u64</span><span class="w"> </span><span class="n">GetElapsed_ticks</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ICF</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">GetElapsed_ms</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ICF</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">GetElapsed_sec</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Счётчик времени по кадрам (статистика).</p>
+<h3 id="_4">Синхронизация<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="xrcriticalsection"><code>xrCriticalSection</code><a class="headerlink" href="#xrcriticalsection" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">XRCORE_API</span><span class="w"> </span><span class="n">xrCriticalSection</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">xray</span><span class="o">::</span><span class="n">noncopyable</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">pmutex</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="k">class</span><span class="w"> </span><span class="nc">raii</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// RAII</span>
+<span class="w">        </span><span class="n">xrCriticalSection</span><span class="o">*</span><span class="w"> </span><span class="n">critical_section</span><span class="p">;</span>
+<span class="w">    </span><span class="k">public</span><span class="o">:</span>
+<span class="w">        </span><span class="n">raii</span><span class="p">(</span><span class="n">xrCriticalSection</span><span class="o">*</span><span class="p">);</span>
+<span class="w">        </span><span class="o">~</span><span class="n">raii</span><span class="p">();</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">    </span><span class="n">xrCriticalSection</span><span class="p">();</span><span class="w">  </span><span class="c1">// или с id при PROFILE_CRITICAL_SECTIONS</span>
+<span class="w">    </span><span class="o">~</span><span class="n">xrCriticalSection</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">Enter</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">Leave</span><span class="p">();</span>
+<span class="w">    </span><span class="n">BOOL</span><span class="w"> </span><span class="nf">TryEnter</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">IsValid</span><span class="p">();</span>
+<span class="p">};</span>
+</code></pre></div>
+<h4 id="xrcriticalsectionguard-raii"><code>xrCriticalSectionGuard</code> (RAII)<a class="headerlink" href="#xrcriticalsectionguard-raii" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">xrCriticalSectionGuard</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">xray</span><span class="o">::</span><span class="n">noncopyable</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">xrCriticalSection</span><span class="o">*</span><span class="w"> </span><span class="n">critical_section</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">Enter</span><span class="p">();</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">Leave</span><span class="p">();</span>
+<span class="w">    </span><span class="n">xrCriticalSectionGuard</span><span class="p">(</span><span class="n">xrCriticalSection</span><span class="o">*</span><span class="w"> </span><span class="n">cs</span><span class="p">);</span>
+<span class="w">    </span><span class="n">xrCriticalSectionGuard</span><span class="p">(</span><span class="n">xrCriticalSection</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cs</span><span class="p">);</span>
+<span class="w">    </span><span class="o">~</span><span class="n">xrCriticalSectionGuard</span><span class="p">();</span><span class="w">  </span><span class="c1">// Leave</span>
+<span class="p">};</span>
+</code></pre></div>
+<h4 id="xrcriticalsectiontryguard-non-blocking"><code>xrCriticalSectionTryGuard</code> (non-blocking)<a class="headerlink" href="#xrcriticalsectiontryguard-non-blocking" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">xrCriticalSectionTryGuard</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">xray</span><span class="o">::</span><span class="n">noncopyable</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">xrCriticalSection</span><span class="o">*</span><span class="w"> </span><span class="n">critical_section</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">owned</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">xrCriticalSectionTryGuard</span><span class="p">(</span><span class="n">xrCriticalSection</span><span class="o">*</span><span class="w"> </span><span class="n">cs</span><span class="p">);</span>
+<span class="w">    </span><span class="n">xrCriticalSectionTryGuard</span><span class="p">(</span><span class="n">xrCriticalSection</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cs</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">owns_lock</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="w">    </span><span class="o">~</span><span class="n">xrCriticalSectionTryGuard</span><span class="p">();</span><span class="w">  </span><span class="c1">// Leave если owned</span>
+<span class="p">};</span>
+</code></pre></div>
+<h4 id="xrsrwlock-reader-writer"><code>xrSRWLock</code> (Reader-Writer)<a class="headerlink" href="#xrsrwlock-reader-writer" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">XRCORE_API</span><span class="w"> </span><span class="n">xrSRWLock</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">SRWLOCK</span><span class="w"> </span><span class="n">smutex</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">AcquireExclusive</span><span class="p">();</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">ReleaseExclusive</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">AcquireShared</span><span class="p">();</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">ReleaseShared</span><span class="p">();</span>
+<span class="w">    </span><span class="n">BOOL</span><span class="w"> </span><span class="nf">TryAcquireExclusive</span><span class="p">();</span><span class="w"> </span><span class="n">BOOL</span><span class="w"> </span><span class="nf">TryAcquireShared</span><span class="p">();</span>
+<span class="p">};</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">XRCORE_API</span><span class="w"> </span><span class="n">xrSRWLockGuard</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">xrSRWLock</span><span class="o">*</span><span class="w"> </span><span class="n">lock</span><span class="p">;</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">shared</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">xrSRWLockGuard</span><span class="p">(</span><span class="n">xrSRWLock</span><span class="o">&amp;</span><span class="w"> </span><span class="n">lock</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">shared</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+<span class="w">    </span><span class="n">xrSRWLockGuard</span><span class="p">(</span><span class="n">xrSRWLock</span><span class="o">*</span><span class="w"> </span><span class="n">lock</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">shared</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+<span class="w">    </span><span class="o">~</span><span class="n">xrSRWLockGuard</span><span class="p">();</span>
+<span class="p">};</span>
+</code></pre></div>
+<h4 id="lock"><code>Lock</code> (простой)<a class="headerlink" href="#lock" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Lock</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">xray</span><span class="o">::</span><span class="n">noncopyable</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">LockImpl</span><span class="o">*</span><span class="w"> </span><span class="n">impl</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kt">atomic_int</span><span class="w"> </span><span class="n">lockCounter</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">Lock</span><span class="p">();</span>
+<span class="w">    </span><span class="o">~</span><span class="n">Lock</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">Enter</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">TryEnter</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">Leave</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">IsLocked</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ScopeLock</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">xray</span><span class="o">::</span><span class="n">noncopyable</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// RAII</span>
+<span class="w">    </span><span class="n">Lock</span><span class="o">*</span><span class="w"> </span><span class="n">syncObject</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">ScopeLock</span><span class="p">(</span><span class="n">Lock</span><span class="o">*</span><span class="w"> </span><span class="n">SyncObject</span><span class="p">);</span>
+<span class="w">    </span><span class="o">~</span><span class="n">ScopeLock</span><span class="p">();</span>
+<span class="p">};</span>
+</code></pre></div>
+<h3 id="cpu">CPU<a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h3>
+<h4 id="cpu-namespace-_mathh"><code>CPU</code> namespace (<code>_math.h</code>)<a class="headerlink" href="#cpu-namespace-_mathh" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="k">namespace</span><span class="w"> </span><span class="nn">CPU</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">extern</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">clk_per_second</span><span class="p">;</span>
+<span class="w">    </span><span class="k">extern</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">clk_per_milisec</span><span class="p">;</span>
+<span class="w">    </span><span class="k">extern</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">clk_per_microsec</span><span class="p">;</span>
+<span class="w">    </span><span class="k">extern</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">qpc_freq</span><span class="p">;</span>
+<span class="w">    </span><span class="k">extern</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">qpc_overhead</span><span class="p">;</span>
+<span class="w">    </span><span class="k">extern</span><span class="w"> </span><span class="n">_processor_info</span><span class="w"> </span><span class="n">ID</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">IC</span><span class="w"> </span><span class="n">u64</span><span class="w"> </span><span class="n">QPC</span><span class="p">();</span><span class="w">      </span><span class="c1">// QueryPerformanceCounter</span>
+<span class="w">    </span><span class="n">IC</span><span class="w"> </span><span class="n">u64</span><span class="w"> </span><span class="n">GetCLK</span><span class="p">();</span><span class="w">   </span><span class="c1">// RDTSC</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="_processor_info-cpuidh"><code>_processor_info</code> (<code>cpuid.h</code>)<a class="headerlink" href="#_processor_info-cpuidh" title="Permanent link">&para;</a></h4>
+<p>Заполняется <code>CPUID</code> при старте:
+- VENDOR, Family, Model, Stepping
+- Флаги: SSE, SSSE3, SSE2, SSE3, SSE4.1, SSE4.2, AVX, AVX2
+- <code>clk_per_second</code>, <code>clk_per_milisec</code>, <code>clk_per_microsec</code>
+- <code>qpc_freq</code>, <code>qpc_overhead</code></p>
+<p><code>_initialize_cpu()</code> — вызывается из <code>xrCore::_initialize</code> (после <code>Memory._initialize</code>).</p>
+<h3 id="_5">Отладка<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="xrdebug-singleton-debug"><code>xrDebug</code> (singleton <code>Debug</code>)<a class="headerlink" href="#xrdebug-singleton-debug" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">XRCORE_API</span><span class="w"> </span><span class="n">xrDebug</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">crashhandler</span><span class="o">*</span><span class="w"> </span><span class="n">handler</span><span class="p">;</span>
+<span class="w">    </span><span class="n">on_dialog</span><span class="o">*</span><span class="w"> </span><span class="n">m_on_dialog</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">_initialize</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="o">&amp;</span><span class="w"> </span><span class="n">dedicated</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">_destroy</span><span class="p">();</span>
+<span class="w">    </span><span class="n">crashhandler</span><span class="o">*</span><span class="w"> </span><span class="nf">get_crashhandler</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">set_crashhandler</span><span class="p">(</span><span class="n">crashhandler</span><span class="o">*</span><span class="w"> </span><span class="n">_handler</span><span class="p">);</span>
+<span class="w">    </span><span class="n">on_dialog</span><span class="o">*</span><span class="w"> </span><span class="nf">get_on_dialog</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">set_on_dialog</span><span class="p">(</span><span class="n">on_dialog</span><span class="o">*</span><span class="w"> </span><span class="n">on_dialog</span><span class="p">);</span>
+<span class="w">    </span><span class="n">LPCSTR</span><span class="w"> </span><span class="nf">error2string</span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="n">code</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">gather_info</span><span class="p">(...);</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">fail</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">e1</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">file</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">line</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">function</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ignore_always</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// ... перегрузки fail (e2, e3, e4)</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">soft_fail</span><span class="p">(</span><span class="n">LPCSTR</span><span class="w"> </span><span class="n">e1</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span><span class="w">  </span><span class="c1">// не падает, только лог</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">error</span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="n">code</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">_cdecl</span><span class="w"> </span><span class="nf">fatal</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">file</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">line</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">function</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">F</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">backend</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">reason</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">do_exit</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">message</span><span class="p">);</span>
+<span class="p">};</span>
+<span class="k">extern</span><span class="w"> </span><span class="n">XRCORE_API</span><span class="w"> </span><span class="n">xrDebug</span><span class="w"> </span><span class="n">Debug</span><span class="p">;</span>
+<span class="n">XRCORE_API</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">LogStackTrace</span><span class="p">(</span><span class="n">LPCSTR</span><span class="w"> </span><span class="n">header</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="xrdebug_macrosh">Макросы (<code>xrDebug_macros.h</code>)<a class="headerlink" href="#xrdebug_macrosh" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Макрос</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>R_ASSERT(expr)</code></td>
+<td><code>Debug.fail</code> при <code>!expr</code></td>
+</tr>
+<tr>
+<td><code>R_ASSERT2/3/4(expr, e2, ...)</code></td>
+<td>с доп. сообщениями</td>
+</tr>
+<tr>
+<td><code>R_CHK(expr)</code></td>
+<td><code>Debug.error</code> при <code>FAILED(hr)</code> (HRESULT)</td>
+</tr>
+<tr>
+<td><code>FATAL(desc)</code></td>
+<td><code>Debug.fatal</code></td>
+</tr>
+<tr>
+<td><code>VERIFY(expr)</code></td>
+<td>debug: <code>Debug.fail</code>; release: <code>soft_fail</code> или пустой (см. ниже)</td>
+</tr>
+<tr>
+<td><code>VERIFY2/3/4</code></td>
+<td>с доп. сообщениями</td>
+</tr>
+<tr>
+<td><code>CHK_DX(expr)</code></td>
+<td>debug: <code>Debug.error</code>; release: пустой</td>
+</tr>
+<tr>
+<td><code>NODEFAULT</code></td>
+<td><code>FATAL("nodefault reached")</code> или <code>__assume(0)</code></td>
+</tr>
+<tr>
+<td><code>CHECK_OR_EXIT(expr, msg)</code></td>
+<td><code>Debug.do_exit</code></td>
+</tr>
+<tr>
+<td><code>TODO(x)</code>, <code>FIXME(x)</code></td>
+<td><code>#pragma message</code></td>
+</tr>
+<tr>
+<td><code>STATIC_CHECK(expr, msg)</code></td>
+<td>compile-time</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Режимы <code>VERIFY</code></strong>:
+- <code>DEBUG</code> + <code>NON_FATAL_VERIFY</code> → <code>soft_fail</code> (не падает).
+- <code>DEBUG</code> (без <code>NON_FATAL_VERIFY</code>) → <code>fail</code> (падает).
+- Release + <code>USE_VERIFY_IN_RELEASE</code> → <code>soft_fail</code>.
+- Release (без) → пустой.</p>
+<h3 id="misc">Misc<a class="headerlink" href="#misc" title="Permanent link">&para;</a></h3>
+<h4 id="class_id-clsidh"><code>CLASS_ID</code> (<code>clsid.h</code>)<a class="headerlink" href="#class_id-clsidh" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="n">u64</span><span class="w"> </span><span class="n">CLASS_ID</span><span class="p">;</span>
+<span class="cp">#define MK_CLSID(a,b,c,d,e,f,g,h) CLASS_ID(...)</span>
+<span class="cp">#define MK_CLSID_INV(a,b,c,d,e,f,g,h) MK_CLSID(h,g,f,e,d,c,b,a)</span>
+<span class="k">extern</span><span class="w"> </span><span class="n">XRCORE_API</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="kr">__stdcall</span><span class="w"> </span><span class="n">CLSID2TEXT</span><span class="p">(</span><span class="n">CLASS_ID</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">LPSTR</span><span class="w"> </span><span class="n">text</span><span class="p">);</span>
+<span class="k">extern</span><span class="w"> </span><span class="n">XRCORE_API</span><span class="w"> </span><span class="n">CLASS_ID</span><span class="w"> </span><span class="kr">__stdcall</span><span class="w"> </span><span class="n">TEXT2CLSID</span><span class="p">(</span><span class="n">LPCSTR</span><span class="w"> </span><span class="n">text</span><span class="p">);</span>
+</code></pre></div>
+<p>8-байтовый ID (8 × u8). <code>CLSID2TEXT</code>/<code>TEXT2CLSID</code> — текстовое представление.</p>
+<h4 id="intrusive_ptr-intrusive_ptrh"><code>intrusive_ptr</code> (<code>intrusive_ptr.h</code>)<a class="headerlink" href="#intrusive_ptr-intrusive_ptrh" title="Permanent link">&para;</a></h4>
+<p>См. <a href="../strings/">Строки</a> — <code>intrusive_ptr&lt;T&gt;</code> — intrusive smart pointer (C++17). <code>intrusive_base</code>, <code>intrusive_base_deferred</code>, <code>intrusive_base_strict</code>.</p>
+<h4 id="net_packet-net_utilsh"><code>NET_Packet</code> (<code>net_utils.h</code>)<a class="headerlink" href="#net_packet-net_utilsh" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">NET_PacketSizeLimit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1024</span><span class="p">;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">NET_Buffer</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">BYTE</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">NET_PacketSizeLimit</span><span class="p">];</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w"> </span><span class="p">};</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">XRCORE_API</span><span class="w"> </span><span class="n">NET_Packet</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">IIniFileStream</span><span class="o">*</span><span class="w"> </span><span class="n">inistream</span><span class="p">;</span>
+<span class="w">    </span><span class="n">NET_Buffer</span><span class="w"> </span><span class="n">B</span><span class="p">;</span>
+<span class="w">    </span><span class="n">u32</span><span class="w"> </span><span class="n">r_pos</span><span class="p">;</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">timeReceive</span><span class="p">;</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">w_allow</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">construct</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">size</span><span class="p">);</span>
+<span class="w">    </span><span class="n">IC</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">write_start</span><span class="p">();</span>
+<span class="w">    </span><span class="n">IC</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">w_begin</span><span class="p">(</span><span class="n">u16</span><span class="w"> </span><span class="n">type</span><span class="p">);</span>
+<span class="w">    </span><span class="n">IC</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">w</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">count</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">w_seek</span><span class="p">(</span><span class="n">u32</span><span class="w"> </span><span class="n">pos</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">count</span><span class="p">);</span>
+<span class="w">    </span><span class="n">IC</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">w_tell</span><span class="p">();</span>
+<span class="w">    </span><span class="n">IC</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">w_float</span><span class="p">,</span><span class="w"> </span><span class="n">w_vec3</span><span class="p">,</span><span class="w"> </span><span class="n">w_vec4</span><span class="p">,</span><span class="w"> </span><span class="n">w_u64</span><span class="p">,</span><span class="w"> </span><span class="n">w_s64</span><span class="p">,</span><span class="w"> </span><span class="n">w_u32</span><span class="p">,</span><span class="w"> </span><span class="n">w_s32</span><span class="p">,</span><span class="w"> </span><span class="n">w_u16</span><span class="p">,</span><span class="w"> </span><span class="n">w_s16</span><span class="p">,</span><span class="w"> </span><span class="n">w_u8</span><span class="p">,</span><span class="w"> </span><span class="n">w_s8</span><span class="p">;</span>
+<span class="w">    </span><span class="n">IC</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">w_float_q16</span><span class="p">,</span><span class="w"> </span><span class="n">w_float_q8</span><span class="p">,</span><span class="w"> </span><span class="n">w_angle16</span><span class="p">,</span><span class="w"> </span><span class="n">w_angle8</span><span class="p">,</span><span class="w"> </span><span class="n">w_dir</span><span class="p">,</span><span class="w"> </span><span class="n">w_sdir</span><span class="p">;</span>
+<span class="w">    </span><span class="n">IC</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">w_stringZ</span><span class="p">(</span><span class="n">LPCSTR</span><span class="w"> </span><span class="n">S</span><span class="p">);</span><span class="w"> </span><span class="n">IC</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">w_stringZ</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">shared_str</span><span class="o">&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">);</span>
+<span class="w">    </span><span class="n">IC</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">w_matrix</span><span class="p">(</span><span class="n">Fmatrix</span><span class="o">&amp;</span><span class="w"> </span><span class="n">M</span><span class="p">);</span>
+<span class="w">    </span><span class="n">IC</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">w_clientID</span><span class="p">(</span><span class="n">ClientID</span><span class="o">&amp;</span><span class="w"> </span><span class="n">C</span><span class="p">);</span>
+<span class="w">    </span><span class="n">IC</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">w_chunk_open8</span><span class="o">/</span><span class="mi">16</span><span class="p">(</span><span class="n">u32</span><span class="o">&amp;</span><span class="w"> </span><span class="n">position</span><span class="p">);</span>
+<span class="w">    </span><span class="n">IC</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">w_chunk_close8</span><span class="o">/</span><span class="mi">16</span><span class="p">(</span><span class="n">u32</span><span class="w"> </span><span class="n">position</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">read_start</span><span class="p">();</span>
+<span class="w">    </span><span class="n">u32</span><span class="w"> </span><span class="nf">r_begin</span><span class="p">(</span><span class="n">u16</span><span class="o">&amp;</span><span class="w"> </span><span class="n">type</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">r_seek</span><span class="p">(</span><span class="n">u32</span><span class="w"> </span><span class="n">pos</span><span class="p">);</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="nf">r_tell</span><span class="p">();</span>
+<span class="w">    </span><span class="n">IC</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">r</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">count</span><span class="p">);</span>
+<span class="w">    </span><span class="n">BOOL</span><span class="w"> </span><span class="nf">r_eof</span><span class="p">();</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="nf">r_elapsed</span><span class="p">();</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">r_advance</span><span class="p">(</span><span class="n">u32</span><span class="w"> </span><span class="n">size</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">r_vec3</span><span class="p">,</span><span class="w"> </span><span class="n">r_vec4</span><span class="p">,</span><span class="w"> </span><span class="n">r_float</span><span class="p">,</span><span class="w"> </span><span class="n">r_u64</span><span class="p">,</span><span class="w"> </span><span class="n">r_s64</span><span class="p">,</span><span class="w"> </span><span class="n">r_u32</span><span class="p">,</span><span class="w"> </span><span class="n">r_s32</span><span class="p">,</span><span class="w"> </span><span class="n">r_u16</span><span class="p">,</span><span class="w"> </span><span class="n">r_s16</span><span class="p">,</span><span class="w"> </span><span class="n">r_u8</span><span class="p">,</span><span class="w"> </span><span class="n">r_s8</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Fvector</span><span class="w"> </span><span class="nf">r_vec3</span><span class="p">();</span><span class="w"> </span><span class="n">Fvector4</span><span class="w"> </span><span class="nf">r_vec4</span><span class="p">();</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="nf">r_float</span><span class="p">();</span><span class="w"> </span><span class="n">u64</span><span class="w"> </span><span class="nf">r_u64</span><span class="p">();</span><span class="w"> </span><span class="p">...</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">r_stringZ</span><span class="p">(</span><span class="n">LPSTR</span><span class="w"> </span><span class="n">S</span><span class="p">);</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">r_stringZ</span><span class="p">(</span><span class="n">xr_string</span><span class="o">&amp;</span><span class="p">);</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">r_stringZ</span><span class="p">(</span><span class="n">shared_str</span><span class="o">&amp;</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">skip_stringZ</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">r_matrix</span><span class="p">(</span><span class="n">Fmatrix</span><span class="o">&amp;</span><span class="w"> </span><span class="n">M</span><span class="p">);</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">r_clientID</span><span class="p">(</span><span class="n">ClientID</span><span class="o">&amp;</span><span class="w"> </span><span class="n">C</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Бинарный пакет для сети (16 КБ лимит). <code>w_*</code>/<code>r_*</code> — аналогично <code>IWriter</code>/<code>IReader</code>, но с <code>INI_W</code> (дублирование в INI-файл для отладки).</p>
+<h4 id="clientid-client_idh"><code>ClientID</code> (<code>client_id.h</code>)<a class="headerlink" href="#clientid-client_idh" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ClientID</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">u32</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">u32</span><span class="w"> </span><span class="n">value</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">set</span><span class="p">(</span><span class="n">u32</span><span class="w"> </span><span class="n">v</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">compare</span><span class="p">(</span><span class="n">u32</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="w"> </span><span class="o">==</span><span class="p">,</span><span class="w"> </span><span class="o">!=</span><span class="p">,</span><span class="w"> </span><span class="o">&lt;</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<h4 id="profilerh"><code>profiler.h</code><a class="headerlink" href="#profilerh" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="cp">#define PROFILER_NONE   (0)</span>
+<span class="cp">#define PROFILER_OPTICK (1)</span>
+<span class="cp">#if !defined(XRCORE_PROFILER)</span>
+<span class="w">    </span><span class="cp">#define XRCORE_PROFILER PROFILER_NONE</span>
+<span class="cp">#endif</span>
+<span class="c1">// макросы: PROF_THREAD, PROF_FRAME, PROF_EVENT, START_PROFILE, STOP_PROFILE</span>
+</code></pre></div>
+<h4 id="crc32cpp"><code>crc32.cpp</code><a class="headerlink" href="#crc32cpp" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">XRCORE_API</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">crc32</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">P</span><span class="p">,</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">len</span><span class="p">);</span>
+<span class="n">XRCORE_API</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">crc32</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">P</span><span class="p">,</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">len</span><span class="p">,</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">starting_crc</span><span class="p">);</span>
+<span class="n">XRCORE_API</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">path_crc32</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">len</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="xrpoolh"><code>xrPool.h</code><a class="headerlink" href="#xrpoolh" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">granularity</span><span class="o">&gt;</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">poolSS</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">T</span><span class="o">*</span><span class="w"> </span><span class="n">list</span><span class="p">;</span>
+<span class="w">    </span><span class="n">xr_vector</span><span class="o">&lt;</span><span class="n">T</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">blocks</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">T</span><span class="o">*</span><span class="w"> </span><span class="n">create</span><span class="p">();</span><span class="w">  </span><span class="c1">// placement new</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">destroy</span><span class="p">(</span><span class="n">T</span><span class="o">*&amp;</span><span class="w"> </span><span class="n">P</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">clear</span><span class="p">();</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Pool с фиксированным размером (granularity).</p>
+<h2 id="_6">Внутреннее устройство<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h3 id="_7">Файлы<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Файл</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>FTimer.h/.cpp</code></td>
+<td>таймеры</td>
+</tr>
+<tr>
+<td><code>xrSyncronize.h/.cpp</code></td>
+<td>критические секции</td>
+</tr>
+<tr>
+<td><code>Lock.hpp/.cpp</code></td>
+<td><code>Lock</code></td>
+</tr>
+<tr>
+<td><code>ScopeLock.hpp/.cpp</code></td>
+<td><code>ScopeLock</code></td>
+</tr>
+<tr>
+<td><code>_math.h/.cpp</code></td>
+<td><code>CPU</code>, <code>_initialize_cpu</code>, FPU</td>
+</tr>
+<tr>
+<td><code>cpuid.h/.cpp</code></td>
+<td><code>_processor_info</code></td>
+</tr>
+<tr>
+<td><code>xrDebug.h/.cpp</code></td>
+<td><code>xrDebug</code></td>
+</tr>
+<tr>
+<td><code>xrDebug_macros.h</code></td>
+<td>макросы</td>
+</tr>
+<tr>
+<td><code>xrDebugNew.cpp</code></td>
+<td>альтернативная реализация</td>
+</tr>
+<tr>
+<td><code>clsid.h/.cpp</code></td>
+<td>CLASS_ID</td>
+</tr>
+<tr>
+<td><code>intrusive_ptr.h</code></td>
+<td>intrusive smart pointer</td>
+</tr>
+<tr>
+<td><code>net_utils.h/.cpp</code></td>
+<td>NET_Packet</td>
+</tr>
+<tr>
+<td><code>client_id.h</code></td>
+<td>ClientID</td>
+</tr>
+<tr>
+<td><code>profiler.h</code></td>
+<td>profiler</td>
+</tr>
+<tr>
+<td><code>crc32.cpp</code></td>
+<td>CRC32</td>
+</tr>
+<tr>
+<td><code>xrPool.h</code></td>
+<td>pool</td>
+</tr>
+<tr>
+<td><code>SubAlloc.hpp</code></td>
+<td>PPMd sub-allocator</td>
+</tr>
+<tr>
+<td><code>memory_monitor.h/.cpp</code></td>
+<td>debug-мониторинг</td>
+</tr>
+<tr>
+<td><code>xrMEMORY_POOL.h</code>, <code>xrMemory_POOL.cpp</code></td>
+<td>MEMPOOL (см. <a href="../memory/">Память</a>)</td>
+</tr>
+<tr>
+<td><code>xrMemory_pso.h</code> + <code>pso_*.cpp</code></td>
+<td>PSO (см. <a href="../memory/">Память</a>)</td>
+</tr>
+<tr>
+<td><code>xr_shared.h/.cpp</code></td>
+<td>misc</td>
+</tr>
+<tr>
+<td><code>xr_resource.h</code></td>
+<td>ресурс</td>
+</tr>
+<tr>
+<td><code>xrCore_platform.h</code></td>
+<td>платформенные определения</td>
+</tr>
+<tr>
+<td><code>ChooseTypes.H</code></td>
+<td>выбор типов</td>
+</tr>
+<tr>
+<td><code>resource.h</code></td>
+<td>ресурс</td>
+</tr>
+<tr>
+<td><code>FixedMap.h</code>, <code>FixedSet.h</code>, <code>FixedVector.h</code></td>
+<td>фиксированные контейнеры</td>
+</tr>
+<tr>
+<td><code>buffer_vector.h/.inline</code></td>
+<td>буферный вектор</td>
+</tr>
+<tr>
+<td><code>_noncopyable.h</code></td>
+<td><code>xray::noncopyable</code></td>
+</tr>
+<tr>
+<td><code>_type_traits.h</code></td>
+<td>type traits</td>
+</tr>
+<tr>
+<td><code>_thread_types.h</code></td>
+<td>атомарные типы</td>
+</tr>
+<tr>
+<td><code>_flags.h</code></td>
+<td><code>Flags8/16/32/64</code></td>
+</tr>
+<tr>
+<td><code>_random.h</code></td>
+<td>RNG</td>
+</tr>
+<tr>
+<td><code>_bitwise.h</code></td>
+<td>bitwise операции</td>
+</tr>
+<tr>
+<td><code>_color.h</code></td>
+<td>Fcolor</td>
+</tr>
+<tr>
+<td><code>_compressed_normal.h/.cpp</code></td>
+<td><code>pvCompress</code>/<code>pvDecompress</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_8">Взаимодействие<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>graph TD
+    A[CTimer] --&gt; B[CPU::QPC]
+    C[xrCriticalSection] --&gt; D[Windows CRITICAL_SECTION]
+    E[Lock] --&gt; F[std::mutex]
+    G[xrSRWLock] --&gt; H[Windows SRWLOCK]
+    I[Debug] --&gt; J[Msg / Log]
+    I --&gt; K[crashhandler]
+    L[NET_Packet] --&gt; M[сеть]
+    N[CLASS_ID] --&gt; O[CLSID2TEXT]
+    P[intrusive_ptr] --&gt; Q[Memory]</code></pre>
+<ul>
+<li><strong>Кто использует</strong>: все модули (таймеры, синхронизация, отладка).</li>
+<li><strong>Зависимости</strong>: Windows API, <code>CPU</code>, <code>Memory</code>, <code>Msg</code>.</li>
+</ul>
+<h2 id="_9">Потоки данных<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Frame
+    participant Timer as CTimer
+    participant CPU as QPC
+    Frame-&gt;&gt;Timer: Start()
+    Timer-&gt;&gt;CPU: QPC()
+    CPU--&gt;&gt;Timer: ticks
+    Frame-&gt;&gt;Timer: GetElapsed_sec()
+    Timer-&gt;&gt;CPU: QPC()
+    CPU--&gt;&gt;Timer: ticks
+    Timer--&gt;&gt;Frame: float (сек)</code></pre>
+<h2 id="_10">Конфигурация<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>PROFILE_CRITICAL_SECTIONS</code> — именованные критсек'ы (профилирование).</li>
+<li><code>CONFIG_PROFILE_LOCKS</code> — профилирование <code>Lock</code>.</li>
+<li><code>XRCORE_PROFILER</code> — <code>PROFILER_NONE</code> / <code>PROFILER_OPTICK</code>.</li>
+<li><code>NON_FATAL_VERIFY</code> — <code>VERIFY</code> не падает (debug).</li>
+<li><code>USE_VERIFY_IN_RELEASE</code> — <code>VERIFY</code> в release (soft_fail).</li>
+<li><code>ANONYMOUS_BUILD</code> — скрыть имена файлов/функций в отладке.</li>
+</ul>
+<h2 id="_11">Ограничения / дебаг<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><code>CTimer</code></strong> — не thread-safe (один таймер на поток).</li>
+<li><strong><code>pauseMngr</code></strong> — глобальный (все <code>CTimer_paused</code> в одном менеджере).</li>
+<li><strong><code>xrCriticalSection</code></strong> — Windows CRITICAL_SECTION (не рекурсивный).</li>
+<li><strong><code>Lock</code></strong> — <code>std::mutex</code> (C++11), рекурсивный (через <code>lockCounter</code>).</li>
+<li><strong><code>NET_Packet</code></strong> — 16 КБ лимит, не thread-safe.</li>
+<li><strong><code>Debug.fail</code></strong> — падает (crash). <code>soft_fail</code> — только лог.</li>
+<li><strong><code>CPU::QPC</code></strong> — <code>QueryPerformanceCounter</code> (высокая точность, но <code>qpc_overhead</code> — калибровка).</li>
+<li><strong><code>intrusive_ptr</code></strong> — C++17, <code>static_assert</code> на <code>intrusive_base_marker</code>.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  К началу
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Нижний колонтитул" >
+        
+          
+          <a href="../locator/" class="md-footer__link md-footer__link--prev" aria-label="Назад: Локализатор (архивы)">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Назад
+              </span>
+              <div class="md-ellipsis">
+                Локализатор (архивы)
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../xr-engine/" class="md-footer__link md-footer__link--next" aria-label="Вперед: Обзор">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Вперед
+              </span>
+              <div class="md-ellipsis">
+                Обзор
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.top", "navigation.footer", "navigation.tabs", "content.code.copy", "search.highlight", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,17 +1,34 @@
-# Welcome to MkDocs
+# X-Ray Monolith — Документация движка
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+Документация игрового движка **X-Ray Monolith** — форка [X-Ray 1.6.0.8](https://github.com/anomaly-game/stalker-anomaly) (S.T.A.L.K.E.R. Anomaly) с публичным исходным кодом.
 
-## Commands
+Цель этой вики — **полный разбор движка до винтика**: от низкоуровневых типов и памяти (`xrCore`) до игровой логики (`xrGame`), рендера (`xrRenderPC_R4`), сервера и сетевых протоколов.
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+## Как читать
 
-## Project layout
+Движок — плотный граф зависимостей, модули используют классы друг друга. Чтобы не «прыгать по всему движку», документация построена **двумя слоями**:
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+1. **Карта** ([Архитектура](architecture/overview.md)) — глобальный контекст: слои, цикл кадра, модель объектов, границы скриптинга, граф зависимостей. Читай один раз, это фундамент для всех остальных страниц.
+2. **Модули** ([Модули](modules/xr-core/index.md)) — детальный разбор каждого модуля, до винтика. Каждая страница модуля ссылается на «Карту», а не повторяет её.
+
+## Структура движка
+
+| Папка `src/`                               | Ответственность                                                                        | Статус разбора   |
+| ------------------------------------------ | -------------------------------------------------------------------------------------- | ---------------- |
+| `xrCore`                                   | Фундамент: типы, математика, память, строки, лог, FS, INI, сжатие, локализатор архивов | ✅ разобрано     |
+| `xrEngine`                                 | Ядро: device, sheduler, input, console, Lua-биндинг, эффекты                           | ⏳ итерация 2    |
+| `Layers/xrRender*`                         | Рендерер D3D9: pipeline, константы, постобработка, shader bus                          | ⏳ итерация 3    |
+| `xrParticles`, `xrSound`                   | Частицы, звук                                                                          | ⏳ итерация 4    |
+| `xrGame`                                   | Игровая логика: объекты, AI (ALIFE), физика, оружие, UI, MP                            | ⏳ итерации 5–10 |
+| `xrCDB`, `xrServerEntities`, `xrNetServer` | Сервер                                                                                 | ⏳ итерация 11   |
+| `compressor`                               | Сжатие LTX-архивов                                                                     | ⏳ итерация 13   |
+
+## Быстрый старт
+
+- [Установка и сборка](getting-started/installation.md)
+- [Диагностика](getting-started/troubleshooting.md)
+- [Shader Bus](modules/renderer/shader-bus.md) — фича для мододелов
+
+## Как строится эта вики
+
+Итерации идут **фундамент → верхушка**, каждая итерация завершает один модуль целиком, прежде чем начинаться следующий. Страницы-заглушки существуют с итерации 0, чтобы nav была рабочей картой с первого дня. План генерации — файл `GENERATE-DOCS.md` в корне `docs/`.

@@ -1,1 +1,108 @@
-site_name: My Docs
+site_name: X-Ray Monolith — Документация движка
+site_description: Полная документация игрового движка X-Ray Monolith (fork X-Ray 1.6.0.8, S.T.A.L.K.E.R. Anomaly)
+
+repo_name: xray-monolith
+docs_dir: docs
+
+theme:
+  name: material
+  language: ru
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: amber
+    - scheme: slate
+      primary: indigo
+      accent: amber
+  features:
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - navigation.tabs
+    - content.code.copy
+    - search.highlight
+    - toc.follow
+  icon:
+    repo: fontawesome/brands/github
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.highlight
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.caret
+  - pymdownx.keys
+
+strict: true
+
+nav:
+  - Главная: index.md
+  - Начало работы:
+      - Установка: getting-started/installation.md
+      - Сборка: getting-started/building.md
+      - Диагностика: getting-started/troubleshooting.md
+  - Архитектура:
+      - Обзор: architecture/overview.md
+      - Карта модулей: architecture/module-map.md
+      - Зависимости: architecture/dependencies.md
+      - Цикл кадра: architecture/frame-loop.md
+      - Модель объектов: architecture/object-model.md
+      - Граница скриптинга: architecture/scripting-boundary.md
+  - Модули:
+      - xrCore (фундамент):
+          - Обзор: modules/xr-core/index.md
+          - Типы и математика: modules/xr-core/types-math.md
+          - Память: modules/xr-core/memory.md
+          - Строки: modules/xr-core/strings.md
+          - Логирование: modules/xr-core/logging.md
+          - Файловая система: modules/xr-core/filesystem.md
+          - INI / конфиги: modules/xr-core/inifile.md
+          - Сжатие: modules/xr-core/compression.md
+          - Локализатор (архивы): modules/xr-core/locator.md
+          - Временны́е/системные: modules/xr-core/system.md
+      - xrEngine (ядро):
+          - Обзор: modules/xr-engine/index.md
+          - Device: modules/xr-engine/device.md
+          - Sheduler: modules/xr-engine/scheduler.md
+          - Lua-биндинг: modules/xr-engine/lua-binding.md
+          - Консоль: modules/xr-engine/console.md
+      - Renderer:
+          - Обзор: modules/renderer/index.md
+          - Pipeline: modules/renderer/pipeline.md
+          - Постобработка: modules/renderer/postprocessing.md
+          - Shader Bus: modules/renderer/shader-bus.md
+      - xrParticles: modules/xr-particles.md
+      - xrSound: modules/xr-sound.md
+      - xrGame:
+          - Обзор: modules/game/index.md
+          - Объекты (Actor/GameObject): modules/game/objects.md
+          - ALIFE (AI): modules/game/alife.md
+          - Пейтфиндинг: modules/game/pathfinding.md
+          - Физика: modules/game/physics.md
+          - Оружие: modules/game/weapons.md
+          - Инвентарь: modules/game/inventory.md
+          - Зоны и эффекты: modules/game/zones.md
+          - UI: modules/game/ui.md
+      - Сервер: modules/server.md
+      - Сеть: modules/network.md
+  - Данные:
+      - Формат LTX: data/ltx-format.md
+      - Раскладка gamedata: data/gamedata-layout.md
+  - API:
+      - Lua Reference: api/lua-reference.md
+  - Справочник:
+      - Changelog: reference/changelog.md
+      - Патчи: reference/patches.md
