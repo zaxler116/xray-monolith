@@ -3159,11 +3159,11 @@
 </tr>
 <tr>
 <td><a href="frame-loop/">Цикл кадра</a></td>
-<td><em>(порцион 2)</em> — <code>Device.Run</code>, <code>seqFrame</code>/<code>seqRender</code>, порядок <code>OnFrame</code>/<code>OnRender</code></td>
+<td><code>Device.Run</code>, <code>message_loop</code>, <code>on_idle</code>, <code>FrameMove</code>, <code>mt_Thread</code>, <code>seqFrame</code>/<code>seqRender</code>/<code>seqFrameMT</code></td>
 </tr>
 <tr>
 <td><a href="scheduler/">Sheduler</a></td>
-<td><em>(порцион 2)</em> — <code>CSheduler</code>, <code>ISheduled</code>, <code>Register</code>/<code>Unregister</code>/<code>EnsureOrder</code></td>
+<td><code>CSheduler</code>, <code>ISheduled</code>, <code>Register</code>/<code>Unregister</code>/<code>EnsureOrder</code>, адаптивный бюджет</td>
 </tr>
 <tr>
 <td><a href="device/">Device</a></td>
@@ -3320,7 +3320,7 @@
 <td>2</td>
 <td>Цикл кадра и планировщик</td>
 <td><code>frame-loop.md</code>, <code>scheduler.md</code></td>
-<td>⬜</td>
+<td>✅ готово</td>
 </tr>
 <tr>
 <td>3</td>

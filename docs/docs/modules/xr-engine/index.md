@@ -10,8 +10,8 @@
 | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
 | [Ядро (CEngine) и точка входа](engine.md)            | `CEngine`, `PSGP`, `WinMain`/`WinMain_impl`/`Startup`, `CApplication`, `pure.h`/`CRegistrator`, `defines.h`, CLSID |
 | [API и события](api.md)                              | `CEngineAPI` (рендерер, игра, vTune, фабрика), `CEventAPI`/`CEvent`, `KERNEL:*`                                    |
-| [Цикл кадра](frame-loop.md)                          | _(порцион 2)_ — `Device.Run`, `seqFrame`/`seqRender`, порядок `OnFrame`/`OnRender`                                 |
-| [Sheduler](scheduler.md)                             | _(порцион 2)_ — `CSheduler`, `ISheduled`, `Register`/`Unregister`/`EnsureOrder`                                    |
+| [Цикл кадра](frame-loop.md)                          | `Device.Run`, `message_loop`, `on_idle`, `FrameMove`, `mt_Thread`, `seqFrame`/`seqRender`/`seqFrameMT`             |
+| [Sheduler](scheduler.md)                             | `CSheduler`, `ISheduled`, `Register`/`Unregister`/`EnsureOrder`, адаптивный бюджет                                 |
 | [Device](device.md)                                  | _(порцион 3)_ — `CRenderDevice`, `CRenderDeviceData`, `Device_create/Initialize/destroy`, таймеры, матрицы         |
 | [Окно и WndProc](device-window.md)                   | _(порцион 3)_ — `Device_wndproc`, `Device_Misc`, `Device_overdraw`, `xrHemisphere`                                 |
 | [Рендер-слой](render.md)                             | _(порцион 4)_ — `Render.h/.cpp`, `IRenderable`, `PS_instance`, `MbHelpers`                                         |
@@ -80,7 +80,7 @@ graph TD
 | #   | Порцион                                           | Страницы                                                                     | Статус    |
 | --- | ------------------------------------------------- | ---------------------------------------------------------------------------- | --------- |
 | 1   | Ядро и API                                        | `engine.md`, `api.md`                                                        | ✅ готово |
-| 2   | Цикл кадра и планировщик                          | `frame-loop.md`, `scheduler.md`                                              | ⬜        |
+| 2   | Цикл кадра и планировщик                          | `frame-loop.md`, `scheduler.md`                                              | ✅ готово |
 | 3   | Устройство                                        | `device.md`, `device-window.md`                                              | ⬜        |
 | 4   | Рендер-слой                                       | `render.md`, `renderable.md`, `fmesh.md`                                     | ⬜        |
 | 5   | Коллизии/физика                                   | `collide-physics.md`                                                         | ⬜        |
