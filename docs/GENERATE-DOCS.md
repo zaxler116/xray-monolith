@@ -287,3 +287,9 @@ docs/docs/
   - `system.md` — таймеры (`CTimer`), синхронизация (`xrCriticalSection`, `Lock`, `xrSRWLock`), CPU, `xrDebug`, `NET_Packet`, `CLASS_ID`, `intrusive_ptr`.
   - `index.md` — обзор xrCore.
   - Все заглушки для будущих итераций созданы (nav полный, `mkdocs build --strict` проходит).
+- **[Итерация 2, порцион 1]** (завершён): **xrEngine — Ядро и API** — 2 страницы + обновлён `index.md`:
+  - `engine.md` — `CEngine`, `PSGP` (xrCPU_Pipe), `WinMain`/`WinMain_impl`/`Startup`, `CApplication` (`pApp`, `KERNEL:*`, `LoadBegin/End`), `pure.h`/`CRegistrator<T>`, `pure_relcase`, `defines.h` (флаги, пути), `std_classes.h` (CLSID), `PROTECT_API`/`NO_SINGLE`, `mp_logging.h`.
+  - `api.md` — `CEngineAPI` (рендерер R1..R4, `xrGame`, vTune, фабрика `NEW_INSTANCE`/`DEL_INSTANCE`, `DLL_Pure`), `CEventAPI`/`CEvent` (реф-счётчик, `Signal`/`Defer`, `OnFrame`, `Peek`), поток `KERNEL:start`.
+  - `index.md` — карта связей xrEngine + таблица статусов 12 порционов.
+  - `mkdocs.yml` — секция xrEngine расширена до 29 записей (все страницы-цели порционов 1–12).
+  - **Обнаружено**: `PSGP` — это `xrDispatchTable` (скиннинг `skin1W..4W` + `PLC_calc3`), **не** general-purpose API. `CApplication::OnFrame` — первый участник `Device.seqFrame` (приоритет `REG_PRIORITY_HIGH + 1000`), поэтому `Engine.Event.OnFrame` (defer-события) выполняется до остальных. Рендерер выбирается **компиляцией** (`STATIC_RENDERER_R?`), а не рантайм-поиском.

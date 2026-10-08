@@ -1,7 +1,7 @@
 # Sheduler
 
-> **Заглушка** — будет заполнена на итерации 2.
+> **Заглушка** — порцион 2 итерации 2.
 
-`CSheduler` (да, опечатка в исходнике) — планировщик кадров.
+`CSheduler` (`xrSheduler.h/.cpp`), `ISheduled`, `Register`/`Unregister`/`EnsureOrder`, `Process`/`Update`/`ProcessStep`, `cycles_start/limit`.
 
-См. [Цикл кадра](../../architecture/frame-loop.md).
+См. [Ядро](engine.md), [Цикл кадра](frame-loop.md).

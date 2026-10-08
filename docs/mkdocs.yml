@@ -75,10 +75,34 @@ nav:
           - Временны́е/системные: modules/xr-core/system.md
       - xrEngine (ядро):
           - Обзор: modules/xr-engine/index.md
-          - Device: modules/xr-engine/device.md
+          - Ядро и API: modules/xr-engine/engine.md
+          - API и события: modules/xr-engine/api.md
+          - Цикл кадра: modules/xr-engine/frame-loop.md
           - Sheduler: modules/xr-engine/scheduler.md
-          - Lua-биндинг: modules/xr-engine/lua-binding.md
+          - Device: modules/xr-engine/device.md
+          - Окно и WndProc: modules/xr-engine/device-window.md
+          - Рендер-слой: modules/xr-engine/render.md
+          - IRenderable: modules/xr-engine/renderable.md
+          - Fmesh: modules/xr-engine/fmesh.md
+          - Коллизии и физика: modules/xr-engine/collide-physics.md
+          - Объект: modules/xr-engine/xr-object.md
+          - Уровень: modules/xr-engine/level.md
+          - Пул объектов: modules/xr-engine/object-pool.md
+          - Persistent: modules/xr-engine/persistent.md
+          - Скелет и анимация: modules/xr-engine/skeleton-motion.md
+          - Окружение: modules/xr-engine/environment.md
+          - Эффекторы: modules/xr-engine/effector.md
+          - Feels: modules/xr-engine/feel.md
+          - Визуальные эффекты: modules/xr-engine/effects.md
+          - Камера: modules/xr-engine/camera.md
+          - HUD: modules/xr-engine/hud.md
+          - UI-примитивы: modules/xr-engine/ui-primitives.md
+          - Ввод: modules/xr-engine/input.md
           - Консоль: modules/xr-engine/console.md
+          - Lua-биндинг: modules/xr-engine/lua-binding.md
+          - Демо: modules/xr-engine/demo.md
+          - Статистика: modules/xr-engine/stats.md
+          - Прочее: modules/xr-engine/misc.md
       - Renderer:
           - Обзор: modules/renderer/index.md
           - Pipeline: modules/renderer/pipeline.md

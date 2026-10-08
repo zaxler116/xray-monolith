@@ -1,7 +1,7 @@
 # Lua-биндинг
 
-> **Заглушка** — будет заполнена на итерации 2.
+> **Заглушка** — порцион 12 итерации 2.
 
-Интеграция Lua 5.1 + luabind.
+`_scripting.cpp`, `ai_script_space.h`, `ai_script_lua_space.h`, `ai_script_lua_extension.h/.cpp`, `ai_script_lua_debug.cpp`.
 
-См. [Граница скриптинга](../../architecture/scripting-boundary.md).
+См. [Граница скриптинга (архитектура)](../../architecture/scripting-boundary.md), [Lua Reference](../../api/lua-reference.md).
