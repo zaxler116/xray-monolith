@@ -81,7 +81,7 @@ graph TD
 | --- | ------------------------------------------------- | ---------------------------------------------------------------------------- | --------- |
 | 1   | Ядро и API                                        | `engine.md`, `api.md`                                                        | ✅ готово |
 | 2   | Цикл кадра и планировщик                          | `frame-loop.md`, `scheduler.md`                                              | ✅ готово |
-| 3   | Устройство                                        | `device.md`, `device-window.md`                                              | ⬜        |
+| 3   | Устройство                                        | `device.md`, `device-window.md`                                              | ✅ готово |
 | 4   | Рендер-слой                                       | `render.md`, `renderable.md`, `fmesh.md`                                     | ⬜        |
 | 5   | Коллизии/физика                                   | `collide-physics.md`                                                         | ⬜        |
 | 6   | Объекты и уровень                                 | `xr-object.md`, `level.md`, `object-pool.md`, `persistent.md`                | ⬜        |
