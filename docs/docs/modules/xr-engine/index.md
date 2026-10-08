@@ -87,7 +87,7 @@ graph TD
 | 6   | Объекты и уровень                                 | `xr-object.md`, `level.md`, `object-pool.md`, `persistent.md`                | ✅ готово |
 | 7   | Скелет и анимация                                 | `skeleton-motion.md`                                                         | ✅ готово |
 | 8   | Окружение и эффекторы                             | `environment.md`, `effector.md`                                              | ✅ готово |
-| 9   | Feels                                             | `feel.md`                                                                    | ⬜        |
+| 9   | Feels                                             | `feel.md`                                                                    | ✅ готово |
 | 10  | Визуальные эффекты                                | `effects.md`                                                                 | ⬜        |
 | 11  | Камера / HUD / UI                                 | `camera.md`, `hud.md`, `ui-primitives.md`                                    | ⬜        |
 | 12  | Ввод / Консоль / Lua / Демо / Статистика / Прочее | `input.md`, `console.md`, `lua-binding.md`, `demo.md`, `stats.md`, `misc.md` | ⬜        |
