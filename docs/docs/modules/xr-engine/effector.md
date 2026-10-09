@@ -283,6 +283,6 @@ sequenceDiagram
 - **`bFreeOnRemove = false`** — эффект **не** освобождается при удалении из `CCameraManager` (только `erase`). Владелец **должен** сам удалить его (иначе — утечка).
 - **`effCustomEffectorStartID = 10000`** — пользовательские типы начинаются с 10000. Если в xrGame объявлено > 10000 типов — `RequestPPEffectorId` может вернуться с уже занятым `ID` (нет проверки границ).
 - **`m_on_b_remove_callback`** — вызывается **до** `xr_delete`. В callback нельзя обращаться к уже удалённому объекту (только к владельцу).
-- **`SPPInfo`** — forward-декларация в xrEngine (`struct SPPInfo;`), полная определение — в xrRender (итерация 3).
+- **`SPPInfo`** — полная структура в `CameraManager.h` (см. [Камера](camera.md)): `SColor` (r/g/b), `SDuality` (h/v), `SNoise` (intensity/grain/fps), `blur`/`gray`/`color_base`/`color_gray`/`color_add`/`cm_*`; `add`/`sub`/`lerp`/`normalize`/`validate`. Только **применение** `IRender_Target` — xrRender (итерация 3).
 - **`SCamEffectorInfo`** — полный struct в `CameraDefs.h`: `p` (позиция), `d` (направление), `n` (normal), `r` (right), `fFov`, `fFar`, `fAspect`, `dont_apply`, `affected_on_hud`.
-- Не покрыто: `CPostprocessAnimator`/`CPostprocessAnimatorControlled`/`CPostprocessAnimatorLerp`/`CPostprocessAnimatorLerpConst` (xrGame), `CActorDeathEffector` (xrGame), `CNightVisionEffector` (xrGame), `CCameraManager` подробно (порцион 11 — [Камера](camera.md)), `SPPInfo`/`IRender_Target` (xrRender, итерация 3).
+- Не покрыто: `CPostprocessAnimator`/`CPostprocessAnimatorControlled`/`CPostprocessAnimatorLerp`/`CPostprocessAnimatorLerpConst` (xrGame), `CActorDeathEffector` (xrGame), `CNightVisionEffector` (xrGame), `CCameraManager` подробно (порцион 11 — [Камера](camera.md)), `IRender_Target` (xrRender, итерация 3).

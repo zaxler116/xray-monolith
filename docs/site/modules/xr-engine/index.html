@@ -3227,15 +3227,15 @@
 </tr>
 <tr>
 <td><a href="camera/">Камера</a></td>
-<td><em>(порцион 11)</em> — <code>CameraBase</code>, <code>CameraManager</code></td>
+<td><code>CCameraBase</code> (позиция/направление/FOV, clamp-ограничения, флаги инерции), <code>CCameraManager</code> (оркестратор кадра: эффекторы, EMA, <code>ApplyDevice</code> → <code>Device</code>/<code>IRender_Target</code>), <code>SCamEffectorInfo</code>, <code>SPPInfo</code> (postprocess), deferred-добавление эффекторов, SVP FOV override</td>
 </tr>
 <tr>
 <td><a href="hud/">HUD</a></td>
-<td><em>(порцион 11)</em> — <code>CustomHUD</code>, <code>GameFont</code>, <code>GIFResource</code></td>
+<td><code>CCustomHUD</code> (каркас, <code>psHUD_Flags</code> бит-флаги, <code>g_hud</code>), <code>CGameFont</code> (bitmap-атлас, <code>GetFontTextureName</code> по <code>dwHeight</code>, <code>OutI</code>/<code>MasterOut</code>, мультибайт, <code>SetHeight</code> bug), <code>CGIFResource</code> (GIF-декодер: GCB, interlaced, BGR/RGBA)</td>
 </tr>
 <tr>
 <td><a href="ui-primitives/">UI-примитивы</a></td>
-<td><em>(порцион 11)</em> — <code>imgui_base</code>, <code>line_edit_control</code>, <code>xrTheora_*</code>, <code>xrSASH</code>, <code>tntQAVI</code></td>
+<td><code>xr_imgui::ide</code> (ImGui-оверлей, приоритет <code>-5</code>, embedded-шрифты, ввод), <code>line_edit_control</code> (текстовый редактор: буферы, key-repeat, <strong>инвертированный NumLock</strong>), <code>line_editor</code> (<code>IInputReceiver</code>-обёртка), <code>CTheoraStream</code>/<code>CTheoraSurface</code> (Ogg/Theora, YUV420→RGBA CPU/GPU), <code>CAviPlayerCustom</code> (AVI, весь <code>movi</code> в RAM), <code>xrSASH</code> (бенчмарк, native only), <code>WaveForm</code> (генератор сигналов)</td>
 </tr>
 <tr>
 <td><a href="input/">Ввод</a></td>
@@ -3374,7 +3374,7 @@
 <td>11</td>
 <td>Камера / HUD / UI</td>
 <td><code>camera.md</code>, <code>hud.md</code>, <code>ui-primitives.md</code></td>
-<td>⬜</td>
+<td>✅ готово</td>
 </tr>
 <tr>
 <td>12</td>
