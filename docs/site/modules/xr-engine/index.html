@@ -3239,27 +3239,27 @@
 </tr>
 <tr>
 <td><a href="input/">Ввод</a></td>
-<td><em>(порцион 12)</em> — <code>xr_input</code>, <code>Xr_input</code>, <code>xr_input_xinput</code></td>
+<td><code>CInput</code> (DirectInput8 мышь+клавиатура, <code>cbStack</code> LIFO-подписчиков, <code>iCapture/iRelease</code> стек захвата, <code>KeyUpdate</code> (Alt+F4/Alt+Tab/<code>DIK_PAUSE</code>), <code>MouseUpdate</code> (аккумуляция <code>offs</code>, <code>SM_SWAPBUTTON</code>, <code>IR_OnMouseStop</code> 25 мс), <code>IInputReceiver</code> (статические геттеры + виртуальные <code>IR_On*</code>), XInput <strong>закомментирован</strong> (gamepad отключён)</td>
 </tr>
 <tr>
 <td><a href="console/">Консоль</a></td>
-<td><em>(порцион 12)</em> — <code>CConsole</code>/<code>CTextConsole</code>, <code>XR_IOConsole</code>, <code>xr_ioc_cmd</code></td>
+<td><code>CConsole</code> (редактор <code>line_editor</code>, история 64, tips mode 1/2, <code>ExecuteCommand</code>, <code>OnRender</code> (шейдер <code>ui\ui_console</code>, mark-цвета, stats), <code>CCC_*</code> типизированные cvar'ы, <code>CCC_Register</code> ~80 cvar'ов), <code>CTextConsole</code> (dedicated: Win32-окна, double-buffer, <code>OnPaint</code> each 2nd frame), <code>IConsole_Command</code> (LRU 10, <code>InvalidSyntax</code> → <code>g_SASH</code>), <code>add_next_cmds</code> <strong>мёртвый</strong></td>
 </tr>
 <tr>
 <td><a href="lua-binding/">Lua-биндинг</a></td>
-<td><em>(порцион 12)</em> — <code>_scripting</code>, <code>ai_script_space</code>, <code>ai_script_lua_*</code></td>
+<td><code>ai_script_space.h</code> (<code>lua.hpp</code>/<code>luabind</code>, <code>CLuaVirtualMachine</code>, <code>SMemberCallback</code>), <code>ai_script_lua_space.h</code> (<code>ELuaMessageType</code>, <code>LuaOut</code>), <code>ai_script_lua_extension</code> (<code>bfLoadBuffer</code>/<code>bfLoadFileIntoNamespace</code>/<code>bfGetNamespaceTable</code>/<code>bfIsObjectPresent</code> — <strong>всегда</strong>; <code>vfExport*</code>/<code>vfLoadStandardScripts</code>/<code>LuaPanic</code> — <strong><code>#ifndef ENGINE_BUILD</code>, xrGame only</strong>), <code>ai_script_lua_debug</code> (<code>bfPrintOutput</code>, <code>vfPrintError</code>, <code>bfListLevelVars</code> <strong>закомментирован</strong>), <code>_scripting.cpp</code> (10 строк, пустой boost stub)</td>
 </tr>
 <tr>
 <td><a href="demo/">Демо</a></td>
-<td><em>(порцион 12)</em> — <code>FDemoPlay</code>, <code>FDemoRecord</code></td>
+<td><code>CDemoPlay</code> (<code>CEffectorCam cefDemo</code>: <code>.anm</code> <code>COMotion</code> или raw <code>Fmatrix</code> Catmull-Rom spline, benchmark → <code>&lt;name&gt;.result</code> + <code>quit</code>), <code>CDemoRecord</code> (<code>CEffectorCam</code> + <code>IInputReceiver</code> + <code>pureRender</code>: WASD+mouse look, <code>RecordKey</code> (<code>Fmatrix</code>/кадр), <code>MakeCubemap</code> (7 stages)/<code>MakeScreenshot</code> (2)/<code>MakeLevelMapScreenshot</code> (4 фрагмента), <code>g_position</code>/<code>g_direction</code> override, <code>return_ctrl_inputs</code>)</td>
 </tr>
 <tr>
 <td><a href="stats/">Статистика</a></td>
-<td><em>(порцион 12)</em> — <code>CStats</code>, <code>StatGraph</code></td>
+<td><code>CStats</code> (<code>pureRender</code> + <code>CStatsPhysics</code>: ~50 <code>CStatTimer</code> (Engine/Render/Sound/Input/AI/Net/...), FPS/RFPS/TPS EMA α=0.3, память EMA, <code>errors</code> (DEBUG), <code>seqStats</code> (<code>pureStats</code>), <code>Show()</code> (gated <code>rsCameraPos</code> / <code>rsStatistic</code> / <code>errors</code>, dedicated → early return, PERF ALERT DEBUG), <code>OnRender</code> (DEBUG sound overlay)), <code>CStatGraph</code> (<code>EStyle</code>, <code>SSubGraph</code>, <code>FactoryPtr&lt;IStatGraphRender&gt;</code>, D3D9 <strong>закомментирован</strong>), <code>vtune</code> <strong>мёртвый</strong></td>
 </tr>
 <tr>
 <td><a href="misc/">Прочее</a></td>
-<td><em>(порцион 12)</em> — <code>mailSlot</code>, <code>trivial_encryptor</code>, <code>cl_intersect</code></td>
+<td><code>mailSlot</code> (DEBUG-only Windows mailslots), <code>trivial_encryptor</code> (подстановка + XOR, <strong>не шифрование</strong>, seed hardcoded, <code>RUSSIAN_BUILD</code>-варианты), <code>cl_intersect</code> (<code>CDB</code>: <code>TestRayTri</code> Möller–Trumbore, <code>TestSphereTri</code>, <code>TestRayOBB</code>, <code>MgcSqrDistance</code>), <code>Properties.h</code> (PID-формат редактора), <code>dedicated_server_only.h</code> (<strong>мёртвый</strong>: все <code>PROTECT_API</code> ветки идентичны), <code>IPHdebug.h</code> (<code>IPhDebugRender</code> → xrGame <code>cphdebug_impl</code>), <code>GameMtlLib</code> (<code>SGameMtl</code>/<code>SGameMtlPair</code>/<code>CGameMtlLibrary</code>, <code>GMLib</code>), <code>ObjectDump</code> (DEBUG), <code>edit_actions</code> (см. <a href="ui-primitives/">UI-примитивы</a>)</td>
 </tr>
 </tbody>
 </table>
@@ -3380,7 +3380,7 @@
 <td>12</td>
 <td>Ввод / Консоль / Lua / Демо / Статистика / Прочее</td>
 <td><code>input.md</code>, <code>console.md</code>, <code>lua-binding.md</code>, <code>demo.md</code>, <code>stats.md</code>, <code>misc.md</code></td>
-<td>⬜</td>
+<td>✅ готово</td>
 </tr>
 </tbody>
 </table>
