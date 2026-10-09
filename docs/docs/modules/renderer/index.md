@@ -1,7 +1,92 @@
-# Renderer
+# Renderer (xrRender / R4)
 
-> **Заглушка** — будет заполнена на итерации 3.
+`xrRender` — бэкенд-агностичный слой рендера (визуалы, скелеты, dsgraph, детали, свет, blenders). `xrRenderPC_R4` — DX11-бэкенд (класс `CRender`, глобал `RImplementation`). `xrRenderDX10` — DX10/11-утилиты (HW, state manager, SH-обёртки).
 
-`xrRender` — backend-agnostic pipeline. `xrRenderPC_R4` — D3D9 backend.
+Активный бэкенд — **R4** (`STATIC_RENDERER_R4` в `xrEngine.vcxproj`).
 
-См. [Карта модулей](../../architecture/module-map.md).
+| Бэкенд | API             | Статус                           |
+| ------ | --------------- | -------------------------------- |
+| R1     | D3D9 legacy     | не документируется               |
+| R2     | D3D9 + advanced | не документируется               |
+| R3     | DX10            | не документируется               |
+| **R4** | **DX11**        | **активный, дальше — только R4** |
+
+> `xrRenderDX9/` — не входит в проект R4 (нет в sln/R4-proj), не документируется.
+> Исторические `r2_*` файлы (r2_R_calculate/lights/sun/sector_detect/test_hw/blenders) — D3D9-эпоха, но **компилируются в R4** (в `xrRender_R4.vcxproj`); документируются с пометкой «историческое ядро, переиспользуемое в R4».
+
+## Структура
+
+| Страница                                           | Что покрывает                                                                                                                                                                                            |
+| -------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Точка входа и фабрика](factory.md)                | `DllMainXrRenderR4`, `RImplementation`, `RenderFactoryImpl` (`dxRenderFactory`), `xrRender_test_hw` (`r2_test_hw`), `xrRender_initconsole`, глобалы                                                      |
+| [Устройство рендера и константы](render-device.md) | _(порцион 2)_ — `dxRenderDeviceRender`, `CHW`/`HWCaps`, `xrD3DDefs`, `dx10HW`, StateManager, `r_constants`/`dx10r_constants`, `SH_*`, `R_DStreams`, `xr_effgamma`                                        |
+| [Пайплайн: секторы и traversal](sector.md)         | _(порцион 3)_ — `r__sector`, `r__sector_traversal`, `r2_sector_detect`, `r__pixel_calculator`, `QueryHelper`                                                                                             |
+| [Occlusion](occlusion.md)                          | _(порцион 4)_ — `r__occlusion`, `occRasterizer`, `light_vis`                                                                                                                                             |
+| [Динамическая сцена (dsgraph)](dsgraph.md)         | _(порцион 5)_ — `r__dsgraph_structure/build/render/render_lods`, `R_Backend_LOD`                                                                                                                         |
+| [VSM / SMAP](vsm-smap.md)                          | _(порцион 6)_ — `R_Backend_xform`, `r_sun_cascades`, `light_smapvis`, `SMAP_Allocator`, `r2_R_sun`, `r4_R_sun_support`                                                                                   |
+| [Ресурсы и модели](resources.md)                   | _(порцион 7)_ — `ResourceManager`, `ModelPool`, `Texture`/`ETextureParams`, `ColorMapManager`, `PSLibrary`, `tga`                                                                                        |
+| [Визуалы](visuals.md)                              | _(порцион 8)_ — `FVisual`, `FBasicVisual`, `FHierrarhyVisual`, `FLOD`, `FProgressive`, `FSkinned`, `FTreeVisual`, `xrStripify`, `NvTriStrip`, `VertexCache`                                              |
+| [Скелеты и анимация](kinematics.md)                | _(порцион 9)_ — `SkeletonX`, `SkeletonRigid`, `SkeletonAnimated`, `SkeletonCustom`, `Animation`                                                                                                          |
+| [Детали](detail.md)                                | _(порцион 10)_ — `DetailManager`, `DetailModel`, `DetailFormat`, `Blender_detail_still`, `Blender_tree`                                                                                                  |
+| [Свет](lights.md)                                  | _(порцион 11)_ — `ILight`, `LightTrack`, `Light_DB`, `Light_Package`, `light_GI`, `r2_R_lights`, `r2_R_calculate`                                                                                        |
+| [R4: scene/lighting phase](r4-scene.md)            | _(порцион 12)_ — `r4`, `r4_loader`, `r4_R_render`, `r2_blenders`, `Light_Render_Direct`, `blender_light_*`                                                                                               |
+| [R4: deferred / накопление](r4-deferred.md)        | _(порцион 13)_ — `r4_rendertarget`, `r4_rendertarget_accum_*`, `uber_deffer`, `blender_deffer_*`                                                                                                         |
+| [R4: post-process](r4-postprocess.md)              | _(порцион 14)_ — `r4_rendertarget_phase_*`, `dx11HDAOCSBlender`, `ComputeShader`/`CSCompiler`                                                                                                            |
+| [Blenders (библиотека)](blenders.md)               | _(порцион 15)_ — `xrRender/blenders/`, `Blender_*`, `r4 blender_*`                                                                                                                                       |
+| [Частицы и wallmarks](particles-wallmarks.md)      | _(порцион 16)_ — `ParticleEffect`, `ParticleGroup`, `dxParticleCustom`, `WallmarksEngine`, `dxRainRender`                                                                                                |
+| [UI-обвязка и прочее](dx-bridges.md)               | _(порцион 17)_ — `dxUIRender`, `dxFontRender`, `dxImGuiRender`, `dxConsoleRender`, `dxStatsRender`, `dxEnvironmentRender`, `dxLensFlareRender`, `dxThunderboltRender`, `dxDebugRender`, `HOM`, `3DFluid` |
+| [Postprocessing (общий обзор)](postprocessing.md)  | общий обзор post-processing (обновляется в порционе 14)                                                                                                                                                  |
+| [Shader Bus](shader-bus.md)                        | фича для мододелов (готова с итерации 0)                                                                                                                                                                 |
+
+## Карта связей
+
+```mermaid
+graph TD
+    subgraph xrEngine
+        Device[CRenderDevice]
+    end
+    subgraph xrRender
+        IF[IRender_interface]
+        FA[dxRenderFactory]
+    end
+    subgraph xrRenderPC_R4
+        R[CRender RImplementation]
+        RT[CRenderTarget]
+    end
+    subgraph xrRenderDX10
+        HW[dx10HW]
+        SM[StateManager]
+    end
+    Device --> IF
+    FA --> R
+    R --> RT
+    R --> HW
+    HW --> SM
+```
+
+- **`R_dsgraph_structure`** (xrRender) — базовый класс `CRender`: реализует `IRender_interface` + `pureFrame`, содержит dsgraph-карты (`mapNormalPasses`, `mapHUD`, `mapLOD`, `mapWmark` и др.), `val_pObject`/`val_pTransform`/`phase`/`pmask`.
+- **`CRender`** (xrRenderPC_R4) — R4-наследник: `create/destroy/reset`, `render_main/forward`, `shader_compile`, `model_*`, `light_*`, `wallmark*`, `Screenshot`. Глобал `RImplementation` (`r4.cpp`).
+- **`dxRenderFactory`** — фабрика render-объектов (`CreateFontRender` и т.д.); глобал `RenderFactoryImpl` (`dxRenderFactory.cpp`).
+- **`::Render`/`::RenderFactory`/`::DU`/`UIRender`/`DRender`** — глобалы, устанавливаются `DllMainXrRenderR4`.
+
+## Статус порционов (итерация 3)
+
+| #   | Порцион                        | Страницы                           | Статус    |
+| --- | ------------------------------ | ---------------------------------- | --------- |
+| 1   | Точка входа и фабрика          | `factory.md`                       | ✅ готово |
+| 2   | Устройство рендера и константы | `render-device.md`, `constants.md` | ⬜        |
+| 3   | Пайплайн: секторы и traversal  | `sector.md`                        | ⬜        |
+| 4   | Occlusion                      | `occlusion.md`                     | ⬜        |
+| 5   | Динамическая сцена (dsgraph)   | `dsgraph.md`                       | ⬜        |
+| 6   | VSM / SMAP                     | `vsm-smap.md`                      | ⬜        |
+| 7   | Ресурсы и модели               | `resources.md`                     | ⬜        |
+| 8   | Визуалы                        | `visuals.md`                       | ⬜        |
+| 9   | Скелеты и анимация             | `kinematics.md`                    | ⬜        |
+| 10  | Детали                         | `detail.md`                        | ⬜        |
+| 11  | Свет                           | `lights.md`                        | ⬜        |
+| 12  | R4: scene/lighting phase       | `r4-scene.md`                      | ⬜        |
+| 13  | R4: deferred / накопление      | `r4-deferred.md`                   | ⬜        |
+| 14  | R4: post-process               | `r4-postprocess.md`                | ⬜        |
+| 15  | Blenders (библиотека)          | `blenders.md`                      | ⬜        |
+| 16  | Частицы и wallmarks            | `particles-wallmarks.md`           | ⬜        |
+| 17  | UI-обвязка и прочее            | `dx-bridges.md`, `misc.md`         | ⬜        |

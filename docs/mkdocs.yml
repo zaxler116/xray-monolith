@@ -105,6 +105,7 @@ nav:
           - Прочее: modules/xr-engine/misc.md
       - Renderer:
           - Обзор: modules/renderer/index.md
+          - Точка входа и фабрика: modules/renderer/factory.md
           - Pipeline: modules/renderer/pipeline.md
           - Постобработка: modules/renderer/postprocessing.md
           - Shader Bus: modules/renderer/shader-bus.md
