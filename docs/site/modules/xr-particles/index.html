@@ -2953,6 +2953,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="actions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actions: ядро и домены
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3782,8 +3810,8 @@
 <td><code>psystem.h</code> (<code>pVector</code>, <code>Particle</code>, <code>PDomainEnum</code>, <code>PActionEnum</code>, <code>IParticleManager</code>), <code>particle_core</code> (<code>pDomain</code>: Within/Generate/transform, <code>NRand</code>), <code>ParticleEffect</code> (аллокация 64-byte, <code>Add</code>/<code>Remove</code>/<code>Resize</code>), <code>CParticleManager</code> (глобал <code>PM</code>, create/destroy/Play/Stop/Update/Transform/IO)</td>
 </tr>
 <tr>
-<td>Actions: ядро и домены (<code>actions.md</code>)</td>
-<td><em>(порцион 2)</em> — <code>ParticleAction</code> (базовый класс, <code>ALLOW_ROTATE</code>), <code>ParticleActions</code> (контейнер + lock), каркас <code>particle_actions_collection</code></td>
+<td><a href="actions/">Actions: ядро и домены</a></td>
+<td><code>ParticleAction</code> (базовый класс, <code>ALLOW_ROTATE</code>), <code>ParticleActions</code> (контейнер + lock), каркас 29 подклассов: макро <code>_METHODS</code>, dual-domain (L/world), закон сил 1/r², правило обратного обхода, <code>PAMove</code>-интегратор, SSE-<code>PATurbulence</code>, схема IO</td>
 </tr>
 <tr>
 <td>Actions: 30 подклассов + IO (<code>actions-actions.md</code>, <code>actions-io.md</code>)</td>
@@ -3849,7 +3877,7 @@
 <td>2</td>
 <td>Actions: ядро и домены</td>
 <td><code>actions.md</code></td>
-<td>—</td>
+<td>✅ готово</td>
 </tr>
 <tr>
 <td>3</td>

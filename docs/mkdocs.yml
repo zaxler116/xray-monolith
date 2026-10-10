@@ -130,6 +130,7 @@ nav:
       - xrParticles:
           - Обзор: modules/xr-particles/index.md
           - PAPI и ядро симуляции: modules/xr-particles/core.md
+          - "Actions: ядро и домены": modules/xr-particles/actions.md
       - xrSound: modules/xr-sound.md
       - xrGame:
           - Обзор: modules/game/index.md
