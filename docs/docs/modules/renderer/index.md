@@ -85,7 +85,7 @@ graph TD
 | 9   | Скелеты и анимация             | `kinematics.md`                    | ✅ готово |
 | 10  | Детали                         | `detail.md`                        | ✅ готово |
 | 11  | Свет                           | `lights.md`                        | ✅ готово |
-| 12  | R4: scene/lighting phase       | `r4-scene.md`                      | ⬜        |
+| 12  | R4: scene/lighting phase       | `r4-scene.md`                      | ✅ готово |
 | 13  | R4: deferred / накопление      | `r4-deferred.md`                   | ⬜        |
 | 14  | R4: post-process               | `r4-postprocess.md`                | ⬜        |
 | 15  | Blenders (библиотека)          | `blenders.md`                      | ⬜        |

@@ -3734,7 +3734,7 @@
 </tr>
 <tr>
 <td><a href="lights/">Свет</a></td>
-<td><em>(порцион 11)</em> — <code>ILight</code>, <code>LightTrack</code>, <code>Light_DB</code>, <code>Light_Package</code>, <code>light_GI</code>, <code>r2_R_lights</code>, <code>r2_R_calculate</code></td>
+<td><code>light</code> (IRender_Light: spatial_move/export_/xform_calc/gi_generate/vis_*, SSS), <code>CLight_DB</code> (Load/LoadHemi/Update/add_light/Create), <code>light_Package</code> (v_point/v_spot/v_shadowed, sort), <code>CROS_impl</code> (LightTrack: hemisphere 26-лучей, sun ray, AO-трекинг, smart_update), <code>CRender::Calculate</code> (Lights sync), <code>CRender::render_lights</code> (SMAP packing, shadowed/unshadowed phases, render_indirect), <code>smapvis</code> (инкрементальная видимость), <code>compute_xf_spot</code> (SMAP sizing)</td>
 </tr>
 <tr>
 <td><a href="r4-scene/">R4: scene/lighting phase</a></td>
@@ -3873,13 +3873,13 @@
 <td>11</td>
 <td>Свет</td>
 <td><code>lights.md</code></td>
-<td>⬜</td>
+<td>✅ готово</td>
 </tr>
 <tr>
 <td>12</td>
 <td>R4: scene/lighting phase</td>
 <td><code>r4-scene.md</code></td>
-<td>⬜</td>
+<td>✅ готово</td>
 </tr>
 <tr>
 <td>13</td>
