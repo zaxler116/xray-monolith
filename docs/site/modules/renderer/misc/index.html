@@ -11,10 +11,10 @@
       
       
       
-        <link rel="prev" href="../render/">
+        <link rel="prev" href="../dx-bridges/">
       
       
-        <link rel="next" href="../fmesh/">
+        <link rel="next" href="../pipeline/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>IRenderable - X-Ray Monolith — Документация движка</title>
+        <title>Прочее (stats/env/fx/debug/3DFluid) - X-Ray Monolith — Документация движка</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#irenderable" class="md-skip">
+        <a href="#renderer-stats-env-fx-debug-3dfluid" class="md-skip">
           Перейти к содержанию
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              IRenderable
+              Прочее (stats/env/fx/debug/3DFluid)
             
           </span>
         </div>
@@ -1182,6 +1182,881 @@
                 
   
   
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    xrEngine (ядро)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    xrEngine (ядро)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Обзор
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/engine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ядро и API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API и события
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/frame-loop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Цикл кадра
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/scheduler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sheduler
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/device/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Device
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/device-window/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Окно и WndProc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/render/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Рендер-слой
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/renderable/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IRenderable
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/fmesh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fmesh
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/collide-physics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Коллизии и физика
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/xr-object/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Объект
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/level/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Уровень
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/object-pool/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Пул объектов
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/persistent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Persistent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/skeleton-motion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Скелет и анимация
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/environment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Окружение
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/effector/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Эффекторы
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/feel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feels
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/effects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Визуальные эффекты
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/camera/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Камера
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/hud/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HUD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/ui-primitives/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI-примитивы
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/input/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ввод
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/console/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Консоль
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/lua-binding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lua-биндинг
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Демо
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/stats/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Статистика
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/misc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Прочее
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -1203,17 +2078,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="">
             
   
   
   <span class="md-ellipsis">
     
   
-    xrEngine (ядро)
+    Renderer
   
 
     
@@ -1224,12 +2099,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_3">
             <span class="md-nav__icon md-icon"></span>
             
   
-    xrEngine (ядро)
+    Renderer
   
 
           </label>
@@ -1270,14 +2145,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../engine/" class="md-nav__link">
+      <a href="../factory/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Ядро и API
+    Точка входа и фабрика
   
 
     
@@ -1298,14 +2173,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../api/" class="md-nav__link">
+      <a href="../render-device/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    API и события
+    Устройство рендера
   
 
     
@@ -1326,14 +2201,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../frame-loop/" class="md-nav__link">
+      <a href="../constants/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Цикл кадра
+    Шейдерные константы
   
 
     
@@ -1354,14 +2229,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../scheduler/" class="md-nav__link">
+      <a href="../sector/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Sheduler
+    Пайплайн: секторы
   
 
     
@@ -1382,14 +2257,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../device/" class="md-nav__link">
+      <a href="../occlusion/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Device
+    Occlusion
   
 
     
@@ -1410,14 +2285,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../device-window/" class="md-nav__link">
+      <a href="../dsgraph/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Окно и WndProc
+    Динамическая сцена
   
 
     
@@ -1438,14 +2313,322 @@
   
   
     <li class="md-nav__item">
-      <a href="../render/" class="md-nav__link">
+      <a href="../vsm-smap/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Рендер-слой
+    VSM / SMAP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ресурсы и модели
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../visuals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Визуалы
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kinematics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Скелеты и анимация
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../detail/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Детали
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lights/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Свет
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../r4-scene/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    R4: scene/lighting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../r4-deferred/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    R4: deferred
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../r4-postprocess/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    R4: post-process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blenders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blenders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../particles-wallmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Частицы и wallmarks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dx-bridges/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI-обвязка
   
 
     
@@ -1482,7 +2665,7 @@
   <span class="md-ellipsis">
     
   
-    IRenderable
+    Прочее (stats/env/fx/debug/3DFluid)
   
 
     
@@ -1500,7 +2683,7 @@
   <span class="md-ellipsis">
     
   
-    IRenderable
+    Прочее (stats/env/fx/debug/3DFluid)
   
 
     
@@ -1556,6 +2739,122 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Публичный API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dxstatsrender" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dxStatsRender
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dxstatgraphrender" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dxStatGraphRender
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stats_manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        stats_manager
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dxenvironmentrender-env-descriptors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dxEnvironmentRender / env-descriptors
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dxlensflarerender-dxflarerender" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dxLensFlareRender / dxFlareRender
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dxthunderboltrender-dxthunderboltdescrender" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dxThunderboltRender / dxThunderboltDescRender
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dxdebugrender-rdebugrender" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dxDebugRender / RDebugRender
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dxapplicationrender" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dxApplicationRender
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dxuisequencevideoitem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dxUISequenceVideoItem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cgifanimationplayer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CGIFAnimationPlayer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1571,10 +2870,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#dxstatgraphrenderonrender" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Конструктор
+        dxStatGraphRender::OnRender
       
     </span>
   </a>
@@ -1582,10 +2881,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#dxenvironmentrenderrendersky" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Деструктор
+        dxEnvironmentRender::RenderSky
       
     </span>
   </a>
@@ -1593,10 +2892,76 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#renderable_ros" class="md-nav__link">
+  <a href="#dxlensflarerenderrender" class="md-nav__link">
     <span class="md-ellipsis">
       
-        renderable_ROS()
+        dxLensFlareRender::Render
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dxthunderboltrenderrender" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dxThunderboltRender::Render
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dxdebugrender" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dxDebugRender
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dxapplicationrenderload_draw_internal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dxApplicationRender::load_draw_internal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cgifanimationplayer_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CGIFAnimationPlayer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dxobjectspacerender-ifdef-debug" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dxObjectSpaceRender (только #ifdef DEBUG)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3dfluid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3DFluid (активная подсистема)
       
     </span>
   </a>
@@ -1609,7 +2974,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         Взаимодействие
@@ -1620,7 +2985,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         Потоки данных
@@ -1628,38 +2993,10 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Потоки данных">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#visual" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Назначение visual
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ros-lifecycle" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ROS lifecycle
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         Конфигурация
@@ -1670,10 +3007,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#-" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ограничения / дебаг
+        Известные ограничения-дебаг
       
     </span>
   </a>
@@ -1696,1190 +3033,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../fmesh/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Fmesh
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../collide-physics/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Коллизии и физика
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../xr-object/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Объект
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../level/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Уровень
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../object-pool/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Пул объектов
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../persistent/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Persistent
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../skeleton-motion/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Скелет и анимация
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../environment/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Окружение
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../effector/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Эффекторы
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../feel/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Feels
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../effects/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Визуальные эффекты
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../camera/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Камера
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../hud/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    HUD
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../ui-primitives/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    UI-примитивы
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../input/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Ввод
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../console/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Консоль
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../lua-binding/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Lua-биндинг
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../demo/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Демо
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../stats/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Статистика
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../misc/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Прочее
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Renderer
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Renderer
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../renderer/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Обзор
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../renderer/factory/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Точка входа и фабрика
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../renderer/render-device/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Устройство рендера
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../renderer/constants/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Шейдерные константы
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../renderer/sector/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Пайплайн: секторы
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../renderer/occlusion/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Occlusion
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../renderer/dsgraph/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Динамическая сцена
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../renderer/vsm-smap/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    VSM / SMAP
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../renderer/resources/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Ресурсы и модели
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../renderer/visuals/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Визуалы
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../renderer/kinematics/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Скелеты и анимация
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../renderer/detail/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Детали
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../renderer/lights/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Свет
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../renderer/r4-scene/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    R4: scene/lighting
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../renderer/r4-deferred/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    R4: deferred
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../renderer/r4-postprocess/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    R4: post-process
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../renderer/blenders/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Blenders
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../renderer/particles-wallmarks/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Частицы и wallmarks
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../renderer/dx-bridges/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    UI-обвязка
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../renderer/misc/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Прочее (stats/env/fx/debug/3DFluid)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../renderer/pipeline/" class="md-nav__link">
+      <a href="../pipeline/" class="md-nav__link">
         
   
   
@@ -2907,7 +3061,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../renderer/postprocessing/" class="md-nav__link">
+      <a href="../postprocessing/" class="md-nav__link">
         
   
   
@@ -2935,7 +3089,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../renderer/shader-bus/" class="md-nav__link">
+      <a href="../shader-bus/" class="md-nav__link">
         
   
   
@@ -3863,6 +4017,122 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Публичный API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dxstatsrender" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dxStatsRender
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dxstatgraphrender" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dxStatGraphRender
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stats_manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        stats_manager
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dxenvironmentrender-env-descriptors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dxEnvironmentRender / env-descriptors
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dxlensflarerender-dxflarerender" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dxLensFlareRender / dxFlareRender
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dxthunderboltrender-dxthunderboltdescrender" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dxThunderboltRender / dxThunderboltDescRender
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dxdebugrender-rdebugrender" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dxDebugRender / RDebugRender
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dxapplicationrender" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dxApplicationRender
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dxuisequencevideoitem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dxUISequenceVideoItem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cgifanimationplayer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CGIFAnimationPlayer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3878,10 +4148,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#dxstatgraphrenderonrender" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Конструктор
+        dxStatGraphRender::OnRender
       
     </span>
   </a>
@@ -3889,10 +4159,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#dxenvironmentrenderrendersky" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Деструктор
+        dxEnvironmentRender::RenderSky
       
     </span>
   </a>
@@ -3900,10 +4170,76 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#renderable_ros" class="md-nav__link">
+  <a href="#dxlensflarerenderrender" class="md-nav__link">
     <span class="md-ellipsis">
       
-        renderable_ROS()
+        dxLensFlareRender::Render
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dxthunderboltrenderrender" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dxThunderboltRender::Render
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dxdebugrender" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dxDebugRender
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dxapplicationrenderload_draw_internal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dxApplicationRender::load_draw_internal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cgifanimationplayer_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CGIFAnimationPlayer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dxobjectspacerender-ifdef-debug" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dxObjectSpaceRender (только #ifdef DEBUG)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3dfluid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3DFluid (активная подсистема)
       
     </span>
   </a>
@@ -3916,7 +4252,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         Взаимодействие
@@ -3927,7 +4263,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         Потоки данных
@@ -3935,38 +4271,10 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Потоки данных">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#visual" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Назначение visual
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ros-lifecycle" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ROS lifecycle
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         Конфигурация
@@ -3977,10 +4285,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#-" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ограничения / дебаг
+        Известные ограничения-дебаг
       
     </span>
   </a>
@@ -4004,172 +4312,193 @@
 
 
 
-<h1 id="irenderable">IRenderable<a class="headerlink" href="#irenderable" title="Permanent link">&para;</a></h1>
-<p><code>IRenderable</code> — интерфейс, который объект должен реализовать, чтобы быть видимым для рендера.</p>
+<h1 id="renderer-stats-env-fx-debug-3dfluid">Renderer: прочее (stats / env / fx / debug / 3DFluid)<a class="headerlink" href="#renderer-stats-env-fx-debug-3dfluid" title="Permanent link">&para;</a></h1>
+<p>Второй блок порциона 17: статистика и графики, окружение (skybox/облака), флэры и молнии, debug-рендер, экран загрузки, GIF-плеер и воксельный fluid (3DFluid). UI-ядро (<code>dxUIRender</code> и др.) — на странице <a href="../dx-bridges/">UI-обвязка</a>.</p>
 <h2 id="_1">Ответственность<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Хранить рендер-состояние объекта: <code>xform</code> (матрица), <code>visual</code> (указатель на <code>IRenderVisual</code>), <code>pROS</code> (object-specific), <code>pROS_Allowed</code>.</li>
-<li>Предоставить <code>renderable_Render()</code> — чистый виртуальный, вызывается рендерером.</li>
-<li>Опционально: <code>renderable_ShadowGenerate()</code> / <code>renderable_ShadowReceive()</code> (по умолчанию <code>FALSE</code>).</li>
-<li>Опционально: <code>GetHotness()</code> / <code>GetTransparency()</code> / <code>GetGlowing()</code> (HeatVision / SilencerOverheat).</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>Класс / файл</th>
+<th>Роль</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dxStatsRender</code> (<code>IStatsRender</code>)</td>
+<td>Вывод статистики <code>RCache.stat</code> в консоль</td>
+</tr>
+<tr>
+<td><code>dxStatGraphRender</code> (<code>IStatGraphRender</code>)</td>
+<td>Отрисовка <code>CStatGraph</code> (бары/кривые/markers)</td>
+</tr>
+<tr>
+<td><code>stats_manager</code></td>
+<td>Учёт GPU-памяти буферов/RT</td>
+</tr>
+<tr>
+<td><code>dxEnvironmentRender</code> + env-descriptors</td>
+<td>Skybox, облака, mixer-lerp описаний окружения</td>
+</tr>
+<tr>
+<td><code>dxLensFlareRender</code> / <code>dxFlareRender</code></td>
+<td>Отрисовка лins-фляров <code>CLensFlare</code></td>
+</tr>
+<tr>
+<td><code>dxThunderboltRender</code> / <code>dxThunderboltDescRender</code></td>
+<td>Молнии (detail-model + градиенты)</td>
+</tr>
+<tr>
+<td><code>dxDebugRender</code> / <code>RDebugRender</code></td>
+<td>Пакетная отрисовка debug-линий</td>
+</tr>
+<tr>
+<td><code>dxApplicationRender</code></td>
+<td>Экран загрузки (progress, фон, логотип уровня)</td>
+</tr>
+<tr>
+<td><code>dxUISequenceVideoItem</code></td>
+<td>Обёртка <code>CTexture</code> для UI-видео</td>
+</tr>
+<tr>
+<td><code>CGIFAnimationPlayer</code></td>
+<td>GIF-анимации для UI</td>
+</tr>
+<tr>
+<td><code>dxObjectSpaceRender</code> (<strong>DEBUG only</strong>)</td>
+<td>Wireframe-отладка collision-boxes</td>
+</tr>
+<tr>
+<td><code>3DFluid</code> (<code>xrRenderDX10/3DFluid/</code>)</td>
+<td>Воксельная симуляция дыма/огня (активная)</td>
+</tr>
+</tbody>
+</table>
 <h2 id="_2">Место в архитектуре<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<pre class="mermaid"><code>graph TD
-    subgraph xrEngine
-        IR[IRenderable]
-        Obj[CGameObject]
-        PSI[CPS_Instance]
-        Render[IRender_interface]
-    end
-    subgraph xrRender
-        RDev[RenderDeviceRender]
-        RVis[IRenderVisual]
-    end
-
-    Obj --implements--&gt; IR
-    PSI --implements--&gt; IR
-    IR --&gt;|renderable.visual| RVis
-    IR --&gt;|renderable_ROS| Render
-    RDev --&gt;|set_Object| IR
-    RDev --&gt;|add_Geometry| RVis</code></pre>
-<p><code>IRenderable</code> — <strong>мixin</strong>, не singleton. Любой объект (игровой, частица, декорация) может реализовывать его. <code>CGameObject</code> реализует через <code>Visual()</code> → <code>IRenderVisual</code>. <code>CPS_Instance</code> реализует напрямую.</p>
+<ul>
+<li>Все <code>I*Render</code>-реализации создаются <code>dxRenderFactory</code> (<a href="../factory/">factory.md</a>), данные — из <code>CApplication</code>/<code>CEnvironment</code>/<code>CLensFlare</code>/<code>CStatGraph</code> (xrEngine, итерация 2; устройство <code>CEnvironment</code> — <a href="../../xr-engine/environment/">environment</a>).</li>
+<li><code>RCache</code>/<code>HW</code>/<code>StateManager</code> — <a href="../render-device/">Устройство рендера</a>; <code>shader.create</code> — <a href="../shader-bus/">Shader Bus</a>.</li>
+<li>3DFluid — подсистема <code>xrRenderDX10</code>, живёт отдельно от <code>RCache</code> (свои 3D-RT, свои blenders), встраивается в сцену через визуалы (<code>FHierrarhyVisual</code>, <a href="../visuals/">Визуалы</a>) и <code>CRender::Load3DFluid</code> (<a href="../r4-scene/">R4: scene</a>).</li>
+<li>HOM (hierarchical occlusion) — поле <code>CRender::HOM</code> (<code>CHOM</code>), устройство — <a href="../occlusion/">Occlusion</a>, здесь не дублируется.</li>
+</ul>
 <h2 id="api">Публичный API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="c1">// IRenderable.h</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">ENGINE_API</span><span class="w"> </span><span class="n">IRenderable</span>
-<span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
-<span class="w">    </span><span class="k">struct</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Fmatrix</span><span class="w"> </span><span class="n">xform</span><span class="p">;</span>
-<span class="w">        </span><span class="n">IRenderVisual</span><span class="o">*</span><span class="w"> </span><span class="n">visual</span><span class="p">;</span>
-<span class="w">        </span><span class="n">IRender_ObjectSpecific</span><span class="o">*</span><span class="w"> </span><span class="n">pROS</span><span class="p">;</span>
-<span class="w">        </span><span class="n">BOOL</span><span class="w"> </span><span class="n">pROS_Allowed</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="n">renderable</span><span class="p">;</span>
+<h3 id="dxstatsrender"><code>dxStatsRender</code><a class="headerlink" href="#dxstatsrender" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>OutData1(F)</code> — <code>VERT/POLY/DIP</code> (<code>RCache.stat.verts/polys/calls</code>),</li>
+<li><code>OutData2(F)</code> — <strong>DEBUG only</strong>: states/textures/matrices/constants, RT/PS/VS, DCL/VB/IB,</li>
+<li><code>OutData3(F)</code> — xforms,</li>
+<li><code>OutData4(F)</code> — разборка вертексов/dips: static / flora (+lods) / dynamic (sw/inst/1B..4B) / details (<code>RCache.stat.r.s_*</code>),</li>
+<li><code>GuardVerts(F)</code> (&gt;500k), <code>GuardDrawCalls(F)</code> (&gt;1k) — предупреждения,</li>
+<li><code>SetDrawParams(pRender)</code> — world=identity + <code>m_SelectionShader</code> + <code>tfactor=1</code> (подготовка к стат-отрисовке).</li>
+</ul>
+<h3 id="dxstatgraphrender"><code>dxStatGraphRender</code><a class="headerlink" href="#dxstatgraphrender" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>OnDeviceCreate/Destroy</code> — <code>hGeomLine</code>/<code>hGeomTri</code> (<code>FVF::F_TL0uv</code>),</li>
+<li><code>OnRender(CStatGraph&amp;)</code> — см. «Внутреннее устройство».</li>
+</ul>
+<h3 id="stats_manager"><code>stats_manager</code><a class="headerlink" href="#stats_manager" title="Permanent link">&para;</a></h3>
+<p>Функции <code>increment_stats_*</code>/<code>decrement_stats_*</code> для vertex/index/rtarget-буферов (по 4 пула: default/default2/rtarget/rtarget2). <strong>Все операции no-op при <code>g_dedicated_server</code></strong>. <code>decrement</code> использует трюк <code>AddRef()</code> + <code>Release()</code> для проверки refcnt: декремент только если буфер реально уничтожается (refcnt==1). DX10/11: пул всегда <code>D3DPOOL_MANAGED</code> (понятия «пул» нет), размер — из <code>GetDesc</code>. <code>get_format_pixel_size(D3DFORMAT)</code> — большой switch (DX9); <code>get_format_pixel_size(DXGI_FORMAT)</code> — range-based (DX10/11). DEBUG: <code>m_buffers_list</code> отслеживает каждый буфер, деструктор <code>Msg</code> оставшиеся (<code>R_ASSERT</code> закомментирован); <code>R_ASSERT</code> на decrement при отсутствии буфера.</p>
+<h3 id="dxenvironmentrender-env-descriptors"><code>dxEnvironmentRender</code> / env-descriptors<a class="headerlink" href="#dxenvironmentrender-env-descriptors" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// IEnvironmentRender</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">OnLoad</span><span class="o">/</span><span class="n">OnUnload</span><span class="p">(</span><span class="n">CEnvironment</span><span class="o">&amp;</span><span class="w"> </span><span class="n">env</span><span class="p">);</span><span class="w">      </span><span class="c1">// tonemap = DEV-&gt;_CreateTexture(&quot;$user$tonemap&quot;)</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">OnFrame</span><span class="p">(</span><span class="n">CEnvironment</span><span class="o">&amp;</span><span class="w"> </span><span class="n">env</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">RenderSky</span><span class="p">(</span><span class="n">CEnvironment</span><span class="o">&amp;</span><span class="w"> </span><span class="n">env</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">OnlyMV</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">RenderClouds</span><span class="p">(</span><span class="n">CEnvironment</span><span class="o">&amp;</span><span class="w"> </span><span class="n">env</span><span class="p">);</span>
 
-<span class="k">public</span><span class="o">:</span>
-<span class="w">    </span><span class="n">IRenderable</span><span class="p">();</span>
-<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">IRenderable</span><span class="p">();</span>
-<span class="w">    </span><span class="n">IRender_ObjectSpecific</span><span class="o">*</span><span class="w"> </span><span class="nf">renderable_ROS</span><span class="p">();</span>
-<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">renderable_Render</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">BOOL</span><span class="w"> </span><span class="nf">renderable_ShadowGenerate</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">FALSE</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">BOOL</span><span class="w"> </span><span class="nf">renderable_ShadowReceive</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">FALSE</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="nf">GetHotness</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="nf">GetTransparency</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="nf">GetGlowing</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="p">};</span>
+<span class="c1">// IEnvDescriptorRender — sky_texture / sky_texture_env / clouds_texture</span>
+<span class="c1">// IEnvDescriptorMixerRender — lerp(A,B): sky_r_textures={(0,A),(1,B)}, то же _env/clouds; Clear(); Destroy()</span>
 </code></pre></div>
+<p><code>CBlender_skybox</code> (внутренний <code>IBlender</code>): <code>Compile</code> — E[0] <code>r_Pass("sky2","sky2")</code> + <code>s_sky0/s_sky1 "$null"</code> + <code>s_tonemap "$user$tonemap"</code> (<code>//. hack</code>) + <code>PassSET_ZB(FALSE,FALSE)</code>; E[1] <code>ssfx_sky_mv</code> (DX10/11, motion vectors). Конструктор: <code>tsky0/tsky1 = DEV-&gt;_CreateTexture("$user$sky0/1")</code>.</p>
+<h3 id="dxlensflarerender-dxflarerender"><code>dxLensFlareRender</code> / <code>dxFlareRender</code><a class="headerlink" href="#dxlensflarerender-dxflarerender" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>dxFlareRender</code> (<code>IFlareRender</code>) — держатель шейдера на фляр (<code>CreateShader/DestroyShader</code>, <code>hShader</code> public).</li>
+<li><code>dxLensFlareRender::Render(CLensFlare&amp;, bSun, bFlares, bGradient)</code> — один lock <code>MAX_Flares(24)×4</code> LIT-вертексов, затем per-квад draw.</li>
+</ul>
+<h3 id="dxthunderboltrender-dxthunderboltdescrender"><code>dxThunderboltRender</code> / <code>dxThunderboltDescRender</code><a class="headerlink" href="#dxthunderboltrender-dxthunderboltdescrender" title="Permanent link">&para;</a></h3>
+<p>Desc — держатель <code>l_model</code> (<code>IRender_DetailModel*</code>); <code>CreateModel</code> грузит из <code>$game_meshes$</code> через <code>RImplementation.model_CreateDM</code> (<code>R_ASSERT "Empty 'lightning_model'"</code>), <code>DestroyModel</code> → <code>model_Delete</code>.</p>
+<h3 id="dxdebugrender-rdebugrender"><code>dxDebugRender</code> / <code>RDebugRender</code><a class="headerlink" href="#dxdebugrender-rdebugrender" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">add_lines</span><span class="p">(</span><span class="n">Fvector</span><span class="w"> </span><span class="k">const</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">vc</span><span class="p">,</span><span class="w"> </span><span class="n">u16</span><span class="w"> </span><span class="k">const</span><span class="o">*</span><span class="w"> </span><span class="n">pairs</span><span class="p">,</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">pc</span><span class="p">,</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">color</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">bHud</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">Render</span><span class="p">();</span><span class="w">                    </span><span class="c1">// hud-линии (HUD-проекция) + world-линии</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">SetShader</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">debug_shader</span><span class="o">&amp;</span><span class="p">);</span><span class="w">   </span><span class="c1">// (dxUIShader*)&amp;*shader → hShader</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">SetDebugShader</span><span class="p">(</span><span class="n">dbgShaderHandle</span><span class="p">);</span><span class="w">  </span><span class="c1">// статическая таблица: dbgShaderParams[0]={&quot;hud\\default&quot;,&quot;ui\\ui_pop_up_active_back&quot;}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">SetAmbient</span><span class="p">(</span><span class="n">u32</span><span class="p">);</span><span class="w">             </span><span class="c1">// DX10/11: VERIFY(!&quot;Not implemented for DX10&quot;)</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">NextSceneMode</span><span class="p">();</span><span class="w">             </span><span class="c1">// DX10/11: no-op</span>
+</code></pre></div>
+<p><code>RDebugRender</code> — наследник <code>dxDebugRender</code> + <code>pureRender</code>, регистрируется в <code>Device.seqRender</code> с приоритетом <code>REG_PRIORITY_LOW − 100</code>; глобал <code>rdebug_render</code> указывает на статический экземпляр.</p>
+<h3 id="dxapplicationrender"><code>dxApplicationRender</code><a class="headerlink" href="#dxapplicationrender" title="Permanent link">&para;</a></h3>
+<p><code>LoadBegin</code> (geom + <code>sh_progress</code> <code>"hud\\default","ui\\ui_actor_loadgame_screen"</code> + <code>hLevelLogo_Add</code> + Discord-флаги), <code>destroy_loading_shaders</code>, <code>setLevelLogo(name)</code>, <code>load_draw_internal(CApplication&amp;)</code>, <code>KillHW()</code>.</p>
+<h3 id="dxuisequencevideoitem"><code>dxUISequenceVideoItem</code><a class="headerlink" href="#dxuisequencevideoitem" title="Permanent link">&para;</a></h3>
+<p>Тривиальная обёртка над <code>CTexture*</code>: <code>CaptureTexture()</code> = <code>RCache.get_ActiveTexture(0)</code>, <code>video_*</code> пробрасывает в текстуру.</p>
+<h3 id="cgifanimationplayer"><code>CGIFAnimationPlayer</code><a class="headerlink" href="#cgifanimationplayer" title="Permanent link">&para;</a></h3>
+<p><code>Load(fname)</code> (через <code>CGIFResource</code> xrEngine), <code>UpdateFrame()</code>, <code>Play()</code>, <code>Stop()</code>, <code>IsValid/IsPlaying</code>, <code>GetActiveFrame</code>, <code>GetMemUsed</code>.</p>
 <h2 id="_3">Внутреннее устройство<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<h3 id="_4">Конструктор<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">IRenderable</span><span class="o">::</span><span class="n">IRenderable</span><span class="p">()</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="n">renderable</span><span class="p">.</span><span class="n">xform</span><span class="p">.</span><span class="n">identity</span><span class="p">();</span>
-<span class="w">    </span><span class="n">renderable</span><span class="p">.</span><span class="n">visual</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
-<span class="w">    </span><span class="n">renderable</span><span class="p">.</span><span class="n">pROS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
-<span class="w">    </span><span class="n">renderable</span><span class="p">.</span><span class="n">pROS_Allowed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TRUE</span><span class="p">;</span>
-
-<span class="w">    </span><span class="n">ISpatial</span><span class="o">*</span><span class="w"> </span><span class="n">self</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fast_dynamic_cast</span><span class="o">&lt;</span><span class="n">ISpatial</span><span class="o">*&gt;</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="w"> </span><span class="n">self</span><span class="o">-&gt;</span><span class="n">spatial</span><span class="p">.</span><span class="n">type</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">STYPE_RENDERABLE</span><span class="p">;</span>
-<span class="p">}</span>
+<h3 id="dxstatgraphrenderonrender"><code>dxStatGraphRender::OnRender</code><a class="headerlink" href="#dxstatgraphrenderonrender" title="Permanent link">&para;</a></h3>
+<p><code>RCache.OnFrameEnd()</code> → <code>RenderBack</code> (задник-квад, рамка-linestrip, сетка) → подсчёт элементов в два прохода: <code>stBar</code> ×4 вертекса (TRIANGLELIST), <code>stCurve</code> ×2 / <code>stBarLine</code> ×4 (LINELIST; <code>stPoint</code> = 0, закомментирован), один lock/fill/unlock/draw per class → markers (<code>stVert</code>/<code>stHor</code>, mapping <code>elem_offs</code>/<code>elem_factor</code>).</p>
+<p>Quirks:
+- <code>RenderBack</code>: <code>Num_H_LinesDwn = (owner.grid.y &lt; PNum_H_LinesUp) ? owner.grid.y : PNum_H_LinesDwn</code> — <strong>копи-паста</strong>: условие сравнивается с <code>PNum_H_LinesUp</code>, а не <code>PNum_H_LinesDwn</code>.
+- Циклы <code>RenderLines</code>/<code>RenderBarLines</code>/<code>RenderMarkers</code>: <code>it != pelements-&gt;end() + 1</code> — <strong>out-of-bounds-сравнение итераторов</strong> (работает только потому, что цикл останавливается на <code>end()</code> раньше).
+- <code>RenderBarLines</code> рисует 4 вертекса на сегмент (T-образный штрих).</p>
+<h3 id="dxenvironmentrenderrendersky"><code>dxEnvironmentRender::RenderSky</code><a class="headerlink" href="#dxenvironmentrenderrendersky" title="Permanent link">&para;</a></h3>
+<p>Ленивое re-create при <code>env.bNeed_re_create_env</code> (bug-fix «sky box stretch fix»: верхи дублируются, чтобы верхняя текстура не растягивалась). <code>rmFar()</code>, <code>mSky = rotateY(sky_rotation) × translate(camPos)</code>; <strong>half-box</strong> 12 вертексов / 20 трианглов (статические таблицы <code>hbox_verts</code>/<code>hbox_faces</code>); цвет = <code>sky_color × 255</code>, alpha = <code>weight × 255</code>. <code>OnlyMV</code> → E[1] <code>ssfx_sky_mv</code> + <code>set_xform_world_prev(mSky_prev)</code> (motion vectors для TAA); иначе E[0] + <code>set_Textures(&amp;mixRen.sky_r_textures)</code>. Далее <code>rmNormal()</code>; если <code>!OnlyMV</code>: <strong>хак <code>set_Z(FALSE); set_Z(TRUE);</code></strong> («state may not be set by RCache») + <code>env.eff_LensFlare-&gt;Render(TRUE, FALSE, FALSE)</code> (солнечный фляр) и <code>set_Z(FALSE)</code> после.</p>
+<p><strong>Активные вызовы в R4</strong>: <code>phase_combine</code> → <code>RenderSky()</code> + <code>RenderClouds()</code> (до combine, без Z-test — «Igor: to avoid siluets», <a href="../r4-postprocess/">R4: post-process</a>); MV-pass <code>RenderSky(true)</code> — в <code>r4_R_render.cpp:360</code>; skybox в split-scene ветке <code>if(0)</code> — <strong>мёртв</strong> (<code>r4_R_render.cpp:476</code>).</p>
+<p><code>RenderClouds</code>: <code>rmFar()</code>; <code>mXFORM = rotateY(sky_rotation) × mulB_43(scale(10,0.4,10)) × translate(camPos)</code>; направление ветра кодируется двумя HP-направлениями (45° и 67.5°) → <code>Fvector4</code> в <code>C0</code> (rgba 0..255); <code>C1</code> = <code>clouds_color</code> (alpha = weight); геометрия — <code>env.CloudsVerts/CloudsIndices</code> (hemisphere quality 2 — см. <a href="../../xr-engine/environment/">environment</a>); шейдер <code>clouds</code>/"null"; <code>rmNormal()</code>.</p>
+<h3 id="dxlensflarerenderrender"><code>dxLensFlareRender::Render</code><a class="headerlink" href="#dxlensflarerenderrender" title="Permanent link">&para;</a></h3>
+<p>Один lock <code>24×4</code> LIT-вертексов. <code>fDistance = FAR_DIST × 0.75</code>, где <strong><code>FAR_DIST</code> — макрос</strong> = <code>g_pGamePersistent-&gt;Environment().CurrentEnv-&gt;far_plane</code> (не константа). <code>bSun</code>: source-квад в <code>owner.vecLight</code> (размер <code>fRadius × fDistance</code>, цвет = <code>LightColor</code> или белый при <code>ignore_color</code>, alpha × <code>m_StateBlend</code>). <code>bFlares</code> (при <code>fBlend &gt;= EPS_L</code>): per-фляр — pos = <code>vecCenter + vecAxis × fPosition</code>, размер <code>fRadius × fDistance</code>, цвет × <code>fOpacity × fBlend × m_StateBlend</code>. <code>bGradient</code>: квад в <code>vecLight</code>, цвет × <code>fGradientValue × m_StateBlend</code>. Каждый квад пушит свой шейдер в <code>_2render[]</code>; один unlock, затем <strong>per-квад draw</strong> (<code>set_Shader</code> + <code>RCache.Render</code> 4 верт / 2 три) — до 25 draw calls.</p>
+<h3 id="dxthunderboltrenderrender"><code>dxThunderboltRender::Render</code><a class="headerlink" href="#dxthunderboltrenderrender" title="Permanent link">&para;</a></h3>
+<p>Модель: <code>CULL_NONE</code>; <code>dv = lightning_phase × 0.5</code> (randomize <code>0..0.5</code> после половины — мерцание); <code>l_model-&gt;transfer(current_xform, v_ptr, 0xffffffff, i_ptr, 0, 0, dv)</code> (transfer detail-model с UV-offset <code>dv</code> — анимация прокрутки текстуры молнии); draw с <code>l_model-&gt;shader</code>; restore <code>CULL_CCW</code>. Затем два gradient-квада (top в <code>current_xform.c</code>, center в <code>lightning_center</code>), цвет top = <code>m_GradientTop-&gt;fOpacity × lightning_phase</code> серый — <strong>quirk: center-квад тоже использует <code>m_GradientTop-&gt;fOpacity</code></strong> (не <code>m_GradientCenter-&gt;fOpacity</code> — копи-паста). <strong>DX10/11: блок <code>set_Z(TRUE)+set_ZFunc(LESSEQUAL)</code> продублирован 4×</strong> (копи-паста) вокруг двух рендеров.</p>
+<h3 id="dxdebugrender"><code>dxDebugRender</code><a class="headerlink" href="#dxdebugrender" title="Permanent link">&para;</a></h3>
+<p>Линии батчатся per-цвет (4 карты: verts/inds × world/hud). <code>add_lines</code>: <strong>u16-лимит</strong> — если суммарные вертексы или индексы превысят <code>u16(-1)</code> → сначала <code>Render()</code> flush; index-remap <code>*I = vertices_size + *J</code>. <code>Render()</code>: сначала hud-линии — swap <code>Device.mFullTransform = mFullTransformHud</code> + <code>set_xform_project(mProjectHud)</code> + <code>rmNear()</code>, DX10/11: <code>m_WireShader</code> + <code>set_c("tfactor", rgba/255)</code>; <code>RCache.dbg_Draw(LINELIST)</code>; очистка; restore.</p>
+<h3 id="dxapplicationrenderload_draw_internal"><code>dxApplicationRender::load_draw_internal</code><a class="headerlink" href="#dxapplicationrenderload_draw_internal" title="Permanent link">&para;</a></h3>
+<p>DX10/11: <code>rmNormal()</code> + <code>set_RT(pBaseRT)</code> + <code>set_ZB(pBaseZB)</code> + <code>ClearRenderTargetView</code> (чёрный); reshade-hook (<code>if (use_reshade) render_reshade_effects()</code>). Aspect: <code>b_ws = (w/h) &gt; 1.34</code>, <code>b_16x9 = b_ws &amp;&amp; (w/h) &gt; 1.77</code>; <code>ws_k = 0.75 (16:9) / 0.8333 (16:10)</code>, <code>ws_w = 171 / 102.6</code>. База 1024×768 → scale <code>k</code>. Progress-бар: 40 сегментов, per-сегмент цвет = <code>calc_progress_color</code> — <strong>сигмоида</strong>: <code>f = 1/(exp((idx − kk)×0.5) + 1)</code>, <code>kk = (stage+1)/max_stage × total</code>, <code>color_argb_f(f,1,1,1)</code>. Фон (1024×768 через <code>draw_face</code>); widescreen: left+right side-panel из <code>hLevelLogo_Add</code> (tex 0..128 / 128..256) — <strong>quirk: ветки 16:9 и 16:10 идентичны</strong> (копи-паста). Заголовок — <code>pFontSystem</code> (color (103,103,103), alCenter, <code>ls_header</code>/<code>""</code>/<code>ls_tip_number</code>, затем <code>draw_multiline_text(pFontSystem, 600k.x×(ws?0.8:1), ls_tip)</code>); логотип уровня — <code>hLevelLogo</code> в (0,173)+offsets, размер 1024×399, tex 0..0.77926. <code>draw_multiline_text</code>/<code>parse_word</code> — free-функции, word-wrap по <code>SizeOf_</code> vs <code>fTargetWidth</code> (разделители: пробел/tab/CR/LF/<code>,</code>/<code>.</code>/<code>:</code>/<code>!</code>). <code>KillHW()</code> — <code>ZeroMemory(&amp;HW, sizeof(CHW))</code> (аварийный сброс, без разбора COM-ссылок — quirk).</p>
+<h3 id="cgifanimationplayer_1"><code>CGIFAnimationPlayer</code><a class="headerlink" href="#cgifanimationplayer_1" title="Permanent link">&para;</a></h3>
+<p>Автономный GIF-плейер (конкретный класс, не <code>IRender</code>-интерфейс; используется UI для анимированных иконок). <code>Load</code>: per-кадр DX10/11 — <code>CreateTexture2D</code> (<code>D3D_USAGE_IMMUTABLE</code>, <code>R8G8B8A8_UNORM</code>, 1 mip) + <code>CreateShaderResourceView</code> (SRV в <code>Frame::srv</code>); DX9 — <code>CreateTexture</code> MANAGED + LockRect-copy. <code>UpdateFrame</code>: time-аккумулятор на <code>Device.dwTimeContinual</code>, skip-ahead ограничен <code>maxSkipFrames = 10</code> (потом <code>m_TimeAccum = 0</code>). <code>Play</code> — reset в кадр 0; <code>Stop</code> — null active frame. Деструктор освобождает surfaces + SRVs.</p>
+<h3 id="dxobjectspacerender-ifdef-debug"><code>dxObjectSpaceRender</code> (<strong>только <code>#ifdef DEBUG</code></strong>)<a class="headerlink" href="#dxobjectspacerender-ifdef-debug" title="Permanent link">&para;</a></h3>
+<p>Конструктор: <code>m_shDebug.create("debug\\wireframe", "$null")</code>. <code>dbgAddSphere(sphere, colour)</code> → вектор <code>dbg_S</code>. <code>dbgRender()</code>: <code>R_ASSERT(bDebug)</code>, <code>set_Shader(m_shDebug)</code>; по <code>q_debug.boxes</code> (<code>clQueryCollision</code>): <code>RCache.dbg_DrawOBB(X, halfsize, red)</code> + <code>dbg_DrawEllipse(R, blue)</code>, очистка; по <code>dbg_S</code>: <code>dbg_DrawEllipse(M=scale+translate, P.second)</code>, очистка. Комментарий <code>// MT: dangerous</code> на <code>q_debug</code>/<code>dbg_S</code> (не thread-safe).</p>
+<h3 id="3dfluid">3DFluid (активная подсистема)<a class="headerlink" href="#3dfluid" title="Permanent link">&para;</a></h3>
+<p>Файлы: <code>src/Layers/xrRenderDX10/3DFluid/</code> — <code>dx103DFluid{Manager,Data,Volume,Renderer,Grid,Blenders,Emitters,Obstacles}</code>.</p>
+<ul>
+<li><strong>Жизненный цикл</strong>: <code>CRender::create</code> → <code>FluidManager.Initialize(70,70,70)</code> + <code>SetScreenSize</code> (<a href="../../../src/Layers/xrRenderPC_R4/r4.cpp">r4.cpp</a>); <code>CRender::destroy</code> → <code>FluidManager.Destroy()</code>. <code>CRender::Load3DFluid</code> (<a href="../../../src/Layers/xrRenderPC_R4/r4_loader.cpp">r4_loader</a>) — gate <code>RImplementation.o.volumetricfog</code>, читает <code>$level$level.fog_vol</code> (version 3), создаёт <code>dx103DFluidVolume</code> на запись, вешает в <code>FHierrarhyVisual::children</code> сектора.</li>
+<li><strong><code>dx103DFluidVolume::Render</code></strong>: строит debug-wire-box (24 LIT-верт) — <strong>но вызовы <code>RCache.Render</code> закомментированы</strong> (box никогда не рисуется); затем <code>fTimeStep = 2.0f</code> <strong>HARDCODED</strong> (реальная строка <code>Device.fTimeDelta*30*2.0f</code> закомментирована) → <code>FluidManager.Update(m_FluidData, fTimeStep)</code> + <code>FluidManager.RenderFluid(m_FluidData)</code> — оба активны. <code>Load</code>: OGF-ветка <code>dxRender_Visual::Load</code> закомментирована; грузит version-3 данные; stub-шейдер <code>("fluid3d_stub","water\\water_ryaska1")</code> для сортировки.</li>
+<li><strong><code>FluidManager::Update</code></strong>: <code>PIX_EVENT(simulate_fluid)</code>; <code>AttachFluidData</code> (per-volume private RT <code>VP_VELOCITY0/VP_PRESSURE/VP_COLOR</code> подсоединяются к слотам <code>RENDER_TARGET_VELOCITY0+</code>); viewport = размер среза 3D-текстуры; <code>RCache.set_ZB(0)</code>; <code>UpdateObstacles</code>; хардкод confinement/decay (BFECC: fire 0.03/0.9995, fog 0.06/0.994; без BFECC: 0.12/0.9995), затем <strong>переопределение из <code>VolumeSettings</code></strong>; <code>AdvectColorBFECC</code>/<code>AdvectColor</code> → <code>AdvectVelocity(gravity)</code> → <code>ApplyVorticityConfinement</code> → <code>ApplyExternalForces</code> → <code>ComputeVelocityDivergence</code> → <code>ComputePressure</code> (Jacobi) → <code>ProjectVelocity</code>; <code>DetachAndSwapFluidData</code> (swap COLOR-RT с глобальным); восстановление RT (msaa vs non-msaa) + <code>rmNormal()</code>.</li>
+<li><strong><code>RenderFluid</code></strong>: bind <code>VP_COLOR</code> → <code>RENDER_TARGET_COLOR_IN</code>, <code>m_pRenderer-&gt;Draw</code> (CompRayData Back/Front → QuadDownSample → EdgeDetect → RaycastFog/Copy, RaycastFire/Copy), восстановление RT.</li>
+<li><strong>RT-карта менеджера</strong>: <code>RENDER_TARGET_VELOCITY1/COLOR/OBSTACLES/OBSTVELOCITY/TEMPSCALAR/TEMPVECTOR</code> (собственные) + <code>VELOCITY0/PRESSURE/COLOR_IN</code> (из volume-данных).</li>
+<li><strong><code>dx103DFluidData</code></strong>: per-volume private RT + <code>Settings{m_fHemi, m_fConfinementScale, m_fDecay, m_fGravityBuoyancy, m_SimulationType FOG/FIRE}</code>, obstacles (<code>xr_vector&lt;Fmatrix&gt;</code>), emitters (<code>CEmitter</code>: gaussian/draught, позиция/радиус в fluid-space, flow velocity, saturation/density, draught period/phase/amp).</li>
+<li><strong><code>dx103DFluidBlenders</code></strong>: 8 внутренних blenders — <code>CBlender_fluid_advect/_advect_velocity/_simulate/_obst/_emitter/_obstdraw/_raydata/_raycast</code> («INTERNAL: 3dfluid maths»), <code>canBeDetailed/canBeLMAPped = FALSE</code>.</li>
+<li><strong><code>dx103DFluidGrid</code></strong>: debug-геометрия (slice/boundary quads/lines).</li>
+<li><strong>DEBUG</strong>: <code>RegisterFluidData</code>/<code>UpdateProfiles</code> — real-time config reload из INI (консольный хук — <code>xrRender_console.cpp</code>).</li>
+</ul>
+<h2 id="_4">Взаимодействие<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>CEnvironment</code> → <code>IEnvironmentRender</code> (<code>RenderSky/RenderClouds/OnFrame</code>) — вызовы в <a href="../r4-postprocess/">R4: post-process</a> (<code>phase_combine</code>) и <a href="../r4-scene/">R4: scene</a> (MV-pass); данные окружения — <a href="../../xr-engine/environment/">environment</a>.</li>
+<li><code>CLensFlare</code> → <code>ILensFlareRender</code> (вызов — из <code>dxEnvironmentRender::RenderSky</code>); <code>CEffect_Thunderbolt</code> → <code>IThunderboltRender</code> (<a href="../../xr-engine/effects/">Визуальные эффекты</a>, итерация 2).</li>
+<li><code>CApplication</code> → <code>IApplicationRender</code> (экран загрузки, xrEngine); <code>CStatGraph</code>/<code>CStats</code> → <a href="../../xr-engine/stats/">stats</a>.</li>
+<li>3DFluid: <code>CRender</code> (create/destroy/Load3DFluid) → <code>FluidManager</code> → <code>dx103DFluidVolume::Render</code> (из dsgraph-traversal, <a href="../sector/">Пайплайн: секторы</a>); emitters/obstacles — данные уровня (<code>fog_vol</code>).</li>
+<li><code>dxDebugRender::Render</code> — из <code>RDebugRender::OnRender</code> (<code>Device.seqRender</code>, приоритет <code>REG_PRIORITY_LOW−100</code>); линии добавляются из xrGame/алифы через <code>rdebug_render</code>.</li>
+<li><code>stats_manager</code> — вызывается из <code>CTexture</code>/buffer-кода при создании/уничтожении GPU-буферов (<a href="../resources/">Ресурсы</a>).</li>
+</ul>
+<h2 id="_5">Потоки данных<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>CStatGraph::subgraphs  → OnRender → hGeomTri(stBar)/hGeomLine(stCurve,stBarLine,markers) → RCache.Render
+CEnvironment (phase_combine) → RenderSky → sh_2sky E[0]/E[1] + sky_r_textures(mixer) → RCache.Render
+CLensFlare → Render → 24×4 LIT lock → per-quad RCache.Render (до 25 calls)
+CApplication → load_draw_internal → progress(40 сег) + back + sidepanels + font → RCache
+fog_vol (v3) → dx103DFluidVolume → FluidManager.Update (10+ shader-пассов по 3D-RT) → RenderFluid (raycast)
 </code></pre></div>
+<h2 id="_6">Конфигурация<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Инициализирует <code>xform</code> как identity.</li>
-<li><code>visual = NULL</code> (ещё не назначен).</li>
-<li><code>pROS_Allowed = TRUE</code> (ROS разрешён по умолчанию).</li>
-<li>Если объект является <code>ISpatial</code> — ставит флаг <code>STYPE_RENDERABLE</code> (для пространственного поиска).</li>
+<li><code>level.fog_vol</code> (version 3) — данные 3DFluid-объёмов; gate — <code>o.volumetricfog</code> (<a href="../r4-scene/">R4: scene</a>).</li>
+<li>DEBUG: <code>RegisterFluidData</code>/<code>UpdateProfiles</code> — per-volume секции INI (confinement/decay/gravity/hemi), hot-reload из консоли.</li>
+<li>Остальное — хардкодированные шейдерные имена (<code>"sky2"</code>, <code>"clouds"</code>, <code>"hud\\default"</code>, <code>"ui\\ui_actor_loadgame_screen"</code>, <code>"debug\\wireframe"</code>) и константы (см. выше).</li>
 </ul>
-<h3 id="_5">Деструктор<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">IRenderable</span><span class="o">::~</span><span class="n">IRenderable</span><span class="p">()</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="n">VERIFY</span><span class="p">(</span><span class="o">!</span><span class="n">g_bRendering</span><span class="p">);</span>
-<span class="w">    </span><span class="n">Render</span><span class="o">-&gt;</span><span class="n">model_Delete</span><span class="p">(</span><span class="n">renderable</span><span class="p">.</span><span class="n">visual</span><span class="p">);</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">renderable</span><span class="p">.</span><span class="n">pROS</span><span class="p">)</span><span class="w"> </span><span class="n">Render</span><span class="o">-&gt;</span><span class="n">ros_destroy</span><span class="p">(</span><span class="n">renderable</span><span class="p">.</span><span class="n">pROS</span><span class="p">);</span>
-<span class="w">    </span><span class="n">renderable</span><span class="p">.</span><span class="n">visual</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
-<span class="w">    </span><span class="n">renderable</span><span class="p">.</span><span class="n">pROS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
+<h2 id="-">Известные ограничения-дебаг<a class="headerlink" href="#-" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong><code>VERIFY(!g_bRendering)</code></strong> — нельзя уничтожать рендеруемый объект во время рендера.</li>
-<li>Удаляет <code>visual</code> через <code>Render-&gt;model_Delete</code>.</li>
-<li>Удаляет <code>pROS</code> через <code>Render-&gt;ros_destroy</code>.</li>
-</ul>
-<h3 id="renderable_ros"><code>renderable_ROS()</code><a class="headerlink" href="#renderable_ros" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">IRender_ObjectSpecific</span><span class="o">*</span><span class="w"> </span><span class="nf">IRenderable::renderable_ROS</span><span class="p">()</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">renderable</span><span class="p">.</span><span class="n">pROS</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">renderable</span><span class="p">.</span><span class="n">pROS_Allowed</span><span class="p">)</span>
-<span class="w">        </span><span class="n">renderable</span><span class="p">.</span><span class="n">pROS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Render</span><span class="o">-&gt;</span><span class="n">ros_create</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">renderable</span><span class="p">.</span><span class="n">pROS</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Ленивое создание <code>pROS</code> (object-specific data) через <code>Render-&gt;ros_create(this)</code>. Если <code>pROS_Allowed == FALSE</code> (например, <code>CPS_Instance</code>) — возвращает <code>NULL</code>.</p>
-<h2 id="_6">Взаимодействие<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<pre class="mermaid"><code>graph TD
-    subgraph xrEngine
-        IR[IRenderable]
-        Obj[CGameObject]
-        PSI[CPS_Instance]
-    end
-    subgraph xrRender
-        RDev[RenderDeviceRender]
-        RVis[IRenderVisual]
-        ROS[IRender_ObjectSpecific]
-    end
-
-    Obj --implements--&gt; IR
-    PSI --implements--&gt; IR
-    IR --&gt;|renderable.visual| RVis
-    IR --&gt;|renderable_ROS| ROS
-    RDev --&gt;|set_Object| IR
-    RDev --&gt;|add_Geometry| RVis
-    RDev --&gt;|ros_create| ROS
-    RDev --&gt;|model_Delete| RVis
-    RDev --&gt;|ros_destroy| ROS</code></pre>
-<ul>
-<li><strong>Кто вызывает <code>renderable_Render()</code></strong>: <code>RenderDeviceRender</code> (xrRender) при рендере сцены.</li>
-<li><strong>Кто устанавливает <code>renderable.visual</code></strong>: <code>CGameObject::Visual()</code> (xrEngine) или <code>CPS_Instance</code> (частично).</li>
-<li><strong>Кто создаёт/удаляет <code>pROS</code></strong>: <code>renderable_ROS()</code> (ленивое), деструктор <code>~IRenderable()</code> (удаление).</li>
-<li><strong><code>g_bRendering</code></strong> — глобальный флаг (<code>device.cpp</code>), <code>TRUE</code> во время <code>Device.Begin()</code> → <code>Device.End()</code>.</li>
-</ul>
-<h2 id="_7">Потоки данных<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<h3 id="visual">Назначение visual<a class="headerlink" href="#visual" title="Permanent link">&para;</a></h3>
-<pre class="mermaid"><code>sequenceDiagram
-    participant Obj as CGameObject
-    participant IR as IRenderable
-    participant Render as IRender_interface
-    participant RDev as RenderDeviceRender
-
-    Obj-&gt;&gt;IR: renderable.visual = Visual()
-    Obj-&gt;&gt;IR: renderable.xform = XFORM()
-    Render-&gt;&gt;RDev: set_Object(IR)
-    Render-&gt;&gt;RDev: add_Geometry(renderable.visual)</code></pre>
-<h3 id="ros-lifecycle">ROS lifecycle<a class="headerlink" href="#ros-lifecycle" title="Permanent link">&para;</a></h3>
-<pre class="mermaid"><code>sequenceDiagram
-    participant Obj as IRenderable
-    participant Render as IRender_interface
-    participant RDev as RenderDeviceRender
-
-    Note over Obj: renderable.pROS == NULL, pROS_Allowed == TRUE
-    Obj-&gt;&gt;Render: renderable_ROS()
-    Render-&gt;&gt;RDev: ros_create(this)
-    RDev--&gt;&gt;Render: IRender_ObjectSpecific*
-    Render--&gt;&gt;Obj: renderable.pROS
-
-    Note over Obj: ... (рендер, lighting) ...
-
-    Obj-&gt;&gt;Render: ~IRenderable()
-    Render-&gt;&gt;RDev: ros_destroy(renderable.pROS)
-    RDev--&gt;&gt;Render: (удалено)</code></pre>
-<h2 id="_8">Конфигурация<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<ul>
-<li><code>renderable.pROS_Allowed</code> — флаг, разрешающий создание <code>pROS</code>. По умолчанию <code>TRUE</code>. <code>CPS_Instance</code> ставит <code>FALSE</code> (частицы не используют ROS).</li>
-<li><code>STYPE_RENDERABLE</code> — битовый флаг <code>ISpatial.type</code>, ставится в конструкторе <code>IRenderable</code> (если объект <code>ISpatial</code>).</li>
-</ul>
-<h2 id="_9">Ограничения / дебаг<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong><code>VERIFY(!g_bRendering)</code></strong> в деструкторе: уничтожение <code>IRenderable</code> во время рендера → crash в DEBUG.</li>
-<li><strong><code>renderable.visual</code></strong> — <strong>сырой указатель</strong> на <code>IRenderVisual</code>, управляемый <code>Render-&gt;model_Delete</code>. Нельзя вручную <code>delete</code>.</li>
-<li><strong><code>renderable.xform</code></strong> — копируется из <code>CGameObject::XFORM()</code> каждый кадр (см. <a href="../xr-object/">xr_object</a>).</li>
-<li><strong><code>renderable_ShadowGenerate/Receive</code></strong> — по умолчанию <code>FALSE</code>. Переопределяется в <code>CGameObject</code> (см. <a href="../xr-object/">xr_object</a>).</li>
-<li><strong><code>GetHotness</code> / <code>GetTransparency</code> / <code>GetGlowing</code></strong> — HeatVision / SilencerOverheat, по умолчанию <code>0.0</code>. Переопределяется в конкретных объектах.</li>
+<li><strong>3DFluid <code>fTimeStep = 2.0f</code> HARDCODED</strong> (в <code>dx103DFluidVolume::Render</code>) — скорость симуляции не привязана к реальному времени; debug-wire-box никогда не рисуется (<code>RCache.Render</code> закомментирован).</li>
+<li><code>dxApplicationRender::KillHW()</code> — <code>ZeroMemory(&amp;HW)</code> без разбора COM-ссылок; widescreen 16:9/16:10 side-panel ветки идентичны (копи-паста).</li>
+<li><code>dxStatGraphRender</code> — copy-paste в <code>Num_H_LinesDwn</code> и out-of-bounds <code>end()+1</code> в циклах (см. выше).</li>
+<li><code>dxThunderboltRender</code> — center-gradient квад использует <code>m_GradientTop</code> (копи-паста); <code>set_Z</code>-блок продублирован 4×.</li>
+<li><code>dxLensFlareRender</code> — до 25 draw calls на один <code>Render</code> (по одному на квад).</li>
+<li><code>dxDebugRender::SetAmbient</code> — <code>VERIFY(!"Not implemented for DX10")</code>; <code>NextSceneMode</code> — no-op в DX10.</li>
+<li><code>dxObjectSpaceRender</code> — только DEBUG; <code>q_debug</code>/<code>dbg_S</code> не thread-safe (<code>// MT: dangerous</code>).</li>
+<li><code>dxEnvironmentRender::OnFrame</code> — блок env-параметров (fog color/start/end) <strong>не реализован в DX10/11</strong> (fog в R4 обрабатывается в postprocess/skybox-шейдере); R2-only hack (push tonemap) — legacy-ветка.</li>
+<li><code>dxUISequenceVideoItem::video_Play</code> — <code>return m_texture-&gt;video_Play(...)</code> (вызов выполняется, результат отбрасывается — странная стилистика).</li>
 </ul>
 
 
@@ -4206,7 +4535,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Нижний колонтитул" >
         
           
-          <a href="../render/" class="md-footer__link md-footer__link--prev" aria-label="Назад: Рендер-слой">
+          <a href="../dx-bridges/" class="md-footer__link md-footer__link--prev" aria-label="Назад: UI-обвязка">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -4216,20 +4545,20 @@
                 Назад
               </span>
               <div class="md-ellipsis">
-                Рендер-слой
+                UI-обвязка
               </div>
             </div>
           </a>
         
         
           
-          <a href="../fmesh/" class="md-footer__link md-footer__link--next" aria-label="Вперед: Fmesh">
+          <a href="../pipeline/" class="md-footer__link md-footer__link--next" aria-label="Вперед: Pipeline">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Вперед
               </span>
               <div class="md-ellipsis">
-                Fmesh
+                Pipeline
               </div>
             </div>
             <div class="md-footer__button md-icon">

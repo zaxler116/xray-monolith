@@ -2729,6 +2729,34 @@
   
   
     <li class="md-nav__item">
+      <a href="misc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Прочее (stats/env/fx/debug/3DFluid)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="pipeline/" class="md-nav__link">
         
   
@@ -2820,9 +2848,28 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../xr-particles/" class="md-nav__link">
+    
+    
+    
+    
+      
+      
         
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="">
+            
   
   
   <span class="md-ellipsis">
@@ -2836,7 +2883,79 @@
   
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    xrParticles
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../xr-particles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Обзор
+  
+
+    
+  </span>
+  
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../xr-particles/core/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PAPI и ядро симуляции
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -3757,8 +3876,12 @@
 <td><code>CParticleEffect</code> (fixed-step <code>OnFrame</code>, <code>ExecuteAnimate</code>/<code>ExecuteCollision</code>, SSE-sprite-стрим, PAPI-обёртка), <code>CParticleGroup</code> (таймлайн <code>m_Time0/m_Time1</code>, related/free-дети), <code>CPEDef</code>/<code>CPGDef</code> (PED/PGD-чанки, INI Save2/Load2, <code>Compile</code>), <code>ParticleEffectActions</code> (30 <code>EPA*</code>, <code>actions_token[]</code>, PAPI-байт-код), <code>dxParticleCustom</code>, <code>CWallmarksEngine</code> (static: DFS-вырезка из стат. меша, bias-рендер, TTL-фейд; skeleton: one-shot через <code>CKinematics</code>), <code>dxWallMarkArray</code>, <code>dxRainRender</code> (капли-линии <code>effects\rain</code>, плющи <code>dm\rain.dm</code>), R4: <code>render_rain</code>/<code>phase_rain</code>/<code>draw_rain</code> (wet-surfaces, rain-SMAP, 3 screen-space паса, MSAA per-sample)</td>
 </tr>
 <tr>
-<td><a href="dx-bridges/">UI-обвязка и прочее</a></td>
-<td><em>(порцион 17)</em> — <code>dxUIRender</code>, <code>dxFontRender</code>, <code>dxImGuiRender</code>, <code>dxConsoleRender</code>, <code>dxStatsRender</code>, <code>dxEnvironmentRender</code>, <code>dxLensFlareRender</code>, <code>dxThunderboltRender</code>, <code>dxDebugRender</code>, <code>HOM</code>, <code>3DFluid</code></td>
+<td><a href="dx-bridges/">UI-обвязка</a></td>
+<td><code>dxUIRender</code> (UI-геом LIT/TL, <code>PushPoint</code>/<code>StartPrimitive</code>/<code>FlushPrimitive</code>, scissor/xform, D3D9-legacy блок), <code>dxUIShader</code> (<code>g_UIShadersCache</code>, <code>GetCachedUIShader</code>), <code>dxFontRender</code> (батчинг <code>CGameFont</code>, 4 верт/символ, DX10/11 half-pixel fix), <code>dxImGuiRender</code> (обёртка <code>imgui_impl_dx11</code>), <code>dxConsoleRender</code> (фон-квад DX10/11)</td>
+</tr>
+<tr>
+<td><a href="misc/">Прочее (stats/env/fx/debug/3DFluid)</a></td>
+<td><code>dxStatsRender</code> (<code>RCache.stat</code> → консоль, DEBUG-разборка), <code>dxStatGraphRender</code> (бары/кривые/markers), <code>stats_manager</code> (GPU-память, no-op on server), <code>dxEnvironmentRender</code> (skybox half-box 12 верт, MV-pass, <code>RenderClouds</code>, <code>CBlender_skybox</code>), <code>dxLensFlareRender</code>/<code>dxFlareRender</code> (24×4 lock, per-квад draw), <code>dxThunderboltRender</code>/<code>DescRender</code> (detail-model + UV-offset), <code>dxDebugRender</code>/<code>RDebugRender</code> (батчи линий per-цвет, u16-лимит, HUD-проекция), <code>dxApplicationRender</code> (экран загрузки: progress-сигмоида, widescreen sidepanels), <code>dxUISequenceVideoItem</code>, <code>CGIFAnimationPlayer</code>, <code>dxObjectSpaceRender</code> (DEBUG), 3DFluid (<code>FluidManager</code> BFECC-симуляция, 3D-RT, raycast, <code>fTimeStep=2.0f</code> HARDCODED)</td>
 </tr>
 <tr>
 <td><a href="postprocessing/">Postprocessing (общий обзор)</a></td>
@@ -3909,7 +4032,7 @@
 <td>17</td>
 <td>UI-обвязка и прочее</td>
 <td><code>dx-bridges.md</code>, <code>misc.md</code></td>
-<td>⬜</td>
+<td>✅ готово</td>
 </tr>
 </tbody>
 </table>

@@ -127,7 +127,9 @@ nav:
           - Pipeline: modules/renderer/pipeline.md
           - Постобработка: modules/renderer/postprocessing.md
           - Shader Bus: modules/renderer/shader-bus.md
-      - xrParticles: modules/xr-particles.md
+      - xrParticles:
+          - Обзор: modules/xr-particles/index.md
+          - PAPI и ядро симуляции: modules/xr-particles/core.md
       - xrSound: modules/xr-sound.md
       - xrGame:
           - Обзор: modules/game/index.md
