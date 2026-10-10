@@ -3746,11 +3746,11 @@
 </tr>
 <tr>
 <td><a href="r4-postprocess/">R4: post-process</a></td>
-<td><em>(порцион 14)</em> — <code>r4_rendertarget_phase_*</code>, <code>dx11HDAOCSBlender</code>, <code>ComputeShader</code>/<code>CSCompiler</code></td>
+<td><code>r4_rendertarget_phase_*</code> (combine/pp/bloom/hdao/ssao/hdr10__/luminance/occq/rain/smap_D/smap_S/ssfx__), <code>dx11HDAOCSBlender</code>, <code>dx11MinMaxSMBlender</code>, <code>ComputeShader</code>/<code>CSCompiler</code>, <code>DoAsyncScreenshot</code>, <code>phase_combine_volumetric</code>/<code>phase_wallmarks</code></td>
 </tr>
 <tr>
 <td><a href="blenders/">Blenders (библиотека)</a></td>
-<td><em>(порцион 15)</em> — <code>xrRender/blenders/</code>, <code>Blender_*</code>, <code>r4 blender_*</code></td>
+<td><code>IBlender</code>/<code>CBlender_DESC</code> (CPropertyBase: oPriority/oStrictSorting/oT_Name/oT_xform), <code>IBlender::Create</code>/<code>CreatePalette</code> (21 CLSID, дедуп <code>TYPES_EQUAL</code>), <code>CBlender_Compile</code> (рекордер: <code>r_Pass</code>/<code>r_TessPass</code>/<code>r_ComputePass</code>, <code>r_dx10Texture</code>/<code>r_dx10Sampler</code>/<code>r_Stencil</code>/<code>r_StencilRef</code>/<code>r_CullMode</code>/<code>r_ColorWriteEnable</code>, <code>SetParams</code>/<code>SetMapping</code>, <code>ParseName</code> <code>$null</code>/<code>$base0..7</code>, <code>L_textures/constants/matrices</code>, detail-texture/<code>TessMethod</code>), <code>_cpp_Compile</code> (detail-textures из <code>DEV-&gt;m_textures_description</code>, <code>R2FLAG_DETAIL_BUMP</code>, steep-parallax); world: <code>CBlender_BmmD</code> (terrain, <code>uber_deffer</code>, puddles, <code>case 3</code> magic, <code>yantar</code> quirk), <code>CBlender_LmEbB</code> (forward-only quirk), <code>CBlender_Model_EbB</code> (glass <code>ssfx_glass</code>, HUD <code>model_hud</code>/<code>base_hud</code>), <code>CBlender_Particle</code> (6 blend modes, soft particles), <code>CBlender_Screen_SET</code> (10 режимов, stub-шейдеры), <code>CBlender_Editor_Wire</code>/<code>_Selection</code>, <code>CBlender_Detail_Still</code>/<code>CBlender_Tree</code> (→ detail.md); R4 screen-space: <code>blender_blur</code> (10 классов: blur/ssr/volumetric/ao/sss/sss_ext/rain/water_blur/motion_blur/fog_scattering), <code>blender_combine</code>/<code>_msaa</code> (<code>m_MSAASample</code> quirk), <code>blender_dof</code> (<code>samplero_pepero</code> typo), <code>blender_gasmask_drops</code>/<code>_dudv</code>, <code>blender_hdr10_bloom</code>/<code>_lens_flare</code> (7 классов), <code>blender_lut</code>, <code>blender_nightvision</code>/<code>_fakescope</code>/<code>_heatvision</code> (DSR fork), <code>blender_pp_bloom</code>, <code>blender_smaa</code>/<code>CBlender_ssfx_taa</code>, <code>blender_ss_sunshafts</code>, <code>blender_ssao</code> (<code>_noMSAA</code>/<code>_MSAA</code>, stencil-разница)</td>
 </tr>
 <tr>
 <td><a href="particles-wallmarks/">Частицы и wallmarks</a></td>
@@ -3891,13 +3891,13 @@
 <td>14</td>
 <td>R4: post-process</td>
 <td><code>r4-postprocess.md</code></td>
-<td>⬜</td>
+<td>✅ готово</td>
 </tr>
 <tr>
 <td>15</td>
 <td>Blenders (библиотека)</td>
 <td><code>blenders.md</code></td>
-<td>⬜</td>
+<td>✅ готово</td>
 </tr>
 <tr>
 <td>16</td>

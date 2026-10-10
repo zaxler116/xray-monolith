@@ -2686,6 +2686,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Постобработка
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -2702,6 +2720,80 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Структура
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Страницы
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ключевые фазы
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Конфигурация
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Известные ограничения
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -3515,6 +3607,69 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Структура
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Страницы
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ключевые фазы
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Конфигурация
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Известные ограничения
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -3531,10 +3686,126 @@
 
 
 <h1 id="_1">Постобработка<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<blockquote>
-<p><strong>Заглушка</strong> — будет заполнена на итерации 3.</p>
-</blockquote>
-<p>Post-processing эффекты.</p>
+<p>Общий обзор post-processing в R4.</p>
+<h2 id="_2">Структура<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>Post-processing в R4 — это набор фаз <code>CRenderTarget::phase_*</code>, которые читают deferred-буферы (<code>rt_Color</code>, <code>rt_Position</code>, <code>rt_Accumulator</code>) и пишут финальное изображение или промежуточные ssfx-RT.</p>
+<h2 id="_3">Страницы<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../r4-postprocess/">R4: post-process</a> — <code>r4_rendertarget_phase_*</code> (bloom/combine/hdao/hdr10_*/luminance/occq/PP/rain/smap_D/smap_S/ssao), <code>dx11HDAOCSBlender</code>, <code>dx11MinMaxSMBlender</code>, <code>ComputeShader</code>/<code>CSCompiler</code>.</li>
+<li><a href="../r4-scene/">R4: scene/lighting phase</a> — <code>CRender::Render</code> (вызовы <code>phase_*</code>), <code>render_lights</code>, <code>shader_compile</code>.</li>
+<li><a href="../r4-deferred/">R4: deferred / накопление</a> — <code>CRenderTarget</code> (RT-карта кадра), <code>phase_scene_*</code>, <code>accum_*</code>.</li>
+</ul>
+<h2 id="_4">Ключевые фазы<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Фаза</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>phase_combine</code></td>
+<td>Основная фаза: сборка из deferred-буферов (800+ строк)</td>
+</tr>
+<tr>
+<td><code>phase_pp</code></td>
+<td>Final post-process (blur/gray/noise/duality/colormap)</td>
+</tr>
+<tr>
+<td><code>phase_bloom</code></td>
+<td>Legacy bloom (luminance→filter)</td>
+</tr>
+<tr>
+<td><code>phase_ssfx_bloom</code></td>
+<td>Новый ssfx bloom (downsample→Kawase→upsample)</td>
+</tr>
+<tr>
+<td><code>phase_luminance</code></td>
+<td>3 прохода (256→64→8→1) + tonemap-adaptation</td>
+</tr>
+<tr>
+<td><code>phase_hdao</code></td>
+<td>HD AO (compute shader)</td>
+</tr>
+<tr>
+<td><code>phase_ssao</code></td>
+<td>Legacy SSAO</td>
+</tr>
+<tr>
+<td><code>phase_ssfx_ao</code></td>
+<td>Новый AO (4 blur-фазы)</td>
+</tr>
+<tr>
+<td><code>phase_ssfx_il</code></td>
+<td>Новый IL (4 blur-фазы)</td>
+</tr>
+<tr>
+<td><code>phase_hdr10_bloom</code></td>
+<td>HDR10 bloom (Kawase)</td>
+</tr>
+<tr>
+<td><code>phase_hdr10_lens_flare</code></td>
+<td>HDR10 lens flare (Kawase)</td>
+</tr>
+<tr>
+<td><code>phase_smap_direct</code></td>
+<td>SMAP direct (sun)</td>
+</tr>
+<tr>
+<td><code>phase_smap_spot</code></td>
+<td>SMAP spot</td>
+</tr>
+<tr>
+<td><code>phase_rain</code></td>
+<td>Rain setup</td>
+</tr>
+<tr>
+<td><code>phase_ssfx_rain</code></td>
+<td>SSFX rain</td>
+</tr>
+<tr>
+<td><code>phase_occq</code></td>
+<td>Occlusion query setup</td>
+</tr>
+<tr>
+<td><code>phase_combine_volumetric</code></td>
+<td>Volumetric light combine</td>
+</tr>
+<tr>
+<td><code>phase_wallmarks</code></td>
+<td>Wallmarks setup</td>
+</tr>
+<tr>
+<td><code>DoAsyncScreenshot</code></td>
+<td>Async screenshot</td>
+</tr>
+<tr>
+<td><code>phase_downsamp</code></td>
+<td>Downsample для SSAO</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_5">Конфигурация<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>ps_pp_*</code> — post-process параметры (blur, gray, noise, duality, colormap, gasmask, nightvision, heatvision, fakescope).</li>
+<li><code>ps_r__smaa</code> — SMAA.</li>
+<li><code>ssfx_taa</code> — TAA.</li>
+<li><code>ps_ssfx_*</code> — ssfx-эффекты (bloom, volumetric, motion blur, rain, fog scattering, sunshafts).</li>
+<li><code>dx11_hdr10</code> — HDR10.</li>
+<li><code>ssao_hdao</code> / <code>ssao_ultra</code> — HD AO.</li>
+<li><code>advancedpp</code> — advanced post-processing.</li>
+</ul>
+<h2 id="_6">Известные ограничения<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>PP_Complex</code> — хардкод <code>TRUE</code> (HOLGER HACK), игнорирует <code>u_need_PP()</code>.</li>
+<li><code>phase_luminance()</code> — 3 прохода (256→64→8→1), tonemap-adaptation EMA.</li>
+<li><code>phase_hdao()</code> — compute shader, group 56, overlap 12 (static).</li>
+<li><code>phase_ssfx_bloom()</code> — новый ssfx bloom (6 downsample + 5 upsample + lens + combine).</li>
+<li><code>phase_hdr10_bloom()</code> / <code>phase_hdr10_lens_flare()</code> — Kawase blur (ping-pong).</li>
+<li><code>DoAsyncScreenshot()</code> — TODO: won't work in DX11 with HDR (format incompat).</li>
+<li><code>phase_smap_spot_tsh()</code> — не реализовано (<code>VERIFY</code>).</li>
+</ul>
 
 
 

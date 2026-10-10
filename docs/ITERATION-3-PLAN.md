@@ -75,7 +75,7 @@
 | 12  | R4: scene/lighting phase       | ✅     |
 | 13  | R4: deferred / накопление      | ✅     |
 | 14  | R4: post-process               | ✅     |
-| 15  | Blenders (библиотека)          | ⬜     |
+| 15  | Blenders (библиотека)          | ✅     |
 | 16  | Частицы и wallmarks            | ⬜     |
 | 17  | UI-обвязка и прочее            | ⬜     |
 
