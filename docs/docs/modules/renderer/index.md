@@ -28,7 +28,7 @@
 | [Ресурсы и модели](resources.md)                  | `ResourceManager` (core/Loader/Reset/Scripting + DX10-версии), `ModelPool`, `CTexture`/`texture_load`, `STextureParams`/`CTextureDescrMngr` (.thm), `ColorMapManager`, `CPSLibrary`, `tga`, `R_Backend_Runtime` (`CBackend`/`R_xforms`), `dx10Texture/BufferUtils`                                    |
 | [Визуалы](visuals.md)                             | `dxRender_Visual` (OGF-load, shader/texture, vis), `Fvisual` (verts/indices/`m_fast`), `FHierrarhyVisual` (children), `FProgressive` (slide-window LOD), `FTreeVisual_ST/PM` (wind/wave consts), `FLOD` (8-facet imposter), `CSkeletonX_ST/PM` (skin 1W..4W), `xrStripify`/`NvTriStrip`/`VertexCache` |
 | [Скелеты и анимация](kinematics.md)               | `CKinematics` (`CalculateBones`, `BuildBoneMatrix`, `Bone_Calculate`, wallmarks), `CKinematicsAnimated` (`PlayCycle`/`PlayFX`, `CBlend`-стек, dequant, `UpdateTracks`), `CSkeletonX` (render modes soft/single/skin 1B..4B, `_Render`, bone-pick), `CBlend`/`CBlendInstance`, `CSkeletonWallmark`     |
-| [Детали](detail.md)                               | _(порцион 10)_ — `DetailManager`, `DetailModel`, `DetailFormat`, `Blender_detail_still`, `Blender_tree`                                                                                                                                                                                               |
+| [Детали](detail.md)                               | `CDetailManager` (format v3/v4, cache grid, decompress, `UpdateVisibleM`, `MT_CALC/SYNC`, hw/soft render, DX11 `hw_Render_dump` — benders/motion vectors), `CDetail`, `Blender_detail_still`/`Blender_tree` (R3-ветка), `R_tree` (legacy)                                                             |     |
 | [Свет](lights.md)                                 | _(порцион 11)_ — `ILight`, `LightTrack`, `Light_DB`, `Light_Package`, `light_GI`, `r2_R_lights`, `r2_R_calculate`                                                                                                                                                                                     |
 | [R4: scene/lighting phase](r4-scene.md)           | _(порцион 12)_ — `r4`, `r4_loader`, `r4_R_render`, `r2_blenders`, `Light_Render_Direct`, `blender_light_*`                                                                                                                                                                                            |
 | [R4: deferred / накопление](r4-deferred.md)       | _(порцион 13)_ — `r4_rendertarget`, `r4_rendertarget_accum_*`, `uber_deffer`, `blender_deffer_*`                                                                                                                                                                                                      |
@@ -83,7 +83,7 @@ graph TD
 | 7   | Ресурсы и модели               | `resources.md`                     | ✅ готово |
 | 8   | Визуалы                        | `visuals.md`                       | ✅ готово |
 | 9   | Скелеты и анимация             | `kinematics.md`                    | ✅ готово |
-| 10  | Детали                         | `detail.md`                        | ⬜        |
+| 10  | Детали                         | `detail.md`                        | ✅ готово |
 | 11  | Свет                           | `lights.md`                        | ⬜        |
 | 12  | R4: scene/lighting phase       | `r4-scene.md`                      | ⬜        |
 | 13  | R4: deferred / накопление      | `r4-deferred.md`                   | ⬜        |
