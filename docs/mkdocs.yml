@@ -108,6 +108,21 @@ nav:
           - Точка входа и фабрика: modules/renderer/factory.md
           - Устройство рендера: modules/renderer/render-device.md
           - Шейдерные константы: modules/renderer/constants.md
+          - "Пайплайн: секторы": modules/renderer/sector.md
+          - Occlusion: modules/renderer/occlusion.md
+          - Динамическая сцена: modules/renderer/dsgraph.md
+          - VSM / SMAP: modules/renderer/vsm-smap.md
+          - Ресурсы и модели: modules/renderer/resources.md
+          - Визуалы: modules/renderer/visuals.md
+          - Скелеты и анимация: modules/renderer/kinematics.md
+          - Детали: modules/renderer/detail.md
+          - Свет: modules/renderer/lights.md
+          - "R4: scene/lighting": modules/renderer/r4-scene.md
+          - "R4: deferred": modules/renderer/r4-deferred.md
+          - "R4: post-process": modules/renderer/r4-postprocess.md
+          - Blenders: modules/renderer/blenders.md
+          - Частицы и wallmarks: modules/renderer/particles-wallmarks.md
+          - UI-обвязка: modules/renderer/dx-bridges.md
           - Pipeline: modules/renderer/pipeline.md
           - Постобработка: modules/renderer/postprocessing.md
           - Shader Bus: modules/renderer/shader-bus.md

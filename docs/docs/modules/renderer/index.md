@@ -76,9 +76,9 @@ graph TD
 | --- | ------------------------------ | ---------------------------------- | --------- |
 | 1   | Точка входа и фабрика          | `factory.md`                       | ✅ готово |
 | 2   | Устройство рендера и константы | `render-device.md`, `constants.md` | ✅ готово |
-| 3   | Пайплайн: секторы и traversal  | `sector.md`                        | ⬜        |
-| 4   | Occlusion                      | `occlusion.md`                     | ⬜        |
-| 5   | Динамическая сцена (dsgraph)   | `dsgraph.md`                       | ⬜        |
+| 3   | Пайплайн: секторы и traversal  | `sector.md`                        | ✅ готово |
+| 4   | Occlusion                      | `occlusion.md`                     | ✅ готово |
+| 5   | Динамическая сцена (dsgraph)   | `dsgraph.md`                       | ✅ готово |
 | 6   | VSM / SMAP                     | `vsm-smap.md`                      | ⬜        |
 | 7   | Ресурсы и модели               | `resources.md`                     | ⬜        |
 | 8   | Визуалы                        | `visuals.md`                       | ⬜        |

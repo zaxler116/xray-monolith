@@ -1,0 +1,4226 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Полная документация игрового движка X-Ray Monolith (fork X-Ray 1.6.0.8, S.T.A.L.K.E.R. Anomaly)">
+      
+      
+      
+      
+        <link rel="prev" href="../constants/">
+      
+      
+        <link rel="next" href="../occlusion/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Пайплайн: секторы - X-Ray Monolith — Документация движка</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#renderer-traversal" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href="../../.." title="X-Ray Monolith — Документация движка" class="md-header__button md-logo" aria-label="X-Ray Monolith — Документация движка" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            X-Ray Monolith — Документация движка
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Пайплайн: секторы
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистить" aria-label="Очистить" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Главная
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../getting-started/installation/" class="md-tabs__link">
+          
+  
+  
+  Начало работы
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../architecture/overview/" class="md-tabs__link">
+          
+  
+  
+  Архитектура
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../xr-core/" class="md-tabs__link">
+          
+  
+  
+  Модули
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../data/ltx-format/" class="md-tabs__link">
+          
+  
+  
+  Данные
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../api/lua-reference/" class="md-tabs__link">
+          
+  
+  
+  API
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../reference/changelog/" class="md-tabs__link">
+          
+  
+  
+  Справочник
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="X-Ray Monolith — Документация движка" class="md-nav__button md-logo" aria-label="X-Ray Monolith — Документация движка" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    X-Ray Monolith — Документация движка
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Главная
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Начало работы
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Начало работы
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Установка
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/building/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Сборка
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Диагностика
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Архитектура
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Архитектура
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Обзор
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/module-map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Карта модулей
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/dependencies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Зависимости
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/frame-loop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Цикл кадра
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/object-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Модель объектов
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/scripting-boundary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Граница скриптинга
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Модули
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Модули
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    xrCore (фундамент)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    xrCore (фундамент)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-core/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Обзор
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-core/types-math/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Типы и математика
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-core/memory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Память
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-core/strings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Строки
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-core/logging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Логирование
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-core/filesystem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Файловая система
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-core/inifile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    INI / конфиги
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-core/compression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Сжатие
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-core/locator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Локализатор (архивы)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-core/system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Временны́е/системные
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    xrEngine (ядро)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    xrEngine (ядро)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Обзор
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/engine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ядро и API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API и события
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/frame-loop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Цикл кадра
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/scheduler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sheduler
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/device/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Device
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/device-window/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Окно и WndProc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/render/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Рендер-слой
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/renderable/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IRenderable
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/fmesh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fmesh
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/collide-physics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Коллизии и физика
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/xr-object/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Объект
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/level/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Уровень
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/object-pool/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Пул объектов
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/persistent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Persistent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/skeleton-motion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Скелет и анимация
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/environment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Окружение
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/effector/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Эффекторы
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/feel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feels
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/effects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Визуальные эффекты
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/camera/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Камера
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/hud/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HUD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/ui-primitives/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI-примитивы
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/input/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ввод
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/console/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Консоль
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/lua-binding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lua-биндинг
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Демо
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/stats/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Статистика
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-engine/misc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Прочее
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Renderer
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Renderer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Обзор
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../factory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Точка входа и фабрика
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../render-device/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Устройство рендера
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../constants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Шейдерные константы
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Пайплайн: секторы
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Пайплайн: секторы
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Ответственность
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Место в архитектуре
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Публичный API
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Внутреннее устройство
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Внутреннее устройство">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cportal-srclayersxrrenderr__sectorhcpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CPortal (src/Layers/xrRender/r__sector.h/.cpp)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csector-r__sectorcpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CSector (r__sector.cpp)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cportaltraverser-srclayersxrrenderr__sector_traversalcpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CPortalTraverser (src/Layers/xrRender/r__sector_traversal.cpp)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crendercalculate-srclayersxrrenderpc_r4r2_r_calculatecpp-r4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CRender::Calculate — часть секторов (src/Layers/xrRenderPC_R4/r2_R_calculate.cpp, историческое ядро в R4)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detectsector-translatesector-srclayersxrrenderpc_r4r2_sector_detectcpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        detectSector / translateSector (src/Layers/xrRenderPC_R4/r2_sector_detect.cpp)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chom-occrasterizer-hom-culling-vq_hom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CHOM / occRasterizer — HOM-culling (используется VQ_HOM)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r_pixel_calculator-r__pixel_calculatorcpp-d3d9-only-r4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        r_pixel_calculator (r__pixel_calculator.cpp) — D3D9-only, в R4 не компилируется
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queryhelper-queryhelperh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QueryHelper (QueryHelper.h)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Взаимодействие
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Потоки данных/управления
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Конфигурация
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Известные ограничения/дебаг
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../occlusion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Occlusion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dsgraph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Динамическая сцена
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vsm-smap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VSM / SMAP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ресурсы и модели
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../visuals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Визуалы
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kinematics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Скелеты и анимация
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../detail/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Детали
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lights/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Свет
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../r4-scene/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    R4: scene/lighting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../r4-deferred/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    R4: deferred
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../r4-postprocess/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    R4: post-process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blenders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blenders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../particles-wallmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Частицы и wallmarks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dx-bridges/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI-обвязка
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../postprocessing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Постобработка
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../shader-bus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shader Bus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-particles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    xrParticles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xr-sound/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    xrSound
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    xrGame
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    xrGame
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../game/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Обзор
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../game/objects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Объекты (Actor/GameObject)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../game/alife/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ALIFE (AI)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../game/pathfinding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Пейтфиндинг
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../game/physics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Физика
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../game/weapons/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оружие
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../game/inventory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Инвентарь
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../game/zones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Зоны и эффекты
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../game/ui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Сервер
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Сеть
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Данные
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Данные
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data/ltx-format/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Формат LTX
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data/gamedata-layout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Раскладка gamedata
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/lua-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lua Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Справочник
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Справочник
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/patches/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Патчи
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Ответственность
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Место в архитектуре
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Публичный API
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Внутреннее устройство
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Внутреннее устройство">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cportal-srclayersxrrenderr__sectorhcpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CPortal (src/Layers/xrRender/r__sector.h/.cpp)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csector-r__sectorcpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CSector (r__sector.cpp)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cportaltraverser-srclayersxrrenderr__sector_traversalcpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CPortalTraverser (src/Layers/xrRender/r__sector_traversal.cpp)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crendercalculate-srclayersxrrenderpc_r4r2_r_calculatecpp-r4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CRender::Calculate — часть секторов (src/Layers/xrRenderPC_R4/r2_R_calculate.cpp, историческое ядро в R4)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detectsector-translatesector-srclayersxrrenderpc_r4r2_sector_detectcpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        detectSector / translateSector (src/Layers/xrRenderPC_R4/r2_sector_detect.cpp)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chom-occrasterizer-hom-culling-vq_hom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CHOM / occRasterizer — HOM-culling (используется VQ_HOM)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r_pixel_calculator-r__pixel_calculatorcpp-d3d9-only-r4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        r_pixel_calculator (r__pixel_calculator.cpp) — D3D9-only, в R4 не компилируется
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queryhelper-queryhelperh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QueryHelper (QueryHelper.h)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Взаимодействие
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Потоки данных/управления
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Конфигурация
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Известные ограничения/дебаг
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="renderer-traversal">Renderer: пайплайн — секторы и traversal<a class="headerlink" href="#renderer-traversal" title="Permanent link">&para;</a></h1>
+<h2 id="1">1. Ответственность<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>Статический портальный пайплайн R4: модель «сектор + портал» (<code>CSector</code>/<code>CPortal</code>), рекурсивный traversal по порталам с culling'ом (frustum, SSA, scissor, HOM) и определение сектора камеры. Не рендерит сам — только собирает список видимых секторов и их frustum'ов/scissor'ов, с которыми дальше работает <a href="../dsgraph/">dsgraph</a>.</p>
+<p>Историческое ядро (D3D9-эпоха, <code>xrRender/</code>), переиспользуемое в R4.</p>
+<h2 id="2">2. Место в архитектуре<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<p>См. <a href="../../../architecture/overview/">Архитектура</a>, <a href="../../../architecture/dependencies/">Зависимости</a>, <a href="../factory/">Точка входа и фабрика</a>.</p>
+<ul>
+<li>Модель «сектор/портал» загружается из level-данных (<code>CSector::load</code> — чанки <code>fsP_Portals</code>/<code>fsP_Root</code>) и живёт в <code>CRender::Sectors</code>/<code>Portals</code>.</li>
+<li><code>PortalTraverser</code> — глобальный трейсер, вызывается из <code>CRender_dsgraph::render</code> (R4, <a href="../dsgraph/">dsgraph</a>) и из <code>FStaticRender</code> (R1 — не активен).</li>
+<li>Определение сектора камеры (<code>detectSector</code>) — из <code>CRender::Calculate</code> (исторический <code>r2_R_calculate.cpp</code>, переиспользуемый в R4).</li>
+</ul>
+<pre class="mermaid"><code>graph TD
+    Calc[CRender::Calculate — r2_R_calculate] --&gt;|detectSector| Det[detectSector / translateSector — r2_sector_detect]
+    Render[CRender_dsgraph::render — dsgraph] --&gt;|PortalTraverser.traverse| Trv[CPortalTraverser — r__sector_traversal]
+    Trv --&gt;|recursion| Sec[CSector::traverse — r__sector]
+    Sec --&gt;|portals| Ptr[CPortal]
+    Sec --&gt;|VQ_HOM| HOM[CHOM — HOM.cpp]
+    Sec --&gt;|VQ_SSA| SSA[r_ssaDISCARD/LOD_A/B]
+    Trv --&gt;|r_sectors / r_frustums| DSG[dsgraph: add_Geometry + q_frustum]</code></pre>
+<h2 id="3-api">3. Публичный API<a class="headerlink" href="#3-api" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Класс/функция</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CSector</code> (<code>IRender_Sector</code>)</td>
+<td>Сектор: <code>root()</code> (dxRender_Visual всей геометрии), <code>traverse(CFrustum&amp;, _scissor&amp;)</code>, <code>load(IReader&amp;)</code>; <code>r_frustums</code>/<code>r_scissors</code>/<code>r_scissor_merged</code>/<code>r_marker</code></td>
+</tr>
+<tr>
+<td><code>CPortal</code> (<code>IRender_Portal</code>)</td>
+<td>Портал: <code>Setup(V, vcnt, face, back)</code>, <code>getPoly()</code>, <code>Front()/Back()/getSector(from)/getSectorFacing(V)/getSectorBack(V)</code>, <code>distance(V)</code>, <code>P</code> (плоскость), <code>S</code> (сфера), <code>bDualRender</code></td>
+</tr>
+<tr>
+<td><code>_scissor</code></td>
+<td><code>Fbox2</code> + <code>depth</code> (viewport-прямоугольник секции в 0..1)</td>
+</tr>
+<tr>
+<td><code>CPortalTraverser</code> (глобал <code>PortalTraverser</code>)</td>
+<td><code>traverse(start, F, vBase, mXFORM, options)</code>, <code>fade_portal(p, ssa)</code>, <code>fade_render()</code>, <code>initialize()/destroy()</code> (fade-шейдер); флаги <code>VQ_HOM/VQ_SSA/VQ_SCISSOR/VQ_FADE</code></td>
+</tr>
+<tr>
+<td><code>CRender::detectSector(P)</code> / <code>detectSector(P, dir)</code></td>
+<td>Определение сектора по позиции (ray-запрос в порталы + статику)</td>
+</tr>
+<tr>
+<td><code>CRender::translateSector(IRender_Sector*)</code></td>
+<td>Идентификатор сектора в <code>Sectors</code> (для <code>OnSectorChanged</code>)</td>
+</tr>
+<tr>
+<td><code>r_pixel_calculator</code></td>
+<td><strong>D3D9-only</strong> (не компилируется в R4): расчёт SSA-карты визуала</td>
+</tr>
+<tr>
+<td><code>QueryHelper</code></td>
+<td><code>CreateQuery/GetData/BeginQuery/EndQuery</code> (обёртки DX11/10/9)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4">4. Внутреннее устройство<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<h3 id="cportal-srclayersxrrenderr__sectorhcpp"><code>CPortal</code> (<code>src/Layers/xrRender/r__sector.h/.cpp</code>)<a class="headerlink" href="#cportal-srclayersxrrenderr__sectorhcpp" title="Permanent link">&para;</a></h3>
+<p>Поля: <code>svector&lt;Fvector,8&gt; poly</code> (полигон портала, ≤8 вершин), <code>CSector* pFace/pBack</code>, <code>Fplane P</code> (плоскость), <code>Fsphere S</code>, <code>u32 marker</code> (маркер кадра traversal), <code>BOOL bDualRender</code> (двусторонний рендер, форсится при близости камеры).</p>
+<p><code>Setup(V, vcnt, face, back)</code>:
+1. Сфера из bounding box полигона → <code>S.P</code>, <code>S.R</code>.
+2. <code>poly.assign(V, vcnt)</code>, <code>marker = 0xffffffff</code>.
+3. Нормаль: усреднение нормалей триангуляций <code>(poly[0], poly[i-1], poly[i])</code> для <code>i=2..vcnt-1</code> (<code>mknormal_non_normalized</code> + normalize); <code>_cnt == 0</code> → <code>R_ASSERT2("Invalid portal detected")</code>. <code>P.build(poly[0], N)</code>.</p>
+<p><code>getSectorFacing(V)</code> — сектор, «смотрящий» на <code>V</code> (<code>P.classify(V) &gt; 0</code> → face); <code>getSectorBack(V)</code> — противоположный. <code>distance(V)</code> = <code>|P.classify(V)|</code>.</p>
+<p>DEBUG: <code>OnRender</code> (<code>rsOcclusionDraw</code>) — рисует портал (fan + wire) через <code>m_SelectionShader</code>/<code>m_WireShader</code> с <code>rmNear()</code> (viewport zmin=0.02).</p>
+<h3 id="csector-r__sectorcpp"><code>CSector</code> (<code>r__sector.cpp</code>)<a class="headerlink" href="#csector-r__sectorcpp" title="Permanent link">&para;</a></h3>
+<p>Поля: <code>dxRender_Visual* m_root</code>, <code>xr_vector&lt;CPortal*&gt; m_portals</code>, <code>xr_vector&lt;CFrustum&gt; r_frustums</code>, <code>xr_vector&lt;_scissor&gt; r_scissors</code>, <code>_scissor r_scissor_merged</code>, <code>u32 r_marker</code>.</p>
+<p><strong><code>traverse(CFrustum&amp; F, _scissor&amp; R_scissor)</code></strong> — рекурсивный обход:</p>
+<ol>
+<li><strong>Регистрация</strong>: если <code>r_marker != PortalTraverser.i_marker</code> — новый сектор для этого кадра: <code>r_marker = i_marker</code>, <code>push_back(this)</code> в <code>PortalTraverser.r_sectors</code>, <code>r_frustums/r_scissors.clear()</code>. Затем <code>r_frustums.push_back(F)</code>, <code>r_scissors.push_back(R_scissor)</code>.</li>
+<li><strong>По каждому порталу</strong> <code>m_portals[I]</code>:</li>
+<li><code>marker == i_marker</code> → уже посещён, skip.</li>
+<li>Выбор целевого сектора: <code>bDualRender</code> → <code>getSector(this)</code> (противоположный текущему); иначе → <code>getSectorBack(i_vBase)</code>, и skip, если <code>pSector == this</code> или <code>== i_start</code>.</li>
+<li><strong>Early-out сфера</strong>: <code>!F.testSphere_dirty(PORTAL-&gt;S.P, PORTAL-&gt;S.R)</code> → skip.</li>
+<li><strong>SSA</strong> (<code>VQ_SSA</code>): <code>ssa = R²/d² · |P.n·dir|</code>; <code>ssa &lt; r_ssaDISCARD</code> → skip. При <code>VQ_FADE</code>: <code>ssa &lt; r_ssaLOD_A</code> → <code>fade_portal(PORTAL, ssa)</code>; <code>ssa &lt; r_ssaLOD_B</code> → skip (не рекурсируем, рисуем fade-заглушку).</li>
+<li><strong>Frustum clip</strong>: <code>S.assign(poly)</code>, <code>F.ClipPoly(S, D)</code> → <code>0 == P</code> → skip.</li>
+<li><strong>Scissor + HOM</strong> (<code>VQ_SCISSOR &amp;&amp; !bDualRender</code>): проекция вершин клипнутого полигона через <code>i_mXFORM_01</code> (combined × viewport-матрица) → <code>bb</code> (min/max x/y) + <code>depth</code> (min z):<ul>
+<li><code>depth &lt; EPS</code> (портал пересекает near-плоскость) → <code>scissor = R_scissor</code> + HOM-test медленным алгоритмом <code>HOM.visible(*P)</code> (3D-полигон).</li>
+<li>иначе → пересечение <code>bb</code> с <code>R_scissor</code> (scissor = max(min)/min(max) по осям, <code>depth</code> сохраняется); пустой box → skip; HOM-test быстрым алгоритмом <code>HOM.visible(scissor, depth)</code> (2D-прямоугольник).</li>
+</ul>
+</li>
+<li>Иначе (без <code>VQ_SCISSOR</code>): <code>scissor = R_scissor</code> + HOM-test медленный.</li>
+<li><strong>Рекурсия</strong>: <code>Clip.CreateFromPortal(P, PORTAL-&gt;P.n, i_vBase, i_mXFORM)</code> — новый frustum, обрезанный полигоном портала; <code>PORTAL-&gt;marker = i_marker</code>, <code>bDualRender = FALSE</code> (сбрасывается после первого обхода); <code>pSector-&gt;traverse(Clip, scissor)</code>.</li>
+</ol>
+<p><strong><code>load(IReader&amp; fs)</code></strong>: чанк <code>fsP_Portals</code> — список <code>u16</code> ID порталов (<code>getPortal(ID)</code>); чанк <code>fsP_Root</code> (<code>size == 4</code>) — <code>u32</code> ID визуала → <code>m_root</code> (<code>getVisual</code>). Для <code>g_dedicated_server</code> — <code>m_root = 0</code>.</p>
+<h3 id="cportaltraverser-srclayersxrrenderr__sector_traversalcpp"><code>CPortalTraverser</code> (<code>src/Layers/xrRender/r__sector_traversal.cpp</code>)<a class="headerlink" href="#cportaltraverser-srclayersxrrenderr__sector_traversalcpp" title="Permanent link">&para;</a></h3>
+<p>Глобал <code>PortalTraverser</code> (<code>i_marker</code> init <code>0xffffffff</code>).</p>
+<p><strong><code>traverse(start, F, vBase, mXFORM, options)</code></strong>:
+1. Строит <code>m_viewport_01</code> (NDC → 0..1: <code>x' = 0.5x+0.5</code>, <code>y' = -0.5y+0.5</code>, z pass-through) и <code>i_mXFORM_01 = m_viewport_01 * mXFORM</code>.
+2. <code>VQ_FADE</code> → <code>f_portals.clear()</code> + <code>reserve(16)</code>.
+3. <code>i_marker++</code>, сохраняет <code>i_options/i_vBase/i_mXFORM</code>, <code>r_sectors.clear()</code>.
+4. <code>i_start-&gt;traverse(F, scissor(0,0,1,1, depth=0))</code>.
+5. <code>VQ_SCISSOR</code> → для каждого <code>r_sectors[s]</code>: <code>r_scissor_merged</code> = merge всех <code>r_scissors[it]</code> (min depth).</p>
+<p><strong><code>fade_render()</code></strong> (fade-заглушки порталов вместо рекурсии):
+1. <code>f_portals</code> сортируется back-to-front (<code>psort_pred</code> — по <code>distance_to_sqr</code> от <code>i_vBase</code>, descending).
+2. Вершины: для каждого портала <code>poly.size()-2</code> треугольника (fan из <code>poly[0]</code>); один <code>FVF::L</code>-вертекс на вершину (позиция + <code>alpha</code>-цвет).
+3. <code>alpha</code> портала: <code>ssaScale = (ssa - r_ssaLOD_B) / (r_ssaLOD_A - r_ssaLOD_B)</code>, <code>iA = (1 - ssaScale) * 255</code> (clamp 0..255); цвет = ambient (<code>Environment().CurrentEnv-&gt;ambient</code>) с этим альфой.
+4. <code>RCache</code>: world=identity, <code>set_Shader(f_shader)</code> ("portal"), <code>set_Geometry(f_geom)</code>, <code>CULL_NONE</code>, <code>Render(TRIANGLELIST)</code>, restore <code>CULL_CCW</code>. <code>f_portals.clear()</code>.</p>
+<p><code>initialize()/destroy()</code> — создание/уничтожение <code>f_shader</code> ("portal") и <code>f_geom</code> (FVF::L в <code>RCache.Vertex</code>). В R4 вызываются из <code>FStaticRender</code> (R1, не активен) — в R4-пайплайне fade-путь не используется (<code>traverse(..., 0)</code> — options 0).</p>
+<h3 id="crendercalculate-srclayersxrrenderpc_r4r2_r_calculatecpp-r4"><code>CRender::Calculate</code> — часть секторов (<code>src/Layers/xrRenderPC_R4/r2_R_calculate.cpp</code>, историческое ядро в R4)<a class="headerlink" href="#crendercalculate-srclayersxrrenderpc_r4r2_r_calculatecpp-r4" title="Permanent link">&para;</a></h3>
+<p>До traversal'а в каждом кадре:</p>
+<ol>
+<li><strong>SSA-пороги</strong>: <code>g_fSCREEN = W*H * (90/FOV)² * (EPS_S + ps_r__LOD)</code>; <code>r_ssaDISCARD = ps_r__ssaDISCARD²/g_fSCREEN</code>, <code>r_ssaDONTSORT</code>, <code>r_ssaLOD_A = ps_r2_ssaLOD_A²/(3·g_fSCREEN)</code>, <code>r_ssaLOD_B = ps_r2_ssaLOD_B²/(3·g_fSCREEN)</code>, <code>r_ssaGLOD_start/end</code>, <code>r_ssaHZBvsTEX</code>, <code>r_dtex_range</code>.</li>
+<li><strong>Сектор камеры</strong>: при смещении камеры (<code>!vLastCameraPos.similar</code>) — <code>detectSector(Device.vCameraPosition)</code>; <code>pSector != pLastSector</code> → <code>g_pGamePersistent-&gt;OnSectorChanged(translateSector(pSector))</code> (Lua-хук смены сектора).</li>
+<li><strong>DualRender-принудитель</strong>: box-query в <code>rmPortals</code> с радиусом <code>eps = VIEWPORT_NEAR + EPS_L</code> вокруг камеры → для всех попавшихся порталов <code>bDualRender = TRUE</code> (порталы, в которые камера «залипает», рендерятся с обеих сторон).</li>
+<li><code>Lights.Update()</code> + сбор светов в радиусе камеры (<code>q_sphere</code> <code>STYPE_LIGHTSOURCE</code>).</li>
+</ol>
+<h3 id="detectsector-translatesector-srclayersxrrenderpc_r4r2_sector_detectcpp"><code>detectSector</code> / <code>translateSector</code> (<code>src/Layers/xrRenderPC_R4/r2_sector_detect.cpp</code>)<a class="headerlink" href="#detectsector-translatesector-srclayersxrrenderpc_r4r2_sector_detectcpp" title="Permanent link">&para;</a></h3>
+<p><strong><code>translateSector(IRender_Sector*)</code></strong> — линейный поиск в <code>Sectors</code> → индекс; не найден → <code>FATAL("Sector was not found!")</code>.</p>
+<p><strong><code>detectSector(P)</code></strong> — ray вниз <code>(0,-1,0)</code> из <code>P</code>, при miss — вверх <code>(0,1,0)</code>; <code>OPT_ONLYNEAREST</code>, range 500.</p>
+<p><strong><code>detectSector(P, dir)</code></strong> — два ray-модели:
+1. <strong>Порталы</strong>: <code>Sectors_xrc.ray_query(rmPortals, P, dir, range1=500)</code> → <code>id1/range1</code> (tri из <code>rmPortals</code>, <code>dummy</code> = индекс портала).
+2. <strong>Статика</strong>: <code>Sectors_xrc.ray_query(ObjectSpace.GetStaticModel(), P, dir, range2)</code> → <code>id2/range2</code>.
+3. Выбор: ближайший (<code>range1 &lt;= range2 + EPS</code> → порталы). Портал → <code>Portals[tri-&gt;dummy]-&gt;getSectorFacing(P)</code>; статика → <code>getSector(tri-&gt;sector)</code>.</p>
+<p><code>Sectors_xrc</code> — <code>xrXRC</code> (ray/box-query контейнер), <code>rmPortals</code> — <code>CDB::MODEL*</code> (треугольники порталов).</p>
+<h3 id="chom-occrasterizer-hom-culling-vq_hom"><code>CHOM</code> / <code>occRasterizer</code> — HOM-culling (используется <code>VQ_HOM</code>)<a class="headerlink" href="#chom-occrasterizer-hom-culling-vq_hom" title="Permanent link">&para;</a></h3>
+<p><code>CHOM</code> (<code>HOM.h/.cpp</code>): «home-oriented» occlusion — оффскрин-рендер сцены в мип-пирамиду (64×64, 4 уровня), с которой делаются 2D/3D-видимость-тесты:
+- <code>visible(vis_data&amp;)</code>, <code>visible(Fbox3&amp;)</code>, <code>visible(sPoly&amp;)</code> — медленный 3D-алгоритм (полигон/box → projection → rasterize).
+- <code>visible(Fbox2&amp; B, float depth)</code> — быстрый 2D-алгоритм (прямоугольник в viewport-пространстве 0..1 + глубина).
+- <code>MT_RENDER()</code>/<code>MT_SYNC()</code> — параллельный поток (рендер HOM-буфера асинхронно; <code>MT_SYNC</code> — перед использованием; skip в main menu).
+- <code>occlude(Fbox2&amp;)</code> — <strong>пустая заглушка</strong>.</p>
+<p><code>occRasterizer</code> (<code>occRasterizer.h/.cpp</code>, <code>occRasterizer_core.cpp</code>): CPU-rasterizer для HOM-пирамиды — <code>occTri</code> (треугольники с <code>adjacent[3]</code>), квантование глубины <code>occQ_s32/s16</code> ([-2..2] в s32/s16), <code>rasterize</code>/<code>test</code> (Hiz-style: 4 уровня 64/32/16/8), <code>propagade</code> (mip-пропагация). Глобал <code>Raster</code>.</p>
+<h3 id="r_pixel_calculator-r__pixel_calculatorcpp-d3d9-only-r4"><code>r_pixel_calculator</code> (<code>r__pixel_calculator.cpp</code>) — <strong>D3D9-only, в R4 не компилируется</strong><a class="headerlink" href="#r_pixel_calculator-r__pixel_calculatorcpp-d3d9-only-r4" title="Permanent link">&para;</a></h3>
+<p><code>#if !defined(USE_DX10) &amp;&amp; !defined(USE_DX11)</code>: оффскрин-рендер визуала в 6 кубических направлений (<code>cmNorm</code>/<code>cmDir</code>), occlusion query на каждый face → <code>r_aabb_ssa</code> (6 × <code>u8</code> SSA-значений). В R4 мёртв.</p>
+<h3 id="queryhelper-queryhelperh"><code>QueryHelper</code> (<code>QueryHelper.h</code>)<a class="headerlink" href="#queryhelper-queryhelperh" title="Permanent link">&para;</a></h3>
+<p>Инлайн-обёртки GPU-запросов (используются <code>R_occlusion</code> — <a href="../occlusion/">occlusion</a>):
+- DX11: <code>HW.pDevice-&gt;CreateQuery(&amp;desc, ppQuery)</code>, <code>HW.pContext-&gt;GetData(pQuery, pData, DataSize, 0)</code>, <code>Begin/End</code> через <code>HW.pContext-&gt;Begin/End</code>.
+- DX10: то же через <code>pQuery-&gt;Begin/End/GetData</code> (context-less).
+- DX9: <code>Issue(D3DISSUE_BEGIN/END)</code>, <code>GetData(D3DGETDATA_FLUSH)</code>.
+- Только <code>D3DQUERYTYPE_OCCLUSION</code> → <code>D3D_QUERY_OCCLUSION</code> (иначе <code>VERIFY(!"No default.")</code>).</p>
+<h2 id="5">5. Взаимодействие<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Вызывает</strong>: <code>CHOM::visible</code> (VQ_HOM), <code>RCache</code> (fade-рендер), <code>Environment().CurrentEnv-&gt;ambient</code> (fade-цвет), <code>CDB::MODEL</code> (<code>rmPortals</code>), <code>ObjectSpace.GetStaticModel()</code> (detectSector), <code>xrXRC</code> (<code>Sectors_xrc</code>), <code>CGamePersistent::OnSectorChanged</code>.</li>
+<li><strong>Вызывается из</strong>: <code>CRender::Calculate</code> (r2_R_calculate — detectSector, SSA-пороги, dual-render), <code>CRender_dsgraph::render</code> (r__dsgraph_render — <code>PortalTraverser.traverse(..., 0)</code> + <code>r_sectors</code> → <code>add_Geometry</code>), <code>FStaticRender</code> (R1, не активен), <code>CSector::load</code> ← <code>CRender::level_Load</code>.</li>
+</ul>
+<h2 id="6">6. Потоки данных/управления<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Calc as CRender::Calculate
+    participant Det as detectSector (r2_sector_detect)
+    participant R as CRender_dsgraph::render
+    participant Trv as PortalTraverser
+    participant Sec as CSector::traverse
+    participant HOM as CHOM
+    participant DSG as dsgraph (add_Geometry)
+    Calc-&gt;&gt;Det: detectSector(vCameraPosition)
+    Det--&gt;&gt;Calc: pLastSector (+ OnSectorChanged)
+    Calc-&gt;&gt;Calc: box_query rmPortals → bDualRender
+    R-&gt;&gt;Trv: traverse(_sector, frustum, cop, mCombined, 0)
+    loop пока не все порталы посещены
+        Trv-&gt;&gt;Sec: recurse (Clip frustum, scissor)
+        Sec-&gt;&gt;Sec: testSphere → SSA → ClipPoly → scissor∩HOM
+        Sec-&gt;&gt;HOM: visible(sPoly / Fbox2+depth)
+        HOM--&gt;&gt;Sec: visible?
+        Sec-&gt;&gt;Sec: PORTAL-&gt;marker = i_marker; recurse
+    end
+    Trv--&gt;&gt;R: r_sectors[] + r_frustums[] per sector
+    R-&gt;&gt;DSG: per sector/frustum: set_Frustum + add_Geometry(root)
+    R-&gt;&gt;DSG: q_frustum(STYPE_RENDERABLE) → renderable_Render (динамические, только в видимых секторах)</code></pre>
+<h2 id="7">7. Конфигурация<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>ps_r__ssaDISCARD</code>, <code>ps_r2_ssaLOD_A</code>, <code>ps_r2_ssaLOD_B</code> — SSA-пороги (пересчитываются в <code>Calculate</code> → <code>r_ssa*</code>).</li>
+<li><code>ps_r2_df_parallax_range</code> — <code>r_dtex_range</code>.</li>
+<li><code>ps_r__GLOD_ssa_start/end</code>, <code>ps_r__ssaHZBvsTEX</code> — LOD-пороги.</li>
+<li><code>rsOcclusionDraw</code> — DEBUG-отрисовка порталов.</li>
+<li><code>ps_r2_wait_sleep</code> — sleep-интервал в <code>R_occlusion::occq_get</code> (см. <a href="../occlusion/">occlusion</a>).</li>
+</ul>
+<h2 id="8">8. Известные ограничения/дебаг<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>CPortalTraverser::fade_render</code>/<code>initialize</code>/<code>destroy</code> — в R4 <strong>не используются</strong> (<code>traverse</code> вызывается с <code>options = 0</code>); fade-путь жив только в R1 (<code>FStaticRender</code>).</li>
+<li><code>CSector::traverse</code> — рекурсивный без явного ограничения глубины (законченность — по <code>marker</code> порталов).</li>
+<li><code>detectSector</code> — <code>FATAL</code> при неудачном <code>translateSector</code>; ray-запрос с range 500 — магическое число.</li>
+<li><code>rmPortals</code>/<code>Sectors_xrc</code> — модель порталов как <code>CDB::MODEL</code> (tri с <code>dummy</code>-индексом портала) — legacy-репрезентация.</li>
+<li><code>r_pixel_calculator</code> — D3D9-only, в R4 не компилируется (не описывать как активный).</li>
+<li><code>CHOM::occlude</code> — пустая заглушка.</li>
+<li>DEBUG: <code>CPortal::OnRender</code> (порталы), <code>CPortalTraverser::dbg_draw</code> (scissor-прямоугольники), <code>CHOM::stats</code> (счётчики <code>tris_in_frame_visible</code>).</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  К началу
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Нижний колонтитул" >
+        
+          
+          <a href="../constants/" class="md-footer__link md-footer__link--prev" aria-label="Назад: Шейдерные константы">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Назад
+              </span>
+              <div class="md-ellipsis">
+                Шейдерные константы
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../occlusion/" class="md-footer__link md-footer__link--next" aria-label="Вперед: Occlusion">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Вперед
+              </span>
+              <div class="md-ellipsis">
+                Occlusion
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.top", "navigation.footer", "navigation.tabs", "content.code.copy", "search.highlight", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
