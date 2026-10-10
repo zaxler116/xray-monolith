@@ -131,6 +131,8 @@ nav:
           - Обзор: modules/xr-particles/index.md
           - PAPI и ядро симуляции: modules/xr-particles/core.md
           - "Actions: ядро и домены": modules/xr-particles/actions.md
+          - "Actions: 29 подклассов": modules/xr-particles/actions-actions.md
+          - "Actions: IO": modules/xr-particles/actions-io.md
       - xrSound: modules/xr-sound.md
       - xrGame:
           - Обзор: modules/game/index.md
