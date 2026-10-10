@@ -3742,7 +3742,7 @@
 </tr>
 <tr>
 <td><a href="r4-deferred/">R4: deferred / накопление</a></td>
-<td><em>(порцион 13)</em> — <code>r4_rendertarget</code>, <code>r4_rendertarget_accum_*</code>, <code>uber_deffer</code>, <code>blender_deffer_*</code></td>
+<td><code>CRenderTarget</code> (RT-карта кадра: Position/Color/Accumulator/MSAADepth/SSFX-RT, условное создание), <code>phase_scene_*</code>/<code>phase_accumulator</code>/<code>phase_vol_accumulator</code> (clear-once, stencil), light-marker (5..255, MSAA 0x80, overflow→stencil-reset), <code>accum_direct/_cascade/_f/_lum/_volumetric</code> (sun masking+lighting, CSC cuboid, sunfilter, TSM-lum, sunshafts), <code>accum_point/spot/reflected/volumetric</code> (Carmack-reverse masking, blend-copy, GI 0x01/0x81, SSS fade), <code>draw_volume</code> (spheres/cones/omnipart), <code>enable_scissor</code>/<code>u_DBT_*</code> (no-op), <code>mark_msaa_edges</code>, <code>create_minmax_SM</code>, <code>uber_deffer</code>/<code>uber_shadow</code>, <code>CBlender_deffer_aref/flat/model</code> (forward vs deferred, ATOC, HUD)</td>
 </tr>
 <tr>
 <td><a href="r4-postprocess/">R4: post-process</a></td>
@@ -3885,7 +3885,7 @@
 <td>13</td>
 <td>R4: deferred / накопление</td>
 <td><code>r4-deferred.md</code></td>
-<td>⬜</td>
+<td>✅ готово</td>
 </tr>
 <tr>
 <td>14</td>
