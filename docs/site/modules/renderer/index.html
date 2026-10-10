@@ -3718,11 +3718,11 @@
 </tr>
 <tr>
 <td><a href="resources/">Ресурсы и модели</a></td>
-<td><em>(порцион 7)</em> — <code>ResourceManager</code>, <code>ModelPool</code>, <code>Texture</code>/<code>ETextureParams</code>, <code>ColorMapManager</code>, <code>PSLibrary</code>, <code>tga</code></td>
+<td><code>ResourceManager</code> (core/Loader/Reset/Scripting + DX10-версии), <code>ModelPool</code>, <code>CTexture</code>/<code>texture_load</code>, <code>STextureParams</code>/<code>CTextureDescrMngr</code> (.thm), <code>ColorMapManager</code>, <code>CPSLibrary</code>, <code>tga</code>, <code>R_Backend_Runtime</code> (<code>CBackend</code>/<code>R_xforms</code>), <code>dx10Texture/BufferUtils</code></td>
 </tr>
 <tr>
 <td><a href="visuals/">Визуалы</a></td>
-<td><em>(порцион 8)</em> — <code>FVisual</code>, <code>FBasicVisual</code>, <code>FHierrarhyVisual</code>, <code>FLOD</code>, <code>FProgressive</code>, <code>FSkinned</code>, <code>FTreeVisual</code>, <code>xrStripify</code>, <code>NvTriStrip</code>, <code>VertexCache</code></td>
+<td><code>dxRender_Visual</code> (OGF-load, shader/texture, vis), <code>Fvisual</code> (verts/indices/<code>m_fast</code>), <code>FHierrarhyVisual</code> (children), <code>FProgressive</code> (slide-window LOD), <code>FTreeVisual_ST/PM</code> (wind/wave consts), <code>FLOD</code> (8-facet imposter), <code>CSkeletonX_ST/PM</code> (skin 1W..4W), <code>xrStripify</code>/<code>NvTriStrip</code>/<code>VertexCache</code></td>
 </tr>
 <tr>
 <td><a href="kinematics/">Скелеты и анимация</a></td>
@@ -3849,13 +3849,13 @@
 <td>7</td>
 <td>Ресурсы и модели</td>
 <td><code>resources.md</code></td>
-<td>⬜</td>
+<td>✅ готово</td>
 </tr>
 <tr>
 <td>8</td>
 <td>Визуалы</td>
 <td><code>visuals.md</code></td>
-<td>⬜</td>
+<td>✅ готово</td>
 </tr>
 <tr>
 <td>9</td>
