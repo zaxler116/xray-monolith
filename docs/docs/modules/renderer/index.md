@@ -24,7 +24,7 @@
 | [Пайплайн: секторы и traversal](sector.md)        | _(порцион 3)_ — `r__sector`, `r__sector_traversal`, `r2_sector_detect`, `r__pixel_calculator`, `QueryHelper`                                                                                             |
 | [Occlusion](occlusion.md)                         | _(порцион 4)_ — `r__occlusion`, `occRasterizer`, `light_vis`                                                                                                                                             |
 | [Динамическая сцена (dsgraph)](dsgraph.md)        | _(порцион 5)_ — `r__dsgraph_structure/build/render/render_lods`, `R_Backend_LOD`                                                                                                                         |
-| [VSM / SMAP](vsm-smap.md)                         | _(порцион 6)_ — `R_Backend_xform`, `r_sun_cascades`, `light_smapvis`, `SMAP_Allocator`, `r2_R_sun`, `r4_R_sun_support`                                                                                   |
+| [VSM / SMAP](vsm-smap.md)                         | `R_Backend_xform`, `r_sun_cascades`, `light_smapvis`, `SMAP_Allocator`, `r2_R_sun` (legacy), `r4_R_sun_support` (`FixedConvexVolume`/`DumbConvexVolume`), `R_Backend_hemi`                               |
 | [Ресурсы и модели](resources.md)                  | _(порцион 7)_ — `ResourceManager`, `ModelPool`, `Texture`/`ETextureParams`, `ColorMapManager`, `PSLibrary`, `tga`                                                                                        |
 | [Визуалы](visuals.md)                             | _(порцион 8)_ — `FVisual`, `FBasicVisual`, `FHierrarhyVisual`, `FLOD`, `FProgressive`, `FSkinned`, `FTreeVisual`, `xrStripify`, `NvTriStrip`, `VertexCache`                                              |
 | [Скелеты и анимация](kinematics.md)               | _(порцион 9)_ — `SkeletonX`, `SkeletonRigid`, `SkeletonAnimated`, `SkeletonCustom`, `Animation`                                                                                                          |
@@ -79,7 +79,7 @@ graph TD
 | 3   | Пайплайн: секторы и traversal  | `sector.md`                        | ✅ готово |
 | 4   | Occlusion                      | `occlusion.md`                     | ✅ готово |
 | 5   | Динамическая сцена (dsgraph)   | `dsgraph.md`                       | ✅ готово |
-| 6   | VSM / SMAP                     | `vsm-smap.md`                      | ⬜        |
+| 6   | VSM / SMAP                     | `vsm-smap.md`                      | ✅ готово |
 | 7   | Ресурсы и модели               | `resources.md`                     | ⬜        |
 | 8   | Визуалы                        | `visuals.md`                       | ⬜        |
 | 9   | Скелеты и анимация             | `kinematics.md`                    | ⬜        |
