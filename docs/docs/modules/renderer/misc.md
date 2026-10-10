@@ -4,20 +4,20 @@
 
 ## Ответственность
 
-| Класс / файл | Роль |
-| --- | --- |
-| `dxStatsRender` (`IStatsRender`) | Вывод статистики `RCache.stat` в консоль |
-| `dxStatGraphRender` (`IStatGraphRender`) | Отрисовка `CStatGraph` (бары/кривые/markers) |
-| `stats_manager` | Учёт GPU-памяти буферов/RT |
-| `dxEnvironmentRender` + env-descriptors | Skybox, облака, mixer-lerp описаний окружения |
-| `dxLensFlareRender` / `dxFlareRender` | Отрисовка лins-фляров `CLensFlare` |
-| `dxThunderboltRender` / `dxThunderboltDescRender` | Молнии (detail-model + градиенты) |
-| `dxDebugRender` / `RDebugRender` | Пакетная отрисовка debug-линий |
-| `dxApplicationRender` | Экран загрузки (progress, фон, логотип уровня) |
-| `dxUISequenceVideoItem` | Обёртка `CTexture` для UI-видео |
-| `CGIFAnimationPlayer` | GIF-анимации для UI |
-| `dxObjectSpaceRender` (**DEBUG only**) | Wireframe-отладка collision-boxes |
-| `3DFluid` (`xrRenderDX10/3DFluid/`) | Воксельная симуляция дыма/огня (активная) |
+| Класс / файл                                      | Роль                                           |
+| ------------------------------------------------- | ---------------------------------------------- |
+| `dxStatsRender` (`IStatsRender`)                  | Вывод статистики `RCache.stat` в консоль       |
+| `dxStatGraphRender` (`IStatGraphRender`)          | Отрисовка `CStatGraph` (бары/кривые/markers)   |
+| `stats_manager`                                   | Учёт GPU-памяти буферов/RT                     |
+| `dxEnvironmentRender` + env-descriptors           | Skybox, облака, mixer-lerp описаний окружения  |
+| `dxLensFlareRender` / `dxFlareRender`             | Отрисовка лins-фляров `CLensFlare`             |
+| `dxThunderboltRender` / `dxThunderboltDescRender` | Молнии (detail-model + градиенты)              |
+| `dxDebugRender` / `RDebugRender`                  | Пакетная отрисовка debug-линий                 |
+| `dxApplicationRender`                             | Экран загрузки (progress, фон, логотип уровня) |
+| `dxUISequenceVideoItem`                           | Обёртка `CTexture` для UI-видео                |
+| `CGIFAnimationPlayer`                             | GIF-анимации для UI                            |
+| `dxObjectSpaceRender` (**DEBUG only**)            | Wireframe-отладка collision-boxes              |
+| `3DFluid` (`xrRenderDX10/3DFluid/`)               | Воксельная симуляция дыма/огня (активная)      |
 
 ## Место в архитектуре
 
@@ -102,6 +102,7 @@ void NextSceneMode();             // DX10/11: no-op
 `RCache.OnFrameEnd()` → `RenderBack` (задник-квад, рамка-linestrip, сетка) → подсчёт элементов в два прохода: `stBar` ×4 вертекса (TRIANGLELIST), `stCurve` ×2 / `stBarLine` ×4 (LINELIST; `stPoint` = 0, закомментирован), один lock/fill/unlock/draw per class → markers (`stVert`/`stHor`, mapping `elem_offs`/`elem_factor`).
 
 Quirks:
+
 - `RenderBack`: `Num_H_LinesDwn = (owner.grid.y < PNum_H_LinesUp) ? owner.grid.y : PNum_H_LinesDwn` — **копи-паста**: условие сравнивается с `PNum_H_LinesUp`, а не `PNum_H_LinesDwn`.
 - Циклы `RenderLines`/`RenderBarLines`/`RenderMarkers`: `it != pelements->end() + 1` — **out-of-bounds-сравнение итераторов** (работает только потому, что цикл останавливается на `end()` раньше).
 - `RenderBarLines` рисует 4 вертекса на сегмент (T-образный штрих).
@@ -142,7 +143,7 @@ DX10/11: `rmNormal()` + `set_RT(pBaseRT)` + `set_ZB(pBaseZB)` + `ClearRenderTarg
 
 Файлы: `src/Layers/xrRenderDX10/3DFluid/` — `dx103DFluid{Manager,Data,Volume,Renderer,Grid,Blenders,Emitters,Obstacles}`.
 
-- **Жизненный цикл**: `CRender::create` → `FluidManager.Initialize(70,70,70)` + `SetScreenSize` ([r4.cpp](../../../src/Layers/xrRenderPC_R4/r4.cpp)); `CRender::destroy` → `FluidManager.Destroy()`. `CRender::Load3DFluid` ([r4_loader](../../../src/Layers/xrRenderPC_R4/r4_loader.cpp)) — gate `RImplementation.o.volumetricfog`, читает `$level$level.fog_vol` (version 3), создаёт `dx103DFluidVolume` на запись, вешает в `FHierrarhyVisual::children` сектора.
+- **Жизненный цикл**: `CRender::create` → `FluidManager.Initialize(70,70,70)` + `SetScreenSize` (`r4.cpp`); `CRender::destroy` → `FluidManager.Destroy()`. `CRender::Load3DFluid` (`r4_loader.cpp`) — gate `RImplementation.o.volumetricfog`, читает `$level$level.fog_vol` (version 3), создаёт `dx103DFluidVolume` на запись, вешает в `FHierrarhyVisual::children` сектора.
 - **`dx103DFluidVolume::Render`**: строит debug-wire-box (24 LIT-верт) — **но вызовы `RCache.Render` закомментированы** (box никогда не рисуется); затем `fTimeStep = 2.0f` **HARDCODED** (реальная строка `Device.fTimeDelta*30*2.0f` закомментирована) → `FluidManager.Update(m_FluidData, fTimeStep)` + `FluidManager.RenderFluid(m_FluidData)` — оба активны. `Load`: OGF-ветка `dxRender_Visual::Load` закомментирована; грузит version-3 данные; stub-шейдер `("fluid3d_stub","water\\water_ryaska1")` для сортировки.
 - **`FluidManager::Update`**: `PIX_EVENT(simulate_fluid)`; `AttachFluidData` (per-volume private RT `VP_VELOCITY0/VP_PRESSURE/VP_COLOR` подсоединяются к слотам `RENDER_TARGET_VELOCITY0+`); viewport = размер среза 3D-текстуры; `RCache.set_ZB(0)`; `UpdateObstacles`; хардкод confinement/decay (BFECC: fire 0.03/0.9995, fog 0.06/0.994; без BFECC: 0.12/0.9995), затем **переопределение из `VolumeSettings`**; `AdvectColorBFECC`/`AdvectColor` → `AdvectVelocity(gravity)` → `ApplyVorticityConfinement` → `ApplyExternalForces` → `ComputeVelocityDivergence` → `ComputePressure` (Jacobi) → `ProjectVelocity`; `DetachAndSwapFluidData` (swap COLOR-RT с глобальным); восстановление RT (msaa vs non-msaa) + `rmNormal()`.
 - **`RenderFluid`**: bind `VP_COLOR` → `RENDER_TARGET_COLOR_IN`, `m_pRenderer->Draw` (CompRayData Back/Front → QuadDownSample → EdgeDetect → RaycastFog/Copy, RaycastFire/Copy), восстановление RT.
