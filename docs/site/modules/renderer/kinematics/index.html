@@ -2406,6 +2406,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Скелеты и анимация
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -2422,6 +2440,174 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Ответственность
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Место в архитектуре
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Публичный API
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Внутреннее устройство
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Внутреннее устройство">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ckinematics-skeletoncustomhcpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CKinematics — кости и пересчёт (SkeletonCustom.h/.cpp)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cskeletonwallmark-wallmarks-skeletoncustomcpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CSkeletonWallmark + wallmarks (SkeletonCustom.cpp)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ckinematicsanimated-skeletonanimatedhcpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CKinematicsAnimated — анимация и блендинг (SkeletonAnimated.h/.cpp)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cskeletonx-skeletonxhcpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CSkeletonX — скиннинг-рендер (SkeletonX.h/.cpp)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vertrender-pack-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vertRender (pack 2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Взаимодействие
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Потоки данных/управления
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Конфигурация
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Известные ограничения/дебаг
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -3515,6 +3701,163 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Ответственность
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Место в архитектуре
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Публичный API
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Внутреннее устройство
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Внутреннее устройство">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ckinematics-skeletoncustomhcpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CKinematics — кости и пересчёт (SkeletonCustom.h/.cpp)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cskeletonwallmark-wallmarks-skeletoncustomcpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CSkeletonWallmark + wallmarks (SkeletonCustom.cpp)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ckinematicsanimated-skeletonanimatedhcpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CKinematicsAnimated — анимация и блендинг (SkeletonAnimated.h/.cpp)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cskeletonx-skeletonxhcpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CSkeletonX — скиннинг-рендер (SkeletonX.h/.cpp)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vertrender-pack-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vertRender (pack 2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Взаимодействие
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Потоки данных/управления
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Конфигурация
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Известные ограничения/дебаг
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -3531,11 +3874,203 @@
 
 
 <h1 id="renderer">Renderer: скелеты и анимация<a class="headerlink" href="#renderer" title="Permanent link">&para;</a></h1>
-<blockquote>
-<p><strong>Заглушка</strong> — будет заполнена в итерации 3, порцион 9.</p>
-</blockquote>
-<p>Планируется покрыть: <code>SkeletonX</code>, <code>SkeletonRigid</code>, <code>SkeletonAnimated</code>, <code>SkeletonCustom</code>, <code>Animation</code>, <code>AnimationKeyCalculate</code>, <code>KinematicAnimatedDefs</code> (<code>PlayCycle</code>/<code>PlayFX</code>, <code>CBlend</code>, dequant, skinning <code>skin1W..4W</code>).</p>
-<p>См. <a href="../">Обзор</a>.</p>
+<h2 id="1">1. Ответственность<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>Механика скелетов в рантайме: иерархия костей (<code>CBoneData</code>/<code>CBoneInstance</code>), пересчёт трансформаций по кадру (<code>CalculateBones</code> → <code>Bone_Calculate</code> → <code>BuildBoneMatrix</code>), видимость костей, wallmarks (следы ударов на костях) и <strong>анимационный блендинг</strong> — <code>PlayCycle</code>/<code>PlayFX</code>, <code>CBlend</code>-стек (<code>eAccrue</code>/<code>eFalloff</code>/<code>eFREE_SLOT</code>), де-квантизация <code>.omf</code>-движений и сборка матриц из квантованных ключей. Плюс <strong>скиннинг-рендер</strong> <code>CSkeletonX</code>: выбор режима (soft/hw-1B..4B/single) и отправка <code>mRenderTransform</code> в константный буфер <code>sbones_array</code>.</p>
+<p>Чего это <strong>НЕ делает</strong>: не управляет видимостью объектов (это <a href="../dsgraph/">dsgraph</a> / <a href="../sector/">sector</a> / <a href="../occlusion/">occlusion</a>); не хранит данные движений <code>.omf</code> (<code>CMotion</code>/<code>CKey</code>/<code>CMotionDef</code>/<code>CPartition</code> — <a href="../../xr-engine/skeleton-motion/">Скелет и анимация</a>); не рисует сам (<code>RCache.Render</code>/<code>CBackend</code> draw calls — <a href="../render-device/">Устройство рендера</a>, <a href="../constants/">Шейдерные константы</a>); не владеет вершинными буферами скин-геометрии (<code>CSkeletonX_ST/PM</code> pack-вершины — <a href="../visuals/">Визуалы</a>).</p>
+<h2 id="2">2. Место в архитектуре<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<p>См. <a href="../../../architecture/overview/">Архитектура</a>, <a href="../../../architecture/dependencies/">Зависимости</a>, <a href="../dsgraph/">dsgraph</a>.</p>
+<ul>
+<li><code>IKinematics</code>/<code>IKinematicsAnimated</code> — интерфейсы из xrEngine (<a href="../../xr-engine/render/">render.md</a>); реализуются <code>CKinematics</code>/<code>CKinematicsAnimated</code> (xrRender).</li>
+<li>Кости <code>CBone</code>/<code>CBoneData</code>/<code>CBoneInstance</code>, <code>.omf</code>-данные (<code>CMotion</code>/<code>CMotionDef</code>/<code>CPartition</code>), <code>vertBoned1W..4W</code> — <a href="../../xr-engine/skeleton-motion/">Скелет и анимация</a> (итерация 2).</li>
+<li>Скinned-визуалы <code>CSkeletonX_ST/PM</code> (pack-вершины) — <a href="../visuals/">Визуалы</a>; здесь — только <code>CSkeletonX</code>-база (режимы, <code>_Render</code>, bone-pick).</li>
+<li><code>CModelPool</code> создаёт <code>CKinematics</code>/<code>CKinematicsAnimated</code> по <code>MT_*</code> (<a href="../resources/">Ресурсы и модели</a>); вставка в сцену — <code>add_leafs_Dynamic</code> (<code>MT_SKELETON_ANIM/RIGID</code> → <code>CalculateBones</code> + <code>CalculateWallmarks</code>, <a href="../dsgraph/">dsgraph</a>).</li>
+<li>Коллизии по костям (<code>CCF_Skeleton</code>) читают <code>LL_GetData/LL_GetTransform</code> — <a href="../../xr-engine/collide-physics/">Коллизии</a>; <code>CFM_DynamicMesh::_RayQuery</code> уточняет хит через <code>PickBone</code> — <a href="../../xr-engine/fmesh/">Fmesh</a>.</li>
+</ul>
+<pre class="mermaid"><code>graph TD
+    subgraph xrEngine
+        IK[IKinematics / IKinematicsAnimated]
+        M[CMotion / CMotionDef / CPartition]
+        B[CBone / CBoneData / CBoneInstance]
+    end
+    subgraph xrRender
+        CK[CKinematics: Load, CalculateBones, BuildBoneMatrix, wallmarks]
+        KA[CKinematicsAnimated: motions, CBlend, dequant]
+        SX[CSkeletonX: render modes, _Render, pick]
+        SXP[CSkeletonX_ST/PM — visuals]
+    end
+    B --&gt; CK
+    M --&gt; KA
+    IK --&gt; CK
+    CK --&gt; KA
+    CK --&gt; SX
+    SXP --&gt; SX</code></pre>
+<h2 id="3-api">3. Публичный API<a class="headerlink" href="#3-api" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Класс/функция</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>IKinematics</code></td>
+<td>Кости: <code>Bone_Calculate</code>, <code>Bone_GetAnimPos</code>, <code>PickBone</code>, <code>EnumBoneVertices</code>; <code>LL_BoneID/Name_dbg/UserData/Bones</code>, <code>LL_GetBoneInstance/GetBoneData/LL_GetData</code>, <code>LL_BoneCount</code>, <code>LL_VisibleBoneCount</code>, <code>LL_GetTransform</code>/<code>LL_GetTransform_R</code>, <code>LL_GetBox/GetBox</code>, <code>LL_GetBindTransform</code>, <code>LL_GetBoneGroups</code>, <code>LL_Get/SetBoneRoot</code>, <code>LL_Get/SetBoneVisible</code>, <code>LL_SetBonesVisible</code>, <code>GetVisualByBone</code>, <code>CalculateBones(bForceExact)</code>, <code>CalculateBones_Invalidate</code>, <code>Callback/SetUpdateCallback</code>, <code>NeedUCalc</code>, <code>dcast_RenderVisual</code>/<code>dcast_PKinematics</code></td>
+</tr>
+<tr>
+<td><code>IKinematicsAnimated</code></td>
+<td>Анимация: <code>OnCalculateBones</code>, <code>LL_PartBlendsCount/PartBlend/IterateBlends</code>, <code>LL_MotionsSlotCount/MotionsSlot</code>, <code>LL_GetMotionDef/RootMotion/Motion</code>, <code>LL_BuldBoneMatrixDequatize</code>/<code>LL_BoneMatrixBuild</code>, <code>GetBlendDestroyCallback/SetBlendDestroyCallback</code>, <code>SetUpdateTracksCalback</code>/<code>GetUpdateTracksCalback</code> (опечатка в имени — как в коде), <code>LL_MotionID/PartID</code>, <code>LL_PlayCycle</code> (2), <code>LL_CloseCycle</code>, <code>LL_SetChannelFactor</code>, <code>UpdateTracks</code>, <code>LL_UpdateTracks</code>, <code>ID_Cycle(_Safe)</code>, <code>PlayCycle</code> (3), <code>ID_FX(_Safe)</code>, <code>PlayFX</code> (2), <code>partitions()</code>, <code>get_animation_length</code></td>
+</tr>
+<tr>
+<td><code>CBlend</code></td>
+<td>Бленд-стек: <code>blendAmount/timeCurrent/timeTotal</code>, <code>motionID</code>, <code>bone_or_part</code>, <code>channel</code>, <code>ECurvature blend</code> (<code>eFREE_SLOT</code>/<code>eAccrue</code>/<code>eFalloff</code>), <code>blendAccrue/blendFalloff/blendPower/speed</code>, <code>playing/stop_at_end_callback/stop_at_end/fall_at_end</code>, <code>Callback/CallbackParam</code>, <code>dwFrame</code>; <code>update(dt, cb)</code>/<code>update_time</code>/<code>update_play</code>/<code>update_falloff</code>, <code>set_*_state</code></td>
+</tr>
+<tr>
+<td><code>CKinematics</code></td>
+<td><code>: FHierrarhyVisual, IKinematics</code> — кости, <code>CalculateBones</code> (в <code>SkeletonRigid.cpp</code>), <code>BuildBoneMatrix</code>/<code>CLBone</code>/<code>BoneChain_Calculate</code>, видимость, wallmarks, <code>m_lod</code>/<code>pUserData</code></td>
+</tr>
+<tr>
+<td><code>CKinematicsAnimated</code></td>
+<td><code>: CKinematics, IKinematicsAnimated</code> — <code>m_Motions</code> (слоты <code>.omf</code>), <code>CBlendInstance</code> per кость, <code>blend_cycles[MAX_PARTS]</code>/<code>blend_fx</code>, <code>channels</code>, <code>UpdateTracks</code>/<code>LL_UpdateTracks</code>/<code>LL_UpdateFxTracks</code>, <code>IBlend_Create/Startup</code>, <code>BuildBoneMatrix</code> (dequant-override)</td>
+</tr>
+<tr>
+<td><code>CSkeletonX</code></td>
+<td><code>: Fvisual, IRender_Mesh</code> — <code>RenderMode</code> (soft/single/skin 1B..4B), <code>Vertices1W..4W</code>, <code>BonesUsed</code>, <code>_Load</code> (выбор режима), <code>_Render</code>/<code>_Render_soft</code>, <code>get_pos_bones</code> 1W..4W, <code>_PickBoneSoft*</code>/<code>_FillVerticesSoft*</code>, <code>has_visible_bones</code>, <code>_DuplicateIndices</code> (DX10/11)</td>
+</tr>
+<tr>
+<td><code>CSkeletonWallmark</code></td>
+<td>Данные wallmark: <code>m_Parent</code>, <code>m_XForm</code> (<code>const Fmatrix*</code>), <code>m_Shader</code>, <code>m_ContactPoint</code>, <code>fTimeStart/End</code>, <code>m_LocalBounds</code>, <code>WMFace {vert[3], uv[3], bone_id[3][4], weight[3][3]}</code>, <code>m_Faces</code>, <code>m_Bounds</code> (world), <code>Similar</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="4">4. Внутреннее устройство<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<h3 id="ckinematics-skeletoncustomhcpp"><code>CKinematics</code> — кости и пересчёт (<code>SkeletonCustom.h/.cpp</code>)<a class="headerlink" href="#ckinematics-skeletoncustomhcpp" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Поля: <code>bones</code> (<code>vecBones*</code> shared), <code>bone_instances</code> (<code>CBoneInstance*</code>), <code>bone_map_N/P</code> (accel по имени), <code>iRoot</code>, <code>visimask</code>/<code>hidden_bones</code> (<code>Flags64</code> — <strong>лимит 64 кости</strong>, <code>VERIFY3</code>), <code>UCalc_Time/Visibox/ThisFrame</code>, <code>UCalc_Mutex</code>+<code>UCalc_Mutex2</code> (2 критсеха), <code>Matrix_Prev</code>/<code>Matrix_Temp</code> (motion vectors), <code>wallmarks</code> (<code>SkeletonWMVec</code>) + <code>wm_frame</code>, <code>CurrentFrame</code>, <code>m_lod</code> (LOD-визуал из <code>OGF_S_LODS</code>), <code>pUserData</code> (<code>OGF_S_USERDATA</code> → <code>CInifile</code>), <code>m_is_original_lod</code>.</li>
+<li><code>Load</code> (L164–335): <code>inherited::Load</code> → <code>OGF_S_LODS</code> → <code>m_lod = ::Render-&gt;model_CreateChild(lod_name)</code> (не из потока — <code>VERIFY3</code>); <code>OGF_S_USERDATA</code> (не <code>_EDITOR</code>); <code>OGF_S_BONE_NAMES</code> (count ≤64, имя+parent, obb, visimask/hidden_bones <code>set TRUE</code>); sort accel; parent→root (<code>BI_NONE</code> = пустое имя, <code>R_ASSERT</code> один root); <code>OGF_S_IKDATA</code> (vers, game_mtl_name, shape, <code>IK_data.Import</code>, bind_transform из XYZ+T, mass, center_of_mass; <code>root-&gt;CalculateM2B(Fidentity)</code>); <code>AfterLoad(this, child_idx)</code> per child; unique/sort <code>child_faces</code>; <code>LL_Validate()</code>.</li>
+<li><code>CalculateBones</code> (<strong>реализация в <code>SkeletonRigid.cpp</code> L23–175</strong>, не в Custom — название файла вводит в заблуждение): <code>PROF_EVENT</code>; early-out <code>RDEVICE.dwTimeGlobal == UCalc_Time</code>; под <code>#ifdef OPTIMIZE_CALCULATE_BONES</code> (define в <code>src/xrEngine/device.h</code>, всегда): при <code>g_bootComplete &amp;&amp; spatialParent</code>: <code>GetPerceivedDist</code>/<code>CalcSSADynamic</code>, <code>ssa_k = IK_CALC_SSA / ssa</code>, <code>update_rate_k = max(1, ssa_k)</code>; <code>visibleCheck = (perceived_dist &lt; IK_ALWAYS_CALC_DIST) || ViewBase.testSphere_dirty(...)</code> — невидимый → <code>bForceExact = FALSE</code>, <code>update_rate_k = max(2, ...)</code>; <code>r_optimize_calculate_bones &amp;&amp; canBeOptimized() &amp;&amp; ssa &lt; IK_CALC_SSA</code> → <code>bForceExact = FALSE</code>. <code>UCalc_Mutex</code>; <code>OnCalculateBones()</code> (override в Animated → <code>UpdateTracks</code>); slow early-out <code>dwTimeGlobal &lt; UCalc_Time + UCalc_Interval * update_rate_k</code>; <code>Visibility_Update</code>; <code>UCalc_Time = now</code>; DEBUG <code>Statistic-&gt;Animation.Begin/End</code>; <code>Bone_Calculate(bones-&gt;at(iRoot), &amp;Fidentity)</code>; <code>UCalc_Visibox++</code>, при <code>&gt;= psSkeletonUpdate</code> → rebuild <code>vis.box/sphere</code> по 8 углам OBB видимых костей (scatter: <code>UCalc_Visibox = -randI(ps-1)</code>), <code>UCalc_ThisFrame</code>; <code>Update_Callback(this)</code>.</li>
+<li><code>BuildBoneMatrix</code> (Rigid L199–212): видимая → <code>mTransform = parent * bind_transform</code>, <code>mTransformHidden = mTransform</code>; скрытая → <code>mTransform.c = parent-&gt;c</code> (scale 0, позиция родителя), <code>mTransformHidden</code> полный.</li>
+<li><code>CLBone</code> (L214–223): если не <code>callback_overwrite</code> → <code>BuildBoneMatrix</code>; callback → <code>bi.callback()(&amp;bi)</code>; <strong><code>mRenderTransform = mTransform * m2b_transform</code></strong>.</li>
+<li><code>Bone_Calculate</code> (L236–245): <code>UCalc_Mutex2</code> (per-bone критсех), <code>CLBone(channel u8(-1))</code>, рекурсия по children с <code>&amp;BONE_INST.mTransform</code>.</li>
+<li><code>BoneChain_Calculate</code> (L247–274): top-down от root, <code>ignore_callbacks</code> → временный clear callback (восстановление после), copy <code>parrent_bi</code> (value-copy — изоляция).</li>
+<li><code>Bone_GetAnimPos</code> (L225–234): value-copy <code>bi</code>, <code>BoneChain_Calculate</code>, <code>#ifndef MASTER_GOLD R_ASSERT(_valid)</code>.</li>
+<li><code>LL_SetBoneVisible</code> (L508–539): hide → <code>mTransformHidden = mTransform</code>, <code>mTransform.scale(0,0,0)</code>, <code>c = parent-&gt;mTransform.c</code>, <code>mRenderTransform</code> rebuild; show → restore + <code>CalculateBones_Invalidate</code>; recursive по children; <code>Visibility_Invalidate</code>. <code>LL_SetBonesVisible(mask)</code> — batch-вариант.</li>
+<li><code>Visibility_Update</code> (L568–600): перемещение children ↔ <code>children_invisible</code> по <code>has_visible_bones()</code>.</li>
+<li><code>GetVisualByBone</code> (L338–360, fork DSR): по <code>BonesUsed</code> (linear <code>has_bone_id</code> в <code>CSkeletonX</code>).</li>
+<li><code>LL_GetBindTransform</code> (L612–616): рекурсия <code>parent * bind_transform</code> (массив по всем костям). <code>LL_GetBoneGroups</code> (L893–908): per-child списки костей с <code>child_faces</code>.</li>
+</ul>
+<h3 id="cskeletonwallmark-wallmarks-skeletoncustomcpp"><code>CSkeletonWallmark</code> + wallmarks (<code>SkeletonCustom.cpp</code>)<a class="headerlink" href="#cskeletonwallmark-wallmarks-skeletoncustomcpp" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>AddWallmark</code> (L664–763): world→model луч; per видимая пикабельная кость (<code>!sfNoPickable</code>) <code>TestRayOBB</code> → <code>child-&gt;PickBone</code>; <code>cp = S + D*dist</code>; <code>TestSphereOBB(cp, size)</code> → test_bones; дедуп <code>Similar(shader, cp, 0.02f)</code> (swap-pop); новый <code>CSkeletonWallmark</code> (ttl = arg или <code>ps_r__WallmarkTTL</code>), <code>m_LocalBounds = sphere(cp, size*2)</code>, world <code>m_Bounds</code>; normal = avg(нормаль три, <code>-D</code>); <code>BuildMatrix</code> (орто-камера на нормаль, scale <code>1/(0.9*size)</code>) + random rotateZ ±20°; per child × test_bones → <code>FillVertices</code>.</li>
+<li><code>CalculateWallmarks</code> (L770–799): once-per-frame (<code>wm_frame</code>), <code>w = (now - TimeStart)/TimeEnd</code> (<code>TimeEnd -1</code> → 0), <code>w&lt;1 &amp;&amp; testSphere_dirty(m_Bounds)</code> → <code>RImplementation.add_SkeletonWallmark(wm)</code> (закомм. <code>::Render-&gt;add_SkeletonWallmark</code>); expired → <code>need_remove = true</code>, затем <code>remove_if(zero_wm_pred)</code> — <strong>ищет <code>nullptr</code>, но expired-ветка его не ставит</strong> (см. §8).</li>
+<li><code>RenderWallmark</code> (L801–884): per <code>WMFace</code> per вершина: 1/2/3/4-link skinning по <code>mRenderTransform</code> + веса; <code>wm-&gt;XFORM()-&gt;transform_tiny(V-&gt;p, P)</code>, uv, <code>color = rgba(128,128,188, floor(w*255))</code> (fade-in по времени), <code>FVF::LIT</code>.</li>
+<li><code>PickBone</code> (L643–662): world→model (invert <code>parent_xform</code>), per child <code>PickBone</code> (<code>CSkeletonX</code> — ray-tri по <code>mRenderTransform</code>), hit → world back.</li>
+</ul>
+<h3 id="ckinematicsanimated-skeletonanimatedhcpp"><code>CKinematicsAnimated</code> — анимация и блендинг (<code>SkeletonAnimated.h/.cpp</code>)<a class="headerlink" href="#ckinematicsanimated-skeletonanimatedhcpp" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Поля: <code>Update_LastTime</code>, <code>blend_instances</code> (<code>CBlendInstance*</code> — per-bone <code>BlendSVec</code> ≤ <code>MAX_BLENDED</code>), <code>m_Motions</code> (<code>MotionsSlotVec</code>: <code>SMotionsSlot { shared_motions motions; BoneMotionsVec bone_motions }</code> — слоты <code>.omf</code>), <code>m_Partition</code> (<code>CPartition*</code>), <code>m_blend_destroy_callback</code>/<code>m_update_tracks_callback</code>, <code>blend_pool</code> (svector ≤ <code>MAX_BLENDED_POOL</code> <code>CBlend</code>), <code>blend_cycles[MAX_PARTS]</code>, <code>blend_fx</code> (≤ <code>MAX_BLENDED</code>), <code>channels</code> (<code>animation::channels</code>).</li>
+<li><code>CBlendInstance::blend_add</code> (L23–36): при <code>MAX_BLENDED</code> — если <code>fall_at_end</code> → <strong>return (потеря blend!)</strong>, иначе drop наименьшего <code>blendAmount</code>.</li>
+<li><code>Bone_Motion_Start/Stop</code> (рекурсивно по subtree) / <code>_IM</code> (только одна кость — для cycles per-part bones).</li>
+<li><code>LL_MotionID/ID_Cycle(_Safe)/ID_FX(_Safe)</code> — поиск <strong>с конца</strong> <code>m_Motions</code> (последний слот = приоритет).</li>
+<li><code>IBlendSetup</code> (L308–343): mixing → <code>eAccrue</code>, <code>blendAmount=EPS_S</code>; non-mixing → <code>eAccrue</code>, <code>blendAmount=1</code>; <code>timeTotal</code> из root-bone motion; <code>stop_at_end = noloop</code>; <code>stop_at_end_callback = TRUE</code>; <strong><code>fall_at_end = stop_at_end &amp;&amp; (channel &gt; 1)</code></strong>.</li>
+<li><code>IFXBlendSetup</code> (L345–369): accrue, amount <code>EPS_S</code>, power/speed из def, bone = <code>bone_or_part</code>, <code>stop_at_end = FALSE</code>, <code>fall_at_end = FALSE</code>, channel 0.</li>
+<li><code>LL_PlayCycle</code> (L371–413): <code>!valid</code> → 0; <strong><code>part == BI_NONE</code> → рекурсия по всем <code>MAX_PARTS</code>, return 0 (не CBlend!)</strong>; <code>part &gt;= MAX_PARTS</code>/пустой part → 0; <strong>только <code>channel == 0</code></strong>: mixing → <code>LL_FadeCycle(part, falloff, 1&lt;&lt;channel)</code>, else <code>LL_CloseCycle</code>; <code>IBlend_Create</code> (0 → return 0); per part-bone <code>Bone_Motion_Start_IM</code>; <code>blend_cycles[part].push_back</code>. <code>LL_FadeCycle</code> (L245–260): per cycle с mask → <code>set_falloff_state</code>, <code>blendFalloff = falloff</code>, <strong><code>stop_at_end_callback = FALSE</code></strong> (callback не должен приходить). <code>LL_CloseCycle</code> (L262–287): <code>free_state</code> + <code>Bone_Motion_Stop_IM</code> + erase (iter-fix).</li>
+<li><code>PlayCycle</code> (3 обёртки: by name → <code>R_ASSERT</code> valid; by <code>MotionID</code> → <code>m_def-&gt;bone_or_part</code>; by partition+speed). <code>PlayFX</code> (L487–502): <code>m_def-&gt;bone_or_part</code>, power × <code>power_scale</code>. <code>LL_PlayFX</code> (L506–522): <strong><code>blend_fx.size() &gt;= MAX_BLENDED</code> → return 0</strong>; <code>BI_NONE</code> → <code>iRoot</code>; <code>Bone_Motion_Start</code> (рекурсивно).</li>
+<li><code>UpdateTracks</code> (L627–643): once-per-frame (<code>Update_LastTime == dwTimeGlobal</code> → return); <code>dt = min(66ms, delta)</code>; <strong><code>GetUpdateTracksCalback()</code></strong> (fork: внешний callback решает тикнуть ли — если true, <code>Update_LastTime = now</code> и return, т.е. внешний сам обновляет) else <code>LL_UpdateTracks(dt, false, false)</code>.</li>
+<li><code>LL_UpdateTracks</code> (L539–576): per part (непустые): per cycle: <strong><code>!b_force &amp;&amp; B.dwFrame == RDEVICE.dwFrame</code> → skip</strong> (once-per-frame latch), <code>B.dwFrame = now</code>; <code>B.update(dt, B.Callback) &amp;&amp; !leave_blends</code> → <code>DestroyCycle</code> + erase. Затем <code>LL_UpdateFxTracks(dt)</code>.</li>
+<li><code>LL_UpdateFxTracks</code> (L578–625): per fx: <code>!stop_at_end_callback</code> → <code>playing = FALSE</code> (skip); <code>update_time(dt)</code>; switch state: <strong>eAccrue</strong> → <code>blendAmount += dt*accrue*power*speed</code>, <code>&gt;= power</code> → clamp + <code>set_falloff_state</code>; <strong>eFalloff</strong> → <code>blendAmount -= dt*falloff*power*speed</code>, <code>&lt;= 0</code> → <code>set_free_state</code> + <code>Bone_Motion_Stop</code> (рекурсивный) + erase. (FX обновляются вручную, cycles — через <code>CBlend::update</code>.)</li>
+<li><code>DestroyCycle</code> (L524–534): callback <code>BlendDestroy(B)</code> → <code>set_free_state</code> → per part-bone <code>Bone_Motion_Stop_IM</code>.</li>
+<li><code>IBlend_Create</code> (L761–770): <code>UpdateTracks()</code> сначала; поиск <code>eFREE_SLOT</code>; <strong>переполнение → return 0</strong> (FATAL закомментирован — не crash, blend теряется).</li>
+<li><code>IBlend_Startup</code> (L733–759): pool = <code>MAX_BLENDED_POOL</code> × free <code>CBlend</code>, cycles/fx clear, <code>channels.init()</code>. Вызывается в <code>Spawn</code>/<code>Copy</code>/<code>Load</code>.</li>
+<li><code>Load</code> (L772–924): <code>inherited::Load</code>; lambda <code>loadOMF(path)</code>: <code>$level$</code> → <code>$game_meshes$</code> (иначе <code>Debug.fatal</code>); <strong>кэш <code>g_pMotionsContainer-&gt;has(path)</code></strong> → create(NULL) (ref), иначе <code>FS.r_open</code> + create(reader); <strong>fork-DSR</strong>: после <code>stalker_animation.omf</code> → доп. <code>FS.file_list("$game_meshes$", "actors\\modded_stalker_animations\\*.omf")</code> → loadOMF per file. Чанки: <code>OGF_S_MOTION_REFS</code> (stringZ list, <code>R_ASSERT set_cnt &lt; MAX_ANIM_SLOT</code>, <code>\\*.omf</code> → file_list merge game_meshes+level), <code>OGF_S_MOTION_REFS2</code> (u32 count + stringZ), else fallback: <code>N + ".ogf"</code> → <code>motions.create(nm, data, bones)</code>. <code>R_ASSERT(m_Motions.size())</code>. <code>m_Partition = m_Motions[0].motions.partition(); m_Partition-&gt;load(this, N)</code> (только первый слот!). Per slot: <code>bone_motions.resize(bones-&gt;size())</code>, <code>MS.motions.bone_motions(BD-&gt;name)</code>. <code>IBlend_Startup()</code>.</li>
+<li><code>BuildBoneMatrix</code> (L1021–1088, override): <code>SKeyTable keys</code>; <code>LL_BuldBoneMatrixDequatize</code> (L927–961): per blend в <code>blend_instances[bone]</code> с <code>channel_mask</code>: <code>Dequantize(*D, *B, M)</code> (<code>CKey</code> из <code>CMotion</code> по timeCurrent), <code>QR2Quat(M._keysR[0], BK.Q)</code>, T: <code>flTKeyPresent</code> → <code>QT16_2T</code>/<code>QT8_2T</code> (по <code>flTKey16IsBit</code>), else <code>M._initT</code>; <code>keys_substruct</code> для <code>channels.rule(j).extern_ == add</code>. <code>LL_BoneMatrixBuild</code> (L964–1019): per канал (j=0 всегда, остальные при count&gt;0): <code>channels.get_def(j, BC)</code>, <code>process_single_channel(channel_keys, BC, keys, blends, count)</code>, <code>MixChannels(Result, ...)</code>; <code>RES.mk_xform(Q, T)</code>; видимая → <code>mTransform = parent * RES</code> + hidden copy; скрытая → <code>mTransform.c = parent-&gt;c</code>, <code>mTransformHidden = parent * RES</code>. DEBUG: <code>check_scale</code>, <code>_valid</code>, <code>dbg_box.contains</code> VERIFY2.</li>
+<li><code>OnCalculateBones</code> (L1091–1094): → <code>UpdateTracks()</code>.</li>
+<li><code>Spawn</code> (L711–721): inherited + <code>IBlend_Startup</code> + construct blend_instances + <code>channels.init()</code>. <code>Copy</code> (L700–709): PCOPY m_Motions/m_Partition + <code>IBlend_Startup</code>.</li>
+<li><code>get_animation_length</code> (L289–306): root-bone motion <code>GetLength() / m_def-&gt;Speed()</code>.</li>
+<li><code>LL_SetChannelFactor</code> → <code>channels.set_factor</code>. <code>SetUpdateTracksCalback</code> (опечатка в имени — как в коде).</li>
+<li><code>#ifdef _EDITOR</code>: public + <code>ID_Motion(N, slot)</code>.</li>
+</ul>
+<h3 id="cskeletonx-skeletonxhcpp"><code>CSkeletonX</code> — скиннинг-рендер (<code>SkeletonX.h/.cpp</code>)<a class="headerlink" href="#cskeletonx-skeletonxhcpp" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>RenderMode</code>: <code>RM_SKINNING_SOFT</code>/<code>RM_SINGLE</code>/<code>RM_SKINNING_1B..4B</code>. <code>Vertices1W..4W</code> (ref_smem vertBoned — shared/CRC-дедуп), <code>BonesUsed</code> (ref_smem u16, использованные bone-idx), union: <code>cache_DiscardID/vCount/vOffset</code> (soft) / <code>RMS_boneid</code> (single) / <code>RMS_bonecount</code> (skin, max bone ID + 1). <code>Parent</code>, <code>ChildIDX</code>. <code>m_Indices</code> (ref_smem u16, DX10/11-копия IB).</li>
+<li><code>_Load</code> (L228–418): <code>s_bones_array_const = "sbones_array"</code>, <code>s_bones_array_prev_const = "sbones_array_prev"</code> (глобалы shared_str!); <strong><code>hw_bones_cnt = u16((HW.Caps.geometry.dwRegisters - 22 - 3)/3)</code></strong> (L239 — DX11-номинальные 16 → <code>(16-25)/3 = -3</code> → u16-wrap 65533 → <strong>лимит не работает</strong>, см. <a href="../visuals/">Визуалы</a>); R1: <code>ps_r1_SoftwareSkinning == 1</code> → hw = 0; <code>_EDITOR</code> → hw = 0. Per <code>dwVertType</code> (<code>OGF_VERTEXFORMAT_FVF_1L..4L</code> / 1..4): scan <code>bids</code> (unique bone ids) + <code>sw_bones_cnt</code> (max bone id); 1L: <code>bids.size() == 1</code> → <code>RM_SINGLE</code> (<code>RMS_boneid</code>, <code>shader_option_skinning(0)</code>), <code>sw_bones_cnt &lt;= hw_bones_cnt</code> → <code>RM_SKINNING_1B</code> (<code>RMS_bonecount = sw+1</code>, option 1), else soft (<code>Vertices1W.create(crc32, ...)</code>); 2L–4L: аналогично без single. Default → <code>Debug.fatal</code>. <code>BonesUsed.create(crc32(bids))</code> (комментарий fork DSR: <code>--DSR-- SilencerOverheat (1 -&gt; 0). Why was 1 tho?</code>).</li>
+<li><code>_Render</code> (L59–166): DX11 <code>ssfx_motionvectors</code>: <code>Device.dwFrame &gt; Parent-&gt;CurrentFrame</code> → shift <code>Matrix_Prev/Temp</code> + per-bone <code>mRenderTransform_prev/temp</code>; single → <code>p_WV = v_prev * (Matrix_Prev * bone_prev)</code>, <code>set_c("m_wvp_prev")</code>; skin → <code>m_wvp_prev = m_p_prev * m_v_prev * Matrix_Prev</code>. SWITCH: SOFT → <code>_Render_soft</code> (+stat sw); SINGLE → <code>W = m_w * GetTransform_R(boneid)</code>, <code>set_xform_world(W)</code>, <code>RCache.Render</code> (stat inst); SKIN 1–4 → per <code>RMS_bonecount</code> костей: <code>set_ca(sbones_array, mid*3, 9 floats)</code> из <code>LL_GetTransform_R</code> (col-major: _11,_21,_31,_41 / _12... / _13...); DX11 motionvectors: аналогично <code>sbones_array_prev</code> из <code>mRenderTransform_prev</code>; <code>RCache.Render</code>; stat per mode.</li>
+<li><code>_Render_soft</code> (L168–226): <code>_VertexStream</code> ring (<code>DiscardID</code>/vCount cache → перескининг только при сбросе); <code>PSGP.skin1W..4W(Dest, *VerticesNW, vCount, Parent-&gt;bone_instances)</code> (см. итерация 2, порцион 1 — <code>PSGP</code> = <code>xrCPU_Pipe</code>); <code>RCache.Render</code> с vOffset.</li>
+<li><code>get_pos_bones</code> 1W/2W/3W/4W (L436–493): <code>transform_tiny</code> per link + lerp/сумма весов (4-й вес = <code>1 - w0 - w1 - w2</code>).</li>
+<li><code>_PickBoneSoft1W..4W</code> (L500–522): template <code>pick_bone&lt;vertBonedNW&gt;</code> — ray-tri по скин-вершинам (internals не покрыты).</li>
+<li><code>_FillVerticesSoft1W..4W</code> (L568–743): per face из <code>child_faces</code>: bone_id[4] + weight[3] из вершин; <code>transform_tiny</code> per link → <code>p[k]</code> (skinned в текущем <code>mRenderTransform</code>); <code>test_normal.mknormal</code>, <code>cosa &lt; EPS</code> → skip; <code>TestSphereTri(wm.ContactPoint(), size, p)</code> → uv из <code>view</code> (ortho) → <code>wm.m_Faces.push_back</code>.</li>
+<li><code>has_visible_bones</code> (L420–433): SINGLE → <code>GetBoneVisible(RMS_boneid)</code>; else per <code>BonesUsed</code> linear.</li>
+<li><code>_DuplicateIndices</code> (L746–758, DX10/11): <code>OGF_INDICES</code> → <code>m_Indices.create(crc32)</code> (CPU-копия IB — DX10 не читает IB).</li>
+</ul>
+<h3 id="vertrender-pack-2"><code>vertRender</code> (pack 2)<a class="headerlink" href="#vertrender-pack-2" title="Permanent link">&para;</a></h3>
+<p><code>vertRender</code> (<code>SkeletonXVertRender.h</code>): <code>#pragma pack(2)</code>, <code>P</code> (Fvector) + <code>N</code> (Fvector) + uv — для wallmark-рендера и soft-skinning.</p>
+<h2 id="5">5. Взаимодействие<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Вызывает</strong>: <code>g_pMotionsContainer</code> (кэш <code>.omf</code> — <a href="../resources/">Ресурсы и модели</a>), <code>PSGP.skin1W..4W</code> (CPU-скиннинг, <a href="../../xr-engine/frame-loop/">Цикл кадра</a>), <code>RCache.set_ca/set_xform_world/Render</code> (<a href="../constants/">Шейдерные константы</a>), <code>RImplementation.add_SkeletonWallmark</code> (wallmark-engine, <a href="../particles-wallmarks/">Частицы и wallmarks</a>), <code>spatialParent-&gt;GetPerceivedDist/CalcSSADynamic</code> (<a href="../../xr-engine/device/">Устройство</a>), <code>ViewBase.testSphere_dirty</code> (frustum-cull), <code>::Render-&gt;model_CreateChild</code> (LOD — <a href="../resources/">Ресурсы и модели</a>), <code>Dequantize</code>/<code>QR2Quat</code>/<code>QT16_2T</code>/<code>QT8_2T</code>/<code>process_single_channel</code>/<code>MixChannels</code> (<a href="../../xr-engine/skeleton-motion/">Скелет и анимация</a>).</li>
+<li><strong>Вызывается из</strong>: <code>add_leafs_Dynamic</code> (<code>MT_SKELETON_ANIM/RIGID</code> → <code>CalculateBones</code> + <code>CalculateWallmarks</code>, <a href="../dsgraph/">dsgraph</a>); <code>CModelPool</code>/<code>model_Create*</code> (создание — <a href="../resources/">Ресурсы и модели</a>); <code>IKinematicsAnimated</code> от xrGame через <code>dcast_PKinematicsAnimated</code> (<code>PlayCycle</code>/<code>PlayFX</code>); <code>CCF_Skeleton::BuildState</code> (коллизии — <a href="../../xr-engine/collide-physics/">Коллизии</a>); <code>CFM_DynamicMesh::_RayQuery</code> → <code>PickBone</code> (ray-pick — <a href="../../xr-engine/fmesh/">Fmesh</a>); <code>CRender::Calculate</code> (frustum-видимость).</li>
+<li>Зависимости: <code>xrEngine/render.h</code> (<code>IRenderVisual</code>, <code>IKinematics</code>), <code>xrEngine/SkeletonMotions.h</code> (<code>CMotion</code>/<code>CMotionDef</code>/<code>CPartition</code>), <code>xrEngine/SkeletonMotionDefs.h</code> (<code>MAX_PARTS</code>/<code>SAMPLE_FPS</code>), <code>KinematicsAnimated.h</code>/<code>KinematicAnimatedDefs.h</code> (<code>IKinematicsAnimated</code>, <code>CBlend</code>, <code>SKeyTable</code>, <code>MAX_BLENDED</code>/<code>MAX_CHANNELS</code>), <code>animation_blend.h</code> (<code>CBlend</code>), <code>fmesh.h</code> (<code>OGF_*</code>), <code>FVisual.h</code>/<code>FSkinned.h</code> (visuals).</li>
+</ul>
+<h2 id="6">6. Потоки данных/управления<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>sequenceDiagram
+    participant DG as add_leafs_Dynamic
+    participant K as CKinematics
+    participant KA as CKinematicsAnimated
+    participant B as Bone_Calculate (reкурсия)
+    participant BM as BuildBoneMatrix
+    DG-&gt;&gt;K: CalculateBones(bForceExact)
+    K-&gt;&gt;K: OPTIMIZE_CALCULATE_BONES: ssa/visible check
+    K-&gt;&gt;KA: OnCalculateBones()
+    KA-&gt;&gt;KA: UpdateTracks() (dt, CBlend::update per cycle/fx)
+    KA--&gt;&gt;K: (blends обновлены)
+    K-&gt;&gt;B: Bone_Calculate(root, &amp;Fidentity)
+    B-&gt;&gt;BM: CLBone → BuildBoneMatrix(parent)
+    BM-&gt;&gt;BM: Animated: SKeyTable + Dequantize + MixChannels
+    BM-&gt;&gt;BM: mTransform = parent * RES
+    BM-&gt;&gt;BM: mRenderTransform = mTransform * m2b_transform
+    Note over B: рекурсия по children с &amp;BONE_INST.mTransform
+    K-&gt;&gt;K: UCalc_Visibox++ → rebuild vis.box/sphere (8 углов OBB)
+    K--&gt;&gt;DG: (mRenderTransform готовы)</code></pre>
+<pre class="mermaid"><code>graph TD
+    PC[PlayCycle / PlayFX] --&gt; BL[IBlend_Create + IBlendSetup/IFXBlendSetup]
+    BL --&gt; CY[blend_cycles[part] / blend_fx]
+    UP[UpdateTracks per кадр] --&gt; CY
+    UP --&gt; FX[LL_UpdateFxTracks]
+    CY --&gt; ST{CBlend.update}
+    ST --&gt;|eAccrue| AC[blendAmount += dt*accrue*power]
+    ST --&gt;|eFalloff| FO[blendAmount -= dt*falloff*power]
+    AC --&gt;|&gt;= power| FO
+    FO --&gt;|&lt;= 0| FR[set_free_state + Bone_Motion_Stop + erase]
+    AC --&gt;|at_end, fall_at_end| FO
+    FR --&gt; POOL[IBlend: eFREE_SLOT → pool]</code></pre>
+<h2 id="7">7. Конфигурация<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>UCalc_Interval = 100</code> мс (<code>Kinematics.h</code>, комментарий «10 fps») — минимальный интервал <code>CalculateBones</code>.</li>
+<li><code>psSkeletonUpdate = 32</code> — период rebuild <code>vis.box/sphere</code> (каждые 32 <code>UCalc_Visibox</code>).</li>
+<li><code>IK_CALC_DIST = 100.f</code>, <code>IK_ALWAYS_CALC_DIST = 20.f</code>, <code>IK_CALC_SSA = 0.006f</code> (xrGame, <code>CharacterPhysicsSupport.cpp</code> L53–55) — пороги SSA-оптимизации.</li>
+<li><code>r_optimize_calculate_bones</code> (cvar <code>r__optimize_calculate_bones</code>, 0/1, xrGame <code>console_commands.cpp</code> L3108) — включение SSA-оптимизации.</li>
+<li><code>OPTIMIZE_CALCULATE_BONES</code> (define в <code>src/xrEngine/device.h</code> L27, всегда) — ветка <code>CalculateBones</code>.</li>
+<li><code>ps_r1_SoftwareSkinning</code> (R1: 1 → hw = 0, только soft-skinning).</li>
+<li><code>ssfx_motionvectors</code> (<code>o.ssfx_motionvectors</code>) — DX11 motion-vector pass (<code>sbones_array_prev</code>, <code>Matrix_Prev/Temp</code>).</li>
+<li><code>ps_r__WallmarkTTL</code> — TTL wallmark (если не задан аргументом <code>AddWallmark</code>).</li>
+<li><code>MAX_PARTS = 4</code>, <code>SAMPLE_FPS = 30.f</code>, <code>KEY_Quant = 32767.f</code> (<code>SkeletonMotionDefs.h</code>, xrEngine).</li>
+<li><code>MAX_BLENDED = 16</code>, <code>MAX_CHANNELS = 4</code>, <code>MAX_BLENDED_POOL = 16*4*4 = 256</code>, <code>MAX_ANIM_SLOT = 48</code> (<code>KinematicAnimatedDefs.h</code>, xrRender).</li>
+<li><code>ps_r__common_flags</code> <code>RFLAG_NO_RAM_TEXTURES</code> — не влияет на кости напрямую.</li>
+<li><code>VLOAD_NOVERTICES</code> — флаг <code>Load</code> для skinned-пути (вершины отдельно, <a href="../visuals/">Визуалы</a>).</li>
+</ul>
+<h2 id="8">8. Известные ограничения/дебаг<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>64-костный лимит</strong>: <code>visimask</code>/<code>hidden_bones</code> — <code>Flags64</code>, <code>VERIFY3</code> — скелет &gt;64 костей не поддерживается.</li>
+<li><strong><code>hw_bones_cnt</code> DX11 u16-wrap</strong>: <code>(16-25)/3 = -3</code> → <code>u16</code> = 65533 → лимит не работает (DX9-механизм, см. <a href="../visuals/">Визуалы</a>).</li>
+<li><strong>Blend loss</strong>: <code>CBlendInstance::blend_add</code> при <code>MAX_BLENDED</code> — если <code>fall_at_end</code> → <code>return</code> (blend теряется); <code>IBlend_Create</code> при переполнении → <code>return 0</code> (FATAL закомментирован, не crash, blend теряется).</li>
+<li><strong><code>UpdateTracks</code> external callback</strong>: <code>GetUpdateTracksCalback()</code> — если установлен, внешний код решает тикнуть ли (если true — <code>Update_LastTime = now</code> и return, т.е. внешний сам обновляет).</li>
+<li><strong>Wallmark expiry quirk</strong>: <code>CalculateWallmarks</code> — expired-ветка ставит <code>need_remove = true</code>, затем <code>remove_if(zero_wm_pred)</code> ищет <code>nullptr</code>, но <code>nullptr</code> <strong>не ставится</strong> (expired-ветка не нулит <code>intrusive_ptr</code>) — expired wallmarks <strong>не удаляются</strong> из вектора (потенциальная утечка).</li>
+<li><strong><code>SetUpdateTracksCalback</code></strong> — опечатка в имени (как в коде, не «исправлять»).</li>
+<li><strong><code>LL_PlayCycle(BI_NONE)</code></strong> — рекурсия по всем партициям, возвращает 0 (не <code>CBlend</code>) — легко ошибиться.</li>
+<li><strong><code>m_Partition</code></strong> — только из первого слота <code>m_Motions[0]</code>; <code>bone_motions</code> per слот.</li>
+<li><strong>Fork DSR</strong>: <code>GetVisualByBone</code> (SilencerOverheat), <code>modded_stalker_animations</code> в <code>Load</code>, <code>BonesUsed</code> CRC-комментарий.</li>
+<li><strong>DEBUG</strong>: <code>LL_DumpBlends_dbg</code>, <code>check_kinematics</code>, <code>DebugRender</code>, <code>Statistic-&gt;Animation</code>, <code>RenderDUMP_SKIN</code> timer, <code>ps_r__WallmarkTTL</code>, <code>dbg_box</code> (VERIFY2 в <code>BuildBoneMatrix</code>).</li>
+<li><strong>Не покрыто</strong>: <code>AnimationKeyCalculate.h</code> (<code>Dequantize</code>, <code>QR2Quat</code>, <code>QT16_2T</code>, <code>QT8_2T</code>, <code>SKeyTable</code>, <code>process_single_channel</code>, <code>MixChannels</code>, <code>animation::channels</code>, <code>keys_substruct</code> — вызовы описаны, internals нет; данные <code>CMotion</code>/<code>CKey*</code> — <a href="../../xr-engine/skeleton-motion/">Скелет и анимация</a>); <code>IKinematicsAnimated</code> (forward, API в <code>CKinematicsAnimated</code>); <code>CSkinned</code>/<code>CSkeletonX_ST/PM</code> (<a href="../visuals/">Визуалы</a>, порцион 8); <code>dx10ResourceManager</code>/<code>CBackend</code> draw calls (порционы 7, 12–14).</li>
+</ul>
 
 
 
