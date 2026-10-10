@@ -11,10 +11,10 @@
       
       
       
-        <link rel="prev" href="../types-math/">
+        <link rel="prev" href="../">
       
       
-        <link rel="next" href="../strings/">
+        <link rel="next" href="../render-device/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Память - X-Ray Monolith — Документация движка</title>
+        <title>Точка входа и фабрика - X-Ray Monolith — Документация движка</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#xrcore" class="md-skip">
+        <a href="#renderer" class="md-skip">
           Перейти к содержанию
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Память
+              Точка входа и фабрика
             
           </span>
         </div>
@@ -273,7 +273,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
+        <a href="../../xr-core/" class="md-tabs__link">
           
   
   
@@ -839,8 +839,6 @@
                 
   
   
-    
-  
   
   
     
@@ -856,11 +854,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
         
           
           <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="">
@@ -881,7 +879,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -899,7 +897,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../../xr-core/" class="md-nav__link">
         
   
   
@@ -927,7 +925,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../types-math/" class="md-nav__link">
+      <a href="../../xr-core/types-math/" class="md-nav__link">
         
   
   
@@ -952,37 +950,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Память
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../xr-core/memory/" class="md-nav__link">
         
   
   
@@ -998,214 +969,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Содержание">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Содержание
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ответственность
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Место в архитектуре
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#api" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Публичный API
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Публичный API">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#singleton-memory-xrmemory" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Singleton Memory (тип xrMemory)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#operator-newdelete" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Глобальный operator new/delete
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Макросы и функции
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Пулы
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Окружение и статистика
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Внутреннее устройство
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Внутреннее устройство">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Файлы
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Режимы
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#debug_memory_manager" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Отладочный учёт (DEBUG_MEMORY_MANAGER)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Взаимодействие
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Потоки данных
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Конфигурация
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ограничения / дебаг
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1218,7 +981,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../strings/" class="md-nav__link">
+      <a href="../../xr-core/strings/" class="md-nav__link">
         
   
   
@@ -1246,7 +1009,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../logging/" class="md-nav__link">
+      <a href="../../xr-core/logging/" class="md-nav__link">
         
   
   
@@ -1274,7 +1037,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../filesystem/" class="md-nav__link">
+      <a href="../../xr-core/filesystem/" class="md-nav__link">
         
   
   
@@ -1302,7 +1065,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../inifile/" class="md-nav__link">
+      <a href="../../xr-core/inifile/" class="md-nav__link">
         
   
   
@@ -1330,7 +1093,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../compression/" class="md-nav__link">
+      <a href="../../xr-core/compression/" class="md-nav__link">
         
   
   
@@ -1358,7 +1121,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../locator/" class="md-nav__link">
+      <a href="../../xr-core/locator/" class="md-nav__link">
         
   
   
@@ -1386,7 +1149,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../system/" class="md-nav__link">
+      <a href="../../xr-core/system/" class="md-nav__link">
         
   
   
@@ -2294,6 +2057,8 @@
                 
   
   
+    
+  
   
   
     
@@ -2309,11 +2074,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
         
           
           <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="">
@@ -2334,7 +2099,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2352,7 +2117,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../renderer/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -2377,10 +2142,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../renderer/factory/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Точка входа и фабрика
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2396,6 +2188,175 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Ответственность
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Место в архитектуре
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Публичный API
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Внутреннее устройство
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Внутреннее устройство">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dllmainxrrenderr4-xrrender_r4cpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DllMainXrRenderR4 (xrRender_R4.cpp)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xrrender_test_hw-r2_test_hwcpp-xrrenderpc_r4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xrRender_test_hw (r2_test_hw.cpp, xrRenderPC_R4)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dxrenderfactory-dxrenderfactoryhcpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dxRenderFactory (dxRenderFactory.h/.cpp)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xrrender_initconsole-xrrender_consolecpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xrRender_initconsole (xrRender_console.cpp)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rimplementation-r4cpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RImplementation (r4.cpp)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Взаимодействие
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Потоки данных/управления
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Конфигурация
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Известные ограничения/дебаг
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2408,7 +2369,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../renderer/render-device/" class="md-nav__link">
+      <a href="../render-device/" class="md-nav__link">
         
   
   
@@ -2436,7 +2397,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../renderer/constants/" class="md-nav__link">
+      <a href="../constants/" class="md-nav__link">
         
   
   
@@ -2464,7 +2425,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../renderer/pipeline/" class="md-nav__link">
+      <a href="../pipeline/" class="md-nav__link">
         
   
   
@@ -2492,7 +2453,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../renderer/postprocessing/" class="md-nav__link">
+      <a href="../postprocessing/" class="md-nav__link">
         
   
   
@@ -2520,7 +2481,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../renderer/shader-bus/" class="md-nav__link">
+      <a href="../shader-bus/" class="md-nav__link">
         
   
   
@@ -3327,10 +3288,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ответственность
+        1. Ответственность
       
     </span>
   </a>
@@ -3338,10 +3299,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Место в архитектуре
+        2. Место в архитектуре
       
     </span>
   </a>
@@ -3349,22 +3310,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#api" class="md-nav__link">
+  <a href="#3-api" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Публичный API
+        3. Публичный API
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Публичный API">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Внутреннее устройство
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Внутреннее устройство">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#singleton-memory-xrmemory" class="md-nav__link">
+  <a href="#dllmainxrrenderr4-xrrender_r4cpp" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Singleton Memory (тип xrMemory)
+        DllMainXrRenderR4 (xrRender_R4.cpp)
       
     </span>
   </a>
@@ -3372,10 +3344,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#operator-newdelete" class="md-nav__link">
+  <a href="#xrrender_test_hw-r2_test_hwcpp-xrrenderpc_r4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Глобальный operator new/delete
+        xrRender_test_hw (r2_test_hw.cpp, xrRenderPC_R4)
       
     </span>
   </a>
@@ -3383,10 +3355,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#dxrenderfactory-dxrenderfactoryhcpp" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Макросы и функции
+        dxRenderFactory (dxRenderFactory.h/.cpp)
       
     </span>
   </a>
@@ -3394,10 +3366,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#xrrender_initconsole-xrrender_consolecpp" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Пулы
+        xrRender_initconsole (xrRender_console.cpp)
       
     </span>
   </a>
@@ -3405,10 +3377,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#rimplementation-r4cpp" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Окружение и статистика
+        RImplementation (r4.cpp)
       
     </span>
   </a>
@@ -3421,60 +3393,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Внутреннее устройство
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Внутреннее устройство">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Файлы
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Режимы
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#debug_memory_manager" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Отладочный учёт (DEBUG_MEMORY_MANAGER)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Взаимодействие
+        5. Взаимодействие
       
     </span>
   </a>
@@ -3482,10 +3404,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Потоки данных
+        6. Потоки данных/управления
       
     </span>
   </a>
@@ -3493,10 +3415,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Конфигурация
+        7. Конфигурация
       
     </span>
   </a>
@@ -3504,10 +3426,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ограничения / дебаг
+        8. Известные ограничения/дебаг
       
     </span>
   </a>
@@ -3531,321 +3453,301 @@
 
 
 
-<h1 id="xrcore">xrCore: Память<a class="headerlink" href="#xrcore" title="Permanent link">&para;</a></h1>
-<p>Единый аллокатор, пулы, отладочный учёт выделений.</p>
-<h2 id="_1">Ответственность<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h1 id="renderer">Renderer: точка входа и фабрика<a class="headerlink" href="#renderer" title="Permanent link">&para;</a></h1>
+<h2 id="1">1. Ответственность<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>Точка входа R4-бэкенда: установка глобальных указателей рендера, регистрация консольных cvar'ов, проверка HW, фабрика render-объектов. Не реализует рендер — только инициализация и создание объектов.</p>
+<h2 id="2">2. Место в архитектуре<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<p>См. <a href="../../../architecture/overview/">Архитектура</a>, <a href="../../../architecture/dependencies/">Зависимости</a>.</p>
+<p><code>DllMainXrRenderR4</code> вызывается из <code>CEngineAPI</code> (xrEngine) при запуске. <code>RenderFactoryImpl</code> используется через <code>::RenderFactory</code> для создания <code>IFontRender</code>, <code>IImGuiRender</code> и т.д.</p>
+<h2 id="3-api">3. Публичный API<a class="headerlink" href="#3-api" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Класс/функция</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DllMainXrRenderR4</code></td>
+<td>Точка входа R4: <code>::Render = &amp;RImplementation</code>, <code>::RenderFactory = &amp;RenderFactoryImpl</code>, <code>::DU = &amp;DUImpl</code>, <code>UIRender = &amp;UIRenderImpl</code>, <code>DRender = &amp;DebugRenderImpl</code>, <code>xrRender_initconsole()</code></td>
+</tr>
+<tr>
+<td><code>SupportsDX11Rendering</code></td>
+<td><code>extern "C"</code> экспортер: <code>xrRender_test_hw() ? true : false</code></td>
+</tr>
+<tr>
+<td><code>xrRender_test_hw</code></td>
+<td>Проверка DX11: <code>TestDX11Present()</code> (LoadLibrary d3d11.dll, D3D11CreateDeviceAndSwapChain)</td>
+</tr>
+<tr>
+<td><code>TestDX11Present</code></td>
+<td>Создаёт window class + window + DXGI swap chain, проверяет feature level 11.0</td>
+</tr>
+<tr>
+<td><code>dxRenderFactory</code></td>
+<td>Фабрика: <code>Create*/Destroy*</code> для ~20 типов render-объектов</td>
+</tr>
+<tr>
+<td><code>RenderFactoryImpl</code></td>
+<td>Глобальный экземпляр <code>dxRenderFactory</code></td>
+</tr>
+<tr>
+<td><code>xrRender_initconsole</code></td>
+<td>Регистрация ~200 cvar'ов (r1_<em>, r2_</em>, r3_<em>, r4_</em>, ssfx_<em>, shader_param_</em>, markswitch_<em>, heat_vision_</em>, sil_glow_*)</td>
+</tr>
+<tr>
+<td><code>RImplementation</code></td>
+<td>Глобальный <code>CRender</code> (R4), <code>r4.cpp</code></td>
+</tr>
+<tr>
+<td><code>::Render</code></td>
+<td><code>IRender_interface*</code>, xrAPI.h</td>
+</tr>
+<tr>
+<td><code>::RenderFactory</code></td>
+<td><code>dxRenderFactory*</code>, xrAPI.h</td>
+</tr>
+<tr>
+<td><code>::DU</code></td>
+<td><code>CDUInterface*</code>, xrAPI.h</td>
+</tr>
+<tr>
+<td><code>UIRender</code></td>
+<td><code>IUIRender*</code>, xrAPI.h</td>
+</tr>
+<tr>
+<td><code>DRender</code></td>
+<td><code>IDebugRender*</code>, xrAPI.h</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4">4. Внутреннее устройство<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<h3 id="dllmainxrrenderr4-xrrender_r4cpp"><code>DllMainXrRenderR4</code> (<code>xrRender_R4.cpp</code>)<a class="headerlink" href="#dllmainxrrenderr4-xrrender_r4cpp" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">BOOL</span><span class="w"> </span><span class="nf">DllMainXrRenderR4</span><span class="p">(</span><span class="n">HANDLE</span><span class="w"> </span><span class="n">hModule</span><span class="p">,</span><span class="w"> </span><span class="n">DWORD</span><span class="w"> </span><span class="n">ul_reason_for_call</span><span class="p">,</span><span class="w"> </span><span class="n">LPVOID</span><span class="w"> </span><span class="n">lpReserved</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">ul_reason_for_call</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">DLL_PROCESS_ATTACH</span><span class="p">:</span>
+<span class="w">        </span><span class="c1">//  Can&#39;t call CreateDXGIFactory from DllMain</span>
+<span class="w">        </span><span class="c1">//if (!xrRender_test_hw())  return FALSE;</span>
+<span class="w">        </span><span class="o">::</span><span class="n">Render</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">RImplementation</span><span class="p">;</span>
+<span class="w">        </span><span class="o">::</span><span class="n">RenderFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">RenderFactoryImpl</span><span class="p">;</span>
+<span class="w">        </span><span class="o">::</span><span class="n">DU</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">DUImpl</span><span class="p">;</span>
+<span class="w">        </span><span class="n">UIRender</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">UIRenderImpl</span><span class="p">;</span>
+<span class="w">        </span><span class="n">DRender</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">DebugRenderImpl</span><span class="p">;</span>
+<span class="w">        </span><span class="n">xrRender_initconsole</span><span class="p">();</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">DLL_THREAD_ATTACH</span><span class="p">:</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">DLL_THREAD_DETACH</span><span class="p">:</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">DLL_PROCESS_DETACH</span><span class="p">:</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">TRUE</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <ul>
-<li>Единая точка выделения памяти для всего движка (глобальный <code>operator new/delete</code>).</li>
-<li>Подсистема «именованных» выделений (<code>DEBUG_MEMORY_NAME</code>) и отладочного учёта.</li>
-<li>Фиксированные пулы <code>MEMPOOL</code> (64 шт.) для частых мелких объектов.</li>
-<li>PSO-функции <code>mem_copy</code>/<code>mem_fill</code>/<code>mem_fill32</code> (выбираются по CPU — см. <a href="../types-math/">Типы и математика</a>).</li>
-<li>Мониторинг памяти (debug) — <code>memory_monitor.h</code>.</li>
+<li>Вызывается из <code>CEngineAPI::InitializeNotDedicated</code>/<code>CreateRendererList</code> (xrEngine) при <code>STATIC_RENDERER_R4</code>.</li>
+<li><code>xrRender_test_hw()</code> <strong>закомментирован</strong> в <code>DllMain</code> (комментарий: «Can't call CreateDXGIFactory from DllMain»).</li>
+<li><code>::vid_mode_token</code> — не инициализируется здесь (комментарий: «inited by HW»).</li>
+<li><code>SupportsDX11Rendering()</code> — <code>extern "C"</code> экспортер, вызывает <code>xrRender_test_hw()</code>.</li>
 </ul>
-<h2 id="_2">Место в архитектуре<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>Нижний слой — <a href="../../../architecture/module-map/">Карта модулей</a>. Ни от кого внутри движка не зависит; <strong>все</strong> другие модули включают <code>xrMemory.h</code> (прямая или через <code>xrCore.h</code>).</p>
-<h2 id="api">Публичный API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
-<h3 id="singleton-memory-xrmemory">Singleton <code>Memory</code> (тип <code>xrMemory</code>)<a class="headerlink" href="#singleton-memory-xrmemory" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">extern</span><span class="w"> </span><span class="n">XRCORE_API</span><span class="w"> </span><span class="n">xrMemory</span><span class="w"> </span><span class="n">Memory</span><span class="p">;</span>
+<h3 id="xrrender_test_hw-r2_test_hwcpp-xrrenderpc_r4"><code>xrRender_test_hw</code> (<code>r2_test_hw.cpp</code>, xrRenderPC_R4)<a class="headerlink" href="#xrrender_test_hw-r2_test_hwcpp-xrrenderpc_r4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">BOOL</span><span class="w"> </span><span class="nf">xrRender_test_hw</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">//CHW  _HW;</span>
+<span class="w">    </span><span class="c1">//HRESULT hr;</span>
+<span class="w">    </span><span class="c1">//_HW.CreateD3D();</span>
+<span class="w">    </span><span class="c1">//hr = _HW.m_pAdapter-&gt;CheckInterfaceSupport(__uuidof(ID3DDevice), 0);</span>
+<span class="w">    </span><span class="c1">//_HW.DestroyD3D();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">TestDX11Present</span><span class="p">();</span>
+<span class="p">}</span>
 </code></pre></div>
+<p><code>TestDX11Present()</code>:
+1. <code>LoadLibrary("d3d11.dll")</code> — если не загрузился → <code>Msg("* DX11: failed to load d3d11.dll")</code>, return false.
+2. <code>GetProcAddress(hD3D11, "D3D11CreateDeviceAndSwapChain")</code> — если не найден → <code>Msg("* DX11: failed to get address of ...")</code>, return false.
+3. Регистрирует window class <code>TestDX11WindowClass</code> (<code>WndProc2</code> → <code>DefWindowProc</code>).
+4. Создаёт window <code>WS_OVERLAPPEDWINDOW</code>, 800×600, <code>DXGI_FORMAT_R8G8B8A8_UNORM</code>, 60Hz, 1 sample.
+5. <code>D3D11CreateDeviceAndSwapChain(NULL, D3D_DRIVER_TYPE_HARDWARE, NULL, 0, {D3D_FEATURE_LEVEL_11_0}, 1, D3D11_SDK_VERSION, &amp;sd, ...)</code> — проверяет <code>SUCCEEDED(hr)</code>.
+6. Освобождает все ресурсы, <code>FreeLibrary</code>, <code>DestroyWindow</code>.</p>
+<p>Старая DX10-проверка (<code>CHW</code>, <code>CheckInterfaceSupport(__uuidof(ID3DDevice), 0)</code>) <strong>закомментирована</strong>.</p>
+<h3 id="dxrenderfactory-dxrenderfactoryhcpp"><code>dxRenderFactory</code> (<code>dxRenderFactory.h/.cpp</code>)<a class="headerlink" href="#dxrenderfactory-dxrenderfactoryhcpp" title="Permanent link">&para;</a></h3>
+<p>Фабрика без интерфейса (комментарий: <code>/* : public IRenderFactory */</code> — <code>IRenderFactory</code> в <code>RenderFactory.h</code> <strong>закомментирован</strong>).</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#define RENDER_FACTORY_IMPLEMENT(Class) \</span>
+<span class="cp">    I##Class* dxRenderFactory::Create##Class() \</span>
+<span class="cp">    { \</span>
+<span class="cp">        return xr_new&lt;dx##Class&gt;(); \</span>
+<span class="cp">    } \</span>
+<span class="cp">    void dxRenderFactory::Destroy##Class(I##Class *pObject) \</span>
+<span class="cp">    { \</span>
+<span class="cp">        xr_delete((dx##Class*&amp;)pObject); \</span>
+<span class="cp">    }</span>
+</code></pre></div>
+<p>Создаваемые типы (все <code>#ifndef _EDITOR</code>, кроме <code>FontRender</code>):</p>
 <table>
 <thead>
 <tr>
-<th>Метод</th>
-<th>Назначение</th>
+<th>Тип</th>
+<th>Условие</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>_initialize(BOOL debug_mode=FALSE)</code></td>
-<td>вызывается из <code>xrCore::_initialize</code></td>
+<td><code>UISequenceVideoItem</code></td>
+<td>always</td>
 </tr>
 <tr>
-<td><code>_destroy()</code></td>
-<td>обратная очистка</td>
+<td><code>UIShader</code></td>
+<td>always</td>
 </tr>
 <tr>
-<td><code>mem_alloc(size, name?)</code> / <code>mem_realloc(p, size, name?)</code> / <code>mem_free(p)</code></td>
-<td>базовые операции (с именем при <code>DEBUG_MEMORY_NAME</code>)</td>
+<td><code>StatGraphRender</code></td>
+<td>always</td>
 </tr>
 <tr>
-<td><code>mem_usage()</code></td>
-<td>текущее занятое</td>
+<td><code>ConsoleRender</code></td>
+<td>always</td>
 </tr>
 <tr>
-<td><code>mem_compact()</code></td>
-<td>компактизация</td>
+<td><code>RenderDeviceRender</code></td>
+<td>always</td>
 </tr>
 <tr>
-<td><code>mem_statistic(LPCSTR fn)</code></td>
-<td>дамп статистики в файл (debug)</td>
+<td><code>ObjectSpaceRender</code></td>
+<td><code>DEBUG</code> only</td>
 </tr>
 <tr>
-<td><code>dbg_register(p, size, name)</code> / <code>dbg_unregister(p)</code> / <code>dbg_check()</code></td>
-<td>отладочный учёт (только <code>DEBUG_MEMORY_MANAGER</code>)</td>
+<td><code>ApplicationRender</code></td>
+<td>always</td>
 </tr>
 <tr>
-<td><code>mem_copy</code>, <code>mem_fill</code>, <code>mem_fill32</code></td>
-<td>PSO-указатели (<code>pso_MemCopy</code>/<code>pso_MemFill</code>/<code>pso_MemFill32</code> — <code>xrMemory_pso.h</code>)</td>
+<td><code>WallMarkArray</code></td>
+<td>always</td>
 </tr>
 <tr>
-<td><code>mem_counter_set/get</code></td>
-<td>счётчик (debug)</td>
+<td><code>StatsRender</code></td>
+<td>always</td>
+</tr>
+<tr>
+<td><code>FlareRender</code></td>
+<td>always</td>
+</tr>
+<tr>
+<td><code>ThunderboltRender</code></td>
+<td>always</td>
+</tr>
+<tr>
+<td><code>ThunderboltDescRender</code></td>
+<td>always</td>
+</tr>
+<tr>
+<td><code>RainRender</code></td>
+<td>always</td>
+</tr>
+<tr>
+<td><code>LensFlareRender</code></td>
+<td>always</td>
+</tr>
+<tr>
+<td><code>ImGuiRender</code></td>
+<td>always</td>
+</tr>
+<tr>
+<td><code>EnvironmentRender</code></td>
+<td>always</td>
+</tr>
+<tr>
+<td><code>EnvDescriptorMixerRender</code></td>
+<td>always</td>
+</tr>
+<tr>
+<td><code>EnvDescriptorRender</code></td>
+<td>always</td>
+</tr>
+<tr>
+<td><code>FontRender</code></td>
+<td>always (вне <code>#ifndef _EDITOR</code>)</td>
 </tr>
 </tbody>
 </table>
-<h3 id="operator-newdelete">Глобальный <code>operator new/delete</code><a class="headerlink" href="#operator-newdelete" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// xrMemory.h, MSVC</span>
-<span class="n">IC</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="k">operator</span><span class="w"> </span><span class="k">new</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">Memory</span><span class="p">.</span><span class="n">mem_alloc</span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;C++ NEW&quot;</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-<span class="n">IC</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="k">operator</span><span class="w"> </span><span class="k">delete</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">xr_free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-<span class="n">IC</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="k">operator</span><span class="w"> </span><span class="k">new</span><span class="p">[](</span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">Memory</span><span class="p">.</span><span class="n">mem_alloc</span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;C++ NEW&quot;</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-<span class="n">IC</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="k">operator</span><span class="w"> </span><span class="k">delete</span><span class="p">[](</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">xr_free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-</code></pre></div>
-<p><strong>Важно</strong>: все <code>new</code>/<code>delete</code> в движке уходят в <code>Memory</code>. Отключается <code>NO_XRNEW</code> или под Borland.</p>
-<h3 id="_3">Макросы и функции<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Макрос / функция</th>
-<th>Что делает</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>ZeroMemory(a,b)</code></td>
-<td><code>Memory.mem_fill(a, 0, b)</code></td>
-</tr>
-<tr>
-<td><code>FillMemory(a,b,c)</code></td>
-<td><code>Memory.mem_fill(a, c, b)</code></td>
-</tr>
-<tr>
-<td><code>CopyMemory(a,b,c)</code></td>
-<td><code>memcpy(a,b,c)</code></td>
-</tr>
-<tr>
-<td><code>xr_alloc&lt;T&gt;(count)</code></td>
-<td><code>Memory.mem_alloc(count*sizeof(T), typeid(T).name())</code> (имя при <code>DEBUG_MEMORY_NAME</code>)</td>
-</tr>
-<tr>
-<td><code>xr_free&lt;T*&amp;&gt;(P)</code></td>
-<td><code>Memory.mem_free</code>, ставит <code>P = NULL</code></td>
-</tr>
-<tr>
-<td><code>xr_malloc(size)</code> / <code>xr_realloc(P, size)</code></td>
-<td>C-подобные</td>
-</tr>
-<tr>
-<td><code>xr_strdup(const char*)</code></td>
-<td><code>new char[n]</code> + copy</td>
-</tr>
-</tbody>
-</table>
-<h3 id="_4">Пулы<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">mem_pools_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">64</span><span class="p">;</span>
-<span class="k">const</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">mem_pools_ebase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="p">;</span>
-<span class="k">const</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">mem_generic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mem_pools_count</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="k">extern</span><span class="w"> </span><span class="n">MEMPOOL</span><span class="w"> </span><span class="n">mem_pools</span><span class="p">[</span><span class="n">mem_pools_count</span><span class="p">];</span>
-</code></pre></div>
-<p><code>MEMPOOL</code> (<code>xrMEMORY_POOL.h</code>):</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">MEMPOOL</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">xrCriticalSection</span><span class="w"> </span><span class="n">cs</span><span class="p">;</span>
-<span class="w">    </span><span class="n">u32</span><span class="w"> </span><span class="n">s_sector</span><span class="p">;</span><span class="w">   </span><span class="c1">// размер сектора (крупных) выделений</span>
-<span class="w">    </span><span class="n">u32</span><span class="w"> </span><span class="n">s_element</span><span class="p">;</span><span class="w">  </span><span class="c1">// размер элемента</span>
-<span class="w">    </span><span class="n">u32</span><span class="w"> </span><span class="n">s_count</span><span class="p">;</span><span class="w">    </span><span class="c1">// = s_sector / s_element</span>
-<span class="w">    </span><span class="n">u32</span><span class="w"> </span><span class="n">s_offset</span><span class="p">;</span><span class="w">   </span><span class="c1">// размер заголовка</span>
-<span class="w">    </span><span class="n">u32</span><span class="w"> </span><span class="n">block_count</span><span class="p">;</span>
-<span class="w">    </span><span class="n">u8</span><span class="o">*</span><span class="w"> </span><span class="n">list</span><span class="p">;</span><span class="w">       </span><span class="c1">// free list</span>
-
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">_initialize</span><span class="p">(</span><span class="n">u32</span><span class="w"> </span><span class="n">element</span><span class="p">,</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">sector</span><span class="p">,</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">header</span><span class="p">);</span>
-<span class="w">    </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="nf">create</span><span class="p">();</span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">destroy</span><span class="p">(</span><span class="kt">void</span><span class="o">*&amp;</span><span class="w"> </span><span class="n">P</span><span class="p">);</span>
-<span class="p">};</span>
-</code></pre></div>
-<p>Внутри — классический free list: первый <code>u32</code> элемента = указатель на следующий свободный.</p>
-<h3 id="_5">Окружение и статистика<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Функция</th>
-<th>Назначение</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>vminfo(size_t* free, size_t* reserved, size_t* committed)</code></td>
-<td>Windows VirtualMemory info</td>
-</tr>
-<tr>
-<td><code>log_vminfo()</code></td>
-<td>лог виртуальной памяти</td>
-</tr>
-<tr>
-<td><code>memory_monitor</code> (debug)</td>
-<td><code>monitor_alloc</code>, <code>monitor_free</code>, <code>make_checkpoint</code>, <code>flush_each_time</code></td>
-</tr>
-</tbody>
-</table>
-<h2 id="_6">Внутреннее устройство<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<h3 id="_7">Файлы<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Файл</th>
-<th>Назначение</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>xrMemory.h</code></td>
-<td>интерфейс</td>
-</tr>
-<tr>
-<td><code>xrMemory.cpp</code></td>
-<td>реализация</td>
-</tr>
-<tr>
-<td><code>xrMemory_align.cpp/h</code></td>
-<td>выравнивание</td>
-</tr>
-<tr>
-<td><code>xrMemory_DEBUG.cpp</code></td>
-<td>отладочный учёт</td>
-</tr>
-<tr>
-<td><code>xrMemory_pso.h</code></td>
-<td>PSO-типы</td>
-</tr>
-<tr>
-<td><code>xrMemory_pso_Copy.cpp</code></td>
-<td>реализация <code>mem_copy</code></td>
-</tr>
-<tr>
-<td><code>xrMemory_pso_Fill.cpp</code></td>
-<td>реализация <code>mem_fill</code></td>
-</tr>
-<tr>
-<td><code>xrMemory_pso_Fill32.cpp</code></td>
-<td>реализация <code>mem_fill32</code></td>
-</tr>
-<tr>
-<td><code>xrMemory_pure.h</code></td>
-<td>«чистая» реализация</td>
-</tr>
-<tr>
-<td><code>xrMEMORY_POOL.h</code> + <code>xrMemory_POOL.cpp</code></td>
-<td><code>MEMPOOL</code></td>
-</tr>
-<tr>
-<td><code>xrMemory_subst_msvc.h/.cpp</code></td>
-<td>подмена <code>new/delete</code></td>
-</tr>
-<tr>
-<td><code>xrMemory_subst_borland.h/.cpp</code></td>
-<td>аналогично для Borland</td>
-</tr>
-<tr>
-<td><code>memory_allocation_stats.cpp</code></td>
-<td>статистика</td>
-</tr>
-<tr>
-<td><code>memory_monitor.cpp/h</code></td>
-<td>debug-мониторинг</td>
-</tr>
-<tr>
-<td><code>memory_usage.cpp</code></td>
-<td>учёт</td>
-</tr>
-</tbody>
-</table>
-<h3 id="_8">Режимы<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Режим</th>
-<th>Определитель</th>
-<th>Что даёт</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>USE_MEMORY_MONITOR</code></td>
-<td><code>DEBUG</code> + <code>!_EDITOR</code></td>
-<td>включение <code>DEBUG_MEMORY_NAME</code></td>
-</tr>
-<tr>
-<td><code>DEBUG_MEMORY_NAME</code></td>
-<td>auto + <code>DEBUG_MEMORY_MANAGER</code></td>
-<td>имена выделений</td>
-</tr>
-<tr>
-<td><code>DEBUG_MEMORY_MANAGER</code></td>
-<td>вручную (<code>#if 0</code> по умолчанию)</td>
-<td>полный учёт + <code>dbg_*</code></td>
-</tr>
-<tr>
-<td><code>PROFILE_CRITICAL_SECTIONS</code></td>
-<td>вручную</td>
-<td>профилирование мьютексов</td>
-</tr>
-<tr>
-<td><code>NO_XRNEW</code></td>
-<td>вручную</td>
-<td>отключить подмену <code>new/delete</code></td>
-</tr>
-</tbody>
-</table>
-<h3 id="debug_memory_manager">Отладочный учёт (<code>DEBUG_MEMORY_MANAGER</code>)<a class="headerlink" href="#debug_memory_manager" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">mdbg</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">_p</span><span class="p">;</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">_size</span><span class="p">;</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">_name</span><span class="p">;</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">_dummy</span><span class="p">;</span><span class="w"> </span><span class="p">};</span>
-<span class="c1">// xrMemory::debug_info — std::vector&lt;mdbg&gt;, защищён debug_cs</span>
-</code></pre></div>
-<p><code>dbg_check()</code> — проверка на утечки/повторы. <code>dump_phase()</code> — дамп фазы.</p>
-<h2 id="_9">Взаимодействие<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
-<pre class="mermaid"><code>graph TD
-    subgraph Все модули движка
-        A[xrEngine]
-        B[xrGame]
-        C[Renderer]
-        D[xrSound]
-    end
-    E[xrMemory] --&gt; F[Memory.mem_alloc]
-    A --&gt; E
-    B --&gt; E
-    C --&gt; E
-    D --&gt; E
-    F --&gt; G[Пул Windows / heap]
-    E --&gt; H[MEMPOOL x64]
-    E --&gt; I[PSO: mem_copy/fill/fill32]
-    I --&gt; J[CPU dispatch — см. types-math.md]</code></pre>
+<p>Глобал: <code>dxRenderFactory RenderFactoryImpl;</code> (<code>dxRenderFactory.cpp</code>).</p>
+<h3 id="xrrender_initconsole-xrrender_consolecpp"><code>xrRender_initconsole</code> (<code>xrRender_console.cpp</code>)<a class="headerlink" href="#xrrender_initconsole-xrrender_consolecpp" title="Permanent link">&para;</a></h3>
+<p>Регистрация ~200 cvar'ов через <code>CMD1</code>–<code>CMD4</code>. Основные группы:</p>
 <ul>
-<li><strong>Кто использует</strong>: буквально весь код движка. Любой <code>new</code>/<code>delete</code> → <code>Memory.mem_alloc/free</code>.</li>
-<li><strong>Зависимости</strong>: только Windows API.</li>
-<li><strong>Взаимосвязь с PSO</strong>: <code>mem_copy</code>/<code>mem_fill</code> — указатели на функции, выбранные по CPU в runtime.</li>
+<li><strong>Common</strong>: <code>screenshot</code>, <code>r__dtex_range</code>, <code>r__wallmark_ttl</code>, <code>r__supersample</code>, <code>r__geometry_lod</code>, <code>r__detail_density</code>, <code>r__detail_height</code>, <code>r__no_ram_textures</code>, <code>r__tf_aniso</code>, <code>r__tf_mipbias</code>, <code>r2_aa</code>, <code>r2_aa_kernel</code>, <code>r2_mblur</code>, <code>r__exposure</code>, <code>r__gamma</code>, <code>r__saturation</code>, <code>r__color_grading</code>, <code>r__bloom_weight</code>, <code>r__bloom_thresh</code>, <code>r__nightvision</code>, <code>r__fakescope</code>, <code>r__3Dfakescope</code>, <code>r__heatvision</code>, <code>r2_terrain_z_prepass</code>, <code>r2_water_reflections</code>, <code>r2_mblur_enabled</code>, <code>r__lens_flares</code>, <code>r2_smaa</code>, <code>r2_gi</code>, <code>r2_gi_clip/depth/photons/refl</code>.</li>
+<li><strong>R1</strong> (legacy): <code>r1_ssa_lod_a/b</code>, <code>r1_lmodel_lerp</code>, <code>r1_dlights</code>, <code>r1_dlights_clip</code>, <code>r1_pps_u/v</code>, <code>r1_glows_per_frame</code>, <code>r1_detail_textures</code>, <code>r1_fog_luminance</code>, <code>r1_software_skinning</code>.</li>
+<li><strong>R2</strong>: <code>r2_ssa_lod_a/b</code>, <code>r2em</code>, <code>r2_tonemap*</code>, <code>r2_ls_bloom_*</code>, <code>r2_ls_dsm_kernel</code>, <code>r2_ls_psm_kernel</code>, <code>r2_ls_ssm_kernel</code>, <code>r2_ls_squality</code>, <code>r2_zfill</code>, <code>r2_zfill_depth</code>, <code>r2_allow_r1_lights</code>, <code>r__actor_shadow</code>, <code>r2_gloss_factor/min</code>, <code>r_screenshot_mode</code>, <code>r2_sun</code>, <code>r2_sun_details</code>, <code>r2_sun_focus</code>, <code>r2_exp_donttest_shad</code>, <code>r2_sun_tsm</code>, <code>r2_sun_tsm_proj/bias</code>, <code>r2_sun_near/far</code>, <code>r2_sun_near_border</code>, <code>r2_sun_depth_*</code>, <code>r2_sun_lumscale*</code>, <code>r2_sun_lumscale_color</code> (demonized), <code>r2_dof</code>, <code>r2_dof_*</code>, <code>r2_dof_enable</code>, <code>r2_volumetric_lights</code>, <code>r2_sunshafts_mode</code>, <code>r2_ss_sunshafts_*</code>, <code>r2_tnmp_*</code> (tonemap).</li>
+<li><strong>R3</strong>: <code>r3_msaa</code>, <code>r3_use_dx10_1</code>, <code>r3_msaa_alphatest</code>, <code>r3_minmax_sm</code>, <code>r3_dynamic_wet_surfaces*</code>, <code>r3_volumetric_smoke</code>.</li>
+<li><strong>R4</strong> (HDR10): <code>r4_hdr10_on</code>, <code>r4_hdr10_whitepoint_nits</code>, <code>r4_hdr10_ui_nits</code>, <code>r4_hdr10_pda_intensity</code>, <code>r4_hdr10_colorspace</code>, <code>r4_hdr10_tonemapper</code>, <code>r4_hdr10_tonemap_mode</code>, <code>r4_hdr10_exposure/contrast/contrast_middle_gray/saturation/brightness/gamma/ui_saturation</code>, <code>r4_hdr10_bloom_*</code>, <code>r4_hdr10_flare_*</code>, <code>r4_hdr10_sun_*</code>, <code>r4_enable_tessellation</code>, <code>r4_wireframe</code>.</li>
+<li><strong>SSFX</strong> (shader-based): <code>ssfx_floravariation</code>, <code>ssfx_taa</code>, <code>ssfx_motionblur</code>, <code>ssfx_fog_scattering</code>, <code>ssfx_fog</code>, <code>ssfx_pom_*</code>, <code>ssfx_terrain_*</code>, <code>ssfx_bloom_*</code>, <code>ssfx_sss_*</code>, <code>ssfx_hud_hemi</code>, <code>ssfx_il_*</code>, <code>ssfx_ao_*</code>, <code>ssfx_water*</code>, <code>ssfx_ssr*</code>, <code>ssfx_terrain_quality/offset</code>, <code>ssfx_shadows</code>, <code>ssfx_volumetric</code>, <code>ssfx_shadow_bias</code>, <code>ssfx_lut</code>, <code>ssfx_wind_grass/trees</code>, <code>ssfx_florafixes_*</code>, <code>ssfx_wetsurfaces_*</code>, <code>ssfx_is_underground</code>, <code>ssfx_gloss_*</code>, <code>ssfx_lightsetup_1</code>, <code>ssfx_hud_drops_*</code>, <code>ssfx_blood_decals</code>, <code>ssfx_rain_*</code>, <code>ssfx_grass_shadows</code>, <code>ssfx_shadow_cascades</code>, <code>ssfx_grass_interactive</code>, <code>ssfx_int_grass_params_*</code>, <code>ssfx_wpn_dof_*</code>.</li>
+<li><strong>Shader params</strong>: <code>shader_param_1..8</code> (Fvector4, -100..100).</li>
+<li><strong>Bus</strong> (shader bus): <code>bus_list</code>, <code>bus_get</code>, <code>bus_force</code>, <code>bus_release</code>.</li>
+<li><strong>Markswitch</strong>: <code>markswitch_current</code>, <code>markswitch_count</code>, <code>markswitch_color</code>.</li>
+<li><strong>3D scopes</strong>: <code>s3ds_param_1..4</code>.</li>
+<li><strong>Heat vision</strong> (DSR): <code>heat_vision_cooldown</code>, <code>heat_vision_cooldown_time</code>, <code>heat_vision_zombie_cold</code>, <code>heat_vision_mode</code>, <code>heat_vision_steps</code>, <code>heat_vision_blurring</code>, <code>heat_vision_args_1/2</code>.</li>
+<li><strong>Silencer overheat</strong> (DSR): <code>sil_glow_max_temp</code>, <code>sil_glow_shot_temp</code>, <code>sil_glow_cool_temp_rate</code>, <code>sil_glow_color</code>.</li>
+<li><strong>DEBUG</strong>: <code>dump_resources</code>, <code>r__lsleep_frames</code>, <code>r__ssa_glod_start/end</code>, <code>r__wallmark_shift_pp/v</code>, <code>stat_models</code>, <code>r__detail_l_ambient/aniso</code>, <code>r__d_tree_w_*</code>, <code>r2_use_nvdbt</code>, <code>r2_mt</code>, <code>render_memory_stats</code>, <code>r3_fog_reload</code>.</li>
 </ul>
-<h2 id="_10">Потоки данных<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p>Особенности:
+- <code>ps_r__common_flags.set(RFLAG_NO_RAM_TEXTURES, TRUE)</code> — <strong>по умолчанию</strong> для R3/R4.
+- <code>CMD3(CCC_Preset, "_preset", &amp;ps_Preset, qpreset_token)</code> — пресет качества.
+- <code>CMD4(CCC_Integer, "rs_skeleton_update", &amp;psSkeletonUpdate, 2, 128)</code> — интервал обновления скелета.</p>
+<h3 id="rimplementation-r4cpp"><code>RImplementation</code> (<code>r4.cpp</code>)<a class="headerlink" href="#rimplementation-r4cpp" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">CRender</span><span class="w"> </span><span class="n">RImplementation</span><span class="p">;</span>
+</code></pre></div>
+<p><code>CRender</code> (<code>r4.h</code>) наследует <code>R_dsgraph_structure</code> (xrRender):
+- <code>_options o</code> — битовые флаги HW-features (ssfx_<em>, ssao_</em>, smap, mrt, fp16, dx10_msaa, dx11_hdr10 и т.д.).
+- <code>_stats stats</code> — счётчики (l_total, l_visible, s_used, o_queries и т.д.).
+- <code>CSector* pLastSector</code>, <code>Fvector vLastCameraPos</code>, <code>xr_vector&lt;IRender_Portal*&gt; Portals</code>, <code>xr_vector&lt;IRender_Sector*&gt; Sectors</code>, <code>CHOM HOM</code>, <code>R_occlusion HWOCC</code>.
+- <code>xr_vector&lt;FSlideWindowItem&gt; SWIs</code>, <code>xr_vector&lt;ref_shader&gt; Shaders</code>, <code>xr_vector&lt;ID3DVertexBuffer*&gt; nVB/xVB</code>, <code>xr_vector&lt;ID3DIndexBuffer*&gt; nIB/xIB</code>, <code>xr_vector&lt;dxRender_Visual*&gt; Visuals</code>, <code>CPSLibrary PSLibrary</code>.
+- <code>CDetailManager* Details</code>, <code>CModelPool* Models</code>, <code>CWallmarksEngine* Wallmarks</code>, <code>CRenderTarget* Target</code>.
+- <code>CLight_DB Lights</code>, <code>CLight_Compute_XFORM_and_VIS LR</code>, <code>SMAP_Allocator LP_smap_pool</code>, <code>light_Package LP_normal/LP_pending</code>.
+- <code>xr_vector&lt;sun::cascade&gt; m_sun_cascades</code>, <code>ID3DQuery* q_sync_point[CHWCaps::MAX_GPUS]</code>.
+- <code>create()/destroy()/reset_begin()/reset_end()</code> — lifecycle.
+- <code>render_main/forward/smap_direct/indirect/lights/sun/sun_near/sun_filtered/menu/rain</code>.
+- <code>shader_compile()</code> — компиляция шейдеров (D3D11, <code>ID3DBlob</code>, disasm).
+- <code>model_Create/Duplicate/Delete/Prefetch/Clear/Exists</code>.
+- <code>add_StaticWallmark/add_SkeletonWallmark/clear_static_wallmarks</code>.
+- <code>occ_visible/occq_begin/occq_end/occq_get</code> — occlusion culling.
+- <code>Calculate()/Render()</code> — основной цикл.
+- <code>Screenshot/ScreenshotAsyncBegin/End</code>.
+- <code>OnFrame()</code> — <code>pureFrame</code>.</p>
+<h2 id="5">5. Взаимодействие<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Вызывает</strong>: <code>CSheduler</code> (через <code>pureFrame</code>), <code>CConsole</code> (cvar'ы), <code>CRenderDevice</code> (xrEngine).</li>
+<li><strong>Вызывается из</strong>: <code>CEngineAPI</code> (xrEngine) — <code>DllMainXrRenderR4</code>, <code>CRenderDevice</code> (xrEngine) — <code>::Render-&gt;Calculate/Render</code>, <code>CGameFont</code>/<code>CStatGraph</code>/<code>CEffect_Rain</code>/<code>CEffect_Thunderbolt</code>/<code>CLensFlare</code> (xrEngine) — через <code>RenderFactory-&gt;Create*</code>.</li>
+</ul>
+<h2 id="6">6. Потоки данных/управления<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>sequenceDiagram
-    participant Code
-    participant Memory
-    participant Pool as MEMPOOL
-    participant Win as Windows heap
-    Code-&gt;&gt;Memory: new T / mem_alloc
-    Memory-&gt;&gt;Win: VirtualAlloc / HeapAlloc
-    Win--&gt;&gt;Memory: ptr
-    Memory--&gt;&gt;Code: ptr
-    Code-&gt;&gt;Memory: delete / mem_free
-    Memory-&gt;&gt;Win: HeapFree</code></pre>
-<h2 id="_11">Конфигурация<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+    participant Engine as CEngineAPI
+    participant R4 as xrRender_R4
+    participant HW as TestDX11Present
+    participant Console as CConsole
+    Engine-&gt;&gt;R4: DllMainXrRenderR4(DLL_PROCESS_ATTACH)
+    R4-&gt;&gt;R4: ::Render = &amp;RImplementation
+    R4-&gt;&gt;R4: ::RenderFactory = &amp;RenderFactoryImpl
+    R4-&gt;&gt;Console: xrRender_initconsole()
+    Note over R4: xrRender_test_hw() закомментирован в DllMain
+    Engine-&gt;&gt;HW: SupportsDX11Rendering() (по требованию)
+    HW-&gt;&gt;HW: LoadLibrary("d3d11.dll")
+    HW-&gt;&gt;HW: D3D11CreateDeviceAndSwapChain
+    HW--&gt;&gt;Engine: true/false</code></pre>
+<h2 id="7">7. Конфигурация<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Команда <code>-mem_debug</code> (в <code>Core.Params</code>) → <code>Memory._initialize(TRUE)</code>.</li>
-<li><code>USE_MEMORY_MONITOR</code> — <code>DEBUG</code>-сборки (не <code>_EDITOR</code>).</li>
-<li>Пулы: размер секторов/элементов задаётся в <code>xrMemory.cpp</code> (таблица <code>_initialize</code> для каждого из 64).</li>
+<li><code>_preset</code> — пресет качества (token).</li>
+<li><code>rs_skeleton_update</code> — интервал обновления скелета (2–128).</li>
+<li><code>r__no_ram_textures</code> — по умолчанию <strong>включён</strong> для R3/R4.</li>
+<li><code>r4_hdr10_on</code> — HDR10 (0/1).</li>
+<li><code>r4_enable_tessellation</code> — DX11 tessellation (0/1).</li>
+<li><code>r4_wireframe</code> — wireframe (0/1).</li>
 </ul>
-<h2 id="_12">Ограничения / дебаг<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<h2 id="8">8. Известные ограничения/дебаг<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Не использовать <code>malloc/free</code> напрямую</strong> — только через <code>Memory</code> или <code>xr_alloc/xr_free</code>. Иначе отладочный учёт не увидит.</li>
-<li><code>xr_free&lt;T*&amp;&gt;(P)</code> принимает <strong>ссылку на указатель</strong> и обнуляет его — не передавать временный.</li>
-<li>Пулы <code>MEMPOOL</code> — только фиксированный размер элемента; для переменной длины — обычный аллокатор.</li>
-<li><code>DEBUG_MEMORY_MANAGER</code> по умолчанию выключен (<code>#if 0</code>) — включать осторожно, замедляет.</li>
-<li><code>memory_monitor</code> (debug) — <code>make_checkpoint(name)</code> + <code>flush_each_time(true)</code> перед выходом (см. <code>xrCore::_destroy</code> / <code>DllMainXrCore</code>).</li>
+<li><code>xrRender_test_hw()</code> <strong>закомментирован</strong> в <code>DllMain</code> — HW не проверяется при загрузке; вызывается только через <code>SupportsDX11Rendering()</code>.</li>
+<li><code>IRenderFactory</code> (в <code>RenderFactory.h</code>) <strong>закомментирован</strong> — <code>dxRenderFactory</code> не реализует интерфейс.</li>
+<li><code>::vid_mode_token</code> — не инициализируется в <code>DllMain</code> (инициализируется HW).</li>
+<li><code>R1</code>/<code>R2</code>/<code>R3</code> cvar'ы регистрируются в R4 — историческое наследие.</li>
+<li><code>TestDX11Present</code> — создаёт реальное окно (800×600) при проверке HW.</li>
 </ul>
 
 
@@ -3882,7 +3784,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Нижний колонтитул" >
         
           
-          <a href="../types-math/" class="md-footer__link md-footer__link--prev" aria-label="Назад: Типы и математика">
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Назад: Обзор">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3892,20 +3794,20 @@
                 Назад
               </span>
               <div class="md-ellipsis">
-                Типы и математика
+                Обзор
               </div>
             </div>
           </a>
         
         
           
-          <a href="../strings/" class="md-footer__link md-footer__link--next" aria-label="Вперед: Строки">
+          <a href="../render-device/" class="md-footer__link md-footer__link--next" aria-label="Вперед: Устройство рендера">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Вперед
               </span>
               <div class="md-ellipsis">
-                Строки
+                Устройство рендера
               </div>
             </div>
             <div class="md-footer__button md-icon">

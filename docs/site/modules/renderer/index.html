@@ -14,7 +14,7 @@
         <link rel="prev" href="../xr-engine/misc/">
       
       
-        <link rel="next" href="pipeline/">
+        <link rel="next" href="factory/">
       
       
         
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#renderer" class="md-skip">
+        <a href="#renderer-xrrender-r4" class="md-skip">
           Перейти к содержанию
         </a>
       
@@ -2126,6 +2126,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Обзор
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -2143,6 +2161,142 @@
 
       </a>
       
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Структура
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Карта связей
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Статус порционов (итерация 3)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="factory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Точка входа и фабрика
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="render-device/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Устройство рендера
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="constants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Шейдерные константы
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -3011,6 +3165,47 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Структура
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Карта связей
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Статус порционов (итерация 3)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -3026,12 +3221,278 @@
 
 
 
-<h1 id="renderer">Renderer<a class="headerlink" href="#renderer" title="Permanent link">&para;</a></h1>
+<h1 id="renderer-xrrender-r4">Renderer (xrRender / R4)<a class="headerlink" href="#renderer-xrrender-r4" title="Permanent link">&para;</a></h1>
+<p><code>xrRender</code> — бэкенд-агностичный слой рендера (визуалы, скелеты, dsgraph, детали, свет, blenders). <code>xrRenderPC_R4</code> — DX11-бэкенд (класс <code>CRender</code>, глобал <code>RImplementation</code>). <code>xrRenderDX10</code> — DX10/11-утилиты (HW, state manager, SH-обёртки).</p>
+<p>Активный бэкенд — <strong>R4</strong> (<code>STATIC_RENDERER_R4</code> в <code>xrEngine.vcxproj</code>).</p>
+<table>
+<thead>
+<tr>
+<th>Бэкенд</th>
+<th>API</th>
+<th>Статус</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R1</td>
+<td>D3D9 legacy</td>
+<td>не документируется</td>
+</tr>
+<tr>
+<td>R2</td>
+<td>D3D9 + advanced</td>
+<td>не документируется</td>
+</tr>
+<tr>
+<td>R3</td>
+<td>DX10</td>
+<td>не документируется</td>
+</tr>
+<tr>
+<td><strong>R4</strong></td>
+<td><strong>DX11</strong></td>
+<td><strong>активный, дальше — только R4</strong></td>
+</tr>
+</tbody>
+</table>
 <blockquote>
-<p><strong>Заглушка</strong> — будет заполнена на итерации 3.</p>
+<p><code>xrRenderDX9/</code> — не входит в проект R4 (нет в sln/R4-proj), не документируется.
+Исторические <code>r2_*</code> файлы (r2_R_calculate/lights/sun/sector_detect/test_hw/blenders) — D3D9-эпоха, но <strong>компилируются в R4</strong> (в <code>xrRender_R4.vcxproj</code>); документируются с пометкой «историческое ядро, переиспользуемое в R4».</p>
 </blockquote>
-<p><code>xrRender</code> — backend-agnostic pipeline. <code>xrRenderPC_R4</code> — D3D9 backend.</p>
-<p>См. <a href="../../architecture/module-map/">Карта модулей</a>.</p>
+<h2 id="_1">Структура<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Страница</th>
+<th>Что покрывает</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="factory/">Точка входа и фабрика</a></td>
+<td><code>DllMainXrRenderR4</code>, <code>RImplementation</code>, <code>RenderFactoryImpl</code> (<code>dxRenderFactory</code>), <code>xrRender_test_hw</code> (<code>r2_test_hw</code>), <code>xrRender_initconsole</code>, глобалы</td>
+</tr>
+<tr>
+<td><a href="render-device/">Устройство рендера</a></td>
+<td><code>dxRenderDeviceRender</code>, <code>CHW</code>/<code>HWCaps</code> (<code>dx10HW</code>), <code>xrD3DDefs</code>/<code>DXCommonTypes</code>, StateManager (6 глобалов), <code>R_DStreams</code>, <code>xr_effgamma</code></td>
+</tr>
+<tr>
+<td><a href="constants/">Шейдерные константы</a></td>
+<td><code>r_constants</code>/<code>dx10r_constants</code>, CB-кодирование в <code>destination</code>, <code>R_constants</code>/<code>dx10ConstantBuffer</code>, <code>SH_*</code> (Atomic/Constant/Matrix/RT/Texture + <code>dx10SH_RT</code>)</td>
+</tr>
+<tr>
+<td><a href="sector.md">Пайплайн: секторы и traversal</a></td>
+<td><em>(порцион 3)</em> — <code>r__sector</code>, <code>r__sector_traversal</code>, <code>r2_sector_detect</code>, <code>r__pixel_calculator</code>, <code>QueryHelper</code></td>
+</tr>
+<tr>
+<td><a href="occlusion.md">Occlusion</a></td>
+<td><em>(порцион 4)</em> — <code>r__occlusion</code>, <code>occRasterizer</code>, <code>light_vis</code></td>
+</tr>
+<tr>
+<td><a href="dsgraph.md">Динамическая сцена (dsgraph)</a></td>
+<td><em>(порцион 5)</em> — <code>r__dsgraph_structure/build/render/render_lods</code>, <code>R_Backend_LOD</code></td>
+</tr>
+<tr>
+<td><a href="vsm-smap.md">VSM / SMAP</a></td>
+<td><em>(порцион 6)</em> — <code>R_Backend_xform</code>, <code>r_sun_cascades</code>, <code>light_smapvis</code>, <code>SMAP_Allocator</code>, <code>r2_R_sun</code>, <code>r4_R_sun_support</code></td>
+</tr>
+<tr>
+<td><a href="resources.md">Ресурсы и модели</a></td>
+<td><em>(порцион 7)</em> — <code>ResourceManager</code>, <code>ModelPool</code>, <code>Texture</code>/<code>ETextureParams</code>, <code>ColorMapManager</code>, <code>PSLibrary</code>, <code>tga</code></td>
+</tr>
+<tr>
+<td><a href="visuals.md">Визуалы</a></td>
+<td><em>(порцион 8)</em> — <code>FVisual</code>, <code>FBasicVisual</code>, <code>FHierrarhyVisual</code>, <code>FLOD</code>, <code>FProgressive</code>, <code>FSkinned</code>, <code>FTreeVisual</code>, <code>xrStripify</code>, <code>NvTriStrip</code>, <code>VertexCache</code></td>
+</tr>
+<tr>
+<td><a href="kinematics.md">Скелеты и анимация</a></td>
+<td><em>(порцион 9)</em> — <code>SkeletonX</code>, <code>SkeletonRigid</code>, <code>SkeletonAnimated</code>, <code>SkeletonCustom</code>, <code>Animation</code></td>
+</tr>
+<tr>
+<td><a href="detail.md">Детали</a></td>
+<td><em>(порцион 10)</em> — <code>DetailManager</code>, <code>DetailModel</code>, <code>DetailFormat</code>, <code>Blender_detail_still</code>, <code>Blender_tree</code></td>
+</tr>
+<tr>
+<td><a href="lights.md">Свет</a></td>
+<td><em>(порцион 11)</em> — <code>ILight</code>, <code>LightTrack</code>, <code>Light_DB</code>, <code>Light_Package</code>, <code>light_GI</code>, <code>r2_R_lights</code>, <code>r2_R_calculate</code></td>
+</tr>
+<tr>
+<td><a href="r4-scene.md">R4: scene/lighting phase</a></td>
+<td><em>(порцион 12)</em> — <code>r4</code>, <code>r4_loader</code>, <code>r4_R_render</code>, <code>r2_blenders</code>, <code>Light_Render_Direct</code>, <code>blender_light_*</code></td>
+</tr>
+<tr>
+<td><a href="r4-deferred.md">R4: deferred / накопление</a></td>
+<td><em>(порцион 13)</em> — <code>r4_rendertarget</code>, <code>r4_rendertarget_accum_*</code>, <code>uber_deffer</code>, <code>blender_deffer_*</code></td>
+</tr>
+<tr>
+<td><a href="r4-postprocess.md">R4: post-process</a></td>
+<td><em>(порцион 14)</em> — <code>r4_rendertarget_phase_*</code>, <code>dx11HDAOCSBlender</code>, <code>ComputeShader</code>/<code>CSCompiler</code></td>
+</tr>
+<tr>
+<td><a href="blenders.md">Blenders (библиотека)</a></td>
+<td><em>(порцион 15)</em> — <code>xrRender/blenders/</code>, <code>Blender_*</code>, <code>r4 blender_*</code></td>
+</tr>
+<tr>
+<td><a href="particles-wallmarks.md">Частицы и wallmarks</a></td>
+<td><em>(порцион 16)</em> — <code>ParticleEffect</code>, <code>ParticleGroup</code>, <code>dxParticleCustom</code>, <code>WallmarksEngine</code>, <code>dxRainRender</code></td>
+</tr>
+<tr>
+<td><a href="dx-bridges.md">UI-обвязка и прочее</a></td>
+<td><em>(порцион 17)</em> — <code>dxUIRender</code>, <code>dxFontRender</code>, <code>dxImGuiRender</code>, <code>dxConsoleRender</code>, <code>dxStatsRender</code>, <code>dxEnvironmentRender</code>, <code>dxLensFlareRender</code>, <code>dxThunderboltRender</code>, <code>dxDebugRender</code>, <code>HOM</code>, <code>3DFluid</code></td>
+</tr>
+<tr>
+<td><a href="postprocessing/">Postprocessing (общий обзор)</a></td>
+<td>общий обзор post-processing (обновляется в порционе 14)</td>
+</tr>
+<tr>
+<td><a href="shader-bus/">Shader Bus</a></td>
+<td>фича для мододелов (готова с итерации 0)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_2">Карта связей<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>graph TD
+    subgraph xrEngine
+        Device[CRenderDevice]
+    end
+    subgraph xrRender
+        IF[IRender_interface]
+        FA[dxRenderFactory]
+    end
+    subgraph xrRenderPC_R4
+        R[CRender RImplementation]
+        RT[CRenderTarget]
+    end
+    subgraph xrRenderDX10
+        HW[dx10HW]
+        SM[StateManager]
+    end
+    Device --&gt; IF
+    FA --&gt; R
+    R --&gt; RT
+    R --&gt; HW
+    HW --&gt; SM</code></pre>
+<ul>
+<li><strong><code>R_dsgraph_structure</code></strong> (xrRender) — базовый класс <code>CRender</code>: реализует <code>IRender_interface</code> + <code>pureFrame</code>, содержит dsgraph-карты (<code>mapNormalPasses</code>, <code>mapHUD</code>, <code>mapLOD</code>, <code>mapWmark</code> и др.), <code>val_pObject</code>/<code>val_pTransform</code>/<code>phase</code>/<code>pmask</code>.</li>
+<li><strong><code>CRender</code></strong> (xrRenderPC_R4) — R4-наследник: <code>create/destroy/reset</code>, <code>render_main/forward</code>, <code>shader_compile</code>, <code>model_*</code>, <code>light_*</code>, <code>wallmark*</code>, <code>Screenshot</code>. Глобал <code>RImplementation</code> (<code>r4.cpp</code>).</li>
+<li><strong><code>dxRenderFactory</code></strong> — фабрика render-объектов (<code>CreateFontRender</code> и т.д.); глобал <code>RenderFactoryImpl</code> (<code>dxRenderFactory.cpp</code>).</li>
+<li><strong><code>::Render</code>/<code>::RenderFactory</code>/<code>::DU</code>/<code>UIRender</code>/<code>DRender</code></strong> — глобалы, устанавливаются <code>DllMainXrRenderR4</code>.</li>
+</ul>
+<h2 id="3">Статус порционов (итерация 3)<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Порцион</th>
+<th>Страницы</th>
+<th>Статус</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Точка входа и фабрика</td>
+<td><code>factory.md</code></td>
+<td>✅ готово</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Устройство рендера и константы</td>
+<td><code>render-device.md</code>, <code>constants.md</code></td>
+<td>✅ готово</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Пайплайн: секторы и traversal</td>
+<td><code>sector.md</code></td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Occlusion</td>
+<td><code>occlusion.md</code></td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Динамическая сцена (dsgraph)</td>
+<td><code>dsgraph.md</code></td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>6</td>
+<td>VSM / SMAP</td>
+<td><code>vsm-smap.md</code></td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Ресурсы и модели</td>
+<td><code>resources.md</code></td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Визуалы</td>
+<td><code>visuals.md</code></td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Скелеты и анимация</td>
+<td><code>kinematics.md</code></td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Детали</td>
+<td><code>detail.md</code></td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Свет</td>
+<td><code>lights.md</code></td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>12</td>
+<td>R4: scene/lighting phase</td>
+<td><code>r4-scene.md</code></td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>13</td>
+<td>R4: deferred / накопление</td>
+<td><code>r4-deferred.md</code></td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>14</td>
+<td>R4: post-process</td>
+<td><code>r4-postprocess.md</code></td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Blenders (библиотека)</td>
+<td><code>blenders.md</code></td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Частицы и wallmarks</td>
+<td><code>particles-wallmarks.md</code></td>
+<td>⬜</td>
+</tr>
+<tr>
+<td>17</td>
+<td>UI-обвязка и прочее</td>
+<td><code>dx-bridges.md</code>, <code>misc.md</code></td>
+<td>⬜</td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -3084,13 +3545,13 @@
         
         
           
-          <a href="pipeline/" class="md-footer__link md-footer__link--next" aria-label="Вперед: Pipeline">
+          <a href="factory/" class="md-footer__link md-footer__link--next" aria-label="Вперед: Точка входа и фабрика">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Вперед
               </span>
               <div class="md-ellipsis">
-                Pipeline
+                Точка входа и фабрика
               </div>
             </div>
             <div class="md-footer__button md-icon">

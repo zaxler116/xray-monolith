@@ -11,10 +11,10 @@
       
       
       
-        <link rel="prev" href="../types-math/">
+        <link rel="prev" href="../render-device/">
       
       
-        <link rel="next" href="../strings/">
+        <link rel="next" href="../pipeline/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Память - X-Ray Monolith — Документация движка</title>
+        <title>Шейдерные константы - X-Ray Monolith — Документация движка</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#xrcore" class="md-skip">
+        <a href="#renderer" class="md-skip">
           Перейти к содержанию
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Память
+              Шейдерные константы
             
           </span>
         </div>
@@ -273,7 +273,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
+        <a href="../../xr-core/" class="md-tabs__link">
           
   
   
@@ -839,8 +839,6 @@
                 
   
   
-    
-  
   
   
     
@@ -856,11 +854,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
         
           
           <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="">
@@ -881,7 +879,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -899,7 +897,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../../xr-core/" class="md-nav__link">
         
   
   
@@ -927,7 +925,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../types-math/" class="md-nav__link">
+      <a href="../../xr-core/types-math/" class="md-nav__link">
         
   
   
@@ -952,37 +950,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Память
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../xr-core/memory/" class="md-nav__link">
         
   
   
@@ -998,214 +969,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Содержание">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Содержание
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ответственность
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Место в архитектуре
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#api" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Публичный API
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Публичный API">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#singleton-memory-xrmemory" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Singleton Memory (тип xrMemory)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#operator-newdelete" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Глобальный operator new/delete
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Макросы и функции
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Пулы
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Окружение и статистика
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Внутреннее устройство
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Внутреннее устройство">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Файлы
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Режимы
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#debug_memory_manager" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Отладочный учёт (DEBUG_MEMORY_MANAGER)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Взаимодействие
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Потоки данных
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Конфигурация
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ограничения / дебаг
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1218,7 +981,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../strings/" class="md-nav__link">
+      <a href="../../xr-core/strings/" class="md-nav__link">
         
   
   
@@ -1246,7 +1009,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../logging/" class="md-nav__link">
+      <a href="../../xr-core/logging/" class="md-nav__link">
         
   
   
@@ -1274,7 +1037,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../filesystem/" class="md-nav__link">
+      <a href="../../xr-core/filesystem/" class="md-nav__link">
         
   
   
@@ -1302,7 +1065,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../inifile/" class="md-nav__link">
+      <a href="../../xr-core/inifile/" class="md-nav__link">
         
   
   
@@ -1330,7 +1093,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../compression/" class="md-nav__link">
+      <a href="../../xr-core/compression/" class="md-nav__link">
         
   
   
@@ -1358,7 +1121,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../locator/" class="md-nav__link">
+      <a href="../../xr-core/locator/" class="md-nav__link">
         
   
   
@@ -1386,7 +1149,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../system/" class="md-nav__link">
+      <a href="../../xr-core/system/" class="md-nav__link">
         
   
   
@@ -2294,6 +2057,8 @@
                 
   
   
+    
+  
   
   
     
@@ -2309,11 +2074,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
         
           
           <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="">
@@ -2334,7 +2099,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2352,7 +2117,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../renderer/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -2380,7 +2145,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../renderer/factory/" class="md-nav__link">
+      <a href="../factory/" class="md-nav__link">
         
   
   
@@ -2408,7 +2173,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../renderer/render-device/" class="md-nav__link">
+      <a href="../render-device/" class="md-nav__link">
         
   
   
@@ -2433,10 +2198,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../renderer/constants/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Шейдерные константы
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2452,6 +2244,225 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Ответственность
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Место в архитектуре
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Публичный API
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Внутреннее устройство
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Внутреннее устройство">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cb-r_constantsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Кодирование CB-индексов (r_constants.h)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parse-reflection-srclayersxrrenderdx10dx10r_constantscpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parse reflection → таблица (src/Layers/xrRenderDX10/dx10r_constants.cpp)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r_constants-srclayersxrrenderdx10dx10r_constants_cachehcpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R_constants (src/Layers/xrRenderDX10/dx10r_constants_cache.h/.cpp)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dx10constantbuffer-srclayersxrrenderdx10dx10constantbufferh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dx10ConstantBuffer (src/Layers/xrRenderDX10/dx10ConstantBuffer.h)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sh-srclayersxrrendersh_" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SH-ресурсы (src/Layers/xrRender/SH_*)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crtcreate-srclayersxrrenderdx10dx10sh_rtcpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CRT::create (src/Layers/xrRenderDX10/dx10SH_RT.cpp)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ctexture-stage-scheme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CTexture stage scheme
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Взаимодействие
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Потоки данных и управления
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Потоки данных и управления">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Запись констант
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parse шейдера
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Конфигурация
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Известные ограничения и дебаг
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2464,7 +2475,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../renderer/pipeline/" class="md-nav__link">
+      <a href="../pipeline/" class="md-nav__link">
         
   
   
@@ -2492,7 +2503,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../renderer/postprocessing/" class="md-nav__link">
+      <a href="../postprocessing/" class="md-nav__link">
         
   
   
@@ -2520,7 +2531,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../renderer/shader-bus/" class="md-nav__link">
+      <a href="../shader-bus/" class="md-nav__link">
         
   
   
@@ -3327,44 +3338,160 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Ответственность
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Место в архитектуре
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Публичный API
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Внутреннее устройство
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Внутреннее устройство">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cb-r_constantsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Кодирование CB-индексов (r_constants.h)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parse-reflection-srclayersxrrenderdx10dx10r_constantscpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parse reflection → таблица (src/Layers/xrRenderDX10/dx10r_constants.cpp)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r_constants-srclayersxrrenderdx10dx10r_constants_cachehcpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R_constants (src/Layers/xrRenderDX10/dx10r_constants_cache.h/.cpp)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dx10constantbuffer-srclayersxrrenderdx10dx10constantbufferh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dx10ConstantBuffer (src/Layers/xrRenderDX10/dx10ConstantBuffer.h)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sh-srclayersxrrendersh_" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SH-ресурсы (src/Layers/xrRender/SH_*)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crtcreate-srclayersxrrenderdx10dx10sh_rtcpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CRT::create (src/Layers/xrRenderDX10/dx10SH_RT.cpp)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ctexture-stage-scheme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CTexture stage scheme
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Взаимодействие
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Потоки данных и управления
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Потоки данных и управления">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ответственность
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Место в архитектуре
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#api" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Публичный API
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Публичный API">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#singleton-memory-xrmemory" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Singleton Memory (тип xrMemory)
+        Запись констант
       
     </span>
   </a>
@@ -3372,43 +3499,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#operator-newdelete" class="md-nav__link">
+  <a href="#parse" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Глобальный operator new/delete
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Макросы и функции
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Пулы
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Окружение и статистика
+        Parse шейдера
       
     </span>
   </a>
@@ -3421,60 +3515,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Внутреннее устройство
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Внутреннее устройство">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Файлы
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Режимы
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#debug_memory_manager" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Отладочный учёт (DEBUG_MEMORY_MANAGER)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Взаимодействие
+        7. Конфигурация
       
     </span>
   </a>
@@ -3482,32 +3526,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Потоки данных
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Конфигурация
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ограничения / дебаг
+        8. Известные ограничения и дебаг
       
     </span>
   </a>
@@ -3531,322 +3553,330 @@
 
 
 
-<h1 id="xrcore">xrCore: Память<a class="headerlink" href="#xrcore" title="Permanent link">&para;</a></h1>
-<p>Единый аллокатор, пулы, отладочный учёт выделений.</p>
-<h2 id="_1">Ответственность<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Единая точка выделения памяти для всего движка (глобальный <code>operator new/delete</code>).</li>
-<li>Подсистема «именованных» выделений (<code>DEBUG_MEMORY_NAME</code>) и отладочного учёта.</li>
-<li>Фиксированные пулы <code>MEMPOOL</code> (64 шт.) для частых мелких объектов.</li>
-<li>PSO-функции <code>mem_copy</code>/<code>mem_fill</code>/<code>mem_fill32</code> (выбираются по CPU — см. <a href="../types-math/">Типы и математика</a>).</li>
-<li>Мониторинг памяти (debug) — <code>memory_monitor.h</code>.</li>
-</ul>
-<h2 id="_2">Место в архитектуре<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>Нижний слой — <a href="../../../architecture/module-map/">Карта модулей</a>. Ни от кого внутри движка не зависит; <strong>все</strong> другие модули включают <code>xrMemory.h</code> (прямая или через <code>xrCore.h</code>).</p>
-<h2 id="api">Публичный API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
-<h3 id="singleton-memory-xrmemory">Singleton <code>Memory</code> (тип <code>xrMemory</code>)<a class="headerlink" href="#singleton-memory-xrmemory" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">extern</span><span class="w"> </span><span class="n">XRCORE_API</span><span class="w"> </span><span class="n">xrMemory</span><span class="w"> </span><span class="n">Memory</span><span class="p">;</span>
-</code></pre></div>
-<table>
-<thead>
-<tr>
-<th>Метод</th>
-<th>Назначение</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>_initialize(BOOL debug_mode=FALSE)</code></td>
-<td>вызывается из <code>xrCore::_initialize</code></td>
-</tr>
-<tr>
-<td><code>_destroy()</code></td>
-<td>обратная очистка</td>
-</tr>
-<tr>
-<td><code>mem_alloc(size, name?)</code> / <code>mem_realloc(p, size, name?)</code> / <code>mem_free(p)</code></td>
-<td>базовые операции (с именем при <code>DEBUG_MEMORY_NAME</code>)</td>
-</tr>
-<tr>
-<td><code>mem_usage()</code></td>
-<td>текущее занятое</td>
-</tr>
-<tr>
-<td><code>mem_compact()</code></td>
-<td>компактизация</td>
-</tr>
-<tr>
-<td><code>mem_statistic(LPCSTR fn)</code></td>
-<td>дамп статистики в файл (debug)</td>
-</tr>
-<tr>
-<td><code>dbg_register(p, size, name)</code> / <code>dbg_unregister(p)</code> / <code>dbg_check()</code></td>
-<td>отладочный учёт (только <code>DEBUG_MEMORY_MANAGER</code>)</td>
-</tr>
-<tr>
-<td><code>mem_copy</code>, <code>mem_fill</code>, <code>mem_fill32</code></td>
-<td>PSO-указатели (<code>pso_MemCopy</code>/<code>pso_MemFill</code>/<code>pso_MemFill32</code> — <code>xrMemory_pso.h</code>)</td>
-</tr>
-<tr>
-<td><code>mem_counter_set/get</code></td>
-<td>счётчик (debug)</td>
-</tr>
-</tbody>
-</table>
-<h3 id="operator-newdelete">Глобальный <code>operator new/delete</code><a class="headerlink" href="#operator-newdelete" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// xrMemory.h, MSVC</span>
-<span class="n">IC</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="k">operator</span><span class="w"> </span><span class="k">new</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">Memory</span><span class="p">.</span><span class="n">mem_alloc</span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;C++ NEW&quot;</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-<span class="n">IC</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="k">operator</span><span class="w"> </span><span class="k">delete</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">xr_free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-<span class="n">IC</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="k">operator</span><span class="w"> </span><span class="k">new</span><span class="p">[](</span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">Memory</span><span class="p">.</span><span class="n">mem_alloc</span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;C++ NEW&quot;</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-<span class="n">IC</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="k">operator</span><span class="w"> </span><span class="k">delete</span><span class="p">[](</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">xr_free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-</code></pre></div>
-<p><strong>Важно</strong>: все <code>new</code>/<code>delete</code> в движке уходят в <code>Memory</code>. Отключается <code>NO_XRNEW</code> или под Borland.</p>
-<h3 id="_3">Макросы и функции<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Макрос / функция</th>
-<th>Что делает</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>ZeroMemory(a,b)</code></td>
-<td><code>Memory.mem_fill(a, 0, b)</code></td>
-</tr>
-<tr>
-<td><code>FillMemory(a,b,c)</code></td>
-<td><code>Memory.mem_fill(a, c, b)</code></td>
-</tr>
-<tr>
-<td><code>CopyMemory(a,b,c)</code></td>
-<td><code>memcpy(a,b,c)</code></td>
-</tr>
-<tr>
-<td><code>xr_alloc&lt;T&gt;(count)</code></td>
-<td><code>Memory.mem_alloc(count*sizeof(T), typeid(T).name())</code> (имя при <code>DEBUG_MEMORY_NAME</code>)</td>
-</tr>
-<tr>
-<td><code>xr_free&lt;T*&amp;&gt;(P)</code></td>
-<td><code>Memory.mem_free</code>, ставит <code>P = NULL</code></td>
-</tr>
-<tr>
-<td><code>xr_malloc(size)</code> / <code>xr_realloc(P, size)</code></td>
-<td>C-подобные</td>
-</tr>
-<tr>
-<td><code>xr_strdup(const char*)</code></td>
-<td><code>new char[n]</code> + copy</td>
-</tr>
-</tbody>
-</table>
-<h3 id="_4">Пулы<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">mem_pools_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">64</span><span class="p">;</span>
-<span class="k">const</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">mem_pools_ebase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="p">;</span>
-<span class="k">const</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">mem_generic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mem_pools_count</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="k">extern</span><span class="w"> </span><span class="n">MEMPOOL</span><span class="w"> </span><span class="n">mem_pools</span><span class="p">[</span><span class="n">mem_pools_count</span><span class="p">];</span>
-</code></pre></div>
-<p><code>MEMPOOL</code> (<code>xrMEMORY_POOL.h</code>):</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">MEMPOOL</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">xrCriticalSection</span><span class="w"> </span><span class="n">cs</span><span class="p">;</span>
-<span class="w">    </span><span class="n">u32</span><span class="w"> </span><span class="n">s_sector</span><span class="p">;</span><span class="w">   </span><span class="c1">// размер сектора (крупных) выделений</span>
-<span class="w">    </span><span class="n">u32</span><span class="w"> </span><span class="n">s_element</span><span class="p">;</span><span class="w">  </span><span class="c1">// размер элемента</span>
-<span class="w">    </span><span class="n">u32</span><span class="w"> </span><span class="n">s_count</span><span class="p">;</span><span class="w">    </span><span class="c1">// = s_sector / s_element</span>
-<span class="w">    </span><span class="n">u32</span><span class="w"> </span><span class="n">s_offset</span><span class="p">;</span><span class="w">   </span><span class="c1">// размер заголовка</span>
-<span class="w">    </span><span class="n">u32</span><span class="w"> </span><span class="n">block_count</span><span class="p">;</span>
-<span class="w">    </span><span class="n">u8</span><span class="o">*</span><span class="w"> </span><span class="n">list</span><span class="p">;</span><span class="w">       </span><span class="c1">// free list</span>
-
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">_initialize</span><span class="p">(</span><span class="n">u32</span><span class="w"> </span><span class="n">element</span><span class="p">,</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">sector</span><span class="p">,</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">header</span><span class="p">);</span>
-<span class="w">    </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="nf">create</span><span class="p">();</span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">destroy</span><span class="p">(</span><span class="kt">void</span><span class="o">*&amp;</span><span class="w"> </span><span class="n">P</span><span class="p">);</span>
-<span class="p">};</span>
-</code></pre></div>
-<p>Внутри — классический free list: первый <code>u32</code> элемента = указатель на следующий свободный.</p>
-<h3 id="_5">Окружение и статистика<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Функция</th>
-<th>Назначение</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>vminfo(size_t* free, size_t* reserved, size_t* committed)</code></td>
-<td>Windows VirtualMemory info</td>
-</tr>
-<tr>
-<td><code>log_vminfo()</code></td>
-<td>лог виртуальной памяти</td>
-</tr>
-<tr>
-<td><code>memory_monitor</code> (debug)</td>
-<td><code>monitor_alloc</code>, <code>monitor_free</code>, <code>make_checkpoint</code>, <code>flush_each_time</code></td>
-</tr>
-</tbody>
-</table>
-<h2 id="_6">Внутреннее устройство<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<h3 id="_7">Файлы<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Файл</th>
-<th>Назначение</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>xrMemory.h</code></td>
-<td>интерфейс</td>
-</tr>
-<tr>
-<td><code>xrMemory.cpp</code></td>
-<td>реализация</td>
-</tr>
-<tr>
-<td><code>xrMemory_align.cpp/h</code></td>
-<td>выравнивание</td>
-</tr>
-<tr>
-<td><code>xrMemory_DEBUG.cpp</code></td>
-<td>отладочный учёт</td>
-</tr>
-<tr>
-<td><code>xrMemory_pso.h</code></td>
-<td>PSO-типы</td>
-</tr>
-<tr>
-<td><code>xrMemory_pso_Copy.cpp</code></td>
-<td>реализация <code>mem_copy</code></td>
-</tr>
-<tr>
-<td><code>xrMemory_pso_Fill.cpp</code></td>
-<td>реализация <code>mem_fill</code></td>
-</tr>
-<tr>
-<td><code>xrMemory_pso_Fill32.cpp</code></td>
-<td>реализация <code>mem_fill32</code></td>
-</tr>
-<tr>
-<td><code>xrMemory_pure.h</code></td>
-<td>«чистая» реализация</td>
-</tr>
-<tr>
-<td><code>xrMEMORY_POOL.h</code> + <code>xrMemory_POOL.cpp</code></td>
-<td><code>MEMPOOL</code></td>
-</tr>
-<tr>
-<td><code>xrMemory_subst_msvc.h/.cpp</code></td>
-<td>подмена <code>new/delete</code></td>
-</tr>
-<tr>
-<td><code>xrMemory_subst_borland.h/.cpp</code></td>
-<td>аналогично для Borland</td>
-</tr>
-<tr>
-<td><code>memory_allocation_stats.cpp</code></td>
-<td>статистика</td>
-</tr>
-<tr>
-<td><code>memory_monitor.cpp/h</code></td>
-<td>debug-мониторинг</td>
-</tr>
-<tr>
-<td><code>memory_usage.cpp</code></td>
-<td>учёт</td>
-</tr>
-</tbody>
-</table>
-<h3 id="_8">Режимы<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Режим</th>
-<th>Определитель</th>
-<th>Что даёт</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>USE_MEMORY_MONITOR</code></td>
-<td><code>DEBUG</code> + <code>!_EDITOR</code></td>
-<td>включение <code>DEBUG_MEMORY_NAME</code></td>
-</tr>
-<tr>
-<td><code>DEBUG_MEMORY_NAME</code></td>
-<td>auto + <code>DEBUG_MEMORY_MANAGER</code></td>
-<td>имена выделений</td>
-</tr>
-<tr>
-<td><code>DEBUG_MEMORY_MANAGER</code></td>
-<td>вручную (<code>#if 0</code> по умолчанию)</td>
-<td>полный учёт + <code>dbg_*</code></td>
-</tr>
-<tr>
-<td><code>PROFILE_CRITICAL_SECTIONS</code></td>
-<td>вручную</td>
-<td>профилирование мьютексов</td>
-</tr>
-<tr>
-<td><code>NO_XRNEW</code></td>
-<td>вручную</td>
-<td>отключить подмену <code>new/delete</code></td>
-</tr>
-</tbody>
-</table>
-<h3 id="debug_memory_manager">Отладочный учёт (<code>DEBUG_MEMORY_MANAGER</code>)<a class="headerlink" href="#debug_memory_manager" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">mdbg</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">_p</span><span class="p">;</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">_size</span><span class="p">;</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">_name</span><span class="p">;</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">_dummy</span><span class="p">;</span><span class="w"> </span><span class="p">};</span>
-<span class="c1">// xrMemory::debug_info — std::vector&lt;mdbg&gt;, защищён debug_cs</span>
-</code></pre></div>
-<p><code>dbg_check()</code> — проверка на утечки/повторы. <code>dump_phase()</code> — дамп фазы.</p>
-<h2 id="_9">Взаимодействие<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<h1 id="renderer">Renderer: шейдерные константы<a class="headerlink" href="#renderer" title="Permanent link">&para;</a></h1>
+<h2 id="1">1. Ответственность<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>Модель шейдерных констант R4: описание констант/таблиц (<code>R_constant</code>/<code>R_constant_table</code>), разбор reflection-данных DX11-шейдеров в таблицы, кодирование CB-индексов в <code>destination</code>, запись значений в dynamic constant buffers (<code>dx10ConstantBuffer</code>, <code>R_constants</code>), flush в конце кадра. Плюс SH-ресурсы — обёртки GPU-объектов (VS/PS/GS/HS/DS/CS, состояния, декларации, RT, текстуры).</p>
+<p>Страница — спутник <a href="../render-device/">Устройства рендера</a> (порцион 2). CB-массивы живут в <code>RCache</code> (<code>CBackend</code>), полный API бэкенда — порционы 3/5.</p>
+<h2 id="2">2. Место в архитектуре<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<p>См. <a href="../../../architecture/overview/">Архитектура</a>, <a href="../../../architecture/dependencies/">Зависимости</a>.</p>
 <pre class="mermaid"><code>graph TD
-    subgraph Все модули движка
-        A[xrEngine]
-        B[xrGame]
-        C[Renderer]
-        D[xrSound]
-    end
-    E[xrMemory] --&gt; F[Memory.mem_alloc]
-    A --&gt; E
-    B --&gt; E
-    C --&gt; E
-    D --&gt; E
-    F --&gt; G[Пул Windows / heap]
-    E --&gt; H[MEMPOOL x64]
-    E --&gt; I[PSO: mem_copy/fill/fill32]
-    I --&gt; J[CPU dispatch — см. types-math.md]</code></pre>
+    PS[PSLibrary / компиляция шейдера] --&gt;|reflection| PARSE[R_constant_table::parse — dx10r_constants.cpp]
+    PARSE --&gt;|m_CBTable| CB[dx10ConstantBuffer]
+    PARSE --&gt;|samp| TXT[CTexture SRV]
+    SET[RCache.set_Constants] --&gt; RC[R_constants — dx10r_constants_cache]
+    RC --&gt;|GetCBuffer| ARR[RCache.m_aPixel/Vertex/...Constants]
+    ARR --&gt; CB
+    END[RCache.OnFrameEnd] --&gt; FLUSH[flush_cache → dx10ConstantBuffer::Flush → Map WRITE_DISCARD]</code></pre>
 <ul>
-<li><strong>Кто использует</strong>: буквально весь код движка. Любой <code>new</code>/<code>delete</code> → <code>Memory.mem_alloc/free</code>.</li>
-<li><strong>Зависимости</strong>: только Windows API.</li>
-<li><strong>Взаимосвязь с PSO</strong>: <code>mem_copy</code>/<code>mem_fill</code> — указатели на функции, выбранные по CPU в runtime.</li>
+<li><code>R_constant</code>/<code>R_constant_table</code> — бэкенд-агностичное описание (<code>src/Layers/xrRender/r_constants.h/.cpp</code>).</li>
+<li>Активный parse — <code>src/Layers/xrRenderDX10/dx10r_constants.cpp</code> (D3D9-версия в <code>r_constants.cpp</code> — <code>#if !defined(USE_DX10) &amp;&amp; !defined(USE_DX11)</code>, мёртвая в R4).</li>
+<li>Активный <code>R_constants</code> — <code>src/Layers/xrRenderDX10/dx10r_constants_cache.h/.cpp</code>; <code>r_constants_cache.h</code> — только include-shim (старый D3D9-код закомментирован L14–183).</li>
 </ul>
-<h2 id="_10">Потоки данных<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
-<pre class="mermaid"><code>sequenceDiagram
-    participant Code
-    participant Memory
-    participant Pool as MEMPOOL
-    participant Win as Windows heap
-    Code-&gt;&gt;Memory: new T / mem_alloc
-    Memory-&gt;&gt;Win: VirtualAlloc / HeapAlloc
-    Win--&gt;&gt;Memory: ptr
-    Memory--&gt;&gt;Code: ptr
-    Code-&gt;&gt;Memory: delete / mem_free
-    Memory-&gt;&gt;Win: HeapFree</code></pre>
-<h2 id="_11">Конфигурация<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<h2 id="3-api">3. Публичный API<a class="headerlink" href="#3-api" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Класс/функция</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>R_constant</code></td>
+<td>Описание константы: <code>name</code>, <code>type</code> (RC_*), <code>destination</code>, <code>R_constant_load ps/vs/gs/hs/ds/cs/samp</code>, <code>handler</code></td>
+</tr>
+<tr>
+<td><code>R_constant_table</code></td>
+<td>Таблица констант одного шейдера: <code>table</code> (сортированный <code>xr_vector&lt;ref_constant&gt;</code>), <code>m_CBTable</code> (CB-массив под DX10/11), <code>parse</code>, <code>merge</code>, <code>get</code>, <code>equal</code></td>
+</tr>
+<tr>
+<td><code>R_constants</code> (dx10)</td>
+<td>Запись значений: <code>set(C, T)</code>, <code>seta(C, e, T)</code>, <code>flush()</code>, <code>access_direct</code></td>
+</tr>
+<tr>
+<td><code>dx10ConstantBuffer</code></td>
+<td>Dynamic <code>ID3DBuffer</code> + CPU-копия данных + dirty-флаг: <code>set/seta</code>, <code>AccessDirect</code>, <code>Flush</code>, <code>Similar</code></td>
+</tr>
+<tr>
+<td><code>SVS/SPS/SGS/SHS/SDS/SCS</code></td>
+<td>Пакеты {shader + constants + signature} для каждой стадии</td>
+</tr>
+<tr>
+<td><code>SState</code></td>
+<td ID3DState_="ID3DState*" SimulatorStates="SimulatorStates" _="+">Пакет</td>
+</tr>
+<tr>
+<td><code>SDeclaration</code></td>
+<td>Input layout: <code>vs_to_layout</code> + <code>dx10_dcl_code</code>/<code>dcl_code</code></td>
+</tr>
+<tr>
+<td><code>SInputSignature</code></td>
+<td><code>ID3DBlob*</code> signature</td>
+</tr>
+<tr>
+<td><code>CConstant</code></td>
+<td>Legacy FFP-константа (programmable/waveform)</td>
+</tr>
+<tr>
+<td><code>CMatrix</code></td>
+<td>Legacy FFP-матрица (TCM/рефлексии)</td>
+</tr>
+<tr>
+<td><code>CRT</code></td>
+<td>Render-target обёртка (RTV/DSV/UAV)</td>
+</tr>
+<tr>
+<td><code>CTexture</code></td>
+<td>Texture обёртка (SRV, видео/анимированные текстуры)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4">4. Внутреннее устройство<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<h3 id="cb-r_constantsh">Кодирование CB-индексов (<code>r_constants.h</code>)<a class="headerlink" href="#cb-r_constantsh" title="Permanent link">&para;</a></h3>
+<p>Enums: <code>RC_float=0</code>, <code>RC_int=1</code>, <code>RC_bool=2</code>, <code>RC_sampler=99</code>, <code>RC_dx10texture=100</code>, <code>RC_dx11UAV=101</code>. Классы: <code>RC_1x1/RC_1x4/RC_1x3/RC_1x2/RC_2x4/RC_3x4/RC_4x4/RC_1x4a/RC_3x4a/RC_4x4a</code>.</p>
+<p>Destination-флаги + <strong>CB index encoding</strong>:</p>
+<div class="highlight"><pre><span></span><code>RC_dest_pixel    = (1&lt;&lt;0)
+RC_dest_vertex   = (1&lt;&lt;1)
+RC_dest_sampler  = (1&lt;&lt;2)
+RC_dest_geometry = (1&lt;&lt;3)
+RC_dest_hull     = (1&lt;&lt;4)
+RC_dest_domain   = (1&lt;&lt;5)
+RC_dest_compute  = (1&lt;&lt;6)
+</code></pre></div>
+<p>В старших битах <code>destination</code> упакован <strong>4-bit индекс CB</strong> (0..14) по shader type:</p>
+<table>
+<thead>
+<tr>
+<th>Shader type</th>
+<th>shift</th>
+<th>маска</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vertex</td>
+<td>12</td>
+<td><code>RC_dest_vertex_cb_index_mask</code></td>
+</tr>
+<tr>
+<td>pixel</td>
+<td>16</td>
+<td><code>RC_dest_pixel_cb_index_mask</code></td>
+</tr>
+<tr>
+<td>geometry</td>
+<td>8</td>
+<td><code>RC_dest_geometry_cb_index_mask</code></td>
+</tr>
+<tr>
+<td>hull</td>
+<td>20</td>
+<td><code>RC_dest_hull_cb_index_mask</code></td>
+</tr>
+<tr>
+<td>domain</td>
+<td>24</td>
+<td><code>RC_dest_domain_cb_index_mask</code></td>
+</tr>
+<tr>
+<td>compute</td>
+<td>28</td>
+<td><code>RC_dest_compute_cb_index_mask</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>CB_BufferTypeMask = 0x70</code>: <code>CB_BufferVertexShader=0x20</code>, <code>CB_BufferPixelShader=0x40</code>, и т.п. — тип CB кодируется в <code>m_CBTable[i].index</code>.</p>
+<p><code>R_constant_load {u16 index, u16 cls}</code> — <code>index</code> = <strong>байтовый оффсет в CB</strong> (под DX10/11), <code>cls</code> = RC_* класс.</p>
+<p><code>R_constant : xr_resource</code>: <code>shared_str name</code>, <code>u16 type</code>, <code>u32 destination</code>, <code>R_constant_load ps/vs/gs/hs/ds/cs/samp</code>, <code>R_constant_setup* handler</code>. <code>get_load(destination)</code> — switch по младшему байту.</p>
+<p><code>R_constant_table : xr_resource_flagged</code>: <code>c_table table</code> (сортированный по имени <code>xr_vector&lt;ref_constant&gt;</code>), <code>cb_table m_CBTable</code> (вектор <code>{u32 encoded index, ref_cbuffer}</code> под DX10/11). <code>merge</code> (D3D9-версия в <code>r_constants.cpp</code> — <code>#if !defined(USE_DX10) &amp;&amp; !defined(USE_DX11)</code>; <strong>активный parse — в <code>dx10r_constants.cpp</code></strong>). <code>get(name)</code> — lower_bound по сортированному <code>table</code> (shared_str). Деструктор → <code>DEV-&gt;_DeleteConstantTable(this)</code>.</p>
+<p><code>R_constant_setup</code> — абстрактный <code>setup(R_constant*)</code> (хук авто-заполнения констант).</p>
+<h3 id="parse-reflection-srclayersxrrenderdx10dx10r_constantscpp">Parse reflection → таблица (<code>src/Layers/xrRenderDX10/dx10r_constants.cpp</code>)<a class="headerlink" href="#parse-reflection-srclayersxrrenderdx10dx10r_constantscpp" title="Permanent link">&para;</a></h3>
+<p><strong><code>parseConstants(ID3DShaderReflectionConstantBuffer*, destination)</code></strong> — обход reflection-переменных:</p>
 <ul>
-<li>Команда <code>-mem_debug</code> (в <code>Core.Params</code>) → <code>Memory._initialize(TRUE)</code>.</li>
-<li><code>USE_MEMORY_MONITOR</code> — <code>DEBUG</code>-сборки (не <code>_EDITOR</code>).</li>
-<li>Пулы: размер секторов/элементов задаётся в <code>xrMemory.cpp</code> (таблица <code>_initialize</code> для каждого из 64).</li>
+<li>Типы: <code>D3D10_SVT_FLOAT/BOOL/INT</code>.</li>
+<li><code>r_index = VarDesc.StartOffset</code> (байтовый оффсет, <code>VERIFY &lt; 0x10000</code>).</li>
+<li>Классы: <code>SCALAR</code>, <code>VECTOR</code> (4/3/2), <code>MATRIX_ROWS</code> (4x4, 4x3, 4x2).</li>
+<li><strong><code>D3D10_SVC_OBJECT</code></strong> → <code>VERIFY(!"Implement shader object parsing.")</code> + <strong>bSkip</strong> — самплеры в CB <strong>не</strong> парсятся как константы (они идут через <code>parseResources</code>).</li>
 </ul>
-<h2 id="_12">Ограничения / дебаг<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<p><strong><code>parseResources(pReflection, ResNum, destination)</code></strong> — <code>GetResourceBindingDesc</code>:</p>
 <ul>
-<li><strong>Не использовать <code>malloc/free</code> напрямую</strong> — только через <code>Memory</code> или <code>xr_alloc/xr_free</code>. Иначе отладочный учёт не увидит.</li>
-<li><code>xr_free&lt;T*&amp;&gt;(P)</code> принимает <strong>ссылку на указатель</strong> и обнуляет его — не передавать временный.</li>
-<li>Пулы <code>MEMPOOL</code> — только фиксированный размер элемента; для переменной длины — обычный аллокатор.</li>
-<li><code>DEBUG_MEMORY_MANAGER</code> по умолчанию выключен (<code>#if 0</code>) — включать осторожно, замедляет.</li>
-<li><code>memory_monitor</code> (debug) — <code>make_checkpoint(name)</code> + <code>flush_each_time(true)</code> перед выходом (см. <code>xrCore::_destroy</code> / <code>DllMainXrCore</code>).</li>
+<li><code>D3D10_SIT_TEXTURE</code> → <code>RC_dx10texture</code></li>
+<li><code>D3D10_SIT_SAMPLER</code> → <code>RC_sampler</code></li>
+<li><code>D3D11_SIT_UAV_RWTYPED</code> → <code>RC_dx11UAV</code></li>
+<li>Bind point: <code>ResDesc.BindPoint + CTexture::rstPixel/rstVertex/rstGeometry/rstHull/rstDomain/rstCompute</code> (базовые оффсеты стадий).</li>
+<li><code>destination = RC_dest_sampler</code>, <code>samp.load</code> получает index+cls.</li>
 </ul>
+<p><strong><code>R_constant_table::parse</code> (L364):</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// на каждый constant buffer iBuf:</span>
+<span class="n">updatedDest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">destination</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="n">iBuf</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">dest_to_shift_value</span><span class="p">(</span><span class="n">destination</span><span class="p">));</span>
+<span class="n">uiBufferIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iBuf</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">dest_to_cbuf_type</span><span class="p">(</span><span class="n">destination</span><span class="p">);</span>
+<span class="n">parseConstants</span><span class="p">(...);</span>
+<span class="n">Resources</span><span class="o">-&gt;</span><span class="n">_CreateConstantBuffer</span><span class="p">(</span><span class="n">pTable</span><span class="p">)</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">m_CBTable</span><span class="p">.</span><span class="n">push_back</span><span class="p">({</span><span class="n">uiBufferIndex</span><span class="p">,</span><span class="w"> </span><span class="n">tempBuffer</span><span class="p">});</span>
+<span class="n">parseResources</span><span class="p">(...);</span>
+<span class="n">std</span><span class="o">::</span><span class="n">sort</span><span class="p">(</span><span class="n">table</span><span class="p">,</span><span class="w"> </span><span class="n">p_sort</span><span class="p">);</span><span class="w">  </span><span class="c1">// финальная сортировка по имени</span>
+</code></pre></div>
+<h3 id="r_constants-srclayersxrrenderdx10dx10r_constants_cachehcpp"><code>R_constants</code> (<code>src/Layers/xrRenderDX10/dx10r_constants_cache.h/.cpp</code>)<a class="headerlink" href="#r_constants-srclayersxrrenderdx10dx10r_constants_cachehcpp" title="Permanent link">&para;</a></h3>
+<p>Активный класс (тот же имя, что у закомментированного D3D9-наследника в <code>r_constants_cache.h</code>).</p>
+<ul>
+<li><code>set(R_constant*, T)</code> / <code>seta(C, e, T)</code> — шаблоны, диспетчеризация по destination-биту → <code>set(C, C-&gt;ps/vs/gs/hs/ds/cs, A, BT_*)</code>.</li>
+<li>Приватные <code>set/seta</code> для <code>Fmatrix/Fvector4/float/int</code> → <code>GetCBuffer(C, BType)</code> → <code>dx10ConstantBuffer&amp;</code> → <code>Buffer.set(C, L, A)</code> / <code>Buffer.seta(...)</code>.</li>
+<li><code>GetCBuffer</code> (cpp L6): декодирует CB index из <code>C-&gt;destination</code> (mask/shift) → <code>RCache.m_aPixelConstants[i]</code> / <code>m_aVertexConstants[i]</code> / <code>m_aGeometryConstants[i]</code> / <code>m_aHullConstants[i]</code> / <code>m_aDomainConstants[i]</code> / <code>m_aComputeConstants[i]</code> (<code>VERIFY</code> non-null).</li>
+<li><code>flush_cache()</code> — <code>Flush()</code> всех non-null буферов в 6 массивах (0..MaxCBuffers-1=13).</li>
+<li><code>access_direct(C, DataSize, ppVData, ppGData, ppPData)</code> — прямой pointer в mapped CB data для bulk-записи.</li>
+<li><code>flush()</code> неconditionally вызывает <code>flush_cache()</code>.</li>
+</ul>
+<h3 id="dx10constantbuffer-srclayersxrrenderdx10dx10constantbufferh"><code>dx10ConstantBuffer</code> (<code>src/Layers/xrRenderDX10/dx10ConstantBuffer.h</code>)<a class="headerlink" href="#dx10constantbuffer-srclayersxrrenderdx10dx10constantbufferh" title="Permanent link">&para;</a></h3>
+<p><code>dx10ConstantBuffer : xr_resource_named</code>:</p>
+<ul>
+<li><code>ID3DBuffer</code> (dynamic, <code>D3D_CPU_ACCESS_WRITE</code>), CPU-копия <code>m_pBufferData</code>, <code>m_bChanged</code> dirty-флаг, <code>m_MembersList</code> (reflection type descs).</li>
+<li><code>set/seta</code> для <code>Fmatrix/Fvector4/float/int</code> — запись в CPU-копию.</li>
+<li><code>AccessDirect</code> — pointer в mapped region.</li>
+<li><code>Flush()</code> — <code>Map WRITE_DISCARD</code> → копирование CPU data → Unmap (если <code>m_bChanged</code>).</li>
+<li><code>Similar</code> — сравнение для кэша.</li>
+<li>Создаётся через <code>Resources-&gt;_CreateConstantBuffer(pTable)</code>. <code>ref_cbuffer</code> typedef.</li>
+</ul>
+<h3 id="sh-srclayersxrrendersh_">SH-ресурсы (<code>src/Layers/xrRender/SH_*</code>)<a class="headerlink" href="#sh-srclayersxrrendersh_" title="Permanent link">&para;</a></h3>
+<p><strong><code>SH_Atomic.h/.cpp</code></strong> — атомарные GPU-обёртки (все <code>xr_resource_named</code>/<code>flagged</code>, деструкторы через <code>DEV-&gt;_Delete*</code>):</p>
+<ul>
+<li><code>SInputSignature</code> — DX10/11: <code>ID3DBlob* signature</code> wrapper.</li>
+<li><code>SVS {ID3DVertexShader* vs, R_constant_table constants, ref_input_sign signature}</code>.</li>
+<li><code>SPS {ps, constants}</code>, <code>SGS {gs, constants}</code> (DX10/11).</li>
+<li><code>SHS/SDS/SCS {sh, constants}</code> — hull/domain/compute (DX11 only).</li>
+<li><code>SState {ID3DState* state, SimulatorStates state_code}</code>.</li>
+<li><code>SDeclaration</code> — DX10/11: <code>xr_map&lt;ID3DBlob*, ID3DInputLayout*&gt; vs_to_layout</code> + <code>dx10_dcl_code</code> (INPUT_ELEMENT_DESC array) + <code>dcl_code</code> (DX9-style для сравнения); D3D9: <code>IDirect3DVertexDeclaration9* dcl</code>.</li>
+<li>typedef'ы: <code>ref_vs/ref_ps/ref_gs/ref_hs/ref_ds/ref_cs/ref_state/ref_declaration/ref_input_sign</code>.</li>
+</ul>
+<p><strong><code>SH_Constant.h/.cpp</code></strong> — <code>CConstant : xr_resource_named</code>:</p>
+<ul>
+<li><code>Fcolor const_float</code> + <code>u32 const_dword</code>, режимы <code>modeProgrammable=0/modeWaveForm</code>.</li>
+<li>WaveForms <code>_R/_G/_B/_A</code>.</li>
+<li><code>Calculate()</code> per-frame (кэш по <code>dwFrame == RDEVICE.dwFrame</code>): в waveform-режиме <code>set_float(_R.Calculate(t), ...)</code> с <code>t = RDEVICE.fTimeGlobal</code>.</li>
+<li><code>Similar</code> — mode+waveforms; Load/Save (waveform mode).</li>
+<li><strong>Legacy FFP-анимированная константа</strong> — в R4 не используется активно, но тип ресурса жив.</li>
+</ul>
+<p><strong><code>SH_Matrix.h/.cpp</code></strong> — <code>CMatrix : xr_resource_named</code>:</p>
+<ul>
+<li><code>Fmatrix xform</code>, режимы <code>modeProgrammable=0/modeTCM/modeS_refl/modeC_refl/modeDetail</code>.</li>
+<li>TCM-флаги <code>tcmScale/tcmRotate/tcmScroll</code>, WaveForms <code>scaleU/scaleV/rotate/scrollU/scrollV</code>.</li>
+<li><code>Calculate()</code> per-frame:</li>
+<li><code>modeTCM</code> — UV transform (center .5,.5 → rotate <code>rotate(t)*t</code> → scale → scroll <code>*sU/sV</code> → uncenter).</li>
+<li><code>modeS_refl</code> — screen-space reflection matrix из <code>RDEVICE.mView</code> (U/V basis rows ×.5).</li>
+<li><code>modeC_refl</code> — инверсия view (4-я строка zeroed).</li>
+<li>Load/Save.</li>
+</ul>
+<p><strong><code>SH_RT.h/.cpp</code></strong> — <code>CRT : xr_resource_named</code> (render-target обёртка):</p>
+<ul>
+<li><code>ID3DTexture2D* pSurface</code>, <code>ID3DRenderTargetView* pRT</code>, <code>ID3DDepthStencilView* pZRT</code> (DX10/11), <code>ID3D11UnorderedAccessView* pUAView</code> (DX11).</li>
+<li><code>ref_texture pTexture</code>, w/h/fmt, <code>_order</code> (creation timestamp).</li>
+<li><code>resptrcode_crt</code> + <code>ref_rt</code>. Куб-версия <code>CRTC</code> — <strong>закомментирована</strong> (DX10 cut).</li>
+</ul>
+<p><strong><code>SH_Texture.h</code></strong> — <code>CTexture : xr_resource_named</code> (см. ниже).</p>
+<h3 id="crtcreate-srclayersxrrenderdx10dx10sh_rtcpp"><code>CRT::create</code> (<code>src/Layers/xrRenderDX10/dx10SH_RT.cpp</code>)<a class="headerlink" href="#crtcreate-srclayersxrrenderdx10dx10sh_rtcpp" title="Permanent link">&para;</a></h3>
+<p>DX11-сигнатура: <code>create(Name, w, h, f, SampleCount, useUAV)</code>:</p>
+<ul>
+<li>Asserts: device+name+w+h. Размер — cap <code>D3D_REQ_TEXTURE2D_U_OR_V_DIMENSION</code>.</li>
+<li>Usage из fmt (D24S8 и т.п. → depthstencil).</li>
+<li><strong>Format conversion</strong>: <code>fmt != D3DFMT_D24S8</code> → <code>dx10TextureUtils::ConvertTextureFormat(fmt)</code>, иначе <code>DXGI_FORMAT_R24G8_TYPELESS</code>.</li>
+<li><code>DEV-&gt;Evict()</code> перед create.</li>
+<li><code>D3D_TEXTURE2D_DESC</code>: <code>MipLevels=1</code>, <code>SampleDesc.Count=SampleCount</code>.</li>
+<li><strong>BindFlags</strong>: non-MSAA → <code>SHADER_RESOURCE | (DEPTH_STENCIL or RENDER_TARGET)</code>; MSAA → <code>D3D_STANDARD_MULTISAMPLE_PATTERN</code> quality (если <code>RImplementation.o.dx10_msaa_opt</code>) + (depth ? DEPTH_STENCIL : SRV|RT).</li>
+<li><strong>UAV</strong>: если <code>FeatureLevel &gt;= 11_0 &amp;&amp; !depth &amp;&amp; SampleCount==1 &amp;&amp; useUAV</code> → добавить <code>D3D11_BIND_UNORDERED_ACCESS</code>.</li>
+<li>Create текстуры; depth → DSV (view format <code>D24_UNORM_S8_UINT</code> или <code>D32_FLOAT</code> (R32_TYPELESS)); MSAA → <code>D3D_DSV_DIMENSION_TEXTURE2DMS</code>; иначе RTV.</li>
+<li>UAV: <code>D3D11_UAV_DIMENSION_TEXTURE2D</code>, <code>NumElements = w*h</code>.</li>
+<li>Финал: <code>pTexture = DEV-&gt;_CreateTexture(Name); pTexture-&gt;surface_set(pSurface)</code>.</li>
+</ul>
+<p><code>destroy()</code>: release текстуры surface first, затем RTV/DSV/UAV/surface; stats_manager increment/decrement. <code>reset_begin/reset_end</code> (destroy + recreate с сохранёнными параметрами). <code>resptrcode_crt::create</code> → <code>DEV-&gt;_CreateRT(...)</code>.</p>
+<h3 id="ctexture-stage-scheme"><code>CTexture</code> stage scheme<a class="headerlink" href="#ctexture-stage-scheme" title="Permanent link">&para;</a></h3>
+<p><code>ResourceShaderType</code> enum:</p>
+<div class="highlight"><pre><span></span><code>rstPixel    = 0
+rstVertex   = D3DVERTEXTEXTURESAMPLER0
+rstGeometry = rstVertex + 256
+rstHull     = rstGeometry + 256
+rstDomain   = rstHull + 256
+rstCompute  = rstDomain + 256
+rstInvalid
+</code></pre></div>
+<p>Базовые оффсеты стадий — используются <code>RCache::get_ActiveTexture</code> (маппинг <code>CTexture::rst*</code> ranges → <code>textures_ps[16]</code>/<code>textures_vs[4]</code>/<code>textures_gs[16]</code>/<code>textures_hs/ds/cs[16]</code> (DX11)) и <code>parseResources</code>.</p>
+<p>Apply-функции: <code>apply_load/apply_theora/apply_avi/apply_seq/apply_gif/apply_normal</code> (видео/анимированные текстуры). <code>Preload/Load/PostLoad/Unload</code>. <code>surface_set/surface_get</code>, <code>get_SRView()</code>. Флаги <code>bLoaded/bUser/seqCycles/MemoryUsage/bLoadedAsStaging</code> (DX10/11 staging upload). <code>fastdelegate::FastDelegate1&lt;u32&gt; bind</code> (callback привязки текстуры). <code>m_is_hot/m_is_glowing</code> (DSR mod flags: HeatVision/SilencerOverheat). <code>m_play_time/seqMSPF</code> union, <code>seqDATA</code> (анимированные текстуры — массив surfaces), <code>m_pSRView</code> + <code>m_seqSRView</code> (DX10/11 SRV arrays), <code>desc_cache/desc</code> (кэш texture desc).</p>
+<h2 id="5">5. Взаимодействие<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<p><strong>Кто вызывает это:</strong></p>
+<ul>
+<li><code>PSLibrary</code> (порцион 7) — компиляция шейдера → <code>R_constant_table::parse</code>.</li>
+<li><code>RCache::set_Constants</code> — <code>R_constants::set</code> (порционы 3–14).</li>
+<li><code>RCache::OnFrameEnd</code> — <code>flush_cache</code>.</li>
+<li><code>ResourceManager</code> (порцион 7) — <code>_CreateConstantBuffer</code>, <code>_DeleteConstantTable</code>.</li>
+</ul>
+<p><strong>Кто это вызывает:</strong></p>
+<ul>
+<li><code>R_constants::set</code> → <code>dx10ConstantBuffer::set</code> → CPU-копия.</li>
+<li><code>dx10ConstantBuffer::Flush</code> → <code>ID3DBuffer::Map WRITE_DISCARD</code>.</li>
+<li><code>CRT::create</code> → <code>HW.pDevice-&gt;CreateTexture/...View</code> (<a href="../render-device/">render-device.md</a>).</li>
+<li><code>CConstant/Calculate</code> → <code>RDEVICE.fTimeGlobal</code> (legacy).</li>
+</ul>
+<h2 id="6">6. Потоки данных и управления<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<h3 id="_1">Запись констант<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart TD
+    A[RCache.set_Constants C, value] --&gt; B[R_constants::set C, T]
+    B --&gt; C{destination бит}
+    C --&gt;|pixel| D[GetCBuffer m_aPixelConstants i]
+    C --&gt;|vertex| E[GetCBuffer m_aVertexConstants i]
+    C --&gt;|gs/hs/ds/cs| F[GetCBuffer m_a*Constants i]
+    D --&gt; G[dx10ConstantBuffer::set C, L, A]
+    E --&gt; G
+    F --&gt; G
+    G --&gt; H[CPU-копия m_pBufferData + m_bChanged=true]
+    END[RCache.OnFrameEnd] --&gt; I[R_constants::flush_cache]
+    I --&gt; J[dx10ConstantBuffer::Flush]
+    J --&gt; K[Map WRITE_DISCARD → copy → Unmap]</code></pre>
+<h3 id="parse">Parse шейдера<a class="headerlink" href="#parse" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart TD
+    A[PSLibrary → компиляция → ID3DShaderReflection] --&gt; B[R_constant_table::parse]
+    B --&gt; C[по каждому CB iBuf]
+    C --&gt; D[updatedDest = destination | iBuf &lt;&lt; shift]
+    D --&gt; E[parseConstants — START_OFFSET → R_constant_load]
+    E --&gt; F[Resources-&gt;_CreateConstantBuffer → m_CBTable]
+    C --&gt; G[parseResources — SAMPLER/TEXTURE/UAV → samp.load]
+    B --&gt; H[std::sort table by name]</code></pre>
+<h2 id="7">7. Конфигурация<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Тип</th>
+<th>Действие</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dx10_msaa_opt</code></td>
+<td>cvar</td>
+<td><code>CRT::create</code>: MSAA → <code>D3D_STANDARD_MULTISAMPLE_PATTERN</code> quality</td>
+</tr>
+<tr>
+<td><code>ps_r4_hdr10_on</code></td>
+<td>cvar</td>
+<td>Влияет на swap chain format (см. <a href="../render-device/">render-device.md</a>) — не на константы напрямую</td>
+</tr>
+<tr>
+<td><code>RCache.m_a*Constants[14]</code></td>
+<td>поля</td>
+<td><code>MaxCBuffers = 14</code> — максимум CB на shader type</td>
+</tr>
+</tbody>
+</table>
+<h2 id="8">8. Известные ограничения и дебаг<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong><code>R_constant_table::merge()</code></strong> — маркер <code>/// !!!!!!!!FIX THIS FOR DX11!!!!!!!!!</code> (L200 <code>r_constants.cpp</code>) — merge в DX11 <strong>не проверен</strong>.</li>
+<li><strong><code>parseConstants</code> — <code>D3D10_SVC_OBJECT</code></strong> → <code>VERIFY(!"Implement shader object parsing.")</code> + bSkip: самплеры в CB <strong>не</strong> парсятся как константы (они идут через <code>parseResources</code>).</li>
+<li><strong>CB index 4-bit</strong> — максимум 16 CB на shader type; <code>MaxCBuffers = 14</code> (2 не используются).</li>
+<li><strong><code>CConstant</code>/<code>CMatrix</code></strong> — legacy FFP-анимированные ресурсы; в R4 активно не используются, но типы живы в <code>ResourceManager</code>.</li>
+<li><strong><code>CRTC</code></strong> (cube RT) — <strong>закомментирована</strong> в <code>SH_RT.h</code> (DX10 cut).</li>
+<li><strong><code>r_constants_cache.h</code></strong> — 90% файла закомментированный D3D9-код; активен только include-shim на <code>dx10r_constants_cache.h</code>.</li>
+<li><strong><code>access_direct</code></strong> — прямой pointer в mapped CB; при использовании — нельзя менять <code>m_bChanged</code> (flush идёт по CPU-копии).</li>
+<li><strong><code>R_constant_load.index</code></strong> — байтовый оффсет в CB (не регистр); <code>VERIFY &lt; 0x10000</code> (64KB limit).</li>
+<li><strong><code>RTV/DSV</code> форматы</strong> — depth: <code>D24_UNORM_S8_UINT</code> или <code>D32_FLOAT</code> (R32_TYPELESS); non-depth — из <code>ConvertTextureFormat(fmt)</code>.</li>
+<li><strong>UAV</strong> — только non-depth, non-MSAA, <code>FeatureLevel &gt;= 11_0</code>; <code>NumElements = w*h</code>.</li>
+</ol>
 
 
 
@@ -3882,7 +3912,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Нижний колонтитул" >
         
           
-          <a href="../types-math/" class="md-footer__link md-footer__link--prev" aria-label="Назад: Типы и математика">
+          <a href="../render-device/" class="md-footer__link md-footer__link--prev" aria-label="Назад: Устройство рендера">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3892,20 +3922,20 @@
                 Назад
               </span>
               <div class="md-ellipsis">
-                Типы и математика
+                Устройство рендера
               </div>
             </div>
           </a>
         
         
           
-          <a href="../strings/" class="md-footer__link md-footer__link--next" aria-label="Вперед: Строки">
+          <a href="../pipeline/" class="md-footer__link md-footer__link--next" aria-label="Вперед: Pipeline">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Вперед
               </span>
               <div class="md-ellipsis">
-                Строки
+                Pipeline
               </div>
             </div>
             <div class="md-footer__button md-icon">

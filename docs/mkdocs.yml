@@ -106,6 +106,8 @@ nav:
       - Renderer:
           - Обзор: modules/renderer/index.md
           - Точка входа и фабрика: modules/renderer/factory.md
+          - Устройство рендера: modules/renderer/render-device.md
+          - Шейдерные константы: modules/renderer/constants.md
           - Pipeline: modules/renderer/pipeline.md
           - Постобработка: modules/renderer/postprocessing.md
           - Shader Bus: modules/renderer/shader-bus.md
