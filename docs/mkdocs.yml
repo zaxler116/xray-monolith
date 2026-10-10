@@ -123,6 +123,7 @@ nav:
           - Blenders: modules/renderer/blenders.md
           - Частицы и wallmarks: modules/renderer/particles-wallmarks.md
           - UI-обвязка: modules/renderer/dx-bridges.md
+          - Прочее (stats/env/fx/debug/3DFluid): modules/renderer/misc.md
           - Pipeline: modules/renderer/pipeline.md
           - Постобработка: modules/renderer/postprocessing.md
           - Shader Bus: modules/renderer/shader-bus.md
