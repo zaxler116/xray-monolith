@@ -3754,7 +3754,7 @@
 </tr>
 <tr>
 <td><a href="particles-wallmarks/">Частицы и wallmarks</a></td>
-<td><em>(порцион 16)</em> — <code>ParticleEffect</code>, <code>ParticleGroup</code>, <code>dxParticleCustom</code>, <code>WallmarksEngine</code>, <code>dxRainRender</code></td>
+<td><code>CParticleEffect</code> (fixed-step <code>OnFrame</code>, <code>ExecuteAnimate</code>/<code>ExecuteCollision</code>, SSE-sprite-стрим, PAPI-обёртка), <code>CParticleGroup</code> (таймлайн <code>m_Time0/m_Time1</code>, related/free-дети), <code>CPEDef</code>/<code>CPGDef</code> (PED/PGD-чанки, INI Save2/Load2, <code>Compile</code>), <code>ParticleEffectActions</code> (30 <code>EPA*</code>, <code>actions_token[]</code>, PAPI-байт-код), <code>dxParticleCustom</code>, <code>CWallmarksEngine</code> (static: DFS-вырезка из стат. меша, bias-рендер, TTL-фейд; skeleton: one-shot через <code>CKinematics</code>), <code>dxWallMarkArray</code>, <code>dxRainRender</code> (капли-линии <code>effects\rain</code>, плющи <code>dm\rain.dm</code>), R4: <code>render_rain</code>/<code>phase_rain</code>/<code>draw_rain</code> (wet-surfaces, rain-SMAP, 3 screen-space паса, MSAA per-sample)</td>
 </tr>
 <tr>
 <td><a href="dx-bridges/">UI-обвязка и прочее</a></td>
@@ -3903,7 +3903,7 @@
 <td>16</td>
 <td>Частицы и wallmarks</td>
 <td><code>particles-wallmarks.md</code></td>
-<td>⬜</td>
+<td>✅ готово</td>
 </tr>
 <tr>
 <td>17</td>
