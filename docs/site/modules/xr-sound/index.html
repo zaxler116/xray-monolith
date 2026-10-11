@@ -4129,12 +4129,12 @@
 <td><code>Sound.h</code> (<code>ref_sound</code>/<code>ref_sound_data</code>, <code>CSound_manager_interface</code>, <code>CSound_emitter</code>, <code>CSound_source</code>, <code>CSound_params</code>, <code>CSound_stats(_ext)</code>, флаги, <code>soundSmoothingParams</code>), <code>sound.cpp</code> (<code>_create</code>/<code>_destroy</code>), <code>SoundRender.h</code> (константы), глобалы <code>psSound*</code>/<code>psReverb*</code></td>
 </tr>
 <tr>
-<td>Core — ядро <em>(порцион 6)</em></td>
+<td><a href="core/">Core — ядро</a></td>
 <td><code>SoundRender_Core.cpp</code> (контейнеры sources/emitters/targets, <code>create/attach_tail/clone/destroy/play*</code>, <code>_create_data</code>, <code>set_geometry_*</code>, <code>get_environment</code>, <code>pause_emitters</code>), <code>SoundRender_Core_StartStop.cpp</code>, <code>SoundRender_Core_SourceManager.cpp</code></td>
 </tr>
 <tr>
-<td>Core — процессор и окружение <em>(порцион 7)</em></td>
-<td><code>SoundRender_Core_Processor.cpp</code> (<code>update</code>/<code>commit</code>/<code>update_listener</code>-логика), <code>SoundRender_Environment.h/.cpp</code> (<code>CSoundRender_Environment</code>, <code>SoundEnvironment_LIB</code>, EFX/EAX-пресеты, <code>reverbs[]</code>)</td>
+<td><a href="core-processor-env/">Core — процессор и окружение</a></td>
+<td><code>SoundRender_Core_Processor.cpp</code> (полный разбор <code>update</code>-шагов, <code>update_events</code>, <code>statistic</code>, <code>get_occlusion</code>/<code>get_occlusion_to</code>), <code>SoundRender_Environment.h/.cpp</code> (<code>CSoundRender_Environment</code> — EAX-поля, <code>load</code>/<code>save</code> v4/v5, <code>lerp</code>/<code>clamp</code>, <code>SoundEnvironment_LIB</code> — <code>sEnvironment.xr</code>, <code>reverbs[]</code> 113 пресетов), EFX-применение в CoreA (<code>LoadEffect</code>/<code>load_reverb</code>/<code>commit</code>/<code>set_listener</code>/<code>get_listener</code>)</td>
 </tr>
 <tr>
 <td>Source + Target <em>(порцион 8)</em></td>
@@ -4214,13 +4214,13 @@
 <td>6</td>
 <td>Звук: Core — ядро</td>
 <td><code>core.md</code></td>
-<td>⬜ план</td>
+<td>✅ готово</td>
 </tr>
 <tr>
 <td>7</td>
 <td>Звук: Core — процессор и окружение</td>
 <td><code>core-processor-env.md</code></td>
-<td>⬜ план</td>
+<td>✅ готово</td>
 </tr>
 <tr>
 <td>8</td>
