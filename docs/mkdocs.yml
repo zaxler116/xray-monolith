@@ -144,7 +144,37 @@ nav:
           - "Устройства и прочее": modules/xr-sound/devices-misc.md
       - xrGame:
           - Обзор: modules/game/index.md
-          - Объекты (Actor/GameObject): modules/game/objects.md
+          - Объект-модель (Ит. 5):
+            - "CObject": modules/xr-engine/xr-object.md
+            - "Фабрика и регистр классов": modules/game/class-registry.md
+            - "CGameObject: каркас": modules/game/game-object.md
+            - "CGameObject: сеть и жизненный цикл": modules/game/game-object-net.md
+            - "CEntity: здоровье и урон": modules/game/entity.md
+            - "EntityCondition: статы": modules/game/entity-condition.md
+            - "CEntityAlive: живое существо": modules/game/entity-alive.md
+            - "Травмы, раны, смерть": modules/game/wounds-death.md
+            - "CCustomMonster: мост в AI": modules/game/custom-monster.md
+            - "CInventoryItemObject": modules/game/inventory-item.md
+            - "Torch/Flashlight/CustomDevice": modules/game/misc-items.md
+            - "PDA/Dosimeter/Antirad/Medkit": modules/game/medical-items.md
+            - "Lua-обёртка CScriptGameObject": modules/game/script-game-object.md
+            - "CActor: каркас и условия": modules/game/actor.md
+            - "CActor: камеры и эффекторы": modules/game/actor-camera.md
+            - "CActor: движение": modules/game/actor-movement.md
+            - "CActor: input и feel": modules/game/actor-input.md
+            - "CActor: оружие-обвязка": modules/game/actor-weapon.md
+            - "CActor: сеть и интерполяция": modules/game/actor-net.md
+            - "CActor: анимация": modules/game/actor-animation.md
+            - "CActor: HUD и рендер": modules/game/actor-hud.md
+            - "CActor: сон, смерть, прочее": modules/game/actor-misc.md
+            - "CActor: MP-обвязка": modules/game/actor-mp.md
+            - "Зоны: CSpaceRestrictor": modules/game/zones-restrictor.md
+            - "Зоны: CCustomZone FSM": modules/game/zones-custom.md
+            - "Зоны: аномалии и smart-террейн": modules/game/zones-anomaly.md
+            - "Feel: Touch/Vision/Sound": modules/game/feel.md
+            - "Script: script_entity + script_hit": modules/game/script-entity.md
+            - "Script: attachments и binder": modules/game/script-attachment.md
+          - Иерархия: modules/game/objects.md
           - ALIFE (AI): modules/game/alife.md
           - Пейтфиндинг: modules/game/pathfinding.md
           - Физика: modules/game/physics.md

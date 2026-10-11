@@ -128,6 +128,9 @@ class ENGINE_API CObject :
     svector<SavedPosition, 4> PositionStack;  // для сетевой интерполяции
     u32 dwFrame_UpdateCL;                  // защита от двойного UpdateCL
     u32 dwFrame_AsCrow;                    // CAS-защита MakeMeCrow
+#ifdef DEBUG
+    u32 dbg_update_cl, dbg_update_shedule; // кадры последнего UpdateCL/shedule_Update
+#endif
 };
 ```
 
