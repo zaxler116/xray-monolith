@@ -2,7 +2,7 @@
 
 `particle_actions_collection.cpp` (55 KB, ~1900 строк) — реализации
 `Execute`/`Transform` всех 29 подклассов `ParticleAction` (декларации — в
-[particle_actions_collection.h](particle_actions_collection.h), каркас — в
+[particle_actions_collection.h](actions.md#particle_actions_collection), каркас — в
 [actions.md](actions.md)). Здесь — только конкретика каждого подкласса;
 общие паттерны (dual-domain, 1/r², обратный обход, `PAMove`) — там.
 
@@ -271,7 +271,7 @@ if (p_count + rate > max_particles) rate = max − p_count;   // cap
 ### PATurbulence
 
 См. подробный разбор SSE-пути и `_EDITOR`-варианта в
-[actions.md](actions.md#sse-патурбулентность). Ключевое:
+[actions.md](actions.md). Ключевое:
 `pV = pos·offset + age` (адвекция по времени), 4 вызова
 `fractalsum3(pV, frequency, octaves)` (+ по осям для градиента),
 `D = (∇noise − d) * magnitude`, `vel += D` с **нормализацией

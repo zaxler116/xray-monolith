@@ -4532,7 +4532,7 @@ s_emitters.push_back(E);
 порц. 9.</p>
 <h3 id="22-updatep-d-n">2.2 <code>update(P, D, N)</code> — порядок шагов<a class="headerlink" href="#22-updatep-d-n" title="Permanent link">&para;</a></h3>
 <p>Весь тик под <code>bLocked = TRUE</code>…<code>FALSE</code>. Схема и семантика шагов 1–8 —
-в <a href="../core/#5-кадровый-тик-updatep-d-n">Core — ядро §5</a> (мермайнд-карта);
+в <a href="../core/#5-updatep-d-n">Core — ядро §5</a> (мермайнд-карта);
 здесь — детали, не вынесенные туда:</p>
 <ul>
 <li><strong>dt</strong> — <code>fTimer_Delta = Timer.GetElapsed_sec() - fTimer_Value</code>
@@ -4699,7 +4699,7 @@ Driving (8), City (6), Misc (3) = <strong>113</strong> (комментарии �
 <li><strong><code>get_listener(env)</code></strong> — обратное чтение 22 параметров.</li>
 </ul>
 <h3 id="41-efx-update">4.1 EFX-блок в <code>update</code> (связка)<a class="headerlink" href="#41-efx-update" title="Permanent link">&para;</a></h3>
-<p>Из <a href="../core/#5-кадровый-тик-updatep-d-n">Core — ядро §5</a> (только
+<p>Из <a href="../core/#5-updatep-d-n">Core — ядро §5</a> (только
 <code>m_is_supported</code>):</p>
 <div class="highlight"><pre><span></span><code>bListenerMoved? → e_target_ptr = get_environment(P) (или &amp;e_identity)
 alpha = 1 - exp(log(1 - 0.95) * dt_sec / snd_efx_environment_change_time)

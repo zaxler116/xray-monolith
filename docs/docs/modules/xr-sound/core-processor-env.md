@@ -48,7 +48,7 @@ s_emitters.push_back(E);
 ### 2.2 `update(P, D, N)` — порядок шагов
 
 Весь тик под `bLocked = TRUE`…`FALSE`. Схема и семантика шагов 1–8 —
-в [Core — ядро §5](core.md#5-кадровый-тик-updatep-d-n) (мермайнд-карта);
+в [Core — ядро §5](core.md#5-updatep-d-n) (мермайнд-карта);
 здесь — детали, не вынесенные туда:
 
 - **dt** — `fTimer_Delta = Timer.GetElapsed_sec() - fTimer_Value`
@@ -237,7 +237,7 @@ Core (средний слой) **не трогает OpenAL** — примене
 
 ### 4.1 EFX-блок в `update` (связка)
 
-Из [Core — ядро §5](core.md#5-кадровый-тик-updatep-d-n) (только
+Из [Core — ядро §5](core.md#5-updatep-d-n) (только
 `m_is_supported`):
 
 ```

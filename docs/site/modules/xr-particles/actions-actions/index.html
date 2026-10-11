@@ -4862,7 +4862,7 @@
 <h1 id="actions-29">Actions: 29 подклассов<a class="headerlink" href="#actions-29" title="Permanent link">&para;</a></h1>
 <p><code>particle_actions_collection.cpp</code> (55 KB, ~1900 строк) — реализации
 <code>Execute</code>/<code>Transform</code> всех 29 подклассов <code>ParticleAction</code> (декларации — в
-<a href="particle_actions_collection.h">particle_actions_collection.h</a>, каркас — в
+<a href="../actions/#particle_actions_collection">particle_actions_collection.h</a>, каркас — в
 <a href="../actions/">actions.md</a>). Здесь — только конкретика каждого подкласса;
 общие паттерны (dual-domain, 1/r², обратный обход, <code>PAMove</code>) — там.</p>
 <h2 id="_1">Классификация<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
@@ -5101,7 +5101,7 @@ if (p_count + rate &gt; max_particles) rate = max − p_count;   // cap
 <h2 id="_9">Турбулентность<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <h3 id="paturbulence">PATurbulence<a class="headerlink" href="#paturbulence" title="Permanent link">&para;</a></h3>
 <p>См. подробный разбор SSE-пути и <code>_EDITOR</code>-варианта в
-<a href="../actions/#sse-патурбулентность">actions.md</a>. Ключевое:
+<a href="../actions/">actions.md</a>. Ключевое:
 <code>pV = pos·offset + age</code> (адвекция по времени), 4 вызова
 <code>fractalsum3(pV, frequency, octaves)</code> (+ по осям для градиента),
 <code>D = (∇noise − d) * magnitude</code>, <code>vel += D</code> с <strong>нормализацией
