@@ -71,7 +71,7 @@ C-интерфейс рендера: `R_*` функции, `xrRender`-агнос
 
 ### `xrParticles`, `xrSound`, `xrPhysics`, `xrXMLParser`
 
-Частицы ([xrParticles](../modules/xr-particles/index.md)), звук ([xrSound](../modules/xr-sound.md)), обвязка PhysX, XML-парсер.
+Частицы ([xrParticles](../modules/xr-particles/index.md)), звук ([xrSound](../modules/xr-sound/index.md)), обвязка PhysX, XML-парсер.
 
 ## Сервер
 

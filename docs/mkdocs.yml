@@ -134,7 +134,14 @@ nav:
           - "Actions: 29 подклассов": modules/xr-particles/actions-actions.md
           - "Actions: IO": modules/xr-particles/actions-io.md
           - "Noise и связка с движком": modules/xr-particles/noise-integration.md
-      - xrSound: modules/xr-sound.md
+      - xrSound:
+          - Обзор: modules/xr-sound/index.md
+          - "Интерфейс и точка входа": modules/xr-sound/interface.md
+          - "Core — ядро": modules/xr-sound/core.md
+          - "Core — процессор и окружение": modules/xr-sound/core-processor-env.md
+          - "Source + Target": modules/xr-sound/source-target.md
+          - Emitter: modules/xr-sound/emitter.md
+          - "Устройства и прочее": modules/xr-sound/devices-misc.md
       - xrGame:
           - Обзор: modules/game/index.md
           - Объекты (Actor/GameObject): modules/game/objects.md
