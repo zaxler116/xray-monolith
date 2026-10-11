@@ -3433,6 +3433,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Фабрика и регистр классов
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -3449,6 +3467,113 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Ответственность
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Место в архитектуре
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Публичный API
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Внутреннее устройство
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Взаимодействие
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Потоки создания и уничтожения
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Конфигурация
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Известные ограничения / дебаг
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -4851,6 +4976,102 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Ответственность
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Место в архитектуре
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Публичный API
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Внутреннее устройство
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Взаимодействие
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Потоки создания и уничтожения
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Конфигурация
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Известные ограничения / дебаг
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -4867,9 +5088,127 @@
 
 
 <h1 id="_1">Фабрика и регистр классов<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<blockquote>
-<p><strong>Заглушка</strong> — заполнится на итерации 5, порцион 2.</p>
-</blockquote>
+<p>Механизм, который отвечает на вопрос «какой C++-класс создать по имени из <code>game.ltx</code>»: <strong>регистр всех классов мира</strong> (client/server-пары, скриптовые CLSID), точка входа <code>NEW_INSTANCE</code> в игровой DLL и путь <code>имя → класс → экземпляр → Load()</code>.</p>
+<h2 id="1">1. Ответственность<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Регистр классов</strong> — <code>CObjectFactory</code> (<code>src/xrServerEntities/object_factory.h</code>): вектор записей <code>CObjectItemAbstract*</code>, каждая связывает <code>CLASS_ID</code> ↔ C++-класс(ы) ↔ скриптовое имя.</li>
+<li><strong>Создание/уничтожение</strong> — <code>client_object(clsid)</code> / <code>server_object(clsid, section)</code>: фабрика возвращает «новый, сконструированный» объект (client — через <code>_construct()</code>, server — через <code>init()</code>).</li>
+<li><strong>Скриптовые ID</strong> — <code>script_clsid(clsid)</code> = <strong>индекс в отсортированном векторе</strong> (порядко-зависимый ID, который Lua-скрипты используют как тип объекта).</li>
+<li><strong>Точка входа движка</strong> — <code>NEW_INSTANCE(CLS)</code> (<a href="../../xr-engine/api/">api</a>, ит. 2) → <code>CEngineAPI::pCreate</code> → <code>xrFactory_Create</code> в <code>xrGame.cpp</code> (L27–43): спрашивает <code>object_factory().client_object(clsid)</code>, проставляет <code>object-&gt;CLS_ID = clsid</code>.</li>
+<li><strong>Имя → класс</strong> — <code>IGame_ObjectPool::create(name)</code> (<a href="../../xr-engine/object-pool/">object-pool</a>, ит. 2): <code>pSettings-&gt;r_clsid(name, "class")</code> читает key <code>class</code> секции объекта в <code>game.ltx</code> как текст CLSID → <code>TEXT2CLSID</code> → <code>NEW_INSTANCE</code>.</li>
+</ul>
+<p>Ключевой факт: <strong><code>CGameObject</code> сам не зарегистрирован</strong> — в реестре только конкретные наследники (монстры, оружие, зоны, предметы). Исторический предок <code>CGO</code> (legacy) в текущей кодовой базе не найден (поиск <code>class CGO</code> — нет совпадений в <code>src/xrGame/</code>); упоминается здесь и в порц. 30 только как предок <code>CGameObject</code>.</p>
+<h2 id="2">2. Место в архитектуре<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<p>Между конфигом (<code>game.ltx</code>: секция объекта = имя, key <code>class</code> = текст CLSID) и иерархией <code>CObject</code> (<a href="../../xr-engine/xr-object/">xr-object</a>). Код фабрики лежит в <strong><code>src/xrServerEntities/</code></strong> — общий для клиентской и dedicated-server сборок (клиентские классы под <code>#ifndef NO_XR_GAME</code>, dedicated-guard'ы).</p>
+<pre class="mermaid"><code>graph TD
+    LTX[game.ltx секция объекта: key class = SV_SINGL] --&gt; Pool[IGame_ObjectPool::create name]
+    Pool --&gt;|r_clsid + TEXT2CLSID| CLSID[CLASS_ID]
+    CLSID --&gt; NI[NEW_INSTANCE — Engine.External.pCreate ит.2]
+    NI --&gt; XFC[xrFactory_Create — xrGame.cpp L27-43]
+    XFC --&gt; OF[CObjectFactory::client_object]
+    OF --&gt; Item[CObjectItemClientServer / Single / SingleMp]
+    Item --&gt;|xr_new + _construct| CObj[CObject-наследник]
+    Pool --&gt;|cNameSect_set + Load| CObj
+    subgraph xrServerEntities общий код
+        OF
+        Item
+    end</code></pre>
+<h2 id="3-api">3. Публичный API<a class="headerlink" href="#3-api" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>const CObjectFactory&amp; object_factory()</code> — ленивый синглтон (<code>object_factory_inline.h</code> L14–22): при первом обращении создаёт <code>CObjectFactory</code> (→ <code>register_classes()</code>) и вызывает <code>init()</code> (→ <code>register_script_classes()</code>). Глобал <code>g_object_factory</code> (def в <code>object_factory.cpp</code> L13).</li>
+<li><code>CObjectFactory::client_object(clsid)</code> — <code>item(clsid).client_object()</code> (client build).</li>
+<li><code>CObjectFactory::server_object(clsid, section)</code> — <code>item(clsid).server_object(section)</code>; dedicated-вариант принимает <code>no_assert</code> и возвращает <code>0</code> при промахе.</li>
+<li><code>CObjectFactory::script_clsid(clsid)</code> — индекс записи в отсортированном векторе.</li>
+<li><code>CObjectItemAbstract</code> (<code>object_item_abstract.h</code>): поля <code>CLASS_ID m_clsid</code> + <code>shared_str m_script_clsid</code>, чистые виртуальные <code>client_object()</code> / <code>server_object(section)</code>.</li>
+<li>Шаблоны <code>add&lt;_client_type,_server_type&gt;(clsid, script_clsid)</code> и <code>add&lt;_unknown_type&gt;(clsid, script_clsid)</code> (<code>object_factory_impl.h</code> L24–55) — создают <code>CObjectItemClientServer</code> / <code>CObjectItemSingle</code> и вызывают <code>add(item)</code>.</li>
+<li><code>TEXT2CLSID</code> / <code>CLSID2TEXT</code> (<code>src/xrCore/clsid.h/.cpp</code>) — <code>CLASS_ID</code> = <code>u64</code> из 8 ASCII-байт (макрос <code>MK_CLSID</code>); <code>TEXT2CLSID</code> дополняет строку пробелами до 8, <code>VERIFY3(strlen &lt;= 8, "Beer from creator CLASS_ID:")</code>. Константы — <code>src/xrServerEntities/clsid_game.h</code> (<code>CLSID_GAME_*</code>, <code>CLSID_AI_*</code>, <code>CLSID_WPN_*</code>…).</li>
+<li><code>game_GameState::getCLASS_ID(game_type_name, isServer)</code> (<code>src/xrGame/game_base.cpp</code> L221–271): <code>ParseStringToGameType</code> → <code>TEXT2CLSID("SV_SINGL")</code> / <code>"CL_SINGL"</code> / <code>"SV_DM"</code> / <code>"CL_DM"</code> / <code>"SV_TDM"</code> / <code>"CL_TDM"</code> / <code>"SV_AHUNT"</code> / <code>"CL_AHUNT"</code> / <code>"SV_CTA"</code> / <code>"CL_CTA"</code>; <code>default</code> → <code>TEXT2CLSID("")</code>. Выше — закомментированный старый путь: Lua-фабрика из <code>script.ltx</code> key <code>common/game_type_clsid_factory</code>.</li>
+</ul>
+<h2 id="4">4. Внутреннее устройство<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<p><strong>Хранилище.</strong> <code>mutable OBJECT_ITEM_STORAGE m_clsids</code> (<code>xr_vector&lt;CObjectItemAbstract*&gt;</code>) + <code>mutable bool m_actual</code> (<code>object_factory.h</code> L60–61). <code>actualize()</code> (inline L128–135): при первом обращении после добавлений сортирует вектор по <code>clsid()</code> (ленивая сортировка, флаг-guard). <code>item(clsid)</code> (inline L61–67): <code>actualize()</code> + <code>std::lower_bound</code> + <code>VERIFY((I != end) &amp;&amp; (*I)-&gt;clsid() == clsid)</code> → <code>**I</code>.</p>
+<p><strong><code>add(CObjectItemAbstract*)</code></strong> (inline L81–100): <code>VERIFY</code> отсутствия дубликата clsid (<code>find_if</code> + <code>VERIFY2(0, "clsid is duplicated : %s")</code> через <code>CLSID2TEXT</code>) и, <strong>только в client build</strong> (<code>#ifndef NO_XR_GAME</code>), <code>VERIFY</code> отсутствия дубликата <code>script_clsid</code>. Ставит <code>m_actual=false</code>, <code>push_back</code>.</p>
+<p><strong>Три типа записей</strong> (все — шаблоны, реализация — <code>xr_new&lt;TYPE&gt;()</code> + <code>_construct()</code>/<code>init()</code>):</p>
+<table>
+<thead>
+<tr>
+<th>Тип</th>
+<th>Шаблоны</th>
+<th>Когда</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CObjectItemSingle&lt;type, is_client&gt;</code></td>
+<td><code>add&lt;_unknown_type&gt;</code></td>
+<td>один класс на обе/одну сторону: client-only (<code>CLevel</code>, <code>CGamePersistent</code>, <code>CHUDManager</code>, <code>game_sv_*</code>/<code>game_cl_*</code>, <code>CUIGame*</code>, физика) или dedicated-only (<code>CSE_ALife*</code> под <code>NO_XR_GAME</code>)</td>
+</tr>
+<tr>
+<td><code>CObjectItemClientServer&lt;client, server&gt;</code></td>
+<td><code>add&lt;_client,_server&gt;</code>, макрос <code>ADD</code></td>
+<td>обычный случай: один класс-пара на CLSID (монстры, оружие, зоны, предметы)</td>
+</tr>
+<tr>
+<td><code>CObjectItemClientServerSingleMp&lt;cl_sp, cl_mp, sv_sp, sv_mp&gt;</code></td>
+<td><code>ADD_MP</code>, <strong>только для <code>CActor</code></strong> (register L235)</td>
+<td>у MP-актора <strong>отдельные C++-классы на стороне</strong>: <code>IsGameTypeSingle()</code> (L445 <code>Level.h</code>: <code>g_pGamePersistent-&gt;GameType() == eGameIDSingle</code>) → <code>xr_new&lt;CActor&gt;/CSE_ALifeCreatureActor</code>, иначе <code>CActorMP</code>/<code>CSE_ActorMP</code> (детали — порц. 23 / 19)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Компиляторные проверки.</strong> <code>STATIC_CHECK</code> в <code>add&lt;...&gt;</code>: клиентский тип наследуется от <code>ObjectFactory::CLIENT_BASE_CLASS</code>, серверный — от <code>SERVER_BASE_CLASS</code> (typedef'ы в <code>object_factory_space.h</code>).</p>
+<p><strong>Таблица регистрации.</strong> <code>CObjectFactory::register_classes()</code> (<code>object_factory_register.cpp</code> L198–476) — ~120 записей макросами:
+- <code>#define ADD(a,b,c,d) add&lt;a,b&gt;(c,d)</code> (client) / <code>add&lt;b&gt;(c,d)</code> (dedicated, <code>NO_XR_GAME</code>).
+- Секции: client-only (<code>CLevel</code>, <code>CGamePersistent</code>, <code>CHUDManager</code>, game-типы <code>game_sv_*</code>/<code>game_cl_*</code>, HUD <code>CUIGameSP/DM/TDM/AHunt/CTA</code>) → <code>CActor</code> (<code>ADD_MP</code> L235) → ALife-серверные (<code>CSE_ALifeGroupTemplate</code>, <code>CSE_ALifeGraphPoint</code>, <code>CSE_ALifeOnlineOfflineGroup</code> под <code>NO_SINGLE</code>) → пары клиент/сервер: монстры (<code>CAI_Flesh</code>…<code>CWeaponStatMgun</code>), артефакты (14 <code>CSE_ALifeItemArtefact</code>), оружие (<code>CWeaponFN2000</code>…<code>CWeaponSSRS</code>), патроны (<strong>один <code>CWeaponAmmo</code> под 4 CLSIDs</strong>: <code>CLSID_OBJECT_AMMO</code>/<code>A_VOG25</code>/<code>A_OG7B</code>/<code>A_M209</code>), навески, инвентарь (включая <code>ADD(CInventoryItemObject, CSE_ALifeItem, CLSID_IITEM_ATTACH, "obj_attachable")</code> L353 — здесь зарегистрирован <strong>сам <code>CInventoryItemObject</code></strong> как абстрактная «прицепляемая» вещь), обмундирование, гранаты, ракеты (<code>CExplosiveRocket</code> → <code>CSE_Temporary</code>), зоны (<code>CCustomZone</code>…<code>CZoneCampfire</code>, <code>CSmartZone</code>), детекторы, устройства, физические объекты, <code>CInventoryBox</code>, <code>smart_cover::object</code>, форк-классы (<code>CWeaponSSRS</code>).
+- <strong>Build-guard'ы</strong>: <code>NO_SINGLE</code> (single-player классы), <code>BENCHMARK_BUILD</code> (MP game-типы, <code>CLevelChanger</code>), <code>NO_XR_GAME</code> (dedicated), <code>DEDICATED_SERVER_ONLY</code>.
+- <strong>Dedicated-server-only блок</strong> (L438–475, guard <code>if (!g_dedicated_server) return;</code> — то есть выполняется <strong>только</strong> в dedicated): серверные дубли тех же C++-классов под <strong>другими CLSID</strong>'ами (<code>SCRPTART</code>, <code>TORCH_S</code>, <code>WP_AK74</code>…<code>SPC_RS_S</code>, <code>_WP_SSRS</code>, <code>_S_SEARC</code>, <code>_S_STMGU</code>) — коммент: «because we do not have scripts and script functionality is not needed here».</p>
+<p><strong>Скриптовая регистрация.</strong> <code>init()</code> → <code>register_script_classes()</code> (<code>object_factory_script.cpp</code> L71–77: в client — <code>ai()</code>, в dedicated — no-op). <code>register_script_class</code> (L18–65) — Lua-вызов <code>object_factory:register(...)</code>: берёт <code>luabind::object</code> конструктора(ов), оборачивает в <code>CObjectItemScript</code> → <code>add()</code>. <code>register_script()</code> (L85–107): <code>actualize()</code> + экспорт в Lua — <code>enum clsid._clsid</code> (<code>script_clsid</code> → индекс) и глобальная таблица <code>clsid_table</code> (<code>имя → индекс</code>).</p>
+<h2 id="5">5. Взаимодействие<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><code>CObjectList</code></strong> (<code>src/xrEngine/xr_object_list.h/.cpp</code>, в <code>IGame_Level::Objects</code>, <a href="../../xr-engine/xr-object/">ит.2</a>): <code>Create(name)</code> (L460–466) — <code>g_pGamePersistent-&gt;ObjectPool.create(name)</code> + push в <code>objects_sleeping</code>; <code>Destroy(O)</code> (L468–533) — <code>net_Unregister</code>, учёт crows, erase из active/sleeping (FATAL «! Unregistered object being destroyed» если нет в обоих) → <code>ObjectPool.destroy(O)</code>.</li>
+<li><strong><code>IGame_ObjectPool</code></strong> (<a href="../../xr-engine/object-pool/">object-pool</a>, ит. 2, <code>g_pGamePersistent-&gt;ObjectPool</code>): <code>create</code>/<code>destroy</code>/<code>prefetch</code> — см. §6.</li>
+<li><strong><code>CInifile::r_clsid</code></strong> (<code>src/xrCore/Xr_ini.cpp</code> L1799–1802) — <code>r_string(S, L)</code> → <code>TEXT2CLSID</code> (<a href="../../xr-core/inifile/">inifile</a>, ит. 3).</li>
+<li><strong><code>CObject</code></strong> — <code>CLS_ID</code>-член ставится в <code>xrFactory_Create</code> (client) после создания; <code>Load(name)</code> читает секцию из <code>game.ltx</code> (<a href="../../xr-engine/xr-object/">xr-object</a>).</li>
+<li><strong>Скриптовая сторона</strong> — <code>CObjectItemScript</code>, <code>CScriptGameObject</code> (механика — порц. 13, полный API — итерация 14).</li>
+<li><strong>Сеть</strong> — <code>net_Spawn</code> с <code>CSE_Abstract*</code>-аргументом (ит. 12; ALife-сущности — ит. 11).</li>
+</ul>
+<h2 id="6">6. Потоки создания и уничтожения<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>sequenceDiagram
+    participant L as CObjectList::Create name
+    participant P as IGame_ObjectPool
+    participant I as CInifile::r_clsid
+    participant E as NEW_INSTANCE ит.2
+    participant X as xrFactory_Create xrGame.cpp
+    participant F as CObjectFactory
+    L-&gt;&gt;P: create name
+    P-&gt;&gt;I: r_clsid name, "class"
+    I--&gt;&gt;P: TEXT2CLSID → CLASS_ID
+    P-&gt;&gt;E: NEW_INSTANCE CLS
+    E-&gt;&gt;X: pCreate
+    X-&gt;&gt;F: client_object clsid
+    F--&gt;&gt;X: CObject* (xr_new + _construct)
+    X--&gt;&gt;E: object-&gt;CLS_ID = clsid
+    E--&gt;&gt;P: CObject*
+    P-&gt;&gt;P: cNameSect_set name + Load name
+    P--&gt;&gt;L: CObject*
+    L-&gt;&gt;L: objects_sleeping.push_back</code></pre>
+<p><strong>Prefetch</strong> (старт уровня): <code>IGame_ObjectPool::prefetch()</code> (<code>IGame_ObjectPool.cpp</code> L16–40) — секция <code>"prefetch_objects_" + m_game_type</code> в <code>game.ltx</code>, по каждому key: <code>r_clsid</code> → <code>NEW_INSTANCE</code> → <code>Load</code> → <code>m_PrefetchObjects</code> (удаляются <code>clear()</code> — L42–50; dtor <code>R_ASSERT(m_PrefetchObjects.empty())</code>). <code>m_game_type</code> — из командной строки (<code>IGame_Persistent::params</code>, <code>/</code>-разделено, lower-case).</p>
+<p><strong>Уничтожение</strong>: <code>CObjectList::Destroy</code> (см. §5) → <code>IGame_ObjectPool::destroy(O)</code> → <strong><code>xr_delete(O)</code></strong> — реального пуллинга нет (L61–64; ниже — большой закомментированный блок старой реализации с <code>map_POOL</code>, L66–140, мёртвый код).</p>
+<h2 id="7">7. Конфигурация<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><code>game.ltx</code></strong>: секция объекта = его имя; key <code>class = &lt;текст CLSID&gt;</code> (8 ASCII-символов). Prefetch: секция <code>prefetch_objects_&lt;game_type&gt;</code>, key'и = имена объектов.</li>
+<li><strong><code>clsid_game.h</code></strong> — константы <code>MK_CLSID(...)</code> / <code>TEXT2CLSID(...)</code>; <code>CLASS_ID</code> = <code>u64</code> (<code>src/xrCore/clsid.h</code>).</li>
+<li><strong><code>m_game_type</code></strong> — командная строка (<code>/</code>-разделено, lower-case, <code>IGame_Persistent::params</code> L31–61) — определяет game-типы и prefetch-секцию.</li>
+</ul>
+<h2 id="8">8. Известные ограничения / дебаг<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Нет реального пуллинга</strong>: <code>IGame_ObjectPool::destroy</code> — <code>xr_delete</code>; пул-реализация закомментирована (L66–140) и мертва.</li>
+<li><strong>Дубликат CLSID = VERIFY-crash</strong> (dev build): <code>add()</code> — <code>"clsid is duplicated : %s"</code>; дубликат <code>script_clsid</code> — только client build.</li>
+<li><strong><code>script_clsid</code> = индекс в отсортированном векторе</strong> — порядко-зависимый ID: изменение порядка/состава таблицы регистрации сдвигает скриптовые ID (отсюда ленивая сортировка <code>actualize()</code> с <code>mutable</code>).</li>
+<li><strong>Dedicated-server CLSID-дубли</strong>: один C++-класс под двумя CLSID (обычный + <code>_s</code>-суффикс, L441–474) — intentional, «no scripts» в dedicated.</li>
+<li><strong><code>CActor</code>-форк MP</strong>: <code>CActor</code>/<code>CActorMP</code> — выбор в runtime по <code>IsGameTypeSingle()</code> (детали — порц. 23 / 19).</li>
+<li><strong><code>CGameObject</code> не в реестре</strong> — только наследники; <code>CInventoryItemObject</code> — исключение (зарегистрирован как «attachable»-базис, L353).</li>
+<li><strong>DEBUG quirk</strong>: <code>xrFactory_Create</code> при <code>NULL</code> (неизвестный clsid) → <code>return 0</code> (L31–34), не assert.</li>
+<li><strong><code>TEXT2CLSID</code></strong> — <code>VERIFY3</code> «Beer from creator CLASS_ID» при длине &gt; 8; короче 8 дополняется пробелами в хвосте.</li>
+</ul>
 
 
 

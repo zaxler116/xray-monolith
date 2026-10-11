@@ -13,7 +13,7 @@
 | # | Порцион | Страницы | Статус |
 |---|---------|----------|--------|
 | 1 | Фундамент: `CObject` (xrEngine) | `index.md`, [xr-object.md](../xr-engine/xr-object.md) | ✅ |
-| 2 | Фабрика и регистр классов | [class-registry.md](class-registry.md) | ⬜ |
+| 2 | Фабрика и регистр классов | [class-registry.md](class-registry.md) — `CObjectFactory`, `NEW_INSTANCE`-вход, CLSID'ы, `game.ltx` | ✅ |
 | 3 | `CGameObject`: каркас | [game-object.md](game-object.md) | ⬜ |
 | 4 | `CGameObject`: сеть и жизненный цикл | [game-object-net.md](game-object-net.md) | ⬜ |
 | 5 | `CEntity`: здоровье и урон | [entity.md](entity.md) | ⬜ |
