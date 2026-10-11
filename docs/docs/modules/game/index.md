@@ -15,7 +15,7 @@
 | 1 | Фундамент: `CObject` (xrEngine) | `index.md`, [xr-object.md](../xr-engine/xr-object.md) | ✅ |
 | 2 | Фабрика и регистр классов | [class-registry.md](class-registry.md) — `CObjectFactory`, `NEW_INSTANCE`-вход, CLSID'ы, `game.ltx` | ✅ |
 | 3 | `CGameObject`: каркас | [game-object.md](game-object.md) — класс, down-cast'ы, жизненный цикл, AI-локации, аним. контроллер, attachments, visual-callback'и, Lua-связь, CrPr, эффекторы | ✅ |
-| 4 | `CGameObject`: сеть и жизненный цикл | [game-object-net.md](game-object-net.md) | ⬜ |
+| 4 | `CGameObject`: сеть и жизненный цикл | [game-object-net.md](game-object-net.md) — `net_Spawn`/`net_Destroy`, `OnEvent`, сериализация, `spawn_supplies()`, путь удаления | ✅ |
 | 5 | `CEntity`: здоровье и урон | [entity.md](entity.md) | ⬜ |
 | 6 | `EntityCondition`: статы | [entity-condition.md](entity-condition.md) | ⬜ |
 | 7 | `CEntityAlive`: живое существо | [entity-alive.md](entity-alive.md) | ⬜ |
