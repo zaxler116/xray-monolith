@@ -3461,6 +3461,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CGameObject: каркас
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -3477,6 +3495,412 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Ответственность
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Место в архитектуре
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Публичный API
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Публичный API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cgameobject_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Класс CGameObject
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Внутреннее устройство
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Внутреннее устройство">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Поля
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-down-cast-l7395" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Down-cast'ы (L73–95)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-init" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Конструктор / деструктор / init
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-load-load-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Load / Load-поток
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 Жизненный цикл (не-сетевая часть)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46-ai-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6 AI-локации
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#47" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.7 Анимационный контроллер движения
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#48-attachments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.8 Attachments
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#49-visual-callback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.9 Visual-callback'и
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#410-lua-13-14-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.10 Lua-связь (точки связки; порц. 13 — механика, ит. 14 — API)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#411" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.11 Эффекторы
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#412-crpr-correction-prediction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.12 CrPr (Correction-Prediction)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#413" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.13 Прочее
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#414-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.14 Сетевые методы (сигнатуры; порц. 4)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#415-spawn_supplies-l552621" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.15 spawn_supplies() (L552–621)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Взаимодействие
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Потоки данных/управления
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Потоки данных/управления">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-spawn-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Spawn (упрощённо; полный — порц. 4)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Update (кадр)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-destroy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Destroy
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Конфигурация
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Известные ограничения / дебаг
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Известные ограничения / дебаг">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#debug-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DEBUG-only
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Мёртвый/закомментированный код
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Магические числа
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Логирование
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Ссылки
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Источник
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -4851,6 +5275,401 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Ответственность
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Место в архитектуре
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Публичный API
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Публичный API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cgameobject_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Класс CGameObject
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Внутреннее устройство
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Внутреннее устройство">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Поля
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-down-cast-l7395" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Down-cast'ы (L73–95)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-init" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Конструктор / деструктор / init
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-load-load-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Load / Load-поток
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 Жизненный цикл (не-сетевая часть)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46-ai-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6 AI-локации
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#47" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.7 Анимационный контроллер движения
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#48-attachments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.8 Attachments
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#49-visual-callback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.9 Visual-callback'и
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#410-lua-13-14-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.10 Lua-связь (точки связки; порц. 13 — механика, ит. 14 — API)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#411" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.11 Эффекторы
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#412-crpr-correction-prediction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.12 CrPr (Correction-Prediction)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#413" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.13 Прочее
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#414-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.14 Сетевые методы (сигнатуры; порц. 4)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#415-spawn_supplies-l552621" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.15 spawn_supplies() (L552–621)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Взаимодействие
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Потоки данных/управления
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Потоки данных/управления">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-spawn-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Spawn (упрощённо; полный — порц. 4)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Update (кадр)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-destroy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Destroy
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Конфигурация
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Известные ограничения / дебаг
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Известные ограничения / дебаг">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#debug-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DEBUG-only
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Мёртвый/закомментированный код
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Магические числа
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Логирование
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Ссылки
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Источник
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -4868,8 +5687,502 @@
 
 <h1 id="cgameobject">CGameObject: каркас<a class="headerlink" href="#cgameobject" title="Permanent link">&para;</a></h1>
 <blockquote>
-<p><strong>Заглушка</strong> — заполнится на итерации 5, порцион 3.</p>
+<p><strong>Модуль:</strong> <code>xrGame</code> · <strong>Файлы:</strong> <code>src/xrGame/GameObject.h</code> (352 стр.), <code>src/xrGame/GameObject.cpp</code> (1415 стр.) · <strong>Порцион 3/30, итерация 5</strong></p>
+<p>Сетевые методы (<code>net_Spawn</code>/<code>net_Destroy</code>/<code>net_Save</code>/<code>OnEvent</code>) — только на уровне сигнатур; полный разбор — <a href="../game-object-net/">game-object-net.md</a> (порц. 4).</p>
 </blockquote>
+<h2 id="1">1. Ответственность<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p><code>CGameObject</code> — «настоящий» игровой объект: базовый класс всего, что существует в мире игры. Он добавляет к каркасу <code>CObject</code> (xrEngine) три слоя: (а) <strong>игровую идентичность</strong> — имя, секция конфига, CLSID, <code>m_server_flags</code>; (б) <strong>взаимодействие с Lua</strong> — ленивая обёртка <code>CScriptGameObject</code> (<code>lua_game_object()</code>), <code>clsid()</code>, карта скриптовых колбэков; (в) <strong>обвязку с AI</strong> — <code>ai_location()</code> (вершина level/game graph), <code>ai_obstacle</code>, анимационный контроллер движения. Плюс — механизм down-cast'ов (<code>cast_*</code>), attachments, visual-callback'и на kinematics, CrPr-хуки и «эффекторы» (<code>ef_*</code>) для систем зон/чувств.</p>
+<p><strong>Чего НЕ делает</strong>: не владеет здоровьем/уроном (<code>CEntity</code>, порц. 5–6), инвентарём, движением игрока (<code>CActor</code>, порц. 14–23), AI-планированием (итерация 6), оружием (итерация 8) и сетевым транспортом (<code>Level_*</code>, итерация 12). Вещь, тварь, игрок, зона — всё это наследники <code>CGameObject</code>, и каждый «наслаивает» свою ответственность сверху.</p>
+<h2 id="2">2. Место в архитектуре<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>CObject (xrEngine) ── CUsableScriptObject ── CScriptBinder
+        \                     \                   /
+         └───────────────── CGameObject ────────────────┘
+                                 │
+              ┌──────────┬───────┼──────────────┬─────────────┐
+         CEntity   CInventoryItemObject  CSpaceRestrictor  ...
+            │            (порц. 10)           │
+    CEntityAlive      ...            CCustomZone (порц. 24–26)
+      ┌───────┐
+  CActor  CCustomMonster (порц. 14–23 / 9)
+</code></pre></div>
+<ul>
+<li><strong>Наследование:</strong> <code>class CGameObject : public CObject, public CUsableScriptObject, public CScriptBinder</code> (GameObject.h L53–57). <code>CUsableScriptObject</code> — интерфейс <code>use()</code> для Lua; <code>CScriptBinder</code> — сериализация/жизненный цикл Lua-объекта (обещание ит. 14, здесь только точки связки).</li>
+<li><strong>Кто наследуется:</strong> вся остальная объект-модель <code>xrGame</code> — см. <a href="../">index.md</a> и <a href="../../../architecture/object-model/">object-model.md</a> (обновляется в порц. 30).</li>
+<li><strong>Зависимости:</strong> <code>xrServer_Space.h</code> (<code>CSE_Abstract</code>, <code>CSE_Visual</code>, <code>CSE_ALifeObject</code> — только как аргументы, ит. 11), <code>alife_space.h</code>, <code>ai_space.h</code> (<code>CAI_ObjectLocation</code>, <code>ai_obstacle</code> — ит. 6), <code>script_game_object.h</code> (<code>CScriptGameObject</code> — ит. 14), <code>script_attachment_manager.h</code> (порц. 29), <code>animation_movement_controller.h</code>.</li>
+<li><strong>Каркас <code>CObject</code></strong> (crow, spatial, parent, net ID, position stack) — <a href="../../xr-engine/xr-object/">xr-object.md</a>, здесь не повторяется.</li>
+</ul>
+<h2 id="3-api">3. Публичный API<a class="headerlink" href="#3-api" title="Permanent link">&para;</a></h2>
+<h3 id="cgameobject_1">Класс <code>CGameObject</code><a class="headerlink" href="#cgameobject_1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Группа</th>
+<th>Методы</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Down-cast'ы</td>
+<td><code>cast_game_object()</code>, <code>cast_entity()</code>, <code>cast_actor()</code>, <code>cast_custom_monster()</code>, <code>cast_weapon()</code> и ещё 17</td>
+<td>Виртуальные «узнающие» down-cast'ы, избегающие <code>smart_cast</code></td>
+</tr>
+<tr>
+<td>Жизненный цикл</td>
+<td><code>init()</code>, <code>reinit()</code>, <code>reload(section)</code>, <code>NeedToDestroyObject()</code>, <code>DestroyObject()</code></td>
+<td>Инициализация/перезапуск/удаление (см. §4.2)</td>
+</tr>
+<tr>
+<td>Идентичность</td>
+<td><code>Name()</code>, <code>clsid()</code>, <code>story_id()</code>, <code>TestServerFlag(f)</code>, <code>UsedAI_Locations()</code></td>
+<td>Имя, CLSID, flags из <code>CSE_ALifeObject</code></td>
+</tr>
+<tr>
+<td>AI-локации</td>
+<td><code>ai_location()</code>, <code>setup_parent_ai_locations()</code>, <code>validate_ai_locations()</code>, <code>on_matrix_change()</code></td>
+<td>Привязка к level/game graph</td>
+</tr>
+<tr>
+<td>Аним. движение</td>
+<td><code>create_anim_mov_ctrl()</code>, <code>destroy_anim_mov_ctrl()</code>, <code>animation_movement()</code>, <code>animation_movement_controlled()</code></td>
+<td>Контроллер анимационного движения</td>
+</tr>
+<tr>
+<td>Attachments</td>
+<td><code>add_attachment()</code>, <code>get_attachment()</code>, <code>remove_child()</code>, <code>remove_attachment()</code>, <code>iterate_attachments()</code></td>
+<td>Скриптовые вложения (порц. 29)</td>
+</tr>
+<tr>
+<td>Visual-callback'и</td>
+<td><code>add/remove_visual_callback()</code>, <code>visual_callbacks()</code>, <code>OnChangeVisual()</code></td>
+<td>Хуки на обновление kinematics</td>
+</tr>
+<tr>
+<td>Lua-связь</td>
+<td><code>lua_game_object()</code>, <code>callback(type)</code>, <code>spawn_ini()</code>, <code>spawn_time()</code></td>
+<td>Точки входа для Lua (порц. 13)</td>
+</tr>
+<tr>
+<td>Эффекторы</td>
+<td><code>ef_creature_type()</code>, <code>ef_equipment_type()</code>, <code>ef_main_weapon_type()</code>, <code>ef_anomaly_type()</code>, <code>ef_weapon_type()</code>, <code>ef_detector_type()</code>, <code>natural_weapon()</code>, <code>natural_detector()</code>, <code>use_center_to_aim()</code></td>
+<td>Типы для систем feel/зон (порц. 27)</td>
+</tr>
+<tr>
+<td>CrPr</td>
+<td><code>make_Interpolation()</code>, <code>PH_B/I/A_CrPr()</code>, <code>CrPr_Set/IsActivated()</code>, <code>CrPr_GetActivationStep()</code></td>
+<td>Хуки физкоррекции (пустые по умолчанию)</td>
+</tr>
+<tr>
+<td>Прочее</td>
+<td><code>Orientation()</code>, <code>MoveTo()</code>, <code>ps_Element()</code>, <code>u_EventGen/Send()</code>, <code>FootStepCallback()</code></td>
+<td>Утилиты</td>
+</tr>
+</tbody>
+</table>
+<p>Сетевые методы (сигнатуры, разбор — порц. 4): <code>net_Spawn(CSE_Abstract*)</code>, <code>net_Destroy()</code>, <code>net_Relcase(CObject*)</code>, <code>net_Save(NET_Packet&amp;)</code>, <code>net_Load(IReader&amp;)</code>, <code>net_SaveRelevant()</code>, <code>save()</code>/<code>load()</code> (пустые в базовом классе), <code>OnEvent(NET_Packet&amp;, u16)</code>.</p>
+<h2 id="4">4. Внутреннее устройство<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<h3 id="41">4.1 Поля<a class="headerlink" href="#41" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Поле</th>
+<th>Тип</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>m_spawned</code></td>
+<td><code>bool</code></td>
+<td>Флаг «спавнен по сети»; <code>lua_game_object()</code> REFUSES работать до spawn</td>
+</tr>
+<tr>
+<td><code>m_server_flags</code></td>
+<td><code>Flags32</code></td>
+<td><code>CSE_ALifeObject::m_flags</code>, скопированные при <code>net_Spawn</code></td>
+</tr>
+<tr>
+<td><code>m_ai_location</code></td>
+<td><code>CAI_ObjectLocation*</code></td>
+<td>Вершины level/game graph; <code>NULL</code> на dedicated server (GameObject.cpp L60)</td>
+</tr>
+<tr>
+<td><code>m_story_id</code></td>
+<td><code>ALife::_STORY_ID</code></td>
+<td>ID «сюжетного» объекта, <code>-1</code> если не сюжетный</td>
+</tr>
+<tr>
+<td><code>m_anim_mov_ctrl</code></td>
+<td><code>animation_movement_controller*</code></td>
+<td>Контроллер анимационного движения</td>
+</tr>
+<tr>
+<td><code>m_bObjectRemoved</code></td>
+<td><code>bool</code></td>
+<td>Флаг удаления (<code>DestroyObject</code> идемпотентен)</td>
+</tr>
+<tr>
+<td><code>m_script_attachments</code></td>
+<td><code>xr_map&lt;shared_str, script_attachment*&gt;</code></td>
+<td>Скриптовые вложения по имени</td>
+</tr>
+<tr>
+<td><code>m_ini_file</code></td>
+<td><code>CInifile*</code></td>
+<td>Спавн-ини, принятый от сервера (<code>spawn_ini()</code>)</td>
+</tr>
+<tr>
+<td><code>m_bCrPr_Activated</code>, <code>m_dwCrPr_ActivationStep</code></td>
+<td>—</td>
+<td>CrPr-состояние (по умолчанию выключено, step 0)</td>
+</tr>
+<tr>
+<td><code>m_lua_game_object</code></td>
+<td><code>mutable CScriptGameObject*</code></td>
+<td>Ленивая Lua-обёртка</td>
+</tr>
+<tr>
+<td><code>m_script_clsid</code></td>
+<td><code>int</code></td>
+<td>CLSID из <code>object_factory()</code>; <code>-1</code> до <code>reload()</code>; <code>clsid()</code> THROW в DEBUG если &lt; 0</td>
+</tr>
+<tr>
+<td><code>m_spawn_time</code></td>
+<td><code>u32</code></td>
+<td><code>Device.dwFrame</code> момента <code>net_Spawn</code></td>
+</tr>
+<tr>
+<td><code>m_ai_obstacle</code></td>
+<td><code>ai_obstacle*</code></td>
+<td>AI-препятствие; создаётся в <code>net_Spawn</code> (L272)</td>
+</tr>
+<tr>
+<td><code>m_previous_matrix</code></td>
+<td><code>Fmatrix</code></td>
+<td>Прежний XFORM для <code>on_matrix_change</code></td>
+</tr>
+<tr>
+<td><code>m_visual_callback</code></td>
+<td><code>CALLBACK_VECTOR</code> = <code>svector&lt;visual_callback*, 6&gt;</code></td>
+<td>Колбэки на kinematics</td>
+</tr>
+<tr>
+<td><code>m_callbacks</code></td>
+<td><code>CALLBACK_MAP*</code></td>
+<td><code>xr_map&lt;ECallbackType, CScriptCallbackExVoid&gt;</code> — скриптовые колбэки</td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-down-cast-l7395">4.2 Down-cast'ы (L73–95)<a class="headerlink" href="#42-down-cast-l7395" title="Permanent link">&para;</a></h3>
+<p>23 виртуальных метода <code>cast_*()</code> возвращают <code>NULL</code> по умолчанию; каждый наследник переопределяет свой:</p>
+<div class="highlight"><pre><span></span><code><span class="k">virtual</span><span class="w"> </span><span class="n">CGameObject</span><span class="o">*</span><span class="w"> </span><span class="nf">cast_game_object</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w">  </span><span class="c1">// L79</span>
+<span class="k">virtual</span><span class="w"> </span><span class="n">CEntity</span><span class="o">*</span><span class="w"> </span><span class="nf">cast_entity</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w">           </span><span class="c1">// L76</span>
+<span class="k">virtual</span><span class="w"> </span><span class="n">CActor</span><span class="o">*</span><span class="w"> </span><span class="nf">cast_actor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w">             </span><span class="c1">// L78</span>
+<span class="c1">// + cast_attachment_owner, cast_inventory_owner/item,</span>
+<span class="c1">// cast_entity_alive, cast_custom_zone, cast_physics_shell_holder,</span>
+<span class="c1">// cast_input_receiver, cast_particles_player, cast_artefact,</span>
+<span class="c1">// cast_custom_monster, cast_stalker, cast_script_entity,</span>
+<span class="c1">// cast_weapon, cast_missile, cast_flashlight, cast_explosive,</span>
+<span class="c1">// cast_restrictor, cast_attachable_item, cast_holder_custom,</span>
+<span class="c1">// cast_base_monster</span>
+</code></pre></div>
+<p>Цель (комментарий L72): «functions used for avoiding most of the smart_cast» — вызывается через виртуальный указатель, без RTTI. <code>cast_game_object()</code> — единственный, который возвращает <code>this</code>.</p>
+<h3 id="43-init">4.3 Конструктор / деструктор / init<a class="headerlink" href="#43-init" title="Permanent link">&para;</a></h3>
+<p><strong><code>CGameObject()</code></strong> (L51–65): нитирует <code>m_ai_obstacle</code>, вызывает <code>init()</code>, затем инициализирует CrPr-поля (<code>false</code>, 0), <code>m_spawn_time = 0</code>, <code>m_ai_location</code> — <strong>только если не dedicated server</strong> (<code>!g_dedicated_server ? xr_new&lt;CAI_ObjectLocation&gt;() : 0</code>), <code>m_server_flags.one()</code>, <code>m_callbacks = xr_new&lt;CALLBACK_MAP&gt;()</code>, <code>m_anim_mov_ctrl = 0</code>.</p>
+<p><strong><code>~CGameObject()</code></strong> (L67–77): VERIFY'и — <code>!animation_movement()</code>, <code>!m_ini_file</code>, <code>!m_lua_game_object</code>, <code>!m_spawned</code>; затем <code>xr_delete(m_ai_location)</code>, <code>xr_delete(m_callbacks)</code>, <code>xr_delete(m_ai_obstacle)</code>, <code>delete_data(m_script_attachments)</code>.</p>
+<p><strong><code>init()</code></strong> (L79–85): <code>m_lua_game_object = 0; m_script_clsid = -1; m_ini_file = 0; m_spawned = false;</code>.</p>
+<p><strong><code>reinit()</code></strong> (L99–107): <code>m_visual_callback.clear()</code>; если не dedicated — <code>ai_location().reinit()</code>; затем обходит <code>m_callbacks</code> и делает <code>it-&gt;second.clear()</code> по каждому.</p>
+<p><strong><code>reload(section)</code></strong> (L109–112): <code>m_script_clsid = object_factory().script_clsid(CLS_ID);</code> — привязывает CLSID из <a href="../class-registry/">фабрики</a>.</p>
+<h3 id="44-load-load-">4.4 <code>Load</code> / <code>Load</code>-поток<a class="headerlink" href="#44-load-load-" title="Permanent link">&para;</a></h3>
+<p><strong><code>Load(section)</code></strong> (L87–97): вызывает <code>inherited::Load(section)</code> (читает секцию из <code>game.ltx</code>/<code>levels</code>), затем через <code>smart_cast&lt;ISpatial*&gt;(this)</code> снимает флаг <code>STYPE_REACTTOSOUND</code> (комментарий L93: <code>#pragma todo("to Dima: All objects are visible for AI ???")</code> — <code>STYPE_VISIBLEFORAI</code> не ставится в <code>Load</code>, а ставится в <code>net_Spawn</code> по <code>CSE_ALifeObject::flVisibleForAI</code>).</p>
+<h3 id="45-">4.5 Жизненный цикл (не-сетевая часть)<a class="headerlink" href="#45-" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>NeedToDestroyObject()</code></strong> (L1058–1061): <code>return false;</code> — по умолчанию объект сам себя не уничтожает; переопределяется наследниками (например, <code>CActor</code> при смерти).</li>
+<li><strong><code>DestroyObject()</code></strong> (L1063–1075): если <code>m_bObjectRemoved</code> — return; ставит <code>m_bObjectRemoved = true</code>; если <code>getDestroy()</code> уже стоит — return; если <code>Local()</code> — генерирует <code>GE_DESTROY</code> через <code>u_EventGen</code> + <code>u_EventSend</code> (идемпотентность через флаг).</li>
+<li><strong><code>shedule_Update(dt)</code></strong> (L1077–1093): если <code>NeedToDestroyObject()</code> — <code>DestroyObject()</code> (в не-MASTER_GOLD с Msg); <code>inherited::shedule_Update(dt)</code>; если не dedicated — <code>CScriptBinder::shedule_Update(dt)</code>.</li>
+<li><strong><code>shedule_Needed()</code></strong> (L1210–1213): <code>return (!getDestroy());</code> — объект «нужен» в shedule пока не помечен к удалению.</li>
+</ul>
+<h3 id="46-ai-">4.6 AI-локации<a class="headerlink" href="#46-ai-" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>ai_location()</code></strong> (L275–279): <code>VERIFY(m_ai_location); return (*m_ai_location);</code> — доступ к <code>CAI_ObjectLocation</code> (вершины level/game graph).</li>
+<li><strong><code>setup_parent_ai_locations(assign_position=true)</code></strong> (L623–663): требует <code>H_Parent()</code>; если <code>assign_position &amp;&amp; use_parent_ai_locations()</code> — копирует <code>Position()</code> родителя; затем если <code>UsedAI_Locations()</code> и level graph есть — берёт <code>level_vertex_id</code> родителя (или <code>validate_ai_locations(false)</code> если невалиден); <code>game_vertex</code> — из <code>game_graph()</code> или через <code>cross_table()</code>.</li>
+<li><strong><code>validate_ai_locations(decrement_reference=true)</code></strong> (L690–699): если нет level graph или <code>!UsedAI_Locations()</code> — return; иначе <code>update_ai_locations(decrement_reference)</code>.</li>
+<li><strong><code>update_ai_locations(decrement_reference)</code></strong> (L674–688): вычисляет <code>new_level_vertex_id()</code> (L665–672: <code>Center</code> с X/Z от <code>Position()</code>), VERIFY валидности; если <code>decrement_reference</code> и ID не изменился — return; ставит <code>level_vertex</code>, затем через <code>cross_table()</code> ставит <code>game_vertex</code>.</li>
+<li><strong><code>spatial_move()</code></strong> (L701–709): если есть <code>H_Parent()</code> — <code>setup_parent_ai_locations()</code>; иначе если есть <code>Visual()</code> — <code>validate_ai_locations()</code>; затем <code>inherited::spatial_move()</code>.</li>
+<li><strong><code>on_matrix_change(previous)</code></strong> (L1297–1300): <code>obstacle().on_move();</code> — уведомляет <code>ai_obstacle</code> о сдвиге.</li>
+<li><strong><code>is_ai_obstacle()</code></strong> (L1198–1201): <code>return (false);</code> — по умолчанию объект не препятствие для AI; переопределяется.</li>
+<li><strong><code>obstacle()</code></strong> (L341–345): <code>VERIFY(m_ai_obstacle); return (*m_ai_obstacle);</code>.</li>
+</ul>
+<h3 id="47">4.7 Анимационный контроллер движения<a class="headerlink" href="#47" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>create_anim_mov_ctrl(CBlend* b, Fmatrix* start_pose, bool local_animation)</code></strong> (L1215–1255): если <code>animation_movement_controlled()</code> — <code>NewBlend</code> на существующем контроллере; иначе — <code>xr_new&lt;animation_movement_controller&gt;(&amp;XFORM(), *start_pose, K, b)</code> где <code>K = Visual()-&gt;dcast_PKinematics()</code>. В DEBUG VERIFY'ит <code>start_pose</code> и отсутствие активного контроллера.</li>
+<li><strong><code>destroy_anim_mov_ctrl()</code></strong> (L1257–1260): <code>xr_delete(m_anim_mov_ctrl)</code>.</li>
+<li><strong><code>update_animation_movement_controller()</code></strong> (L1184–1196): если нет контроллера — return; если активен — <code>OnFrame()</code>; иначе <code>destroy_anim_mov_ctrl()</code>.</li>
+<li><strong><code>animation_movement_controlled()</code></strong> (L1179–1182): <code>!!animation_movement() &amp;&amp; animation_movement()-&gt;IsActive()</code>.</li>
+<li><strong><code>OnChangeVisual()</code></strong> (L1203–1208): <code>inherited::OnChangeVisual();</code> + <code>destroy_anim_mov_ctrl()</code> — смена визуала сбрасывает контроллер.</li>
+</ul>
+<h3 id="48-attachments">4.8 Attachments<a class="headerlink" href="#48-attachments" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>add_attachment(name, att)</code></strong> (L865–882): <code>R_ASSERT(att)</code>; <code>remove_child(name, true)</code> (заменяет); если <code>m_script_attachments</code> было пустое — <code>add_visual_callback(update_visbox)</code> (и в DEBUG-определении <code>ATTACHMENT_HUD_VISBOX</code> — <code>update_visbox_hud</code> на <code>CHudItem</code>); <code>emplace(name, att)</code>.</li>
+<li><strong><code>get_attachment(name)</code></strong> (L884–894): <code>find</code> в <code>m_script_attachments</code>, <code>nullptr</code> если нет.</li>
+<li><strong><code>remove_child(name, destroy=false)</code></strong> (L896–916): <code>get_attachment</code>; если <code>destroy</code> — <code>xr_delete(attachment)</code>; <code>erase(name)</code>; если стало пусто — <code>remove_visual_callback(update_visbox)</code> (+ HUD-вариант).</li>
+<li><strong><code>remove_attachment(script_attachment* child)</code></strong> (L918–929): ищет по <code>child-&gt;GetName()</code>, сравнивает указатель, вызывает <code>remove_child(name, true)</code>.</li>
+<li><strong><code>iterate_attachments(functor)</code></strong> (L931–939): обход <code>m_script_attachments</code>, останавливается если <code>functor(name, att)</code> вернул <code>true</code>.</li>
+</ul>
+<p><code>update_visbox</code> (L783–822) и <code>update_visbox_hud</code> (L824–863) — статические колбэки, которые на <code>NeedUCalc()</code> пересчитывают <code>Fbox</code>/<code>Fsphere</code> визуала, включая bounding box'ы attachments (тип <code>eSA_World</code> / <code>eSA_HUD</code>). Под <code>DEBUG_VISBOX</code> рисуют OBB через <code>CDebugRenderer</code>.</p>
+<h3 id="49-visual-callback">4.9 Visual-callback'и<a class="headerlink" href="#49-visual-callback" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>add_visual_callback(cb)</code></strong> (L999–1006): требует <code>smart_cast&lt;IKinematics*&gt;(Visual())</code>; dedup через <code>std::find</code>; если было пусто — <code>SetKinematicsCallback(true)</code>.</li>
+<li><strong><code>remove_visual_callback(cb)</code></strong> (L1008–1015): аналогично, при опустошении — <code>SetKinematicsCallback(false)</code>.</li>
+<li><strong><code>SetKinematicsCallback(set)</code></strong> (L1017–1024): <code>smart_cast&lt;IKinematics*&gt;(Visual())-&gt;Callback(set ? VisualCallback : 0, this)</code>.</li>
+<li><strong><code>VisualCallback(IKinematics*)</code></strong> (L1026–1042): глобальный (не метод), берёт <code>CObject*</code> из <code>GetUpdateCallbackParam()</code>, кастует в <code>CGameObject*</code>, обходит <code>visual_callbacks()</code> и вызывает каждый.</li>
+<li><strong><code>OnChangeVisual()</code></strong> (L1203–1208): см. 4.7.</li>
+</ul>
+<h3 id="410-lua-13-14-api">4.10 Lua-связь (точки связки; порц. 13 — механика, ит. 14 — API)<a class="headerlink" href="#410-lua-13-14-api" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>lua_game_object()</code></strong> (L1044–1056): если <code>!m_spawned</code> — Msg «trying to use a destroyed object» + <code>print_stack()</code>, return NULL; если <code>!m_lua_game_object</code> — <code>xr_new&lt;CScriptGameObject&gt;(const_cast&lt;CGameObject*&gt;(this))</code>; return.</li>
+<li><strong><code>clsid()</code></strong> (L257–263): в DEBUG <code>THROW(m_script_clsid &gt;= 0)</code>; return <code>m_script_clsid</code>.</li>
+<li><strong><code>callback(ECallbackType type)</code></strong> (L1167–1170): <code>return ((*m_callbacks)[type]);</code> — ленивая запись в <code>xr_map</code> (оператор <code>[]</code> создаёт).</li>
+<li><strong><code>FootStepCallback(power, b_play, b_on_ground, b_hud_view)</code></strong> (L1302–1305): <code>callback(eOnFootStep)(lua_game_object(), power, b_play, b_on_ground, b_hud_view)</code>.</li>
+<li><strong><code>spawn_ini()</code></strong> (L266–269): return <code>m_ini_file</code> (спавн-ини из <code>CSE_ALifeObject::m_ini_string</code>, см. 4.12).</li>
+<li><strong><code>spawn_time()</code></strong> (L285–289): <code>VERIFY(m_spawned); return m_spawn_time;</code>.</li>
+<li><strong><code>story_id()</code></strong> (L291–294): return <code>m_story_id</code>.</li>
+</ul>
+<h3 id="411">4.11 Эффекторы<a class="headerlink" href="#411" title="Permanent link">&para;</a></h3>
+<p>Шесть виртуальных <code>ef_*_type()</code> (L1106–1155) по умолчанию делают <code>R_ASSERT3(false, "... not properly overridden!", CLSID2TEXT(CLS_ID))</code> и возвращают <code>u32(-1)</code> — это «заглушки», которые наследники <strong>обязаны</strong> переопределить:</p>
+<div class="highlight"><pre><span></span><code><span class="n">u32</span><span class="w"> </span><span class="nf">ef_creature_type</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w">   </span><span class="c1">// L1106</span>
+<span class="n">u32</span><span class="w"> </span><span class="nf">ef_equipment_type</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w">  </span><span class="c1">// L1114 (комментарий L1120: // return (6);)</span>
+<span class="n">u32</span><span class="w"> </span><span class="nf">ef_main_weapon_type</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="c1">// L1123 (L1129: // return (5);)</span>
+<span class="n">u32</span><span class="w"> </span><span class="nf">ef_anomaly_type</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w">    </span><span class="c1">// L1132</span>
+<span class="n">u32</span><span class="w"> </span><span class="nf">ef_weapon_type</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w">     </span><span class="c1">// L1140 (L1146: // return (u32(0));)</span>
+<span class="n">u32</span><span class="w"> </span><span class="nf">ef_detector_type</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w">   </span><span class="c1">// L1149</span>
+</code></pre></div>
+<p>Плюс булевы (L303–305): <code>natural_weapon() { return true; }</code>, <code>natural_detector() { return true; }</code>, <code>use_center_to_aim() { return false; }</code>.</p>
+<h3 id="412-crpr-correction-prediction">4.12 CrPr (Correction-Prediction)<a class="headerlink" href="#412-crpr-correction-prediction" title="Permanent link">&para;</a></h3>
+<p>По умолчанию <strong>все пусты</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">make_Interpolation</span><span class="p">()</span><span class="w"> </span><span class="p">{};</span><span class="w">  </span><span class="c1">// L197</span>
+<span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">PH_B_CrPr</span><span class="p">()</span><span class="w"> </span><span class="p">{};</span><span class="w">           </span><span class="c1">// L200</span>
+<span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">PH_I_CrPr</span><span class="p">()</span><span class="w"> </span><span class="p">{};</span><span class="w">           </span><span class="c1">// L203</span>
+<span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">PH_A_CrPr</span><span class="p">()</span><span class="w"> </span><span class="p">{};</span><span class="w">           </span><span class="c1">// L210</span>
+<span class="cp">#ifdef DEBUG</span>
+<span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">PH_Ch_CrPr</span><span class="p">()</span><span class="w"> </span><span class="p">{};</span><span class="w">          </span><span class="c1">// L207</span>
+<span class="cp">#endif</span>
+</code></pre></div>
+<p>Флаги (L213–216): <code>CrPr_SetActivationStep(u32)</code>, <code>CrPr_GetActivationStep()</code>, <code>CrPr_SetActivated(bool)</code>, <code>CrPr_IsActivated()</code>. Инициализация в конструкторе: <code>m_bCrPr_Activated = false; m_dwCrPr_ActivationStep = 0;</code>.</p>
+<h3 id="413">4.13 Прочее<a class="headerlink" href="#413" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>Orientation()</code></strong> (L218–226): <code>XFORM().getHPB(h, p, b); rotation.yaw = h; rotation.pitch = p;</code> — roll не используется.</li>
+<li><strong><code>MoveTo(position)</code></strong> (L307–309): пустой inline, комментарий <code>[12.11.07] Alexander Maniluk: added this method for moving object</code>.</li>
+<li><strong><code>ps_Element(ID)</code></strong> (L948–954): <code>VERIFY(ID &lt; ps_Size())</code>; берёт <code>PositionStack[ID]</code>, <code>SP.dwTime += Level().timeServer_Delta();</code> — смещение времени для интерполяции.</li>
+<li><strong><code>u_EventGen(P, type, dest)</code></strong> (L956–962): <code>P.w_begin(M_EVENT); P.w_u32(Level().timeServer()); P.w_u16(type &amp; 0xffff); P.w_u16(dest &amp; 0xffff);</code>.</li>
+<li><strong><code>u_EventSend(P, dwFlags = DPNSEND_GUARANTEED)</code></strong> (L964–967): <code>Level().Send(P, dwFlags)</code>.</li>
+<li><strong><code>Name()</code></strong> (L1101–1104): <code>return (*cName());</code> — «игровое имя» (отличается от <code>cNameSect()</code>).</li>
+<li><strong><code>visual_name(server_entity)</code></strong> (L1172–1177): <code>smart_cast&lt;const CSE_Visual*&gt;(server_entity)</code>, <code>VERIFY</code>, return <code>visual-&gt;get_visual()</code>.</li>
+<li><strong><code>TestServerFlag(f)</code></strong> (L994–997): <code>m_server_flags.test(f)</code>.</li>
+<li><strong><code>UsedAI_Locations()</code></strong> (L989–992): <code>m_server_flags.test(CSE_ALifeObject::flUsedAI_Locations)</code>.</li>
+<li><strong><code>OnH_B_Chield()</code></strong> (L971–975): <code>inherited::OnH_B_Chield();</code> + закомментировано <code>///PHSetPushOut();???</code>.</li>
+<li><strong><code>OnH_B_Independent(just_before_destroy)</code></strong> (L977–987): <code>inherited::OnH_B_Independent(...)</code>; <code>setup_parent_ai_locations(false)</code>; берёт <code>CGameObject* parent = smart_cast&lt;CGameObject*&gt;(H_Parent())</code>, VERIFY; если level graph и валидный <code>level_vertex_id</code> родителя — <code>validate_ai_locations(false)</code>.</li>
+<li><strong><code>feel_touch_on_contact(CObject*)</code></strong> (L98): <code>return TRUE;</code>.</li>
+<li><strong><code>use(CGameObject* who_use)</code></strong> (L99): <code>return CUsableScriptObject::use(who_use);</code>.</li>
+<li><strong><code>Hit(SHit*)</code> / <code>SetHitInfo(...)</code> / <code>BonePassBullet(int)</code></strong> (L134–141): пустые inline; <code>BonePassBullet</code> return <code>FALSE</code>.</li>
+<li><strong><code>IsVisibleForZones()</code></strong> (L151): <code>return true;</code>.</li>
+<li><strong><code>On_B_NotCurrentEntity()</code></strong> (L324–326): пустой inline.</li>
+<li><strong><code>net_Relcase(CObject* O)</code></strong> (L1157–1165): <code>inherited::net_Relcase(O);</code> + закомментировано <code>CScriptBinder::net_Relcase</code> (комментарий demonized: «Causes more allocations for lua gc. Pretty much all scripts never use this and should never.»).</li>
+</ul>
+<h3 id="414-4">4.14 Сетевые методы (сигнатуры; порц. 4)<a class="headerlink" href="#414-4" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>net_Spawn(CSE_Abstract* DC)</code></strong> (L267–481): полный разбор — <a href="../game-object-net/">game-object-net.md</a>. Ключевые шаги: <code>VERIFY(!m_spawned)</code>, <code>m_spawned = true</code>, <code>m_spawn_time = Device.dwFrame</code>, <code>m_ai_obstacle = xr_new&lt;ai_obstacle&gt;(this)</code>; <code>smart_cast&lt;CSE_Visual*&gt;</code> + <code>visual_name</code> + fallback на <code>pSettings-&gt;line_exist(cNameSect(), "visual")</code> если модель не существует; <code>cName_set(E-&gt;s_name)</code>, <code>cNameSect_set</code>, <code>name_replace</code> если задан; <code>setID(E-&gt;ID)</code>; XFORM из <code>E-&gt;o_Angle</code>/<code>E-&gt;o_Position</code>; <code>smart_cast&lt;CSE_ALifeObject*&gt;</code> → <code>m_ini_file</code> из <code>m_ini_string</code> (если не пусто), <code>m_story_id</code>; <code>setLocal(E-&gt;s_flags.is(M_SPAWN_OBJECT_LOCAL))</code> (с исключением для demo-spectator); <code>setReady(TRUE)</code>, <code>net_Register</code> (кроме demo-spectator); <code>m_server_flags = O-&gt;m_flags</code> (если <code>O</code>), <code>STYPE_VISIBLEFORAI</code> по <code>flVisibleForAI</code>; <code>reload(*cNameSect())</code> + <code>CScriptBinder::reload</code> (если не dedicated); <code>reinit()</code> + <code>CScriptBinder::reinit</code>; <code>net_Load</code> из <code>E-&gt;client_data</code> если не пусто; если <code>ai().get_level_graph()</code> — обработка <code>ID_Parent</code> (вершины из <code>CSE_ALifeObject</code>/<code>CSE_Temporary</code>), <code>validate_ai_locations(false)</code>, валидация позиции через <code>vertex_plane_y</code>; <code>inherited::net_Spawn(DC)</code>; <code>m_bObjectRemoved = false</code>; <code>spawn_supplies()</code>; <code>CScriptBinder::net_Spawn(DC)</code> (в DEBUG с <code>CGameObject_NetSpawn</code>-функтором).</li>
+<li><strong><code>net_Destroy()</code></strong> (L114–167): <code>VERIFY(m_spawned)</code>; <code>CGameObject_NetDestroy</code>-функтор; <code>destroy_anim_mov_ctrl()</code>; <code>xr_delete(m_ini_file)</code>; <code>m_script_clsid = -1</code>; <code>Callback(0,0)</code> на kinematics; <code>inherited::net_Destroy()</code>, <code>setReady(FALSE)</code>; <code>net_Unregister</code> (кроме demo-spectator); если <code>this == Level().CurrentEntity()</code> — <code>SetControlEntity(0)</code> + <code>SetEntity(0)</code>; <code>Level().RemoveObject_From_4CrPr(this)</code>; <code>CScriptBinder::net_Destroy()</code>; <code>xr_delete(m_lua_game_object)</code>, <code>m_spawned = false</code>.</li>
+<li><strong><code>net_Save</code> / <code>net_Load</code></strong> (L483–542): chunk'и + <code>save</code>/<code>load</code> + <code>CScriptBinder::save</code>/<code>load</code>; DEBUG-лог по <code>psAI_Flags.test(aiSerialize)</code>.</li>
+<li><strong><code>save()</code> / <code>load()</code></strong> (L544–550): <strong>пустые</strong> в базовом классе.</li>
+<li><strong><code>net_SaveRelevant()</code></strong> (L1095–1098): <code>return CScriptBinder::net_SaveRelevant();</code>.</li>
+<li><strong><code>net_Relevant()</code></strong> (L122): <code>return getLocal();</code> — inline в заголовке.</li>
+<li><strong><code>Ready()</code></strong> (L124): <code>return getReady();</code> — inline.</li>
+<li><strong><code>OnEvent(P, type)</code></strong> (L169–263): <code>GE_HIT</code>/<code>GE_HIT_STATISTIC</code> — <code>SHit HDS; HDS.Read_Packet_Cont(P);</code> + <code>net_Find</code> для <code>whoID</code>/<code>weaponID</code>, <code>SetHitInfo</code> + <code>Hit(&amp;HDS)</code>, <code>m_WeaponUsageStatistic</code> (если <code>GameID() != eGameIDSingle</code>), <code>OnBullet_Hit</code> у <code>reward_generator</code>; <code>GE_DESTROY</code> — если есть <code>H_Parent()</code> — Msg «GE_DESTROY arrived to object ... that has parent» + break (ждёт <code>H_Parent::Destroy</code> или <code>Reject</code>); иначе <code>setDestroy(TRUE)</code>.</li>
+</ul>
+<h3 id="415-spawn_supplies-l552621">4.15 <code>spawn_supplies()</code> (L552–621)<a class="headerlink" href="#415-spawn_supplies-l552621" title="Permanent link">&para;</a></h3>
+<p>Вызывается в конце <code>net_Spawn</code>. Если <code>!spawn_ini()</code> или <code>ai().get_alife()</code> — return. Читает секцию <code>"spawn"</code> из <code>m_ini_file</code>: для каждой строки <code>N=V</code> — <code>VERIFY(xr_strlen(N))</code>, <code>pSettings-&gt;section_exist(N)</code>; парсит <code>V</code> как список через <code>_GetItemCount</code>/<code>_GetItem</code> (первый элемент — количество <code>j</code>), <code>prob=</code> — вероятность, <code>cond=</code> — состояние; флаги <code>scope</code>/<code>silencer</code>/<code>launcher</code> через <code>strstr</code>. Для каждого из <code>j</code>: если <code>::Random.randF(1.f) &lt; p</code> — <code>Level().spawn_item(N, Position(), ai_location().level_vertex_id(), ID(), true)</code>; <code>smart_cast&lt;CSE_ALifeInventoryItem*&gt;</code> → <code>m_fCondition = f_cond</code>; <code>smart_cast&lt;CSE_ALifeItemWeapon*&gt;</code> → ставит <code>eWeaponAddonScope/Silencer/GrenadeLauncher</code> по <code>m_scope_status</code>/<code>m_silencer_status</code>/<code>m_grenade_launcher_status</code> == <code>ALife::eAddonAttachable</code>; <code>A-&gt;Spawn_Write(P, TRUE)</code> + <code>Level().Send(P, net_flags(TRUE))</code> + <code>F_entity_Destroy(A)</code>.</p>
+<h2 id="5">5. Взаимодействие<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<p><strong>Кто вызывает <code>CGameObject</code>:</strong></p>
+<ul>
+<li><strong><code>CObject::shedule_Update</code></strong> (xrEngine) → <code>CGameObject::shedule_Update</code> → <code>CScriptBinder::shedule_Update</code>.</li>
+<li><strong><code>CObject::spatial_move</code></strong> (при перемещении) → <code>CGameObject::spatial_move</code> → <code>setup_parent_ai_locations</code> / <code>validate_ai_locations</code>.</li>
+<li><strong><code>CObject::UpdateCL</code></strong> → <code>CGameObject::UpdateCL</code> → attachments <code>Update()</code> + <code>on_matrix_change</code> → <code>obstacle().on_move()</code>.</li>
+<li><strong><code>CObject::renderable_Render</code></strong> → <code>CGameObject::renderable_Render</code> → <code>Render-&gt;add_Visual(Visual())</code> + <code>RenderAttachments()</code>.</li>
+<li><strong>Сетевой слой</strong> (<code>Level_*</code>, ит. 12) → <code>net_Spawn</code> / <code>net_Destroy</code> / <code>net_Save</code> / <code>net_Load</code> / <code>OnEvent</code>.</li>
+<li><strong>Родитель</strong> (<code>H_Parent()</code>) → <code>OnH_B_Chield</code> / <code>OnH_B_Independent</code> / <code>setup_parent_ai_locations</code>.</li>
+<li><strong>AI</strong> (<code>CAI_ObjectLocation</code>, <code>ai_obstacle</code>, ит. 6) → читает <code>ai_location()</code>, <code>obstacle()</code>.</li>
+<li><strong>Lua</strong> (<code>CScriptGameObject</code>, ит. 14) → <code>lua_game_object()</code>, <code>callback()</code>, <code>clsid()</code>.</li>
+<li><strong>Системы feel/зон</strong> (порц. 27) → <code>ef_*_type()</code>, <code>natural_*()</code>, <code>use_center_to_aim()</code>.</li>
+<li><strong>Attachments</strong> (порц. 29) → <code>add/get/remove/iterate_attachments</code>, <code>update_visbox</code>.</li>
+</ul>
+<p><strong>Кого вызывает <code>CGameObject</code>:</strong></p>
+<ul>
+<li><strong><code>CObject</code></strong> (xrEngine): <code>inherited::Load</code>, <code>inherited::shedule_Update</code>, <code>inherited::spatial_move</code>, <code>inherited::UpdateCL</code>, <code>inherited::renderable_Render</code>, <code>inherited::net_Spawn</code>, <code>inherited::net_Destroy</code>, <code>inherited::net_Relcase</code>, <code>inherited::OnChangeVisual</code>, <code>inherited::OnH_B_Chield</code>, <code>inherited::OnH_B_Independent</code>, <code>PositionStack</code> (<code>ps_Element</code>).</li>
+<li><strong><code>CUsableScriptObject</code></strong>: <code>use()</code>.</li>
+<li><strong><code>CScriptBinder</code></strong>: <code>reload</code>, <code>reinit</code>, <code>shedule_Update</code>, <code>net_Spawn</code>, <code>net_Destroy</code>, <code>save</code>, <code>load</code>, <code>net_SaveRelevant</code> (закомментировано <code>net_Relcase</code>).</li>
+<li><strong><code>object_factory()</code></strong> (порц. 2): <code>script_clsid(CLS_ID)</code> в <code>reload()</code>.</li>
+<li><strong><code>ai()</code></strong> (ит. 6): <code>get_level_graph()</code>, <code>level_graph()</code>, <code>game_graph()</code>, <code>cross_table()</code>, <code>get_alife()</code>, <code>script_engine()</code>.</li>
+<li><strong><code>Level()</code></strong> (ит. 12): <code>Objects.net_Find/net_Register/net_Unregister</code>, <code>spawn_item</code>, <code>Send</code>, <code>CurrentEntity()</code>, <code>SetEntity/SetControlEntity</code>, <code>RemoveObject_From_4CrPr</code>, <code>timeServer/timeServer_Delta</code>, <code>IsDemoPlayStarted/IsDemoPlay</code>.</li>
+<li><strong><code>CSE_Abstract</code> / <code>CSE_Visual</code> / <code>CSE_ALifeObject</code> / <code>CSE_Temporary</code></strong> (ит. 11): аргументы <code>net_Spawn</code>, <code>smart_cast</code>.</li>
+<li><strong><code>CScriptGameObject</code></strong> (ит. 14): <code>xr_new</code> в <code>lua_game_object()</code>, <code>xr_delete</code> в <code>net_Destroy</code>.</li>
+<li><strong><code>IKinematics</code> / <code>CVisual</code></strong> (ит. 3 порц. 8): <code>Visual()-&gt;dcast_PKinematics()</code>, <code>Callback(...)</code>, <code>getVisData()</code>, <code>NeedUCalc</code>, <code>GetBox</code>, <code>dcast_RenderVisual</code>.</li>
+<li><strong><code>animation_movement_controller</code></strong>: <code>xr_new</code>/<code>xr_delete</code>, <code>OnFrame</code>, <code>IsActive</code>, <code>NewBlend</code>.</li>
+<li><strong><code>ai_obstacle</code></strong>: <code>xr_new</code> в <code>net_Spawn</code>, <code>on_move()</code> в <code>on_matrix_change</code>, <code>xr_delete</code> в деструкторе.</li>
+<li><strong><code>script_attachment</code></strong> (порц. 29): <code>add/get/remove/iterate</code>, <code>GetType</code>, <code>Render</code>, <code>RenderUI</code>, <code>Box</code>, <code>BoneTransform</code>, <code>GetOffset</code>.</li>
+<li><strong><code>CDebugRenderer</code></strong> (DEBUG): <code>draw_obb</code>, <code>draw_ellipse</code> в <code>dbg_DrawSkeleton</code>, <code>OnRender</code>, <code>update_visbox</code>.</li>
+<li><strong><code>CInifile</code></strong> (<code>m_ini_file</code>): <code>section_exist</code>, <code>r_line</code> в <code>spawn_supplies</code>.</li>
+<li><strong><code>pSettings</code></strong>: <code>line_exist</code>, <code>r_string</code>, <code>section_exist</code> в <code>net_Spawn</code> / <code>spawn_supplies</code>.</li>
+<li><strong><code>::Render</code></strong>: <code>set_Transform</code>, <code>add_Visual</code>, <code>get_generation</code> в <code>renderable_Render</code> / <code>RenderAttachments</code>.</li>
+<li><strong><code>g_pGamePersistent-&gt;AttachmentUIsToRender</code></strong>: push в <code>RenderAttachments</code> при <code>GENERATION_R1</code>.</li>
+<li><strong><code>Game()</code></strong> (<code>game_cl_mp</code>): <code>m_WeaponUsageStatistic</code>, <code>get_reward_generator()</code> в <code>OnEvent</code>.</li>
+</ul>
+<h2 id="6">6. Потоки данных/управления<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<h3 id="61-spawn-4">6.1 Spawn (упрощённо; полный — порц. 4)<a class="headerlink" href="#61-spawn-4" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Net as Сетевой слой (ит. 12)
+    participant GO as CGameObject
+    participant SF as object_factory (порц. 2)
+    participant SB as CScriptBinder (ит. 14)
+    participant AI as ai() (ит. 6)
+    participant LV as Level() (ит. 12)
+
+    Net-&gt;&gt;GO: net_Spawn(CSE_Abstract* E)
+    GO-&gt;&gt;GO: m_spawned=true, m_spawn_time=Device.dwFrame
+    GO-&gt;&gt;GO: m_ai_obstacle = xr_new&lt;ai_obstacle&gt;
+    GO-&gt;&gt;GO: smart_cast&lt;CSE_Visual&gt; → visual_name → cNameVisual_set
+    GO-&gt;&gt;GO: cName_set, cNameSect_set, name_replace
+    GO-&gt;&gt;GO: setID(E-&gt;ID), XFORM из E-&gt;o_Angle/o_Position
+    GO-&gt;&gt;GO: smart_cast&lt;CSE_ALifeObject&gt; → m_ini_file, m_story_id
+    GO-&gt;&gt;GO: setLocal, setReady(TRUE)
+    GO-&gt;&gt;LV: Objects.net_Register(this)
+    GO-&gt;&gt;GO: m_server_flags = O-&gt;m_flags
+    GO-&gt;&gt;SF: reload(*cNameSect()) → script_clsid(CLS_ID)
+    GO-&gt;&gt;SB: CScriptBinder::reload
+    GO-&gt;&gt;GO: reinit() → m_visual_callback.clear, ai_location().reinit, m_callbacks-&gt;clear
+    GO-&gt;&gt;SB: CScriptBinder::reinit
+    GO-&gt;&gt;GO: net_Load(E-&gt;client_data) если не пусто
+    GO-&gt;&gt;AI: get_level_graph() → ID_Parent → level_vertex/game_vertex
+    GO-&gt;&gt;AI: validate_ai_locations(false), vertex_plane_y
+    GO-&gt;&gt;GO: inherited::net_Spawn(DC)
+    GO-&gt;&gt;GO: m_bObjectRemoved = false
+    GO-&gt;&gt;GO: spawn_supplies() → m_ini_file → Level().spawn_item
+    GO-&gt;&gt;SB: CScriptBinder::net_Spawn(DC)</code></pre>
+<h3 id="62-update">6.2 Update (кадр)<a class="headerlink" href="#62-update" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>graph TD
+    A[CObject::shedule_Update] --&gt; B[CGameObject::shedule_Update]
+    B --&gt; C{NeedToDestroyObject?}
+    C --&gt;|yes| D[DestroyObject → m_bObjectRemoved=true, GE_DESTROY если Local]
+    C --&gt;|no| E[inherited::shedule_Update]
+    E --&gt; F[!g_dedicated_server → CScriptBinder::shedule_Update]
+    B2[CObject::UpdateCL] --&gt; G[CGameObject::UpdateCL]
+    G --&gt; H[attachments Update]
+    G --&gt; I{H_Parent?}
+    I --&gt;|no| J[on_matrix_change → obstacle.on_move]
+    I --&gt;|yes| K[skip]
+    B3[CObject::spatial_move] --&gt; L[CGameObject::spatial_move]
+    L --&gt; M{H_Parent?}
+    M --&gt;|yes| N[setup_parent_ai_locations]
+    M --&gt;|no + Visual| O[validate_ai_locations]
+    M --&gt; P[inherited::spatial_move]
+    B4[CObject::renderable_Render] --&gt; Q[CGameObject::renderable_Render]
+    Q --&gt; R[Render-&gt;add_Visual, RenderAttachments]</code></pre>
+<h3 id="63-destroy">6.3 Destroy<a class="headerlink" href="#63-destroy" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Net as Сетевой слой
+    participant GO as CGameObject
+    participant SB as CScriptBinder
+    participant LV as Level()
+
+    Net-&gt;&gt;GO: net_Destroy()
+    GO-&gt;&gt;GO: VERIFY(m_spawned)
+    GO-&gt;&gt;GO: CGameObject_NetDestroy-функтор
+    GO-&gt;&gt;GO: destroy_anim_mov_ctrl
+    GO-&gt;&gt;GO: xr_delete(m_ini_file), m_script_clsid=-1
+    GO-&gt;&gt;GO: Callback(0,0) на kinematics
+    GO-&gt;&gt;GO: inherited::net_Destroy, setReady(FALSE)
+    GO-&gt;&gt;LV: Objects.net_Unregister
+    GO-&gt;&gt;LV: RemoveObject_From_4CrPr
+    GO-&gt;&gt;SB: CScriptBinder::net_Destroy
+    GO-&gt;&gt;GO: xr_delete(m_lua_game_object), m_spawned=false</code></pre>
+<h2 id="7">7. Конфигурация<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><code>game.ltx</code> / <code>levels/*.ltx</code></strong>: секция объекта (по <code>cNameSect()</code>) читается в <code>Load(section)</code>; <code>visual</code> — fallback-модель в <code>net_Spawn</code> если <code>Render-&gt;models_Exists(visualName)</code> ложь.</li>
+<li><strong><code>m_ini_file</code></strong> (спавн-ини): секция <code>"spawn"</code> — строки <code>N=V</code> где <code>N</code> — секция вещи, <code>V</code> — <code>count[, prob=0.5, cond=0.8, scope, silencer, launcher]</code>; парсится в <code>spawn_supplies()</code>.</li>
+<li><strong><code>m_server_flags</code></strong>: <code>CSE_ALifeObject::m_flags</code> — <code>flVisibleForAI</code>, <code>flUsedAI_Locations</code> и др.</li>
+<li><strong><code>CSE_ALifeObject::m_ini_string</code></strong>: сериализованный INI, принятый в <code>net_Spawn</code> и распарсенный в <code>CInifile</code>.</li>
+<li><strong><code>CSE_ALifeObject::m_story_id</code></strong>: <code>ALife::_STORY_ID</code>, копируется в <code>m_story_id</code>.</li>
+<li><strong><code>CSE_Visual::flObstacle</code></strong>: флаг → <code>spatial.type |= STYPE_OBSTACLE</code> в <code>net_Spawn</code>.</li>
+<li><strong><code>E-&gt;s_flags.is(M_SPAWN_OBJECT_LOCAL)</code></strong>: → <code>setLocal(...)</code>.</li>
+<li><strong><code>E-&gt;client_data</code></strong>: байты → <code>net_Load(IReader)</code>.</li>
+<li><strong><code>E-&gt;ID_Parent</code></strong>: <code>0xffff</code> — «нет родителя», иначе <code>CSE_ALifeObject::m_tNodeID</code> / <code>m_tGraphID</code>.</li>
+<li><strong><code>g_dedicated_server</code></strong>: глобальный (xrEngine), управляет <code>m_ai_location</code>, <code>CScriptBinder::reload/reinit/shedule_Update</code>.</li>
+<li><strong><code>PS</code>-флаги</strong> (DEBUG): <code>psAI_Flags.test(aiDestroy)</code>, <code>psAI_Flags.test(aiSerialize)</code> — логирование.</li>
+<li><strong><code>PH_DBG_ObjectTrackName</code> / <code>ph_dbg_draw_mask1.test(ph_m1_DbgTrackObject)</code></strong> (DEBUG): трассировка позиции конкретного объекта по имени.</li>
+</ul>
+<h2 id="8">8. Известные ограничения / дебаг<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
+<h3 id="debug-only">DEBUG-only<a class="headerlink" href="#debug-only" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>OnRender()</code></strong> (L1390–1415): рисует OBB визуала (синий, без padding) + OBB с padding'ом на <code>half_cell_size</code> level graph (зелёный) через <code>render_box</code> (L1309–1388: обход видимых костей, <code>LL_GetBoneVisible</code>, <code>LL_GetData(i).obb</code>, <code>LL_GetBoneInstance(i).mTransform</code>, сбор 8 точек на кость, <code>MagicMinBox</code> → общий OBB). Второй блок (<code>if (0)</code>) — мёртвый код.</li>
+<li><strong><code>dbg_DrawSkeleton()</code></strong> (L711–745): <code>smart_cast&lt;CCF_Skeleton*&gt;(collidable.model)</code>, <code>_dbg_refresh()</code>, обход <code>SBoneShape::stBox</code> (зелёный OBB), <code>stCylinder</code> (голубой OBB), <code>stSphere</code> (зелёный эллипс).</li>
+<li><strong><code>update_visbox</code> / <code>update_visbox_hud</code></strong> под <code>DEBUG_VISBOX</code> (L779, 811, 852): рисуют OBB боксов attachments (зелёный / жёлтый).</li>
+<li><strong><code>ATTACHMENT_HUD_VISBOX</code></strong> (L874, 911): опциональный HUD-вариант visbox.</li>
+<li><strong><code>clsid()</code> THROW</strong> (L259–261): в DEBUG <code>THROW(m_script_clsid &gt;= 0)</code> — защита от доступа до <code>reload()</code>.</li>
+<li><strong><code>VERIFY</code>-ы</strong>: <code>net_Spawn</code> — <code>!m_spawned</code>; <code>net_Destroy</code> — <code>m_spawned</code>; <code>~CGameObject</code> — <code>!animation_movement()</code>, <code>!m_ini_file</code>, <code>!m_lua_game_object</code>, <code>!m_spawned</code>; <code>ps_Element</code> — <code>ID &lt; ps_Size()</code>; <code>spawn_time</code> — <code>m_spawned</code>; <code>ai_location</code> — <code>m_ai_location</code>; <code>obstacle</code> — <code>m_ai_obstacle</code>; <code>visual_name</code> — <code>smart_cast&lt;CSE_Visual&gt;</code> не NULL.</li>
+</ul>
+<h3 id="_1">Мёртвый/закомментированный код<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>Load</code></strong> L93–94: <code>#pragma todo("to Dima: All objects are visible for AI ???")</code> + закомментировано <code>self-&gt;spatial.type |= STYPE_VISIBLEFORAI;</code> — флаг ставится только в <code>net_Spawn</code>.</li>
+<li><strong><code>OnH_B_Chield</code></strong> L974: <code>///PHSetPushOut();???</code> — закомментировано.</li>
+<li><strong><code>net_Relcase</code></strong> L1160–1164: <code>CScriptBinder::net_Relcase</code> закомментирован (demonized: lua gc allocations).</li>
+<li><strong><code>ef_equipment_type</code></strong> L1120: <code>// return (6);</code> — закомментированное значение.</li>
+<li><strong><code>ef_main_weapon_type</code></strong> L1129: <code>// return (5);</code>.</li>
+<li><strong><code>ef_weapon_type</code></strong> L1146: <code>// return (u32(0));</code>.</li>
+<li><strong><code>renderable_Ambient</code></strong> (L941–946, cpp): закомментирован, возвращал <code>level_vertex()-&gt;light()/15.f</code>.</li>
+<li><strong><code>OnRender</code></strong> L1404: <code>if (0) { ... }</code> — мёртвый блок.</li>
+<li><strong><code>OnH_A_Independent</code></strong> (L147, h): закомментирован в заголовке.</li>
+<li><strong><code>setup_parent_ai_locations</code></strong> L634–639: закомментированный альтернативный вариант <code>assign_position</code> с <code>cast_attachable_item()-&gt;enabled()</code>.</li>
+<li><strong><code>net_Spawn</code></strong> L316: <code>R_ASSERT(Level().Objects.net_Find(E-&gt;ID) == NULL)</code> закомментирован (заменён на мягкий <code>Msg</code> + <code>return false</code>, L317–324).</li>
+</ul>
+<h3 id="_2">Магические числа<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>m_visual_callback</code></strong> = <code>svector&lt;visual_callback*, 6&gt;</code> (L235, h) — inline-емкость 6.</li>
+<li><strong><code>u_EventGen</code></strong> L960–961: <code>type &amp; 0xffff</code>, <code>dest &amp; 0xffff</code> — урезание до <code>u16</code>.</li>
+<li><strong><code>spawn_supplies</code></strong> L582, 587: <code>strstr(V, "prob=") + 5</code>, <code>strstr(V, "cond=") + 5</code> — жёсткокопированная длина ключей.</li>
+<li><strong><code>ps_Element</code></strong> L952: <code>SP.dwTime += Level().timeServer_Delta()</code> — смещение времени для интерполяции (см. <a href="../../xr-engine/xr-object/">xr-object.md</a> §position stack).</li>
+<li><strong><code>Orientation()</code></strong> L218–226: roll из <code>getHPB</code> не используется.</li>
+<li><strong><code>net_Spawn</code></strong> L441: <code>Position().y = EPS_L + ai().level_graph().vertex_plane_y(...)</code> — <code>EPS_L</code> + плоскость вершины.</li>
+</ul>
+<h3 id="_3">Логирование<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>Msg</code></strong>: <code>net_Spawn</code> — <code>* Spawning demo spectator ...</code>, <code>ERROR: CGameObject:net_spawn() Object with ID already exists!</code>, <code>~WARNING : Failed to load '%s', falling back to '%s'</code>; <code>net_Destroy</code> — <code>Destroying client object</code>, <code>Destroying demo_spectator object</code>; <code>OnEvent</code> — <code>! ERROR: hitter object [%d] is NULL on client.</code>, <code>! ERROR (GameObject): GE_DESTROY arrived to object ...</code>; <code>shedule_Update</code> — <code>--NeedToDestroyObject for [%d][%d]</code> (не-MASTER_GOLD); <code>lua_game_object</code> — <code>! you are trying to use a destroyed object [%i]</code> + <code>print_stack()</code>.</li>
+<li><strong><code>#ifdef MP_LOGGING</code></strong> (L254–256): <code>--- Object: GE_DESTROY of [%d][%s]</code>.</li>
+<li><strong><code>#ifdef DEBUG</code></strong> + <code>psAI_Flags.test(aiSerialize)</code> (L490–504, 517–533): <code>&gt;&gt; **** Save/Load script object [%s] *****</code>, <code>&gt;&gt; Before/After save :: packet position = [%u]</code>.</li>
+</ul>
+<h2 id="9">9. Ссылки<a class="headerlink" href="#9" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../xr-engine/xr-object/">xr-object.md</a> — <code>CObject</code> (каркас).</li>
+<li><a href="../class-registry/">class-registry.md</a> — <code>CObjectFactory</code>, <code>script_clsid</code>, <code>game.ltx</code>.</li>
+<li><a href="../game-object-net/">game-object-net.md</a> — порц. 4: <code>net_Spawn</code>/<code>net_Destroy</code>/<code>net_Save</code>/<code>OnEvent</code> подробно.</li>
+<li><a href="../script-game-object/">script-game-object.md</a> — порц. 13: механика <code>CScriptGameObject</code>.</li>
+<li><a href="../script-attachment/">script-attachment.md</a> — порц. 29: attachments.</li>
+<li><a href="../entity/">entity.md</a>, <a href="../entity-alive/">entity-alive.md</a>, <a href="../actor/">actor.md</a> — порц. 5, 7, 14.</li>
+<li><a href="../../../architecture/object-model/">object-model.md</a> — обновляется в порц. 30.</li>
+<li><a href="../../../architecture/dependencies/">dependencies.md</a> — граф связей.</li>
+</ul>
+<h2 id="10">10. Источник<a class="headerlink" href="#10" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>src/xrGame/GameObject.h</code> — 352 стр.</li>
+<li><code>src/xrGame/GameObject.cpp</code> — 1415 стр.</li>
+<li><code>src/xrGame/UsableScriptObject.h</code></li>
+<li><code>src/xrGame/script_binder.h</code></li>
+<li><code>src/xrGame/Hit.h</code></li>
+<li><code>src/xrGame/game_object_space.h</code></li>
+<li><code>src/xrGame/animation_movement_controller.h</code></li>
+<li><code>src/xrGame/ai_obstacle.h</code></li>
+<li><code>src/xrGame/script_attachment_manager.h</code></li>
+<li><code>src/xrGame/object_factory.h</code></li>
+</ul>
 
 
 

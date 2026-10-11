@@ -1,6 +1,6 @@
 # CGameObject: каркас
 
-> **Модуль:** `xrGame` · **Файлы:** [GameObject.h](../../../src/xrGame/GameObject.h) (352 стр.), [GameObject.cpp](../../../src/xrGame/GameObject.cpp) (1415 стр.) · **Порцион 3/30, итерация 5**
+> **Модуль:** `xrGame` · **Файлы:** `src/xrGame/GameObject.h` (352 стр.), `src/xrGame/GameObject.cpp` (1415 стр.) · **Порцион 3/30, итерация 5**
 >
 > Сетевые методы (`net_Spawn`/`net_Destroy`/`net_Save`/`OnEvent`) — только на уровне сигнатур; полный разбор — [game-object-net.md](game-object-net.md) (порц. 4).
 
@@ -413,13 +413,13 @@ sequenceDiagram
 
 ## 10. Источник
 
-- [src/xrGame/GameObject.h](../../../src/xrGame/GameObject.h) — 352 стр.
-- [src/xrGame/GameObject.cpp](../../../src/xrGame/GameObject.cpp) — 1415 стр.
-- [src/xrGame/UsableScriptObject.h](../../../src/xrGame/UsableScriptObject.h)
-- [src/xrGame/script_binder.h](../../../src/xrGame/script_binder.h)
-- [src/xrGame/Hit.h](../../../src/xrGame/Hit.h)
-- [src/xrGame/game_object_space.h](../../../src/xrGame/game_object_space.h)
-- [src/xrGame/animation_movement_controller.h](../../../src/xrGame/animation_movement_controller.h)
-- [src/xrGame/ai_obstacle.h](../../../src/xrGame/ai_obstacle.h)
-- [src/xrGame/script_attachment_manager.h](../../../src/xrGame/script_attachment_manager.h)
-- [src/xrGame/object_factory.h](../../../src/xrGame/object_factory.h)
+- `src/xrGame/GameObject.h` — 352 стр.
+- `src/xrGame/GameObject.cpp` — 1415 стр.
+- `src/xrGame/UsableScriptObject.h`
+- `src/xrGame/script_binder.h`
+- `src/xrGame/Hit.h`
+- `src/xrGame/game_object_space.h`
+- `src/xrGame/animation_movement_controller.h`
+- `src/xrGame/ai_obstacle.h`
+- `src/xrGame/script_attachment_manager.h`
+- `src/xrGame/object_factory.h`
