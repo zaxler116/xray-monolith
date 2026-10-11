@@ -133,6 +133,7 @@ nav:
           - "Actions: ядро и домены": modules/xr-particles/actions.md
           - "Actions: 29 подклассов": modules/xr-particles/actions-actions.md
           - "Actions: IO": modules/xr-particles/actions-io.md
+          - "Noise и связка с движком": modules/xr-particles/noise-integration.md
       - xrSound: modules/xr-sound.md
       - xrGame:
           - Обзор: modules/game/index.md
