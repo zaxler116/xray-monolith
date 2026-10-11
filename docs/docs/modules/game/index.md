@@ -18,7 +18,7 @@
 | 4 | `CGameObject`: сеть и жизненный цикл | [game-object-net.md](game-object-net.md) — `net_Spawn`/`net_Destroy`, `OnEvent`, сериализация, `spawn_supplies()`, путь удаления | ✅ |
 | 5 | `CEntity`: здоровье и урон | [entity.md](entity.md) — `CEntity`: здоровье, `Hit`/`Die`/`KillEntity`, `CDamageManager` (bone scales), `OnEvent` `GE_DIE`, `shedule_Update` (forget-killer), team/squad/group, HeatVision/Glowing-форк | ✅ |
 | 6 | `EntityCondition`: статы | [entity-condition.md](entity-condition.md) | ⬜ |
-| 7 | `CEntityAlive`: живое существо | [entity-alive.md](entity-alive.md) | ⬜ |
+| 7 | `CEntityAlive`: живое существо | [entity-alive.md](entity-alive.md) — `CEntityAlive`: жизненный цикл, `Hit` (раны/кровь/огонь), `Die`, `shedule_Update` (смерть от статов), кровавые wallmarks/капли, `MONSTER_COMMUNITY`/отношения, `ef_*`, физика-мост, AI-зрение (mesh-точки), труп-lock | ✅ |
 | 8 | Травмы, раны, смерть | [wounds-death.md](wounds-death.md) | ⬜ |
 | 9 | `CCustomMonster`: мост в AI | [custom-monster.md](custom-monster.md) | ⬜ |
 | 10 | `CInventoryItemObject` | [inventory-item.md](inventory-item.md) | ⬜ |
