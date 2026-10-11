@@ -4137,16 +4137,16 @@
 <td><code>SoundRender_Core_Processor.cpp</code> (полный разбор <code>update</code>-шагов, <code>update_events</code>, <code>statistic</code>, <code>get_occlusion</code>/<code>get_occlusion_to</code>), <code>SoundRender_Environment.h/.cpp</code> (<code>CSoundRender_Environment</code> — EAX-поля, <code>load</code>/<code>save</code> v4/v5, <code>lerp</code>/<code>clamp</code>, <code>SoundEnvironment_LIB</code> — <code>sEnvironment.xr</code>, <code>reverbs[]</code> 113 пресетов), EFX-применение в CoreA (<code>LoadEffect</code>/<code>load_reverb</code>/<code>commit</code>/<code>set_listener</code>/<code>get_listener</code>)</td>
 </tr>
 <tr>
-<td>Source + Target <em>(порцион 8)</em></td>
-<td><code>SoundRender_Source.h/.cpp</code> (аллокатор/стример, Ogg-дек), <code>SoundRender_Source_loader.cpp</code>, <code>SoundRender_Target.h/.cpp</code> (базовый target), <code>SoundRender_TargetA.h/.cpp</code> (OpenAL-source/target), <code>SoundRender_Cache.h/.cpp</code> (LRU-кэш стриминга), <code>get_occlusion_to</code>/<code>get_occlusion</code></td>
+<td><a href="source-target/">Source + Target</a></td>
+<td><code>SoundRender_Source.h/.cpp</code> (загрузка WAV/Ogg 44100 Hz, метаданные из Ogg-комментариев v1–v3, <code>i_decompress_fr</code> 16-bit PCM, <code>ov_error</code>), <code>SoundRender_Source_loader.cpp</code> (ov-callback'ы, <code>LoadWave</code>, <code>load</code>/<code>unload</code> — <code>$level$</code>→<code>$game_sounds$</code>→<code>$no_sound.ogg</code>), <code>SoundRender_Target.h/.cpp</code> (абстрактный: ленивый <code>attach</code>/<code>dettach</code>, stub-API), <code>SoundRender_TargetA.h/.cpp</code> (OpenAL: 3 ALbuffer, <code>buf_block</code> 400ms, 3D-параметры с flip -z, gain/pitch с гистерезисом, underrun), <code>SoundRender_Cache.h/.cpp</code> (LRU: line + page-table, <code>initialize</code> удваивает память, <code>request</code> hit/miss/eviction), <code>fill_block</code>/<code>fill_data</code>/курсор/attached-переход (путь данных, FSM — порц. 9), consumer-side <code>get_occlusion_to</code> (ит.3 порц.4)</td>
 </tr>
 <tr>
-<td>Emitter <em>(порцион 9)</em></td>
-<td><code>SoundRender_Emitter.h/.cpp</code> (эмиттер = активный экземпляр звука), <code>SoundRender_Emitter_FSM.cpp</code> (state-машина play/stop/pause, fade-in/out), <code>SoundRender_Emitter_StartStop.cpp</code>, <code>SoundRender_Emitter_streamer.cpp</code> (стриминг с диска)</td>
+<td><a href="emitter/">Emitter</a></td>
+<td><code>SoundRender_Emitter.h/.cpp</code> (<code>CSoundRender_Emitter : CSound_emitter</code> — активный экземпляр звука; поля, курсор + attached-переход, <code>Event_Propagade</code>/<code>Event_ReleaseOwner</code>, <code>set_*</code>/<code>switch_to_*</code>/<code>play_time</code>), <code>SoundRender_Emitter_FSM.cpp</code> (10 состояний, «demonized» preplay delay — smootherstep-замедление по расстоянию/343 м/с, <code>update</code>-шаги, <code>update_culling</code> — fade/окклюзия/<code>psSoundCull</code>/<code>i_allow_play</code>, <code>priority</code>), <code>SoundRender_Emitter_StartStop.cpp</code> (<code>start</code>/<code>i_stop</code>/<code>stop(bDeffered)</code>/<code>rewind</code>/<code>pause</code> по id/<code>cancel</code> — FATAL), владение <code>feedback</code>/<code>play_no_feedback</code>, <code>SoundRender_Emitter_streamer.cpp</code> (<code>fill_data</code> по LRU-линиям, <code>fill_block</code> — zero-pad/wrap-around/attached-рекурсия, как FSM-состояния управляют стримом)</td>
 </tr>
 <tr>
-<td>Устройства и прочее <em>(порцион 10)</em></td>
-<td><code>OpenALDeviceList.h/.cpp</code> (<code>ALDeviceList</code> — перечисление/выбор устройств), <code>NotificationClient.h/.cpp</code> (Core Audio device-change notifications), <code>SoundRender_CoreA.cpp</code> (инициализация устройства, hot-swap <code>switch_device</code>, EFX-слот), <code>cl_intersect.h</code> (дубль <code>xrEngine/cl_intersect.h</code>), статистика/<code>statistic</code>-интерфейс, <code>guids.cpp</code></td>
+<td><a href="devices-misc/">Устройства и прочее</a></td>
+<td><code>SoundRender_CoreA.h/.cpp</code> (<code>CSoundRender_CoreA : CSoundRender_Core</code> — устройство OpenAL/EFX: <code>A_CHK</code>/<code>AC_CHK</code> (DEBUG-only), 31 EFX-процедур <code>LOAD_PROC</code>, <code>LoadEffect</code>/<code>load_reverb</code>/<code>commit</code>/<code>DestroyEffect</code> (aux-слот, <code>m_is_supported</code>), <code>set_listener</code>/<code>get_listener</code> (EAX↔env, bug GAINHF→RoomLF, PAN закомм.), <code>_initialize</code> stage 0/1 (device→context→listener→EFX→pre-создание <code>psSoundTargets</code> targets с self-healing <code>snd_targets</code>), <code>switch_device</code> (hard-swap: destroy targets → reopen → re-init → <code>LoadEffect</code> → restart emitters), <code>refresh_devices</code>/<code>default_device_changed</code>, <code>_clear</code>, <code>update_listener</code> (EMA-скорость power=1.8/alpha=0.125, flip −z, <code>bListenerMoved</code>); глобалы <code>reverb_overwrite</code> + 21 <code>psReverb*</code>, <code>soundSmoothingParams</code>), <code>OpenALDeviceList.h/.cpp</code> (Creative Labs 2005: <code>ALDeviceDesc</code>, <code>Enumerate</code> — <code>ALC_ENUMERATE_ALL_EXT</code> + <code>UTF8_to_CP1251</code> + срез « on » + <code>snd_devices_token</code>, <code>SelectBestDevice</code>, <code>GetDeviceName/DescByName/Version</code>), <code>NotificationClient.h/.cpp</code> (Windows Core Audio <code>IMMNotificationClient</code> — аудио-поток, только volatile-флаги <code>bPendingDefaultDeviceSwitch</code>/<code>bPendingDeviceListRefresh</code> → <code>Core::update</code>), <code>cl_intersect.h</code> (дубль <code>xrEngine/cl_intersect.h</code>), <code>guids.cpp</code> (<code>INITGUID</code> вместо <code>dxguid.lib</code>), статистика (указание на core §8)</td>
 </tr>
 </tbody>
 </table>
@@ -4226,19 +4226,19 @@
 <td>8</td>
 <td>Звук: Source + Target</td>
 <td><code>source-target.md</code></td>
-<td>⬜ план</td>
+<td>✅ готово</td>
 </tr>
 <tr>
 <td>9</td>
 <td>Звук: Emitter</td>
 <td><code>emitter.md</code></td>
-<td>⬜ план</td>
+<td>✅ готово</td>
 </tr>
 <tr>
 <td>10</td>
 <td>Звук: устройства и прочее</td>
 <td><code>devices-misc.md</code></td>
-<td>⬜ план</td>
+<td>✅ готово</td>
 </tr>
 </tbody>
 </table>

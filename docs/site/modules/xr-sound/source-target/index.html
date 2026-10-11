@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#xrsound-source-target" class="md-skip">
+        <a href="#xrsound-source-target-cache" class="md-skip">
           Перейти к содержанию
         </a>
       
@@ -3176,6 +3176,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Source + Target
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -3192,6 +3210,252 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Ответственность
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Место в архитектуре
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Публичный API
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Публичный API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#csoundrender_source-csound_source-interfacemd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CSoundRender_Source (наследует CSound_source из interface.md)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csoundrender_target" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CSoundRender_Target (абстрактный базовый)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csoundrender_targeta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CSoundRender_TargetA
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csoundrender_cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CSoundRender_Cache
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Внутреннее устройство
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Внутреннее устройство">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Source: загрузка
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Source: декодирование
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-cache-lru" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Cache: LRU с фиксированными линиями
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-target-targeta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Target / TargetA
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-emitter_streamercpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 Путь данных (стример, из Emitter_streamer.cpp)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Взаимодействие
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Потоки данных
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Потоки данных">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#per-target" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Заполнение буфера (каждый кадр, per-target)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attached-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Attached-переход (конец первого звука → второй)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Конфигурация
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Известные ограничения / дебаг
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -3977,6 +4241,241 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Ответственность
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Место в архитектуре
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Публичный API
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Публичный API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#csoundrender_source-csound_source-interfacemd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CSoundRender_Source (наследует CSound_source из interface.md)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csoundrender_target" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CSoundRender_Target (абстрактный базовый)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csoundrender_targeta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CSoundRender_TargetA
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csoundrender_cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CSoundRender_Cache
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Внутреннее устройство
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Внутреннее устройство">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Source: загрузка
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Source: декодирование
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-cache-lru" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Cache: LRU с фиксированными линиями
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-target-targeta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Target / TargetA
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-emitter_streamercpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 Путь данных (стример, из Emitter_streamer.cpp)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Взаимодействие
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Потоки данных
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Потоки данных">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#per-target" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Заполнение буфера (каждый кадр, per-target)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attached-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Attached-переход (конец первого звука → второй)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Конфигурация
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Известные ограничения / дебаг
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -3992,20 +4491,411 @@
 
 
 
-<h1 id="xrsound-source-target">xrSound — Source + Target<a class="headerlink" href="#xrsound-source-target" title="Permanent link">&para;</a></h1>
+<h1 id="xrsound-source-target-cache">xrSound — Source + Target + Cache<a class="headerlink" href="#xrsound-source-target-cache" title="Permanent link">&para;</a></h1>
+<p>Слой «данных» звукового бэкенда: <strong>откуда</strong> берутся сэмплы (Source —
+загрузка и стриминг Ogg/Wave через LRU-кэш) и <strong>куда</strong> они пишутся
+(Target — OpenAL-источник с буферами). Файлы:</p>
+<ul>
+<li><code>src/xrSound/SoundRender_Source.h</code> / <code>.cpp</code></li>
+<li><code>src/xrSound/SoundRender_Source_loader.cpp</code></li>
+<li><code>src/xrSound/SoundRender_Target.h</code> / <code>.cpp</code></li>
+<li><code>src/xrSound/SoundRender_TargetA.h</code> / <code>.cpp</code></li>
+<li><code>src/xrSound/SoundRender_Cache.h</code> / <code>.cpp</code></li>
+<li><code>src/xrSound/SoundRender_Emitter_streamer.cpp</code> — только путь данных
+  <code>fill_block</code>/<code>fill_data</code>/курсор/attached-переход (FSM эмиттера —
+  <a href="../emitter/">порцион 9, emitter.md</a>)</li>
+</ul>
+<p>Связанные страницы: <a href="../interface/">Интерфейс</a> (порц. 5: <code>CSound_source</code>,
+<code>ref_sound</code>), <a href="../core/">Core — ядро</a> (порц. 6: контейнеры, <code>get_occlusion_to</code>),
+<a href="../core-processor-env/">Core — процессор</a> (порц. 7: EFX-слот),
+<a href="../emitter/">Emitter</a> (порц. 9).</p>
+<h2 id="1">1. Ответственность<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Класс</th>
+<th>Ответственность</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CSoundRender_Source : CSound_source</code></td>
+<td>Загрузка аудиофайлов (WAV/Ogg), метаданные (дистанции, громкость, тип) из Ogg-комментариев, стриминг: <code>decompress()</code> — декодирование одной линии кэша по требованию</td>
+</tr>
+<tr>
+<td><code>CSoundRender_Cache</code></td>
+<td>LRU-кэш декодированных сэмпл-линий с фиксированным размером линии; page-table на source, вытеснение старых линий</td>
+</tr>
+<tr>
+<td><code>CSoundRender_Target</code> (абстрактный)</td>
+<td>Обёртка над «куда писать»: ленивое открытие Ogg (<code>attach</code>/<code>dettach</code>), передача данных через <code>get_data()</code>; stub-реализации API</td>
+</tr>
+<tr>
+<td><code>CSoundRender_TargetA : CSoundRender_Target</code></td>
+<td>OpenAL-реализация: <code>ALsource</code> + 3 <code>ALbuffer</code>, заполнение блоками, 3D-параметры (позиция/дистанции/roll-off), gain/pitch с гистерезисом, underrun-обработка</td>
+</tr>
+<tr>
+<td><code>fill_data</code> / <code>fill_block</code> (в Emitter)</td>
+<td>Путь данных Target→Emitter→Cache→Source: чтение линий из кэша в AL-буферы, конец файла, loop, переход на attached-звук</td>
+</tr>
+</tbody>
+</table>
+<p>См. также <a href="../">index.md</a> — место модуля в архитектуре.</p>
+<h2 id="2">2. Место в архитектуре<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>ref_sound (interface.md)
+  └─ CSoundRender_Core (core.md)
+       ├─ m_sources: ref_sound → CSoundRender_Source (эта страница)
+       │    └─ CSoundRender_Cache (LRU)
+       └─ m_emitters: CSoundRender_Emitter (порц. 9, emitter.md)
+            ├─ source() → CSoundRender_Source
+            └─ target() → CSoundRender_TargetA (эта страница)
+                 └─ ALsource + ALbuffer[3] → OpenAL device (CoreA, порц. 10)
+</code></pre></div>
+<ul>
+<li>Source создаётся в <code>CSoundRender_Core::_create_data</code> (порц. 6) —
+  один экземпляр на <code>ref_sound_data</code>, разделяется всеми эмиттерами
+  этого звука.</li>
+<li>Target создаётся в <code>CSoundRender_Emitter::start</code> (порц. 9) —
+  один на активный эмиттер, из пула <code>psSoundTargets</code>.</li>
+<li>Данные текут: <strong>Source</strong> (дек) → <strong>Cache</strong> (LRU) →
+  <strong>fill_block/fill_data</strong> (стример) → <strong>TargetA</strong> (AL-буферы) → OpenAL.</li>
+</ul>
+<h2 id="3-api">3. Публичный API<a class="headerlink" href="#3-api" title="Permanent link">&para;</a></h2>
+<h3 id="csoundrender_source-csound_source-interfacemd"><code>CSoundRender_Source</code> (наследует <code>CSound_source</code> из <a href="../interface/">interface.md</a>)<a class="headerlink" href="#csoundrender_source-csound_source-interfacemd" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bool load(shared_str name, CSoundRender_Cache* cache)</code></td>
+<td>Загрузка: <code>LoadWave</code> (WAV) или <code>ov_open</code> (Ogg); выбор <code>$level$</code> → <code>$game_sounds$</code>; метаданные из Ogg-комментариев; <code>cache.cat_create</code></td>
+</tr>
+<tr>
+<td><code>void unload()</code></td>
+<td><code>ov_clear</code>, освобождение <code>wave</code>, сброс полей</td>
+</tr>
+<tr>
+<td><code>bool decompress(void* dest, size_t&amp; bytes, unsigned offset, void* src, unsigned size)</code></td>
+<td>Декодирование одного участка; обёртка над <code>i_decompress_fr</code></td>
+</tr>
+<tr>
+<td><code>unsigned get_bytes_total()</code>, <code>float get_length_sec()</code></td>
+<td>Полный размер и длительность (<code>fTimeTotal = sdef_source_footer + bytes/avg_bps</code>)</td>
+</tr>
+<tr>
+<td><code>unsigned channels_num()</code>, <code>bool looped()</code></td>
+<td>Каналы; loop — флаг <code>stPlayingLooped</code> на данных</td>
+</tr>
+<tr>
+<td><code>bool i_decompress_fr(ov_read_info*, ...)</code></td>
+<td>Внутренний цикл <code>ov_read</code> (16-bit PCM, <code>bigendian=0</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>Конструктор по умолчанию: <code>m_fMinDist=1</code>, <code>m_fMaxDist=300</code>,
+<code>m_fMaxAIDist=300</code>, <code>m_fBaseVolume=1</code>, <code>m_uGameType=0</code>.</p>
+<h3 id="csoundrender_target"><code>CSoundRender_Target</code> (абстрактный базовый)<a class="headerlink" href="#csoundrender_target" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>void* get_data()</code></td>
+<td>Ленивый <code>attach()</code> при <code>!wave</code>; возвращает <code>&amp;ovf</code> (Ogg-контекст)</td>
+</tr>
+<tr>
+<td><code>void attach()</code></td>
+<td><code>FS.r_open</code> + <code>ov_open_callbacks</code> с 4 ov-callback'ами (extern — объявлены в <code>Target.cpp</code>, <strong>определены в <code>Source_loader.cpp</code></strong>)</td>
+</tr>
+<tr>
+<td><code>void dettach()</code></td>
+<td><code>ov_clear</code> + закрытие <code>wave</code></td>
+</tr>
+<tr>
+<td><code>start/render/stop/rewind/update/fill_parameters</code></td>
+<td>Stub'ы (ASSERT) — реальная реализация в <code>TargetA</code></td>
+</tr>
+</tbody>
+</table>
+<p>Поля: <code>m_pEmitter</code>, <code>rendering</code>, <code>priority</code>, <code>ovf</code> (<code>OggVorbis_info</code>),
+<code>wave</code> (<code>IReader*</code>).</p>
+<h3 id="csoundrender_targeta"><code>CSoundRender_TargetA</code><a class="headerlink" href="#csoundrender_targeta" title="Permanent link">&para;</a></h3>
+<p>Публичный API — те же методы, что в базе (реализация), плюс:
+<code>source_changed()</code> (перезахват: <code>dettach</code>+<code>attach</code> — вызывается при
+attached-переходе из <code>fill_block</code>), <code>fill_block(ptr, size)</code>
+(см. §4.4).</p>
+<h3 id="csoundrender_cache"><code>CSoundRender_Cache</code><a class="headerlink" href="#csoundrender_cache" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>initialize(_total_kb_approx, bytes_per_line)</code></td>
+<td>Выделение: <strong>удваивает</strong> запрос (<code>*= 2</code>), <code>_count = total*1024/line + 1</code>, <code>R_ASSERT(_count &lt; CAT_FREE)</code></td>
+</tr>
+<tr>
+<td><code>cat_create(bytes, line)</code> → <code>cache_cat*</code></td>
+<td>Page-table: <code>size = ceil(bytes/line)</code> строк, заполнено <code>0xffffffff</code></td>
+</tr>
+<tr>
+<td><code>bool request(cat, id)</code></td>
+<td><code>id %= size</code>; hit → <code>move2top</code>, <code>_stat_hit++</code>, FALSE; miss → <code>_stat_miss++</code>, promote старейшей (eviction), TRUE (нужен fill)</td>
+</tr>
+<tr>
+<td><code>get_dataptr(cat, id)</code></td>
+<td><code>c_storage[cat.table[id%size]].data</code></td>
+</tr>
+<tr>
+<td><code>disconnect</code>/<code>purge</code>/<code>format</code>/<code>destroy</code></td>
+<td>Пересборка LRU / очистка / освобождение</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4">4. Внутреннее устройство<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<h3 id="41-source">4.1 Source: загрузка<a class="headerlink" href="#41-source" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>LoadWave</code> требует строго 44100 Hz</strong>: иначе <code>Msg</code> warning +
+  <code>return false</code> (файл не загружается, звук будет fallback
+  <code>$no_sound.ogg</code>). 16-bit PCM всегда (<code>wBitsPerSample=16</code>).</li>
+<li><code>fTimeTotal = sdef_source_footer + dwBytesTotal / nAvgBytesPerSec</code>
+  (<code>sdef_source_footer</code> — константа из <code>SoundRender.h</code>, «хвост» на
+  конец стрима).</li>
+<li><strong>Ogg-комментарии</strong> — версии метаданных:</li>
+<li><code>0x0001</code>: minDist/maxDist/gameType (baseVolume = 1.0);</li>
+<li><code>0x0002</code>: + baseVolume;</li>
+<li><code>OGG_COMMENT_VERSION = 0x0003</code>: + maxAIDist.</li>
+<li>Неверные/отсутствующие комментарии — только <code>-dbg</code> log.</li>
+<li><strong><code>load()</code></strong>: имя приводится к нижнему регистру, расширение срезается;
+  попытка <code>$level$</code>, затем <code>$game_sounds$</code>; если не найдено — fallback
+  <code>$game_sounds$/$no_sound.ogg</code>. Успех <code>LoadWave</code>/<code>ov_open</code> →
+  <code>cache.cat_create(CAT, dwBytesTotal)</code>.</li>
+</ul>
+<h3 id="42-source">4.2 Source: декодирование<a class="headerlink" href="#42-source" title="Permanent link">&para;</a></h3>
+<p><code>i_decompress_fr</code> — цикл <code>ov_read</code> до заполнения линии кэша
+(16-bit PCM, <code>bigendian=0</code>). Рядом закомментирован float-вариант
+(мёртвый код).</p>
+<p><code>ov_error</code> (callback в <code>Source_loader.cpp</code>):
+<code>OV_HOLE</code> / <code>OV_EBADLINK</code> → true (восстановимо — пропускаем дыру),
+остальные ошибки → false (невосстановимо).</p>
+<p><code>Source_loader.cpp</code> также содержит 4 ov-callback'а (<code>read</code>/<code>seek</code>/
+<code>close</code>/<code>error</code>), которые <code>extern</code>-объявлены в <code>Target.cpp</code> и
+используются <code>attach()</code> — <strong>межфайловая зависимость</strong>
+Target→Source_loader.</p>
+<h3 id="43-cache-lru">4.3 Cache: LRU с фиксированными линиями<a class="headerlink" href="#43-cache-lru" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>cache_line</code>: двусвязный список + <code>data</code>-указатель +
+  <code>loopback</code> (u16* обратно в слот <code>cat.table</code> — дублирующая
+  связь) + <code>id</code> (u16).
+<code>cache_cat</code>: <code>u16* table</code> (page-table, по слоту на линию source)</li>
+<li><code>size</code> (строк). <code>CAT_FREE = 0xffff</code>.</li>
+<li><strong><code>initialize</code> удваивает</strong> запрошенную память (<code>*_total_kb_approx *= 2</code>,
+  «to avoid bad configs») — фактический размер кэша в 2 раза больше
+  cvar'а. <code>R_ASSERT(_count &lt; CAT_FREE)</code> (65535).</li>
+<li><strong><code>request(cat, id)</code></strong>: <code>id %= size</code>; hit → <code>move2top</code> + <code>_stat_hit++</code>,
+  вернуть FALSE (данные есть); miss → <code>_stat_miss++</code>,
+  <code>move2top(c_end)</code> (старейшая поднимается наверх = кандидат на
+  вытеснение), её loopback очищается, <code>cptr = c_begin-&gt;id</code>
+  ассоциируется, TRUE (нужен fill).</li>
+<li><code>cat_create</code>: <code>size = ceil(bytes/line)</code>, table выровнено по
+  чётности, заполнено <code>0xffffffff</code>.</li>
+<li><code>get_dataptr</code>: <code>c_storage[cat.table[id%size]].data</code>.</li>
+</ul>
+<h3 id="44-target-targeta">4.4 Target / TargetA<a class="headerlink" href="#44-target-targeta" title="Permanent link">&para;</a></h3>
+<p><strong>TargetA</strong> — <code>pSource</code> + <code>pBuffers[sdef_target_count]</code> (3 буфера),
+<code>Slot</code> (EFX aux-слот), <code>buf_block</code>.</p>
+<p>Глобалы <code>g_target_temp_data</code> (8-bit sized <code>buf_block</code>) и
+<code>g_target_temp_data_16</code> (×2) — общие временные буферы, переразмериваются
+в <code>start()</code> на каждый target.</p>
+<ul>
+<li><code>_initialize</code>: <code>alGenBuffers(3)</code>, <code>alGenSources(1)</code>,
+  <code>LOOPING=FALSE</code>, <code>MIN_GAIN=0</code>, <code>MAX_GAIN=1</code>,
+  GAIN/PITCH из кэша.</li>
+<li><code>start</code>: <code>buf_block = sdef_target_block(400ms) * nAvgBytesPerSec / 1000</code>.</li>
+<li><strong><code>render()</code></strong>: заполнить 3 блока, queue, установить aux send filter
+  (<code>Slot</code> если <code>!= -1 &amp;&amp; !bIntro</code>, иначе <code>AL_EFFECTSLOT_NULL</code> —
+  «demonized: disable effects by null slot»), <code>alSourcePlay</code>.</li>
+<li><strong><code>update()</code></strong>: <code>AL_BUFFERS_PROCESSED</code> → unqueue/refill/requeue loop;
+  underrun: <code>processed==0 &amp;&amp; state!=PLAYING</code> → replay.</li>
+<li><strong><code>fill_parameters()</code></strong> — 3D-параметры:
+  <code>AL_REFERENCE_DISTANCE</code> / <code>AL_MAX_DISTANCE</code> из
+  <code>p_source.min_distance</code>/<code>max_distance</code>;
+  <code>AL_POSITION</code>/<code>AL_VELOCITY</code> с <strong>flip по <code>-z</code></strong>
+  (Y-up→Z-up); <code>AL_SOURCE_RELATIVE = b2D</code>;
+  <code>AL_ROLLOFF_FACTOR = psSoundRolloff</code>;
+  gain из <code>smooth_volume</code> (clamp EPS_S..1, гистерезис 0.01);
+  pitch = <code>p_source.freq * psSpeedOfSound</code> (clamp EPS_L..2,
+  гистерезис) — при смене pitch для не-looped не-paused
+  пересчитывается <code>fTimeToStop</code>.</li>
+<li><strong><code>fill_block(ptr, size)</code></strong>: формат MONO16/STEREO16 по числу
+  каналов; вызов <code>m_pEmitter-&gt;fill_block(...)</code> (стример, путь данных
+  §4.5) + <code>alBufferData</code>.</li>
+<li><strong><code>source_changed()</code></strong>: <code>dettach</code> + <code>attach</code> — вызывается при
+  attached-переходе.</li>
+</ul>
+<h3 id="45-emitter_streamercpp">4.5 Путь данных (стример, из <code>Emitter_streamer.cpp</code>)<a class="headerlink" href="#45-emitter_streamercpp" title="Permanent link">&para;</a></h3>
 <blockquote>
-<p>Заглушка-контракт. Разберётся в <strong>порционе 8 итерации 4</strong>.
-Файлы: <code>SoundRender_Source.h/.cpp</code>, <code>SoundRender_Source_loader.cpp</code>,
-<code>SoundRender_Target.h/.cpp</code>, <code>SoundRender_TargetA.h/.cpp</code>,
-<code>SoundRender_Cache.h/.cpp</code> (LRU).</p>
+<p>FSM, который <strong>запускает</strong> этот путь (<code>start</code>/<code>update</code>/<code>cancel</code>/
+<code>rewind</code>) — <a href="../emitter/">порцион 9, emitter.md</a>. Здесь — только
+механика Source/Target/Cache.</p>
 </blockquote>
-<p>Ожидается: <code>CSoundRender_Source</code> (аллокатор/стример, Ogg-декодер,
-<code>length_sec</code>/<code>channels_num</code>), loader (метаданные без полного декода),
-<code>CSoundRender_Target</code>/<code>TargetA</code> (OpenAL-источник: buffer/source,
-<code>sq_*</code>-качества, пул <code>psSoundTargets</code>), <code>CSoundRender_Cache</code>
-(LRU, <code>cache_bytes_per_line</code>), <code>get_occlusion_to</code>/<code>get_occlusion</code>
-(кросс-обязательство ит.3 порц.4).</p>
-<p>См. <a href="../interface/">Интерфейс и точка входа</a> (порц. 5), <a href="../">Обзор</a>.</p>
+<p><strong><code>fill_data(dest, offset, size)</code></strong>:
+- Итерация по линиям кэша: <code>cache.request</code> → при miss
+  <code>source()-&gt;decompress(line, target-&gt;get_data())</code>;
+  <code>CopyMemory</code> из <code>cache.get_dataptr</code>.
+- Обработка не-выровненной первой линии (частичная).</p>
+<p><strong><code>fill_block(ptr, size)</code></strong> (конец данных / переходы):
+- <code>stPlaying</code> → zero-pad остатка.
+- <code>stPlayingLooped</code> → wrap-around loop.
+- <strong>Attached-переход</strong>: при переходе на следующий source
+  (<code>m_cur_handle_cursor + bt_handle</code>), <code>set_cursor</code> вызывает
+  <code>i_destroy_source</code> / <code>i_create_source(fn_attached[0])</code> + сдвиг
+  <code>fn_attached[1]→[0]</code> + <code>target-&gt;source_changed()</code>.</p>
+<p><code>get_bytes_total</code> / <code>get_length_sec</code> делегируют в <code>owner_data</code>
+(<code>ref_sound_data</code>).</p>
+<h2 id="5">5. Взаимодействие<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>С чем</th>
+<th>Как</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../core/">Core — ядро</a> (порц. 6)</td>
+<td>Core создаёт/уничтожает <code>CSoundRender_Source</code> в <code>_create_data</code>; <code>get_occlusion_to</code> — реализация в Core (порц. 6), <strong>consumer-side</strong> — здесь: <code>fill_parameters</code> TargetA использует результаты окклюзии для gain</td>
+</tr>
+<tr>
+<td><a href="../core-processor-env/">Core — процессор</a> (порц. 7)</td>
+<td><code>Slot</code> (EFX aux) — устанавливается в <code>render()</code> TargetA; EFX-пресеты — в Environment</td>
+</tr>
+<tr>
+<td><a href="../emitter/">Emitter</a> (порц. 9)</td>
+<td>Emitter — владелец Target; <code>fill_block</code>/<code>fill_data</code> — путь данных Emitter→Target; FSM запускает/останавливает</td>
+</tr>
+<tr>
+<td>OpenAL (CoreA, порц. 10)</td>
+<td><code>ALsource</code>/<code>ALbuffer</code> — целевое устройство; device init — в CoreA</td>
+</tr>
+<tr>
+<td>xrCDB</td>
+<td><code>geom_*</code> (окклюзия) — через Core (порц. 6), не напрямую здесь</td>
+</tr>
+</tbody>
+</table>
+<h2 id="6">6. Потоки данных<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<h3 id="per-target">Заполнение буфера (каждый кадр, per-target)<a class="headerlink" href="#per-target" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>sequenceDiagram
+    participant EM as Emitter (порц. 9)
+    participant TA as TargetA
+    participant EM_S as Emitter streamer
+    participant CA as Cache (LRU)
+    participant SO as Source
+    participant AL as OpenAL
+
+    Note over EM: update() → target-&gt;render()
+    EM-&gt;&gt;TA: render()
+    loop 3 блока
+        TA-&gt;&gt;EM_S: fill_block(ptr, size)
+        EM_S-&gt;&gt;CA: request(cat, id)
+        alt miss
+            EM_S-&gt;&gt;SO: decompress(line, get_data())
+            SO-&gt;&gt;SO: ov_read (16-bit PCM)
+            SO--&gt;&gt;CA: (данные в линии)
+        end
+        EM_S-&gt;&gt;AL: alBufferData (MONO16/STEREO16)
+    end
+    TA-&gt;&gt;AL: alSourcePlay
+    Note over TA: update(): AL_BUFFERS_PROCESSED → unqueue → refill → requeue</code></pre>
+<h3 id="attached-">Attached-переход (конец первого звука → второй)<a class="headerlink" href="#attached-" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>graph TD
+    A[fill_block: m_cur_handle_cursor + bt_handle] --&gt; B[set_cursor]
+    B --&gt; C[i_destroy_source]
+    B --&gt; D[i_create_source fn_attached 0]
+    D --&gt; E[shift fn_attached 1 to 0]
+    E --&gt; F[target source_changed]
+    F --&gt; G[dettach + attach]</code></pre>
+<h2 id="7">7. Конфигурация<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Cvar / константа</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sdef_target_block</code> (400ms)</td>
+<td>Размер блока TargetA (мс)</td>
+</tr>
+<tr>
+<td><code>sdef_target_count</code> (3)</td>
+<td>Число AL-буферов на target</td>
+</tr>
+<tr>
+<td><code>sdef_source_footer</code></td>
+<td>«Хвост» в <code>fTimeTotal</code></td>
+</tr>
+<tr>
+<td><code>cache_bytes_per_line</code></td>
+<td>Размер линии кэша</td>
+</tr>
+<tr>
+<td><code>psSoundRolloff</code></td>
+<td>Roll-off фактор (gain)</td>
+</tr>
+<tr>
+<td><code>psSpeedOfSound</code></td>
+<td>Скорость звука (pitch scaling)</td>
+</tr>
+<tr>
+<td><code>bIntro</code></td>
+<td>Флаг: disable EFX (null slot)</td>
+</tr>
+<tr>
+<td><code>OGG_COMMENT_VERSION</code> (0x0003)</td>
+<td>Версия метаданных</td>
+</tr>
+<tr>
+<td><code>EPS_S</code> / <code>EPS_L</code> / гистерезис 0.01</td>
+<td>Clamp/gain/pitch</td>
+</tr>
+</tbody>
+</table>
+<p>Все cvar'ы объявлены в <a href="../interface/">interface.md</a> (порц. 5).</p>
+<h2 id="8">8. Известные ограничения / дебаг<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><code>LoadWave</code> hard-44100 Hz</strong>: файлы с другой частотой не загружаются
+  (только <code>Msg</code> warning). Это ограничение формата, не bug.</li>
+<li><strong>Cache удваивает память</strong>: <code>initialize</code> делает <code>*_total_kb_approx *= 2</code>.
+  Реальный размер кэша в 2 раза больше cvar'а — учитывайте при
+  профилировании.</li>
+<li><strong><code>sdef_source_footer</code></strong> в <code>fTimeTotal</code> — добавляет фиксированный
+  «хвост» к длительности; может давать небольшой over-estimate.</li>
+<li><strong>Attached-переход</strong>: при переходе <code>i_destroy_source</code> +
+  <code>i_create_source</code> + <code>source_changed</code> — это атомарно по кадру, но
+  если <code>i_create_source</code> упадёт (файл не найден), переход не
+  произойдёт.</li>
+<li><strong>Underrun</strong>: <code>AL_BUFFERS_PROCESSED == 0 &amp;&amp; state != PLAYING</code> →
+  replay. Это защита от голода, но может дать «скачок» при
+  high-load.</li>
+<li><strong>Float-вариант <code>i_decompress_fr</code></strong> — закомментирован (мёртвый код).</li>
+<li><strong><code>cl_intersect.h</code></strong> (xrSound, 25KB) — проверить дублирование с
+  <code>xrEngine/cl_intersect.h</code>; если дубль — <a href="../devices-misc/">порцион 10,
+  devices-misc.md</a>. Здесь не анализируется.</li>
+</ul>
 
 
 

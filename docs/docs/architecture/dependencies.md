@@ -72,7 +72,7 @@ graph TD
 | `xrRenderPC_R4` | `xrCore`, `xrRenderDX9`, `xrRender` | Основной бэкенд (D3D9) |
 | `xrGame` | `xrCore`, `xrEngine`, `xrRender`, `xrAPI` | Игровая логика поверх ядра+рендера |
 | `xrParticles` | `xrCore`, `xrEngine` | Частицы (рендерятся через рендер) |
-| `xrSound` | `xrCore` | Звук (BASS/FMOD обвязка) |
+| `xrSound` | `xrCore` | Звук (OpenAL/EFX-обвязка, 3D-позиционирование) |
 | `xrPhysics` | `xrCore`, `xrEngine` | Обвязка PhysX |
 | `xrXMLParser` | `xrCore` | XML-парсер |
 | `xrCDB` | `xrCore`, `xrEngine` | CSE (серверные сущности) |
