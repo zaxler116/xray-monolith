@@ -2,7 +2,7 @@
 
 `xrGame` — **игровая логика** движка X-Ray (STALKER): всё, что стоит над ядром `xrEngine` и отвечает на вопрос «что происходит в мире игры». Ядро модуля — **объектная модель**: иерархия `CObject` (xrEngine) → `CGameObject` → `CEntity` → `CEntityAlive` → `CActor` / `CCustomMonster`, плюс ветки инвентаря (`CInventoryItemObject`) и зон (`CSpaceRestrictor` → `CCustomZone`), и Lua-обёртка `CScriptGameObject`, через которую скрипты видят все объекты мира.
 
-**Чего НЕ делает**: не владеет рендером/физикой/звуком/частицами (это [xrEngine](../xr-engine/index.md), [xrRender](../renderer/index.md), [xrSound](../xr-sound/index.md), [xrParticles](../xr-particles/index.md)); не реализует AI-планирование (внутренности `ai/` — [ALIFE](alife.md), итерация 6); не реализует сетевой транспорт (сигнатуры `net_*` и `Level_*` — итерация 12).
+**Чего НЕ делает**: не владеет рендером/физикой/звуком/частицами (это [xrEngine](../xr-engine/index.md), [xrRender](../renderer/index.md), [xrSound](../xr-sound/index.md), [xrParticles](../xr-particles/index.md)); не реализует AI-планирование (внутренности `ai/` — [ALIFE](alife/index.md), итерация 6); не реализует сетевой транспорт (сигнатуры `net_*` и `Level_*` — итерация 12).
 
 См. [Карта модулей](../../architecture/module-map.md), [Модель объектов](../../architecture/object-model.md) (обновляется в порц. 2 и 30), [Граф связей](../../architecture/dependencies.md).
 
@@ -43,7 +43,7 @@
 | 29 | Script: attachments и binder | [script-attachment.md](script-attachment.md) | ⬜ |
 | 30 | Связность: object-model + зависимости | update [object-model.md](../../architecture/object-model.md) + [dependencies.md](../../architecture/dependencies.md) + `index.md` | ⬜ |
 
-Остальные итерации: [Иерархия](objects.md) (переходная заглушка), [ALIFE](alife.md) (ит. 6), [Физика](physics.md) (ит. 7), [Оружие](weapons.md) (ит. 8), [Инвентарь](inventory.md) (ит. 8), [Зоны и эффекты](zones.md) (ит. 9), [UI](ui.md) (ит. 10).
+Остальные итерации: [Иерархия](objects.md) (переходная заглушка), [ALIFE](alife/index.md) (ит. 6), [Физика](physics.md) (ит. 7), [Оружие](weapons.md) (ит. 8), [Инвентарь](inventory.md) (ит. 8), [Зоны и эффекты](zones.md) (ит. 9), [UI](ui.md) (ит. 10).
 
 ## Карта связей
 

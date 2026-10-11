@@ -61,7 +61,7 @@ C-интерфейс рендера: `R_*` функции, `xrRender`-агнос
 | Подсистема   | Ключевые файлы                                              | Страница                                      |
 | ------------ | ----------------------------------------------------------- | --------------------------------------------- |
 | Объекты      | `GameObject.h`, `Actor.h`, `Entity.h`, `moving_object.h`    | [objects](../modules/game/objects.md)         |
-| AI (ALIFE)   | `alife_*`, `agent_manager*`, `stalker_*`, `smart_cover*`    | [alife](../modules/game/alife.md)             |
+| AI (ALIFE)   | `alife_*`, `agent_manager*`, `stalker_*`, `smart_cover*`    | [alife](../modules/game/alife/index.md)       |
 | Пейтфиндинг  | `level_graph.h`, `path_manager_*`, `a_star.h`, `dijkstra.h` | [pathfinding](../modules/game/pathfinding.md) |
 | Физика (PH)  | `PH*`, `physics_*`, `PhysicObject.h`                        | [physics](../modules/game/physics.md)         |
 | Оружие       | `Weapon*.cpp`                                               | [weapons](../modules/game/weapons.md)         |

@@ -175,7 +175,40 @@ nav:
             - "Script: script_entity + script_hit": modules/game/script-entity.md
             - "Script: attachments и binder": modules/game/script-attachment.md
           - Иерархия: modules/game/objects.md
-          - ALIFE (AI): modules/game/alife.md
+          - ALIFE (AI) (Ит. 6):
+            - Обзор: modules/game/alife/index.md
+            - "CBaseMonster: каркас и abilities": modules/game/alife/base-monster.md
+            - "CBaseMonster: FSM-цикл, память, контроллеры": modules/game/alife/base-monster-fsm.md
+            - "CBaseMonster: настройки, ауры, berserk": modules/game/alife/base-monster-settings.md
+            - "CAI_Bloodsucker": modules/game/alife/bloodsucker.md
+            - "CAI_Controller": modules/game/alife/controller.md
+            - "CBurer": modules/game/alife/burer.md
+            - "CPoltergeist": modules/game/alife/poltergeist.md
+            - "CChimera": modules/game/alife/chimera.md
+            - "CAI_Rat": modules/game/alife/rat.md
+            - "CAI_Trader / CAI_Crow / CPhantom": modules/game/alife/trader-crow-phantom.md
+            - "CAI_Stalker: класс, feel, события": modules/game/alife/stalker.md
+            - "CAI_Stalker: planner'ы": modules/game/alife/stalker-planners.md
+            - "CAI_Stalker: движение и покрытия": modules/game/alife/stalker-movement.md
+            - "CAI_Stalker: анимация, стрельба, торговля": modules/game/alife/stalker-anim-trade.md
+            - "Монстры-«животные»": modules/game/alife/monsters-animals.md
+            - "Монстры редкие": modules/game/alife/monsters-rare.md
+            - "FSM-фундамент": modules/game/alife/monster-fsm.md
+            - "Состояния монстров (states/)": modules/game/alife/monster-states.md
+            - "Групповые состояния (group_states/)": modules/game/alife/monster-group-states.md
+            - "Контроллеры CControl_*": modules/game/alife/control-managers.md
+            - Память: modules/game/alife/memory.md
+            - Враги: modules/game/alife/enemy.md
+            - Покрытия: modules/game/alife/cover.md
+            - "Steering + CStepManager": modules/game/alife/steering-steps.md
+            - "Пространства AI": modules/game/alife/ai-space.md
+            - "MONSTER_COMMUNITY": modules/game/alife/community.md
+            - "CALifeSimulator": modules/game/alife/alife-simulator.md
+            - "Регистры ALife": modules/game/alife/alife-registries.md
+            - "Abstract-обёртки ALife": modules/game/alife/alife-abstract.md
+            - "Менеджеры ALife": modules/game/alife/alife-managers.md
+            - "Combat/communication managers": modules/game/alife/alife-combat-communication.md
+            - Связность: modules/game/alife/index-consistency.md
           - Пейтфиндинг: modules/game/pathfinding.md
           - Физика: modules/game/physics.md
           - Оружие: modules/game/weapons.md

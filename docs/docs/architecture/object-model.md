@@ -116,7 +116,7 @@ CSE — **сериализуемые** структуры, состояние к
 ## Связи
 
 - **`CObject` ↔ Renderer**: `CObject::Render()` → `xrRender` (через `xrAPI`).
-- **`CGameObject` ↔ AI**: `m_ai_location` → `CAI_ObjectLocation` (ALIFE). См. [ALIFE](../modules/game/alife.md).
+- **`CGameObject` ↔ AI**: `m_ai_location` → `CAI_ObjectLocation` (ALIFE). См. [ALIFE](../modules/game/alife/index.md).
 - **`CGameObject` ↔ Physics**: `CPhysicsShellHolder` → `CPhysicsShell` (PH). См. [Физика](../modules/game/physics.md).
 - **`CGameObject` ↔ Lua**: `CScriptBinder` + `CUsableScriptObject` → `script_binder`. См. [Граница скриптинга](scripting-boundary.md).
 - **`CGameObject` ↔ CSE**: синхронизация состояния через сеть. См. [Сеть](../modules/network.md).
@@ -133,4 +133,4 @@ CSE — **сериализуемые** структуры, состояние к
 - [Цикл кадра](frame-loop.md) — как объекты исполняются.
 - [Граница скриптинга](scripting-boundary.md) — как объекты экспортируются в Lua.
 - [xrGame: Объекты](../modules/game/objects.md) — детальный разбор `CGameObject`/`CActor`.
-- [ALIFE](../modules/game/alife.md) — как AI использует объект-модель.
+- [ALIFE](../modules/game/alife/index.md) — как AI использует объект-модель.
