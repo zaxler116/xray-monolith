@@ -3601,6 +3601,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Травмы, раны, смерть
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -3617,6 +3635,508 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Ответственность
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Место в архитектуре
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Публичный API
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Публичный API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cwound-woundh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CWound (Wound.h)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shit-hith-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SHit (Hit.h) — структура, не класс-объект
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#death_anims-death_animsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        death_anims (death_anims.h)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cdamagemanager-damage_managerh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CDamageManager (damage_manager.h)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enum-game_base_kill_typeh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enum'ы (game_base_kill_type.h)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#killer_victim_angle-award_system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        killer_victim_angle (award_system)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Внутреннее устройство
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Внутреннее устройство">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-cwound" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 CWound — рана на кости
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1 CWound — рана на кости">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#411" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.1 Поля
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#412-incarnationpercent-min_wound_size" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.2 Заживление — Incarnation(percent, min_wound_size)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#413" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.3 Сериализация
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-shit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 SHit — валюта урона
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 SHit — валюта урона">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#421" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2.1 Локальный путь
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#422-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2.2 Формат пакета (сеть — ит. 12, здесь только сигнатура)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-death_anims" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 death_anims — выбор анимации смерти
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3 death_anims — выбор анимации смерти">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#431-death_animsmotionea-h-angle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3.1 death_anims::motion(ea, H, angle)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#432-type_motiondirea-h-angle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3.2 type_motion::dir(ea, H, angle) — направление падения
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#433" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3.3 Предикаты — детали
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-cdamagemanager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 CDamageManager — масштабирование по костям
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.4 CDamageManager — масштабирование по костям">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#441" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4.1 Хранение
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#442-reload" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4.2 reload
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#443-hitscaleelement-hit_scale-wound_scale-aim_bullet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4.3 HitScale(element, hit_scale, wound_scale, aim_bullet)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 Классификация смерти
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.5 Классификация смерти">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#451-kill_type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5.1 KILL_TYPE — почему умер
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#452-special_kill_type-mp-cactor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5.2 SPECIAL_KILL_TYPE — как именно (только MP, CActor)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#453" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5.3 Потребители
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Взаимодействие
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Потоки
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Потоки">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Удар → рана → кровь → заживление
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-kill_type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Смерть → KILL_TYPE → анимация
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Конфигурация
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Конфигурация">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-death_anims-psettings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 death_anims — секция сущности (pSettings)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-cdamagemanager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 CDamageManager — секция урона
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-centityalive-ini" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 CEntityAlive (статические, из ini сущности)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-centitycondition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 CEntityCondition (раны)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Ограничения и дебаг
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -5807,6 +6327,497 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Ответственность
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Место в архитектуре
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Публичный API
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Публичный API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cwound-woundh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CWound (Wound.h)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shit-hith-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SHit (Hit.h) — структура, не класс-объект
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#death_anims-death_animsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        death_anims (death_anims.h)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cdamagemanager-damage_managerh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CDamageManager (damage_manager.h)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enum-game_base_kill_typeh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enum'ы (game_base_kill_type.h)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#killer_victim_angle-award_system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        killer_victim_angle (award_system)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Внутреннее устройство
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Внутреннее устройство">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-cwound" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 CWound — рана на кости
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1 CWound — рана на кости">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#411" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.1 Поля
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#412-incarnationpercent-min_wound_size" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.2 Заживление — Incarnation(percent, min_wound_size)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#413" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.3 Сериализация
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-shit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 SHit — валюта урона
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 SHit — валюта урона">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#421" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2.1 Локальный путь
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#422-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2.2 Формат пакета (сеть — ит. 12, здесь только сигнатура)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-death_anims" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 death_anims — выбор анимации смерти
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3 death_anims — выбор анимации смерти">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#431-death_animsmotionea-h-angle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3.1 death_anims::motion(ea, H, angle)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#432-type_motiondirea-h-angle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3.2 type_motion::dir(ea, H, angle) — направление падения
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#433" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3.3 Предикаты — детали
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-cdamagemanager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 CDamageManager — масштабирование по костям
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.4 CDamageManager — масштабирование по костям">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#441" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4.1 Хранение
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#442-reload" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4.2 reload
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#443-hitscaleelement-hit_scale-wound_scale-aim_bullet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4.3 HitScale(element, hit_scale, wound_scale, aim_bullet)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 Классификация смерти
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.5 Классификация смерти">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#451-kill_type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5.1 KILL_TYPE — почему умер
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#452-special_kill_type-mp-cactor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5.2 SPECIAL_KILL_TYPE — как именно (только MP, CActor)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#453" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5.3 Потребители
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Взаимодействие
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Потоки
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Потоки">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Удар → рана → кровь → заживление
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-kill_type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Смерть → KILL_TYPE → анимация
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Конфигурация
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Конфигурация">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-death_anims-psettings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 death_anims — секция сущности (pSettings)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-cdamagemanager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 CDamageManager — секция урона
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-centityalive-ini" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 CEntityAlive (статические, из ini сущности)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-centitycondition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 CEntityCondition (раны)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Ограничения и дебаг
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -5824,8 +6835,692 @@
 
 <h1 id="_1">Травмы, раны, смерть<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <blockquote>
-<p><strong>Заглушка</strong> — заполнится на итерации 5, порцион 8.</p>
+<p><strong>Модуль:</strong> <code>xrGame</code> · <strong>Файлы:</strong> <code>src/xrGame/Wound.h</code> (58 стр.), <code>src/xrGame/Wound.cpp</code> (101 стр.), <code>src/xrGame/Hit.h</code> (89 стр.), <code>src/xrGame/Hit.cpp</code>, <code>src/xrGame/game_base_kill_type.h</code>, <code>src/xrGame/death_anims.h</code> + <code>death_anims.cpp</code> (185 стр.) + <code>death_anims_predicates.cpp</code> (342 стр.), <code>src/xrGame/damage_manager.h</code>/<code>damage_manager.cpp</code> (150 стр.) + <code>damage_manager_inline.h</code>, <code>src/xrGame/killer_victim_velocity_angle.h</code> · <strong>Порцион 8/30, итерация 5</strong></p>
 </blockquote>
+<p><strong>Границы:</strong> пайплайн урона <code>CEntityAlive::Hit()</code>/<code>Die()</code> — <a href="../entity-alive/">порц. 7</a> §4.4–4.5 (здесь только «что делает каждая часть», без повторения конвейера); статы и условия (<code>CEntityCondition</code>) — <a href="../entity-condition/">порц. 6</a> (ещё заглушка; ранение/заживление через <code>ConditionHit</code>/<code>ChangeBleeding</code> описаны как контракт); AI-внутренности — итерация 6; оружие — итерация 8; сетевой транспорт (<code>Level_*</code>, <code>GE_HIT*</code>) — итерация 12; полный Lua API — итерация 14 (механика обёртки — <a href="../script-game-object/">порц. 13</a>).</p>
+<h2 id="1">1. Ответственность<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>Порцион покрывает <strong>данные и правила</strong> вокруг урона живого существа — то, что не является ни объектом мира, ни конвейером <code>CEntityAlive::Hit()</code>:</p>
+<ul>
+<li><strong><code>CWound</code></strong> — рана на конкретной кости: вектор размеров по типам ударов (<code>ALife::EHitType</code>), накопление (<code>AddHit</code>), заживление (<code>Incarnation</code>), «кровоточивость» (<code>BloodSize</code>), сериализация в q8-сжатом формате. Это <strong>данные</strong>, владелец — <code>CEntityCondition::m_WoundVector</code> (порц. 6);</li>
+<li><strong><code>SHit</code></strong> — структура-«валюта» урона: снаряд/удар, передаваемый от стрела/физики/скрипта в <code>Hit()</code>. Полные поля, сеть (<code>GE_HIT</code>/<code>GE_HIT_STATISTIC</code>) и <code>ApplyScriptHit</code> (мост Lua);</li>
+<li><strong><code>CDamageManager</code></strong> (через <code>CEntity</code>, <a href="../entity/">entity.md</a>) — масштабирование урона и раны <strong>по костям</strong> из ini: hit/wound/aim-факторы, хранящиеся в параметрах <code>CBoneInstance</code>;</li>
+<li><strong><code>death_anims</code></strong> — выбор анимации смерти по обстоятельствам (7 предикатов: инерция, дробовик, хедшот, снайперка, граната + случайный fallback), направление падения и угол;</li>
+<li><strong><code>KILL_TYPE</code> / <code>SPECIAL_KILL_TYPE</code> / <code>KILL_RES</code></strong> — классификация смерти (удар/кровотечение/радиация; хедшот/заслон/нож/PDA/KIR и т.д.) и её потребитель — награды MP (award_system);</li>
+<li><strong><code>killer_victim_angle</code></strong> (award_system) — угол «стрелок→жертва» на момент смерти для наград.</li>
+</ul>
+<p><strong>Что НЕ делает:</strong> не считает статы (порц. 6); не конвейерит урон (<code>Hit()</code>/<code>Die()</code> — порц. 7); не выбирает AI-поведение при ранении (ит. 6); не сериализует транспорт (ит. 12 — здесь только сигнатуры пакетов <code>SHit::Read/Write_Packet</code> и <code>CWound::save/load</code>).</p>
+<h2 id="2">2. Место в архитектуре<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>CObject (xrEngine)                          — xr-object.md
+└─ CGameObject                             — game-object.md
+   └─ CEntity                              — entity.md
+      │  ├─ CDamageManager                 — ЭТОТ порцион (§4.4)
+      │  └─ CEntityCondition               — порц. 6
+      │     └─ m_WoundVector: CWound*[]    — ЭТОТ порцион (§4.1)
+      └─ CEntityAlive                      — порц. 7 (Hit/Die, StartFireParticles, UpdateBloodDrops)
+         ├─ CActor                          — порц. 14–23 (OnCritical*HealthLoss, backstab)
+         └─ CCustomMonster                  — порц. 9
+Связанно:
+  CCharacterPhysicsSupport                 — ит. 7; владеет death_anims m_death_anims,
+                                              вызывает motion() в KillByHit
+  SHit                                     — «валюта урона», создаётся оружием/физикой/Lua,
+                                              потребляется CEntityAlive::Hit
+  killer_victim_angle (award_system)       — OnPlayerKilled: KILL_TYPE + SPECIAL_KILL_TYPE → награды
+</code></pre></div>
+<p><code>CWound</code> — <strong>не наследник <code>CObject</code></strong>, не объект мира; живёт в стеке/куче внутри <code>CEntityCondition</code> и сериализуется как часть <code>conditions().save/load</code> (порц. 6/7). <code>SHit</code> — тривиальная структура, живёт на стеке вызывающего.</p>
+<h2 id="3-api">3. Публичный API<a class="headerlink" href="#3-api" title="Permanent link">&para;</a></h2>
+<h3 id="cwound-woundh">CWound (Wound.h)<a class="headerlink" href="#cwound-woundh" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>Сигнатура</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ctor</td>
+<td><code>CWound(u16 bone_num)</code></td>
+<td>инициализация: <code>m_Wounds</code> размером <code>ALife::eHitTypeMax</code>, все 0</td>
+</tr>
+<tr>
+<td><code>save</code> / <code>load</code></td>
+<td><code>(NET_Packet&amp;)</code> / <code>(IReader&amp;)</code></td>
+<td>bone_num как <strong>u8</strong>, каждый размер — <code>w_float_q8/r_float_q8(0, WOUND_MAX)</code> (§4.1.3)</td>
+</tr>
+<tr>
+<td><code>TotalSize</code></td>
+<td><code>float ()</code></td>
+<td>сумма всех типов раны</td>
+</tr>
+<tr>
+<td><code>TypeSize</code></td>
+<td><code>float (EHitType)</code></td>
+<td>размер одного типа (например, <code>eHitTypeBurn</code> — для частиц огня, порц. 7 §4.7)</td>
+</tr>
+<tr>
+<td><code>BloodSize</code></td>
+<td><code>float ()</code></td>
+<td><code>m_Wounds[eHitTypeWound] + m_Wounds[eHitTypeFireWound]</code> — «кол-во кровавых ран», управляет частотой капель крови</td>
+</tr>
+<tr>
+<td><code>AddHit</code></td>
+<td><code>void (float hit_power, EHitType)</code></td>
+<td><code>m_Wounds[type] += power</code>, clamp в <code>[0, WOUND_MAX=10.f]</code></td>
+</tr>
+<tr>
+<td><code>Incarnation</code></td>
+<td><code>void (float percent, float min_wound_size)</code></td>
+<td>заживление, §4.1.2</td>
+</tr>
+<tr>
+<td><code>GetBoneNum</code> / <code>SetBoneNum</code></td>
+<td><code>u16 ()</code> / <code>(u16)</code></td>
+<td>кость раны</td>
+</tr>
+<tr>
+<td><code>GetParticleBoneNum</code> / <code>SetParticleBoneNum</code></td>
+<td><code>u16 ()</code> / <code>(u16)</code></td>
+<td>кость, на которой отыгрывается партикл (может отличаться от кости раны)</td>
+</tr>
+<tr>
+<td><code>GetParticleName</code> / <code>SetParticleName</code></td>
+<td><code>const shared_str&amp;</code> / <code>(shared_str)</code></td>
+<td>имя партикла (огонь, порц. 7)</td>
+</tr>
+<tr>
+<td><code>SetDestroy</code> / <code>GetDestroy</code></td>
+<td><code>void (bool)</code> / <code>bool</code></td>
+<td>флаг удаления в <code>UpdateWounds</code> (порц. 6)</td>
+</tr>
+<tr>
+<td><code>m_fDropTime</code></td>
+<td><code>float</code> (public)</td>
+<td>время следующего «кап» крови (порц. 7 §4.7)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="shit-hith-">SHit (Hit.h) — структура, не класс-объект<a class="headerlink" href="#shit-hith-" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>Сигнатура</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ctor полный</td>
+<td><code>SHit(power, dir, who, element, p_in_bone_space, impulse, hit_type, armor_piercing, AimBullet)</code></td>
+<td><code>add_wound = true</code> по умолчанию</td>
+</tr>
+<tr>
+<td><code>invalidate</code></td>
+<td><code>void ()</code></td>
+<td><code>power = -phInfinity</code>, <code>boneID = BI_NONE</code>, <code>hit_type = ALife::eHitTypeMax</code>, <code>add_wound = false</code></td>
+</tr>
+<tr>
+<td><code>is_valide</code></td>
+<td><code>bool () const</code></td>
+<td><code>hit_type != ALife::eHitTypeMax</code></td>
+</tr>
+<tr>
+<td><code>damage</code> / <code>direction</code> / <code>initiator</code> / <code>bone</code> / <code>bone_space_position</code> / <code>phys_impulse</code> / <code>type</code></td>
+<td>inline-аксессоры</td>
+<td>VERIFY(<code>is_valide</code>)</td>
+</tr>
+<tr>
+<td><code>ApplyScriptHit</code></td>
+<td><code>void (CScriptHit*)</code></td>
+<td>перенос полей из Lua-обёртки: power, impulse, dir, hit_type, who/whoID, weaponID</td>
+</tr>
+<tr>
+<td><code>GenHeader</code></td>
+<td><code>void (u16 PacketType, u16 ID)</code></td>
+<td><code>Time = Level().timeServer()</code>, <code>PACKET_TYPE</code>, <code>DestID</code> — заголовок <code>GE_HIT</code>/<code>GE_HIT_STATISTIC</code></td>
+</tr>
+<tr>
+<td><code>Read_Packet</code> / <code>Write_Packet</code></td>
+<td><code>(NET_Packet)</code> / <code>(NET_Packet&amp;)</code></td>
+<td>полный пакет (с SenderID для <code>GE_HIT_STATISTIC</code>), формат §4.2.2</td>
+</tr>
+<tr>
+<td><code>Read_Packet_Cont</code> / <code>Write_Packet_Cont</code></td>
+<td><code>(NET_Packet)</code> / <code>(NET_Packet&amp;)</code></td>
+<td>«continuation» — то же без whoID/weaponID (они уже были в основном пакете)</td>
+</tr>
+<tr>
+<td>Поля</td>
+<td><code>Time, PACKET_TYPE, DestID, power, dir, who, whoID, weaponID, boneID, p_in_bone_space, impulse, hit_type, armor_piercing, add_wound, aim_bullet, BulletID, SenderID</code></td>
+<td><code>who</code> — указатель, валидный <strong>только локально</strong> (в сети — <code>whoID</code>)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="death_anims-death_animsh">death_anims (death_anims.h)<a class="headerlink" href="#death_anims-death_animsh" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Сущность</th>
+<th>Сигнатура</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rnd_motion</code></td>
+<td><code>setup(IKinematicsAnimated*, LPCSTR)</code>, <code>MotionID motion() const</code></td>
+<td>случайный из списка motion-имён (разделитель — список из <code>_GetItemCount</code>)</td>
+</tr>
+<tr>
+<td><code>type_motion::edirection</code></td>
+<td>enum <code>{ front, back, left, right, not_definite }</code>, <code>dirs_number=4</code></td>
+<td>направления падения</td>
+</tr>
+<tr>
+<td><code>type_motion::dir</code></td>
+<td><code>static edirection (CEntityAlive&amp;, const SHit&amp;, float&amp; angle)</code></td>
+<td>направление + угол по направлению удара, §4.3.2</td>
+</tr>
+<tr>
+<td><code>type_motion::predicate</code></td>
+<td><code>virtual bool (CEntityAlive&amp;, const SHit&amp;, MotionID&amp;, float&amp;) const = 0</code></td>
+<td>предикат «эта ли анимация смерти» (§4.3.3)</td>
+</tr>
+<tr>
+<td><code>death_anims</code></td>
+<td><code>anims: types_number = 7</code> типов + <code>rnd_anims</code>; <code>setup(IKinematicsAnimated*, LPCSTR section, CInifile const*)</code>; <code>MotionID motion(CEntityAlive&amp;, const SHit&amp;, float&amp; angle) const</code></td>
+<td>выбор анимации смерти, §4.3.1</td>
+</tr>
+<tr>
+<td><code>#ifdef DEBUG BOOL death_anim_debug</code></td>
+<td>extern</td>
+<td>переключатель диагностики в DEBUG-сборках</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cdamagemanager-damage_managerh">CDamageManager (damage_manager.h)<a class="headerlink" href="#cdamagemanager-damage_managerh" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>Сигнатура</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>_construct</code></td>
+<td><code>DLL_Pure* ()</code></td>
+<td><code>m_object = smart_cast&lt;CObject*&gt;(this)</code> (мixin в <code>CEntity</code>)</td>
+</tr>
+<tr>
+<td><code>reload</code></td>
+<td><code>(LPCSTR section, CInifile const*)</code> / <code>(LPCSTR section, LPCSTR line, CInifile const*)</code></td>
+<td>загрузка §4.4.2</td>
+</tr>
+<tr>
+<td><code>HitScale</code></td>
+<td><code>(int element, float&amp; hit_scale, float&amp; wound_scale, bool aim_bullet=false)</code></td>
+<td>масштаб урона/раны по кости, §4.4.3</td>
+</tr>
+</tbody>
+</table>
+<h3 id="enum-game_base_kill_typeh">Enum'ы (game_base_kill_type.h)<a class="headerlink" href="#enum-game_base_kill_typeh" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">enum</span><span class="w"> </span><span class="nc">KILL_TYPE</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">KT_HIT</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">KT_BLEEDING</span><span class="p">,</span><span class="w"> </span><span class="n">KT_RADIATION</span><span class="p">,</span><span class="w"> </span><span class="n">KT_FORCEDWORD</span><span class="o">=</span><span class="n">u32</span><span class="p">(</span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="p">};</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">SPECIAL_KILL_TYPE</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">SKT_NONE</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">SKT_HEADSHOT</span><span class="p">,</span><span class="w"> </span><span class="n">SKT_BACKSTAB</span><span class="p">,</span><span class="w"> </span><span class="n">SKT_KNIFEKILL</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">SKT_PDA</span><span class="p">,</span><span class="w"> </span><span class="n">SKT_KIR</span><span class="w"> </span><span class="cm">/*Kill in Row*/</span><span class="p">,</span><span class="w"> </span><span class="n">SKT_NEWRANK</span><span class="p">,</span><span class="w"> </span><span class="n">SKT_EYESHOT</span><span class="p">,</span><span class="w"> </span><span class="n">SKT_FORCEDWORD</span><span class="w"> </span><span class="p">};</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">KILL_RES</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">KR_NONE</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">KR_SELF</span><span class="p">,</span><span class="w"> </span><span class="n">KR_TEAMMATE</span><span class="p">,</span><span class="w"> </span><span class="n">KR_TEAMMATE_CRITICAL</span><span class="p">,</span>
+<span class="w">                </span><span class="n">KR_RIVAL</span><span class="p">,</span><span class="w"> </span><span class="n">KR_RIVAL_CRITICAL</span><span class="p">,</span><span class="w"> </span><span class="n">KR_FORCEDWORD</span><span class="w"> </span><span class="p">};</span>
+</code></pre></div>
+<p><code>KILL_TYPE</code> — <strong>почему</strong> умер (удар / истёк кровью / радиация). <code>SPECIAL_KILL_TYPE</code> — <strong>как именно</strong> (хедшот, заслон, нож, PDA, серия KIR, новый ранг, выстрел в глаз). <code>KILL_RES</code> — <strong>отношение жертвы к стрелку</strong> (для наград: свой/чужой/критичный). <code>KT_FORCEDWORD</code>/<code>SKT_FORCEDWORD</code> — «заполнитель», чтобы switch не падал на не-валидных значениях.</p>
+<h3 id="killer_victim_angle-award_system">killer_victim_angle (award_system)<a class="headerlink" href="#killer_victim_angle-award_system" title="Permanent link">&para;</a></h3>
+<p><code>killer_victim_angle : player_state_param</code> — хранит <code>m_killer_victim_angle_cos</code>; метод <code>OnPlayerKilled(u16 killer_id, u16 target_id, u16 weapon_id, std::pair&lt;KILL_TYPE, SPECIAL_KILL_TYPE&gt; kill_type)</code> — вызывается из MP-обвязки (порц. 23) при событии <code>GAME_EVENT_PLAYER_KILLED</code> для расчёта наград (в т.ч. SKT_BACKSTAB, KIR-серии).</p>
+<h2 id="4">4. Внутреннее устройство<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<h3 id="41-cwound">4.1 CWound — рана на кости<a class="headerlink" href="#41-cwound" title="Permanent link">&para;</a></h3>
+<h4 id="411">4.1.1 Поля<a class="headerlink" href="#411" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Поле</th>
+<th>Тип</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>m_iBoneNum</code></td>
+<td><code>u16</code></td>
+<td>кость, где появилась рана (в <code>save</code> пишется как <strong>u8</strong> — см. §8)</td>
+</tr>
+<tr>
+<td><code>m_iParticleBoneNum</code></td>
+<td><code>u16</code> (init <code>BI_NONE</code>)</td>
+<td>кость, на которой отыгрывается партикл (для <code>StartFireParticles</code> порц. 7)</td>
+</tr>
+<tr>
+<td><code>m_sParticleName</code></td>
+<td><code>shared_str</code> (init <code>""</code>)</td>
+<td>имя партикла</td>
+</tr>
+<tr>
+<td><code>m_Wounds</code></td>
+<td><code>HitImmunity::HitTypeSVec</code> (размер <code>ALife::eHitTypeMax</code>)</td>
+<td>размеры по типам ударов (wound/fire_wound/burn/explosion/…)</td>
+</tr>
+<tr>
+<td><code>m_bToBeDestroy</code></td>
+<td><code>bool</code> (init <code>false</code>)</td>
+<td>флаг «зашилась», удаляется в <code>CEntityCondition::UpdateWounds</code> (порц. 6)</td>
+</tr>
+<tr>
+<td><code>m_fDropTime</code></td>
+<td><code>float</code> (init <code>0</code>, <strong>public</strong>)</td>
+<td>время следующего «кап» крови (порц. 7 §4.7)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="412-incarnationpercent-min_wound_size">4.1.2 Заживление — <code>Incarnation(percent, min_wound_size)</code><a class="headerlink" href="#412-incarnationpercent-min_wound_size" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>if TotalSize() == 0: все m_Wounds[i] = 0; return
+for each i:
+    m_Wounds[i] -= percent          // ЛИНЕЙНО, не пропорционально
+    if m_Wounds[i] &lt; min_wound_size: m_Wounds[i] = 0
+</code></pre></div>
+<p>Комментарий в коде гласит «заживить все раны пропорционально их размеру», но <strong>пропорциональная часть закомментирована</strong> (<code>/* *m_Wounds[i]*/</code>). Реальное поведение — вычитание <code>percent</code> из <strong>каждой</strong> компоненты одинаково; маленькие раны закрываются быстрее больших (порог <code>min_wound_size</code> из ini <code>min_wound_size</code> порц. 6). Это осознанное решение, не баг.</p>
+<p>Вызывается из <code>CEntityCondition::ChangeBleeding(percent)</code> (порц. 6) с <code>percent = change_v().m_fV_WoundIncarnation * m_fDeltaTime</code> — т.е. скорость заживления зависит от статов (медицина, кровь). После <code>Incarnation</code> — если <code>TotalSize()</code> стал 0 → <code>SetDestroy(true)</code>; фактическое удаление — в <code>UpdateWounds()</code> (порц. 6).</p>
+<h4 id="413">4.1.3 Сериализация<a class="headerlink" href="#413" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>save:  w_u8((u8)m_iBoneNum)          // u16 → u8, потеря для bone_num &gt; 255 (§8)
+       for i &lt; eHitTypeMax: w_float_q8(m_Wounds[i], 0.f, WOUND_MAX)
+load:  m_iBoneNum = (u8)r_u8()
+       for i: m_Wounds[i] = r_float_q8(0.f, WOUND_MAX); VERIFY(0 ≤ v ≤ 10)
+</code></pre></div>
+<p><code>WOUND_MAX = 10.f</code> — <code>#define</code> в <code>Wound.cpp</code> (L31), не в хедере.</p>
+<h3 id="42-shit">4.2 SHit — валюта урона<a class="headerlink" href="#42-shit" title="Permanent link">&para;</a></h3>
+<h4 id="421">4.2.1 Локальный путь<a class="headerlink" href="#421" title="Permanent link">&para;</a></h4>
+<p>Создаётся оружием (снаряд/дрель), физикой (осколки, взрыв) или Lua (<code>CScriptHit</code> → <code>ApplyScriptHit</code>). Потребляется в <code>CEntityAlive::Hit(SHit*)</code> (порц. 7 §4.4). Ключевые поля для логики ранения:</p>
+<ul>
+<li><code>power</code> — сила; <code>add_wound</code> — флаг «оставлять рану» (по умолчанию <code>true</code> в полном ctor; <code>false</code> после <code>invalidate()</code>);</li>
+<li><code>boneID</code> — кость попадания (<code>BI_NONE</code> — «не по кости», например радиация);</li>
+<li><code>hit_type</code> — тип удара (<code>ALife::EHitType</code>): <code>eHitTypeWound</code>, <code>eHitTypeFireWound</code>, <code>eHitTypeBurn</code>, <code>eHitTypeExplosion</code>, <code>eHitTypeWound_2</code> (нож) и др.;</li>
+<li><code>armor_piercing</code> — пробитие брони (для <code>HitOutfitEffect</code> порц. 6);</li>
+<li><code>aim_bullet</code> — «прицельный» выстрел (влияет на hit-фактор, §4.4.3);</li>
+<li><code>impulse</code> — физический импульс (в <code>CCharacterPhysicsSupport</code>, ит. 7);</li>
+<li><code>who</code> / <code>whoID</code> / <code>weaponID</code> — инициатор и его оружие.</li>
+</ul>
+<p><code>is_valide()</code> = <code>hit_type != ALife::eHitTypeMax</code> — «пустой» хит имеет тип <code>eHitTypeMax</code> и <code>power = -phInfinity</code>.</p>
+<h4 id="422-12">4.2.2 Формат пакета (сеть — ит. 12, здесь только сигнатура)<a class="headerlink" href="#422-12" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>GenHeader(PacketType, ID): Time = Level().timeServer(); PACKET_TYPE; DestID
+Write_Packet:  whoID, weaponID, dir, power, boneID, p_in_bone_space, impulse,
+               [aim_bullet — только IsGameTypeSingle()],
+               hit_type,
+               [armor_piercing — только для eHitTypeFireWound],
+               BulletID
+               [SenderID — только для GE_HIT_STATISTIC]
+Read_Packet / Read_Packet_Cont — симметрично
+</code></pre></div>
+<p>Асимметрии формата: <code>aim_bullet</code> в MP всегда <code>false</code>; <code>armor_piercing</code> передаётся только для огнестрельных ран — для остальных типов на принимающей стороне остаётся 0.</p>
+<h3 id="43-death_anims">4.3 death_anims — выбор анимации смерти<a class="headerlink" href="#43-death_anims" title="Permanent link">&para;</a></h3>
+<h4 id="431-death_animsmotionea-h-angle">4.3.1 <code>death_anims::motion(ea, H, angle)</code><a class="headerlink" href="#431-death_animsmotionea-h-angle" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>angle = 0
+if anims.empty(): return rnd_anims.motion()   // DEBUG: Msg &quot;no death motions loaded&quot;
+for each type_motion in anims:
+    if predicate(ea, H, m, angle) &amp;&amp; m.valid(): return m
+return rnd_anims.motion()                       // fallback
+</code></pre></div>
+<p>Предикаты идут <strong>по порядку в <code>anims</code></strong> — первый вернувший <code>true</code> побеждает. Порядок установки в <code>setup</code> (death_anims_predicates.cpp L320–341):</p>
+<table>
+<thead>
+<tr>
+<th>idx</th>
+<th>класс</th>
+<th>ini-строка</th>
+<th>условие (кратко)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td><code>type_motion0</code></td>
+<td><code>kill_enertion</code></td>
+<td>инерция: удар в голову, стрелок = текущий контроль, скорость жертвы ≥ 3.65, направлен в сторону стрелка (угол &lt; 20°), направление = <code>front</code>, дистанция ≤ 30</td>
+</tr>
+<tr>
+<td>1</td>
+<td><code>type_motion1</code></td>
+<td><code>kill_burst</code></td>
+<td><strong>всегда false</strong> («изрешатить пулями» — заглушка)</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>type_motion2</code></td>
+<td><code>kill_shortgun</code></td>
+<td>дробовик: <code>CWeaponShotgun</code>/<code>CWeaponAutomaticShotgun</code>, дистанция ≤ 20, направление = <code>dir()</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>type_motion6</code></td>
+<td><code>kill_grenade</code></td>
+<td>граната: <code>hit_type == eHitTypeExplosion</code> <strong>или</strong> оружие — <code>CExplosive</code> (осколок)</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>type_motion4</code></td>
+<td><code>kill_sniper_headshot</code></td>
+<td>снайперка (<code>is_snipper</code>: <code>CWeaponMagazined</code> + <code>IsZoomed</code> + <code>IsScopeAttached</code>) + удар в голову</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>type_motion5</code></td>
+<td><code>kill_sniper_body</code></td>
+<td>снайперка + <strong>не</strong> в голову</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>type_motion3</code></td>
+<td><code>kill_headshot</code></td>
+<td>хедшот (любой), кроме случая 5</td>
+</tr>
+</tbody>
+</table>
+<p><code>rnd_anims</code> — список из ini-строки <code>random_death_animations</code>.</p>
+<p>Важно: <code>setup</code> вызывается из <code>CCharacterPhysicsSupport</code> (ит. 7) — <code>m_death_anims.setup(ka, *e-&gt;s_name, pSettings)</code> (L205) и при <code>reinit</code> (L1293). Выбор анимации — в <code>KillByHit</code> (CharacterPhysicsSupport.cpp L482): <code>MotionID m = m_death_anims.motion(m_EntityAlife, H, hit_angle)</code>; если стрелок ранен/в укрытии → <code>m = MotionID()</code> (без анимации).</p>
+<h4 id="432-type_motiondirea-h-angle">4.3.2 <code>type_motion::dir(ea, H, angle)</code> — направление падения<a class="headerlink" href="#432-type_motiondirea-h-angle" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>dir = H.direction(); dir.y = 0; m = |dir|
+if m == 0: return random(front..right)
+dir /= m
+z_dir = (ea.XFORM().k.x, 0, ea.XFORM().k.z).normalize_safe()   // «вперёд» персонажа
+x_dir = (ea.XFORM().i.x, 0, ea.XFORM().i.z).normalize_safe()   // «налево»
+front_factor = dir · z_dir
+sidefactor   = dir · x_dir
+if |front_factor| &gt; M_SQRT1_2:          // ~45° — «с фронта/сзади»
+    sign = front_factor &lt; 0 ? -1 : 1
+    angle = atan2(-sign * sidefactor, sign * front_factor)
+    return sign &lt; 0 ? front : back
+else:                                    // «сбоку»
+    sign = sidefactor &gt; 0 ? 1 : -1
+    angle = atan2(sign * front_factor, sign * sidefactor)
+    return sign &gt; 0 ? left : right
+</code></pre></div>
+<p><code>angle</code> — угол поворота тела при падении, используется <code>imotion_position</code> (ит. 7).</p>
+<h4 id="433">4.3.3 Предикаты — детали<a class="headerlink" href="#433" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>is_bone_head(K, bone)</code> — <code>bone == bip01_neck</code> <strong>или</strong> <code>bone</code> — потомок <code>bip01_head</code> (<code>find_in_parents</code>).</li>
+<li><code>is_snipper(weaponID)</code> — <code>CWeaponMagazined</code> + <code>IsZoomed()</code> + <code>IsScopeAttached()</code>.</li>
+<li><code>global_hit_position(gp, ea, H)</code> — мировая координата точки удара: <code>K-&gt;LL_GetTransform(H.bone()).transform_tiny(gp, H.bone_space_position())</code> → <code>ea.XFORM().transform_tiny(gp)</code>.</li>
+<li><code>type_motion0</code> (инерция) — единственный, использующий <code>CCharacterPhysicsSupport::movement()-&gt;GetVelocity()</code> и <code>Type() != etBitting</code>; жёсткий порог <code>min_stalker_speed = 3.65</code>, <code>front_angle_cos = cos(20°)</code>, <code>max_distance = 30</code>.</li>
+<li>Все предикаты <strong>требуют</strong> <code>H.initiator() == Level().CurrentControlEntity()</code> (кроме 2/6) — анимации смерти «от игрока» только для локального стрелка.</li>
+</ul>
+<h3 id="44-cdamagemanager">4.4 CDamageManager — масштабирование по костям<a class="headerlink" href="#44-cdamagemanager" title="Permanent link">&para;</a></h3>
+<h4 id="441">4.4.1 Хранение<a class="headerlink" href="#441" title="Permanent link">&para;</a></h4>
+<p>Параметры урона <strong>не</strong> в самом <code>CDamageManager</code>, а в <code>CBoneInstance</code> (ит. 3) через <code>set_param(i, value)</code>:</p>
+<table>
+<thead>
+<tr>
+<th>param</th>
+<th>значение</th>
+<th>из ini</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td><code>hit_scale</code> (базовый)</td>
+<td>элемент 0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>(не используется в <code>HitScale</code>)</td>
+<td>элемент 1</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>wound_scale</code></td>
+<td>элемент 2</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>aim_bullet_scale</code> (или = hit_scale, если &lt; 4 элементов)</td>
+<td>элемент 3</td>
+</tr>
+</tbody>
+</table>
+<h4 id="442-reload">4.4.2 <code>reload</code><a class="headerlink" href="#442-reload" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>m_default_hit_factor = m_default_wound_factor = 1.f
+if section exists &amp;&amp; line &quot;default&quot;:
+    m_default_hit_factor    = atof(item0)
+    m_default_wound_factor  = atof(item2)
+init_bones(section, ini):   // для всех костей: param0 = default_hit, param1 = 1, param2 = default_wound
+load_section(section, ini): // для каждой строки кроме &quot;default&quot;:
+    bone = LL_BoneID(name); if BI_NONE → Debug.fatal
+    param0 = atof(item0); param1 = atoi(item1); param2 = atof(item2)
+    param3 = (_GetItemCount &lt; 4) ? atof(item0) : atof(item3)
+    if bone == 0 &amp;&amp; (param0 == 0 || param2 == 0): R_ASSERT2 — «root bone cannot be zero»
+</code></pre></div>
+<p>Вторая перегрузка <code>reload(section, line, ini)</code> — индириктирование: <code>line</code> указывает на <strong>имя</strong> реальной секции; если нет — <code>reload(section, 0)</code>.</p>
+<h4 id="443-hitscaleelement-hit_scale-wound_scale-aim_bullet">4.4.3 <code>HitScale(element, hit_scale, wound_scale, aim_bullet)</code><a class="headerlink" href="#443-hitscaleelement-hit_scale-wound_scale-aim_bullet" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>if element == BI_NONE: hit_scale = 1.f * m_default_hit_factor; wound_scale = 1.f * m_default_wound_factor; return
+scale = 0
+if aim_bullet: scale = bone.param(3)
+if !aim_bullet || scale == 0: scale = bone.param(0)
+hit_scale = scale
+wound_scale = bone.param(2)
+</code></pre></div>
+<p>Вызывается в <code>CEntityAlive::Hit</code> (порц. 7): <code>CDamageManager::HitScale(HDS.boneID, conditions().hit_bone_scale(), conditions().wound_bone_scale(), HDS.aim_bullet)</code> — и масштаб урона, и масштаб раны идут <strong>в разные</strong> поля <code>CEntityCondition</code> (порц. 6).</p>
+<h3 id="45">4.5 Классификация смерти<a class="headerlink" href="#45" title="Permanent link">&para;</a></h3>
+<h4 id="451-kill_type">4.5.1 <code>KILL_TYPE</code> — почему умер<a class="headerlink" href="#451-kill_type" title="Permanent link">&para;</a></h4>
+<p>Определяется в <code>CEntityCondition::UpdateCondition</code> (порц. 6) — <strong>три стадии</strong>, в порядке приоритета:</p>
+<ol>
+<li><code>m_fDeltaHealth + GetHealth() ≤ 0</code> <strong>до</strong> <code>UpdateHealth()</code> → <code>OnCriticalHitHealthLoss()</code> → <code>KT_HIT</code>;</li>
+<li>после <code>UpdateHealth()</code> (т.е. учтено кровотечение) → <code>OnCriticalWoundHealthLoss()</code> → <code>KT_BLEEDING</code>;</li>
+<li>после <code>UpdatePower()</code>/<code>UpdateRadiation()</code> → <code>OnCriticalRadiationHealthLoss()</code> → <code>KT_RADIATION</code>.</li>
+</ol>
+<p>Для <code>CActor</code> (порц. 19/23) эти виртуалы (entity_alive.h L180–186) переопределены в <code>Actor_Network.cpp</code>: шлют <code>GAME_EVENT_PLAYER_KILLED</code> с <code>KILL_TYPE</code> и <code>SPECIAL_KILL_TYPE</code> (§4.5.2).</p>
+<h4 id="452-special_kill_type-mp-cactor">4.5.2 <code>SPECIAL_KILL_TYPE</code> — как именно (только MP, <code>CActor</code>)<a class="headerlink" href="#452-special_kill_type-mp-cactor" title="Permanent link">&para;</a></h4>
+<p>Из <code>CActor::OnCriticalHitHealthLoss</code> (Actor_Network.cpp L1862–1907):</p>
+<div class="highlight"><pre><span></span><code>SpecialHit = SKT_NONE
+if pLastHittingWeapon — CWeaponKnife:            SpecialHit = SKT_KNIFEKILL
+if m_s16LastHittedElement &gt; 0:
+    if == m_head и оружие — CWeaponMagazined:    SpecialHit = SKT_HEADSHOT + пакет GEG_PLAYER_PLAY_HEADSHOT_PARTICLE
+    if == m_eye_left/right:                      SpecialHit = SKT_EYESHOT
+    else: обход родителей кости → если дошёл до m_head: SpecialHit = SKT_HEADSHOT
+if m_bWasBackStabbed:                             SpecialHit = SKT_BACKSTAB   // перекрывает всё выше
+</code></pre></div>
+<p><code>m_bWasBackStabbed</code> (actor.cpp L726–743): ставится при <code>hit_type == eHitTypeWound_2</code> (нож) + кость из <code>Check_for_BackStab_Bone</code> (head/neck/spine1-2/clavicle) + <strong>направление удара</strong> — в локальной системе <code>dotproduct((0,0,1), -dir) &lt; -0.707</code> (т.е. удар сзади под углом &gt; 45°) + жертва не бессмертна. При backstab <code>hit_power</code> принудительно = <code>100000.f</code> (мгновенная смерть).</p>
+<p><code>SKT_KIR</code> (Kill in Row) и <code>SKT_NEWRANK</code> — на стороне сервера/наград (порц. 23), не в <code>CActor::OnCritical*</code>.</p>
+<h4 id="453">4.5.3 Потребители<a class="headerlink" href="#453" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>game_sv_mp::OnPlayerKillPlayer</code> / <code>game_cl_mp</code> (порц. 23) — раздача наград;</li>
+<li><code>killer_victim_angle::OnPlayerKilled</code> (award_system) — cos угла «стрелок→жертва» для наград «за выстрел сзади/сбоку»;</li>
+<li><code>rewarding_state_events</code> — события награждения;</li>
+<li><code>best_scores_helper</code> — статистика.</li>
+</ul>
+<h2 id="5">5. Взаимодействие<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Кто</th>
+<th>Что делает</th>
+<th>Ссылка</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CEntityAlive::Hit</code> (порц. 7)</td>
+<td>создаёт <code>CWound</code> через <code>conditions().ConditionHit(&amp;HDS)</code>; <code>HitScale</code> из <code>CDamageManager</code>; <code>StartFireParticles</code> по <code>TypeSize(eHitTypeBurn)</code></td>
+<td>entity-alive.md §4.4</td>
+</tr>
+<tr>
+<td><code>CEntityCondition</code> (порц. 6)</td>
+<td>владеет <code>m_WoundVector</code>; <code>ChangeBleeding</code> → <code>Incarnation</code>; <code>UpdateWounds</code> — удаление заживших; <code>m_fV_WoundIncarnation</code> — скорость заживления</td>
+<td>entity-condition.md (заглушка)</td>
+</tr>
+<tr>
+<td><code>CEntityAlive::shedule_Update</code> (порц. 7)</td>
+<td>тик: <code>UpdateWounds</code>, <code>UpdateFireParticles</code>, <code>UpdateBloodDrops</code> (по <code>BloodSize</code>)</td>
+<td>entity-alive.md §4.7</td>
+</tr>
+<tr>
+<td><code>CCharacterPhysicsSupport</code> (ит. 7)</td>
+<td>владеет <code>death_anims m_death_anims</code>; <code>KillByHit</code> → <code>motion()</code> → <code>imotion_position</code></td>
+<td>physics.md</td>
+</tr>
+<tr>
+<td><code>CActor</code> (порц. 14–23)</td>
+<td><code>OnCritical*HealthLoss</code> → <code>KILL_TYPE</code>/<code>SPECIAL_KILL_TYPE</code> → сеть; backstab-логика</td>
+<td>actor-net.md / actor-mp.md</td>
+</tr>
+<tr>
+<td>Оружие (ит. 8)</td>
+<td>создаёт <code>SHit</code> (снаряд, дробь, нож, взрыв)</td>
+<td>weapon-*.md</td>
+</tr>
+<tr>
+<td>Lua (ит. 14)</td>
+<td><code>CScriptHit</code> → <code>SHit::ApplyScriptHit</code></td>
+<td>script-game-object.md</td>
+</tr>
+<tr>
+<td><code>CSE_Abstract*</code> (ит. 11)</td>
+<td>аргумент <code>net_Spawn</code> — не относится к ранам</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>CParticlesObject</code> (ит. 4)</td>
+<td>«соседний объект» — капли/огонь (порц. 7 §4.7)</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h2 id="6">6. Потоки<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<h3 id="61">6.1 Удар → рана → кровь → заживление<a class="headerlink" href="#61" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart TD
+    A[Оружие / физика / Lua] --&gt;|SHit power,dir,bone,hit_type| B[CEntityAlive::Hit]
+    B --&gt;|HitScale boneID| C[CDamageManager]
+    B --&gt;|ConditionHit| D[CEntityCondition]
+    D --&gt;|HitOutfitEffect броня| D
+    D --&gt;|bAddWound и health&gt;0| E[AddWound hit_power*wound_scale]
+    E --&gt;|новая кость| F[CWound new bone]
+    E --&gt;|старая кость| G[CWound existing]
+    F --&gt; H[AddHit power*rand 0.5-1.5]
+    G --&gt; H
+    H --&gt;|clamp 0-10| I[m_Wounds hit_type]
+    B --&gt;|TypeSize eHitTypeBurn &gt; 0.3| J[StartFireParticles]
+    K[shedule_Update] --&gt; L[UpdateWounds]
+    M[ChangeBleeding v*WoundIncarnation*dt] --&gt; N[Incarnation percent,min_size]
+    N --&gt;|TotalSize=0| O[SetDestroy true]
+    L --&gt;|erase| P[xr_delete CWound]
+    K --&gt;|BloodSize &gt; 0.1| Q[UpdateBloodDrops м_fDropTime]</code></pre>
+<h3 id="62-kill_type">6.2 Смерть → KILL_TYPE → анимация<a class="headerlink" href="#62-kill_type" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart TD
+    A[UpdateCondition] --&gt;|delta+health≤0 до UpdateHealth| B[OnCriticalHitHealthLoss KT_HIT]
+    A --&gt;|после UpdateHealth| C[OnCriticalWoundHealthLoss KT_BLEEDING]
+    A --&gt;|после UpdateRadiation| D[OnCriticalRadiationHealthLoss KT_RADIATION]
+    B --&gt; E[CActor: SPECIAL_KILL_TYPE knife/head/eye/backstab]
+    B --&gt; F[GAME_EVENT_PLAYER_KILLED сеть ит.12]
+    E --&gt; F
+    C --&gt; F
+    D --&gt; F
+    F --&gt; G[killer_victim_angle OnPlayerKilled award_system]
+    F --&gt; H[game_sv_mp OnPlayerKillPlayer награды порц.23]
+    I[CEntityAlive::Die who] --&gt; J[CCharacterPhysicsSupport KillByHit]
+    J --&gt; K[death_anims motion ea,H,angle]
+    K --&gt;|предикат 0..6| L[имotion_position setup m,shell,hit_angle]
+    K --&gt;|fallback| M[rnd_anims случайная]</code></pre>
+<h2 id="7">7. Конфигурация<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<h3 id="71-death_anims-psettings">7.1 death_anims — секция сущности (pSettings)<a class="headerlink" href="#71-death_anims-psettings" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">[сущность]</span>
+<span class="na">kill_enertion</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s">motion1, motion2</span>
+<span class="na">kill_burst</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s">motionX</span><span class="w">          </span><span class="c1">; заглушка, всегда false</span>
+<span class="na">kill_shortgun</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s">motionA / motionB / motionC / motionD</span><span class="w">   </span><span class="c1">; front/back/left/right</span>
+<span class="na">kill_grenade</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s">...</span>
+<span class="na">kill_sniper_headshot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">...</span>
+<span class="na">kill_sniper_body</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s">...</span>
+<span class="na">kill_headshot</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s">...</span>
+<span class="na">random_death_animations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">m1, m2, m3</span>
+</code></pre></div>
+<p>Формат строки типа: <code>/</code>-разделённые списки motion-имён, порядок = <code>front/back/left/right</code> (<code>anims[i]</code>, i=0..3). Внутри списка — <code>,</code>-разделённые варианты (случайный выбор <code>rnd_motion</code>). Имя motion резолвится через <code>IKinematicsAnimated::LL_MotionID</code> — VERIFY2 при отсутствии.</p>
+<h3 id="72-cdamagemanager">7.2 CDamageManager — секция урона<a class="headerlink" href="#72-cdamagemanager" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">[урон_секция]</span>
+<span class="na">default</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s">1.0  0  0.8</span><span class="w">     </span><span class="c1">; hit_factor, (не используется), wound_factor</span>
+<span class="na">bip01_head</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s">2.0  1  1.5  2.5</span><span class="w">    </span><span class="c1">; hit, ?, wound, aim_bullet</span>
+<span class="na">bip01_spine1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.5  0  0.3</span>
+<span class="na">...</span>
+</code></pre></div>
+<ul>
+<li><code>default</code> — базовые множители для <strong>всех</strong> костей;</li>
+<li>строки костей переопределяют;</li>
+<li>элемент 3 (aim) — опциональный, если нет — = элемент 0;</li>
+<li><strong>R_ASSERT</strong>: для <code>bone == 0</code> (root) hit_scale и wound_scale <strong>не могут</strong> быть 0;</li>
+<li><code>BI_NONE</code> при <code>LL_BoneID</code> → <code>Debug.fatal</code>.</li>
+</ul>
+<h3 id="73-centityalive-ini">7.3 CEntityAlive (статические, из ini сущности)<a class="headerlink" href="#73-centityalive-ini" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Ключ</th>
+<th>Дефолт</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>start_blood_size</code></td>
+<td>0.3</td>
+<td>порог: <code>BloodSize &gt;</code> → начать капают</td>
+</tr>
+<tr>
+<td><code>stop_blood_size</code></td>
+<td>0.1</td>
+<td>порог: <code>&lt;</code> → остановить капли</td>
+</tr>
+<tr>
+<td><code>start_burn_size</code></td>
+<td>0.3</td>
+<td>порог: <code>TypeSize(eHitTypeBurn) &gt;</code> → начать огонь</td>
+</tr>
+<tr>
+<td><code>stop_burn_size</code></td>
+<td>0.1</td>
+<td>порог: <code>&lt;</code> → остановить огонь</td>
+</tr>
+</tbody>
+</table>
+<p>Загружаются в <code>CEntityAlive::Load</code> (порц. 7), но <strong>управляют</strong> логикой ран (порц. 7 §4.7).</p>
+<h3 id="74-centitycondition">7.4 CEntityCondition (раны)<a class="headerlink" href="#74-centitycondition" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Ключ</th>
+<th>Дефолт</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>min_wound_size</code></td>
+<td>0.00001</td>
+<td>порог в <code>Incarnation</code>: <code>&lt;</code> → 0</td>
+</tr>
+<tr>
+<td>(из <code>change_v()</code>) <code>m_fV_WoundIncarnation</code></td>
+<td>—</td>
+<td>скорость заживления (порц. 6)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="8">8. Ограничения и дебаг<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><code>CWound::save</code> пишет <code>m_iBoneNum</code> как u8</strong> (поле u16) — для <code>bone_num &gt; 255</code> потеря данных. На практике скелеты &lt; 64 костей, но это латентный баг.</li>
+<li><strong><code>Incarnation</code> — линейное, не пропорциональное</strong> заживление (комментарий в коде обещает пропорциональность, но <code>*m_Wounds[i]</code> закомментирован). Маленькие раны закрываются непропорционально быстро.</li>
+<li><strong><code>aim_bullet</code> в <code>SHit</code></strong> — только SP (<code>IsGameTypeSingle()</code>); в MP всегда <code>false</code>, т.е. <code>aim_bullet_scale</code> (param 3) в MP не работает.</li>
+<li><strong><code>armor_piercing</code></strong> в пакете — только для <code>eHitTypeFireWound</code>; для остальных типов на принимающей стороне = 0 (асимметрия формата).</li>
+<li><strong><code>type_motion1</code> («изрешатить пулями»)</strong> — заглушка, всегда <code>return false</code>; ini-строка <code>kill_burst</code> читается, но не используется.</li>
+<li><strong><code>m_Wounds</code> — <code>HitTypeSVec</code></strong> из <code>hit_immunity.h</code> — размер фиксирован <code>ALife::eHitTypeMax</code>; при изменении перечисления типов ударов (ит. 6) меняется формат сериализации.</li>
+<li><strong>DEBUG:</strong> <code>death_anim_debug</code> (extern bool, death_anims.cpp L10) — включает <code>Msg</code> при загрузке/выборе анимаций; <code>type_motion_diagnostic</code> печатает dir/motion/bone/obj/model; <code>SHit::_dump()</code> — дамп структуры.</li>
+<li><strong><code>CActor::OnCriticalHitHealthLoss</code></strong> (MP) — <code>m_s16LastHittedElement</code> обход родителей до <code>m_head</code>: если кость — потомок головы, считается хедшотом. Это <strong>не</strong> <code>is_bone_head</code> из death_anims (там <code>find_in_parents(head, bone)</code>, тут ручной цикл по <code>GetParentID</code>).</li>
+<li><strong>Backstab</strong> — только <code>eHitTypeWound_2</code> (нож), только для перечисленных костей, только при угле &gt; 45° сзади; <code>hit_power</code> принудительно 100000 (мгновенная смерть).</li>
+<li><strong><code>KT_FORCEDWORD</code>/<code>SKT_FORCEDWORD</code> = <code>u32(-1)</code></strong> — «заполнитель» для switch, не реальный тип.</li>
+</ul>
 
 
 

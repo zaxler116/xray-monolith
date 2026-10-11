@@ -25,73 +25,73 @@
 
 ## Порционы
 
-| # | Порцион | Страницы |
-|---|---------|----------|
-| 1 | Фундамент: CObject (xrEngine) | `index.md`, `xr-object.md` |
-| 2 | Фабрика и регистр классов | `class-registry.md` |
-| 3 | CGameObject: каркас | `game-object.md` |
-| 4 | CGameObject: сеть и жизненный цикл | `game-object-net.md` |
-| 5 | CEntity: здоровье и урон | `entity.md` |
-| 6 | EntityCondition: статы | `entity-condition.md` |
-| 7 | CEntityAlive: живое существо | `entity-alive.md` |
-| 8 | Травмы, раны, смерть | `wounds-death.md` |
-| 9 | CCustomMonster: мост в AI | `custom-monster.md` |
-| 10 | CInventoryItemObject | `inventory-item.md` |
-| 11 | Torch/Flashlight/CustomDevice/Detectors | `misc-items.md` |
-| 12 | PDA/Dosimeter/Antirad/Medkit | `medical-items.md` |
-| 13 | Lua-обёртка CScriptGameObject | `script-game-object.md` |
-| 14 | CActor: каркас и условия | `actor.md` |
-| 15 | CActor: камеры и эффекторы | `actor-camera.md` |
-| 16 | CActor: движение | `actor-movement.md` |
-| 17 | CActor: input и feel | `actor-input.md` |
-| 18 | CActor: оружие-обвязка | `actor-weapon.md` |
-| 19 | CActor: сеть и интерполяция | `actor-net.md` |
-| 20 | CActor: анимация | `actor-animation.md` |
-| 21 | CActor: HUD и рендер | `actor-hud.md` |
-| 22 | CActor: сон, смерть, прочее | `actor-misc.md` |
-| 23 | CActor: MP-обвязка | `actor-mp.md` |
-| 24 | Зоны: CSpaceRestrictor | `zones-restrictor.md` |
-| 25 | Зоны: CCustomZone FSM | `zones-custom.md` |
-| 26 | Зоны: аномалии и smart-террейн | `zones-anomaly.md` |
-| 27 | Feel: Touch/Vision/Sound | `feel.md` |
-| 28 | Script: script_entity + script_hit | `script-entity.md` |
-| 29 | Script: attachments и binder | `script-attachment.md` |
-| 30 | Связность: object-model + зависимости | update `architecture/object-model.md` + `dependencies.md` + `index.md` |
+| #   | Порцион                                 | Страницы                                                               |
+| --- | --------------------------------------- | ---------------------------------------------------------------------- |
+| 1   | Фундамент: CObject (xrEngine)           | `index.md`, `xr-object.md`                                             |
+| 2   | Фабрика и регистр классов               | `class-registry.md`                                                    |
+| 3   | CGameObject: каркас                     | `game-object.md`                                                       |
+| 4   | CGameObject: сеть и жизненный цикл      | `game-object-net.md`                                                   |
+| 5   | CEntity: здоровье и урон                | `entity.md`                                                            |
+| 6   | EntityCondition: статы                  | `entity-condition.md`                                                  |
+| 7   | CEntityAlive: живое существо            | `entity-alive.md`                                                      |
+| 8   | Травмы, раны, смерть                    | `wounds-death.md`                                                      |
+| 9   | CCustomMonster: мост в AI               | `custom-monster.md`                                                    |
+| 10  | CInventoryItemObject                    | `inventory-item.md`                                                    |
+| 11  | Torch/Flashlight/CustomDevice/Detectors | `misc-items.md`                                                        |
+| 12  | PDA/Dosimeter/Antirad/Medkit            | `medical-items.md`                                                     |
+| 13  | Lua-обёртка CScriptGameObject           | `script-game-object.md`                                                |
+| 14  | CActor: каркас и условия                | `actor.md`                                                             |
+| 15  | CActor: камеры и эффекторы              | `actor-camera.md`                                                      |
+| 16  | CActor: движение                        | `actor-movement.md`                                                    |
+| 17  | CActor: input и feel                    | `actor-input.md`                                                       |
+| 18  | CActor: оружие-обвязка                  | `actor-weapon.md`                                                      |
+| 19  | CActor: сеть и интерполяция             | `actor-net.md`                                                         |
+| 20  | CActor: анимация                        | `actor-animation.md`                                                   |
+| 21  | CActor: HUD и рендер                    | `actor-hud.md`                                                         |
+| 22  | CActor: сон, смерть, прочее             | `actor-misc.md`                                                        |
+| 23  | CActor: MP-обвязка                      | `actor-mp.md`                                                          |
+| 24  | Зоны: CSpaceRestrictor                  | `zones-restrictor.md`                                                  |
+| 25  | Зоны: CCustomZone FSM                   | `zones-custom.md`                                                      |
+| 26  | Зоны: аномалии и smart-террейн          | `zones-anomaly.md`                                                     |
+| 27  | Feel: Touch/Vision/Sound                | `feel.md`                                                              |
+| 28  | Script: script_entity + script_hit      | `script-entity.md`                                                     |
+| 29  | Script: attachments и binder            | `script-attachment.md`                                                 |
+| 30  | Связность: object-model + зависимости   | update `architecture/object-model.md` + `dependencies.md` + `index.md` |
 
 ## Статус
 
-| # | Статус |
-|---|--------|
-| 1 | ✅ |
-| 2 | ✅ |
-| 3 | ✅ |
-| 4 | ✅ |
-| 5 | ✅ |
-| 6 | ⬜ |
-| 7 | ✅ |
-| 8 | ⬜ |
-| 9 | ⬜ |
-| 10 | ⬜ |
-| 11 | ⬜ |
-| 12 | ⬜ |
-| 13 | ⬜ |
-| 14 | ⬜ |
-| 15 | ⬜ |
-| 16 | ⬜ |
-| 17 | ⬜ |
-| 18 | ⬜ |
-| 19 | ⬜ |
-| 20 | ⬜ |
-| 21 | ⬜ |
-| 22 | ⬜ |
-| 23 | ⬜ |
-| 24 | ⬜ |
-| 25 | ⬜ |
-| 26 | ⬜ |
-| 27 | ⬜ |
-| 28 | ⬜ |
-| 29 | ⬜ |
-| 30 | ⬜ |
+| #   | Статус |
+| --- | ------ |
+| 1   | ✅     |
+| 2   | ✅     |
+| 3   | ✅     |
+| 4   | ✅     |
+| 5   | ✅     |
+| 6   | ⬜     |
+| 7   | ✅     |
+| 8   | ✅     |
+| 9   | ⬜     |
+| 10  | ⬜     |
+| 11  | ⬜     |
+| 12  | ⬜     |
+| 13  | ⬜     |
+| 14  | ⬜     |
+| 15  | ⬜     |
+| 16  | ⬜     |
+| 17  | ⬜     |
+| 18  | ⬜     |
+| 19  | ⬜     |
+| 20  | ⬜     |
+| 21  | ⬜     |
+| 22  | ⬜     |
+| 23  | ⬜     |
+| 24  | ⬜     |
+| 25  | ⬜     |
+| 26  | ⬜     |
+| 27  | ⬜     |
+| 28  | ⬜     |
+| 29  | ⬜     |
+| 30  | ⬜     |
 
 ## Обещанное из итераций 0–4
 
