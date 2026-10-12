@@ -5976,20 +5976,20 @@
 <tr>
 <td>9</td>
 <td><code>CCustomMonster</code>: мост в AI</td>
-<td><a href="custom-monster/">custom-monster.md</a></td>
-<td>⬜</td>
+<td><a href="custom-monster/">custom-monster.md</a> — <code>CCustomMonster</code>: мост: класс, <code>Think()</code>, интерфейс для AI; AI-менеджеры (<code>memory()</code>/<code>movement()</code>/<code>sound()</code>), <code>shedule_Update</code> (зрение/<code>Think</code>/<code>Exec_Action</code>), <code>UpdateCL</code> (интерполяция/экстраполяция <code>NET</code>), 2-хступенчатое зрение (<code>eye_pp_s0/s1/s2</code>), <code>update_range_fov</code> (fog/far-plane), <code>net_Spawn</code>/<code>net_Destroy</code>/<code>net_Export</code>/<code>net_Import</code>, <code>moving_object</code>, feel-мосты (звук/зона), крит. раны, <code>useful</code>/<code>evaluate</code>; внутренности <code>ai/</code> — итерация 6</td>
+<td>✅</td>
 </tr>
 <tr>
 <td>10</td>
 <td><code>CInventoryItemObject</code></td>
-<td><a href="inventory-item/">inventory-item.md</a></td>
-<td>⬜</td>
+<td><a href="inventory-item/">inventory-item.md</a> — класс, down-cast’ы, данные из ini, условия/иммунитет, attach, апгрейды, net_Spawn/net_Export/net_Import (SPHNetState), линейная интерполяция, NeedToDestroyObject (MP 30s), UpdateXForm; CWeapon — ит. 8, сеть — ит. 12</td>
+<td>✅</td>
 </tr>
 <tr>
 <td>11</td>
 <td>Torch/Flashlight/CustomDevice/Detectors</td>
-<td><a href="misc-items/">misc-items.md</a></td>
-<td>⬜</td>
+<td><a href="misc-items/">misc-items.md</a> — <code>CTorch</code> (свой свет, инерция, lanim), <code>CFlashlight</code> (fire-deps, FSM), <code>CCustomDevice</code> (HUD-устройство: слоты, зум, UI, батарея), <code>CCustomDetector</code> + Simple/Advanced/Elite/Scientific (обнаружение через <code>Feel::Touch</code>, звук по частоте/расстоянию, UI-проекция); сеть — ит. 12, HUD — порц. 18/21</td>
+<td>✅</td>
 </tr>
 <tr>
 <td>12</td>

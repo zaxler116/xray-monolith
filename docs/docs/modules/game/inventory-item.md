@@ -368,7 +368,7 @@ sequenceDiagram
 - [CObject](../xr-engine/xr-object.md) — базовый каркас
 - [CGameObject](game-object.md) — общий предок, `shedule_Update`/`OnEvent`
 - [CGameObject: сеть](game-object-net.md) — `GE_*`, формат событий
-- [CSE_ALife*](../../server-entities/index.md) — ит. 11: `CSE_ALifeInventoryItem`, `mask_inv_num_items`
+- `CSE_ALife*` (ит. 11) — `CSE_ALifeInventoryItem`, `mask_inv_num_items`
 - [Физика](physics.md) — ит. 7: `CPhysicsShellHolder`, `CPHSynchronize`, `SPHNetState`
 - [Оружие](weapons.md) — ит. 8: `CWeapon`-ветка (наследник), `CInventory`/`CInventoryOwner`
 - [Инвентарь](inventory.md) — ит. 8: слоты/белт/рюкзак
