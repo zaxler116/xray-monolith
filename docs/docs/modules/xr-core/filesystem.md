@@ -15,6 +15,119 @@
 
 Нижний слой. `IWriter`/`IReader` — **язык бинарных форматов** всего движка (LTX, сохранения, сеть — см. [Формат LTX](../../data/ltx-format.md)).
 
+## `IWriter`/`IReader` — это _язык_ бинарных форматов движка
+
+Любой бинарный файл движка — **последовательность вызовов** `w_*`/`r_*`:
+
+- **LTX-файл** объекта — `open_chunk(...)` + `w_u32`/`w_fvector3`/`w_stringZ` + `close_chunk()`.
+- **Сохранение** (game save) — те же `w_*` поверх `IWriter`.
+- **Сетевой пакет** — `NET_Packet` (вручную, но та же логика «тип → байты»).
+
+То есть `IWriter`/`IReader` — это **сериализатор**: объект ⇄ байты. Вы не думаете про «как положить struct в файл» — вы пишете `W.w_u32(m_id); W.w_fvector3(m_pos); W.w_stringZ(m_name);` и получаете воспроизводимый бинарный формат. `IReader` — обратное: `R.r_u32(); R.r_fvector3(); R.r_stringZ(name);`. См. раздел «Пример: как сериализовать свой объект» ниже.
+
+## Chunking на пальцах
+
+Chunk — это **именованный блок** внутри файла: `[u32 type][u32 size][data...]`. Зачем: файл можно читать **по частям** (найти нужный chunk, прочитать только его), не загружая весь файл; и можно **сжимать** отдельные chunk'и.
+
+**Запись** (реализация — `IWriter::open_chunk`/`close_chunk`, `FS.cpp`):
+
+```
+open_chunk(123):
+    w_u32(123)              // type
+    chunk_pos.push(tell())  // запоминаем позицию, где писать size
+    w_u32(0)                // placeholder для size (пока 0)
+    ... w_u32 / w_float / ...  // данные
+    close_chunk():
+        pos = tell()
+        seek(chunk_pos.top())
+        w_u32(pos - chunk_pos.top() - 4)   // переписать size
+        seek(pos)
+        chunk_pos.pop()
+```
+
+Итого в файле: `[123][size][data...]`, где `size` — длина `data` (без заголовка 8 байт). `size` заполняется **назад** в `close_chunk`.
+
+**Чтение**:
+
+- `find_chunk(ID, &bCompressed)` — сканирует файл chunk за chunk'ом, находит `ID`, возвращает `size` (и `bCompressed`, если `ID & CFS_CompressMark`).
+- `open_chunk(ID)` — `find_chunk` + ставит позицию на начало `data`, возвращает **новый** `IReader*` на этот chunk (или `CTempReader*`, если сжатый — распаковывает LZO). **Вызывать `->close()` на результат** (он `xr_delete`'ится).
+- `open_chunk_iterator(ID, prev)` — итерация по chunk'ам файла.
+
+## Квантование — зачем и как
+
+`w_float_q16(a, min, max)` кодирует `float` в **16 бит** (вместо 32), теряя точность, но экономя память в 2 раза. Формула (из `FS.h`):
+
+```
+запись:  q = (a - min) / (max - min)          // нормализация в [0,1]
+         w_u16( floor(q * 65535 + 0.5) )       // 16 бит
+чтение:  val = r_u16()
+         A = val * (max - min) / 65535 + min
+```
+
+**Числовой пример**: угол 45°, `min=0`, `max=360` (т.е. `PI_MUL_2` в радианах, но суть та же):
+
+```
+q = 45/360 = 0.125
+q16 = floor(0.125 * 65535 + 0.5) = floor(8191.875) = 8191
+// обратно: 8191 * 360 / 65535 + 0 ≈ 44.997° (точность ~0.003°)
+```
+
+`w_angle16(a)` — обёртка: `w_float_q16(angle_normalize(a), 0, 2*PI)` → **2 байта** на угол. `w_dir(D)` — ещё компактнее: `pvCompress(D)` → 16-битный packed-направление (см. `_compressed_normal.h`). `w_sdir(D)` — `w_dir` + `w_float(mag)` (направление + длина).
+
+> Квантование — **сознательная потеря точности** ради размера. Используйте для данных, где точность 16 бит достаточна (углы, направления, «медленные» значения). Для координат камеры/физики — обычный `w_float`.
+
+## `IReader` (in-memory) vs `CStreamReader` (windowed)
+
+|          | `IReader`                                      | `CStreamReader`                                                                                        |
+| -------- | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| Хранение | Весь файл в памяти (`char* data`)              | «Окном» через `CreateFileMapping`/`MapViewOfFile`                                                      |
+| Размер   | Малые (< ~1 МБ)                                | Большие (gamedata-архивы, сотни МБ)                                                                    |
+| Открытие | `IReader(void* data, int size)` — уже в памяти | `construct(hFile, start, file_size, archive_size, window_size)` — читает `window_size` (1–4 МБ) за раз |
+| Когда    | LTX-объекты, сохранения, сетевые пакеты        | Уровень, текстуры, большие архивы                                                                      |
+
+**Правило**: файл влезает в память и читается целиком → `IReader`. Файл большой / не влезает → `CStreamReader` (или `CFileStreamReader` — обёртка, которая сама открывает файл).
+
+## `w_string` vs `w_stringZ` — не перепутать
+
+|           | `w_string(p)`                                               | `w_stringZ(p)`                                                |
+| --------- | ----------------------------------------------------------- | ------------------------------------------------------------- |
+| Что пишет | Байты строки + **CRLF** (`13, 10`)                          | Байты строки + **`\0`**                                       |
+| Для чего  | INI-подобные **текстовые** форматы (строка = строка текста) | **Бинарные** форматы (строка = нуль-терминированный C-string) |
+| Чтение    | `r_string` (до CRLF)                                        | `r_stringZ` (до `\0`)                                         |
+
+**Частая ошибка**: написать `w_stringZ`, а прочитать `r_string` (или наоборот) — буфер съедет, и дальше весь файл будет «кривым». Всегда парно: `w_string`/`r_string` **или** `w_stringZ`/`r_stringZ`. Для бинарных LTX-объектов — почти всегда `w_stringZ` (нуль-терминированная строка, `shared_str`/`xr_string`).
+
+## Пример: как сериализовать свой объект
+
+Шаблона: `save` — серия `w_*`, `load` — зеркальная серия `r_*` **в том же порядке**.
+
+```cpp
+struct CMyObject {
+    u32   m_id;
+    Fvector m_pos;
+    shared_str m_name;
+
+    void save(IWriter& W) {
+        W.w_u32(m_id);
+        W.w_fvector3(m_pos);
+        W.w_stringZ(m_name);      // нуль-терминированная строка
+    }
+
+    void load(IReader& R) {
+        R.r_u32(m_id);
+        R.r_fvector3(m_pos);
+        R.r_stringZ(m_name);      // парно с w_stringZ
+    }
+};
+```
+
+**Правила**:
+
+- Порядок `w_*` в `save` == порядок `r_*` в `load` (иначе буфер съедет).
+- `shared_str` при `r_stringZ` **интернируется** (см. [Строки](strings.md)).
+- Для блока с «версией» — оберните в chunk: `W.open_chunk(VER_MY_OBJECT); ... W.close_chunk();`, а при чтении `IReader* c = R.open_chunk(VER_MY_OBJECT); if (c) { ...; c->close(); }`.
+- Квантование — для углов/направлений: `W.w_angle16(m_yaw)` / `R.r_angle16()`.
+
 ## Публичный API
 
 ### Константы
@@ -224,21 +337,22 @@ XRCORE_API void VerifyPath(LPCSTR path);
 
 ### Файлы
 
-| Файл | Назначение |
-|---|---|
-| `FS.h` | `IWriter`, `IReaderBase`, `IReader`, `CMemoryWriter`, `CVirtualFileRW` |
-| `FS.cpp` | реализация |
-| `FS_impl.h` | альтернативные реализации `IReader` |
-| `FS_internal.h` | внутренние |
-| `FileSystem.h/.cpp` | `EFS_Utils` |
-| `FileSystem_borland.cpp` | Borland-вариант |
-| `stream_reader.h/.cpp` | `CStreamReader` |
-| `stream_reader_inline.h` | inline-методы |
-| `file_stream_reader.h/.cpp` | `CFileStreamReader` |
+| Файл                        | Назначение                                                             |
+| --------------------------- | ---------------------------------------------------------------------- |
+| `FS.h`                      | `IWriter`, `IReaderBase`, `IReader`, `CMemoryWriter`, `CVirtualFileRW` |
+| `FS.cpp`                    | реализация                                                             |
+| `FS_impl.h`                 | альтернативные реализации `IReader`                                    |
+| `FS_internal.h`             | внутренние                                                             |
+| `FileSystem.h/.cpp`         | `EFS_Utils`                                                            |
+| `FileSystem_borland.cpp`    | Borland-вариант                                                        |
+| `stream_reader.h/.cpp`      | `CStreamReader`                                                        |
+| `stream_reader_inline.h`    | inline-методы                                                          |
+| `file_stream_reader.h/.cpp` | `CFileStreamReader`                                                    |
 
 ### Chunking
 
 Запись:
+
 ```
 open_chunk(type) → [u32 type][u32 size=0] (заполняется в close_chunk)
 ... data ...
@@ -246,6 +360,7 @@ close_chunk() → переписать size
 ```
 
 Чтение:
+
 - `find_chunk(ID, &compressed)` — сканирует, возвращает размер.
 - `open_chunk(ID)` — ставит `Pos` на начало данных chunk.
 - `open_chunk_iterator(ID, prev)` — итерация по chunk'ам.

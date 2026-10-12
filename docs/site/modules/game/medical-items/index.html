@@ -3713,6 +3713,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PDA/Dosimeter/Antirad/Medkit
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -3729,6 +3747,285 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Ответственность и границы
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Место в архитектуре
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Публичный API
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Публичный API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpda-pdah" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CPda (PDA.h)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cdosimeter-dosimeterh-cuidosimeter-uidosimeterh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CDosimeter (Dosimeter.h) + CUIDosimeter (UIDosimeter.h)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cflare-flareh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CFlare (flare.h)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cmedkit-cantirad-medkith-antiradh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CMedkit / CAntirad (medkit.h / antirad.h)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Внутреннее устройство
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Внутреннее устройство">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CPda
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cdosimeter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CDosimeter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cflare" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CFlare
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cmedkit-cantirad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CMedkit / CAntirad
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Взаимодействие
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Потоки
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Потоки">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PDA: показ → экран → зум
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pda-mp-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PDA: тактильный контакт (MP-обмен)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Дозиметр: цикл UI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Сигнальная ракета: жизненный цикл
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Конфигурация
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Ограничения и дебаг
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Ссылки
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Источник
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -5807,6 +6104,274 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Ответственность и границы
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Место в архитектуре
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Публичный API
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Публичный API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpda-pdah" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CPda (PDA.h)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cdosimeter-dosimeterh-cuidosimeter-uidosimeterh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CDosimeter (Dosimeter.h) + CUIDosimeter (UIDosimeter.h)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cflare-flareh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CFlare (flare.h)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cmedkit-cantirad-medkith-antiradh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CMedkit / CAntirad (medkit.h / antirad.h)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Внутреннее устройство
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Внутреннее устройство">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CPda
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cdosimeter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CDosimeter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cflare" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CFlare
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cmedkit-cantirad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CMedkit / CAntirad
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Взаимодействие
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Потоки
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Потоки">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PDA: показ → экран → зум
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pda-mp-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PDA: тактильный контакт (MP-обмен)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Дозиметр: цикл UI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Сигнальная ракета: жизненный цикл
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Конфигурация
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Ограничения и дебаг
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Ссылки
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Источник
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -5824,8 +6389,566 @@
 
 <h1 id="pda-dosimeter-antirad-medkit">PDA / Dosimeter / Antirad / Medkit<a class="headerlink" href="#pda-dosimeter-antirad-medkit" title="Permanent link">&para;</a></h1>
 <blockquote>
-<p><strong>Заглушка</strong> — заполнится на итерации 5, порцион 12.</p>
+<p><strong>Модуль:</strong> <code>xrGame</code> · <strong>Файлы:</strong> <code>src/xrGame/PDA.h</code> (133 стр.), <code>src/xrGame/PDA.cpp</code> (1095 стр.), <code>src/xrGame/Dosimeter.h</code> (17 стр.), <code>src/xrGame/Dosimeter.cpp</code> (23 стр.), <code>src/xrGame/UIDosimeter.h</code> (35 стр.), <code>src/xrGame/UIDosimeter.cpp</code> (120 стр.), <code>src/xrGame/flare.h</code> (37 стр.), <code>src/xrGame/flare.cpp</code> (215 стр.), <code>src/xrGame/medkit.h</code> (19 стр.), <code>src/xrGame/medkit.cpp</code> (16 стр.), <code>src/xrGame/antirad.h</code> (19 стр.), <code>src/xrGame/antirad.cpp</code> (17 стр.) · <strong>Порцион:</strong> 5.12</p>
 </blockquote>
+<h2 id="1">1. Ответственность и границы<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>Порцион покрывает «медицинские» и служебные предметы инвентаря — четыре очень разных по объёму класса:</p>
+<ul>
+<li><strong><code>CPda</code></strong> — персональный цифровой ассистент (PDA). Крупнейший класс порциона: HUD-устройство с собственным FSM, зумом, инерцией, «жидким» экраном (яркость/видимость/psy-глич), состоянием батареи (condition), тактильным контактом с другими носителями PDA (<code>Feel::Touch</code> — обмен PDA в MP) и Lua-крюками (<code>pda.on_low_battery</code>, <code>play_function</code>). Наследник <code>CHudItemObject</code> (порц. 10) + <code>Feel::Touch</code>.</li>
+<li><strong><code>CDosimeter</code></strong> — дозиметр: минимальный наследник <code>CCustomDevice</code> (порц. 11), вся логика — в UI-объекте <code>CUIDosimeter</code> (цифры дозы, индикатор «работы», шум).</li>
+<li><strong><code>CFlare</code></strong> — сигнальная ракета (форк-добавление, зарегистрирован как <code>device_flare</code>): HUD-предмет с FSM, динамическим светом, частицами и «время жизни» по condition.</li>
+<li><strong><code>CMedkit</code></strong> / <strong><code>CAntirad</code></strong> — <strong>пустые маркер-классы</strong>: наследники <code>CEatableItemObject</code> без собственного кода (конструктор/деструктор). Вся логика применения («аптечка лечит», «антирад выводит радиацию») живёт в Lua-скриптах.</li>
+</ul>
+<p><strong>Границы.</strong> <code>CInventoryItemObject</code> / <code>CEatableItem</code> / <code>CPhysicItem</code> — порц. 10 (только как базовые классы). <code>CCustomDevice</code> — порц. 11 (базовый класс дозиметра). <code>CUIPdaWnd</code> / PDA-меню / UI-система — итерация 10 (только взаимодействие). <code>CEntity</code>-статы (<code>g_Radiation</code>, condition) — порц. 5–6. Сетевой код (<code>CSE_ALifeItemPDA</code>, <code>Level_*</code>) — итерация 12 (только сигнатуры). <code>CWeapon</code>-иерархия — итерация 8.</p>
+<h2 id="2">2. Место в архитектуре<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<p>Иерархия классов (см. <code>inventory-item.md</code> — порц. 10, <code>misc-items.md</code> — порц. 11):</p>
+<div class="highlight"><pre><span></span><code>CObject → CGameObject (game-object.md)
+  └─ CInventoryItemObject (inventory-item.md)
+      ├─ CHudItemObject (CInventoryItemObject + CHudItem)
+      │   ├─ CPda : CHudItemObject, Feel::Touch      — PDA
+      │   ├─ CFlare : CHudItemObject                 — сигнальная ракета (форк)
+      │   └─ CCustomDevice (misc-items.md)
+      │       └─ CDosimeter                           — дозиметр (весь код в CUIDosimeter)
+      └─ CEatableItemObject (CEatableItem + CPhysicItem)
+          ├─ CMedkit                                  — пустой маркер
+          ├─ CAntirad                                 — пустой маркер
+          ├─ CFoodItem / CBottleItem                  — итерация 8 (не покрывается)
+          └─ CExplosiveItem                           — итерация 8 (не покрывается)
+</code></pre></div>
+<pre class="mermaid"><code>classDiagram
+    class CInventoryItemObject {
+        &lt;&lt;inventory-item.md&gt;&gt;
+    }
+    class CEatableItem {
+        +m_iMaxUses
+        +m_iRemainingUses
+        +m_bRemoveAfterUse
+        +UseBy(CEntityAlive*)
+        +Empty()
+    }
+    class CEatableItemObject {
+        &lt;&lt;CEatableItem + CPhysicItem&gt;&gt;
+    }
+    class CCustomDevice {
+        &lt;&lt;misc-items.md, порц. 11&gt;&gt;
+    }
+    class CPda {
+        +m_bTurnedOff
+        +m_fRadius
+        +m_idOriginalOwner
+        +m_functor_str
+        +m_fZoomfactor
+        +m_bPowerSaving
+        +m_active_contacts
+        +TurnOn()/TurnOff()
+        +Action(cmd, flags)
+        +UpdateCL()
+        +UpdateHudAdditional()
+        +feel_touch_new/delete/contact()
+    }
+    class CDosimeter {
+        +render_item_3d_ui()
+        +CreateUI()
+        +ui()
+    }
+    class CUIDosimeter {
+        +m_parent
+        +m_noise
+        +update()
+        +Draw()
+    }
+    class CFlare {
+        +m_work_time_sec
+        +light_render
+        +m_pFlareParticles
+        +ActivateFlare()
+        +DropFlare()
+        +UpdateCL()
+    }
+    class CMedkit {
+        &lt;&lt;пустой маркер&gt;&gt;
+    }
+    class CAntirad {
+        &lt;&lt;пустой маркер&gt;&gt;
+    }
+    CInventoryItemObject --|&gt; CEatableItemObject
+    CInventoryItemObject --|&gt; CCustomDevice : через CHudItemObject
+    CInventoryItemObject --|&gt; CPda : через CHudItemObject
+    CInventoryItemObject --|&gt; CFlare : через CHudItemObject
+    CCustomDevice --|&gt; CDosimeter
+    CDosimeter o-- CUIDosimeter : m_ui
+    CEatableItemObject --|&gt; CMedkit
+    CEatableItemObject --|&gt; CAntirad</code></pre>
+<p>Регистрация фабрики (<code>class-registry.md</code>, порц. 2) — <code>src/xrServerEntities/object_factory_register.cpp</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Класс</th>
+<th>CLSID</th>
+<th>Секция</th>
+<th>Сеть (CSE)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CPda</code></td>
+<td><code>CLSID_DEVICE_PDA</code></td>
+<td><code>device_pda</code></td>
+<td><code>CSE_ALifeItemPDA</code> (L404)</td>
+</tr>
+<tr>
+<td><code>CFlare</code></td>
+<td><code>CLSID_DEVICE_FLARE</code></td>
+<td><code>device_flare</code></td>
+<td><code>CSE_ALifeItem</code> (L405)</td>
+</tr>
+<tr>
+<td><code>CMedkit</code></td>
+<td><code>CLSID_IITEM_MEDKIT</code></td>
+<td><code>obj_medkit</code></td>
+<td><code>CSE_ALifeItem</code> (L344)</td>
+</tr>
+<tr>
+<td><code>CMedkit</code></td>
+<td><code>CLSID_IITEM_BANDAGE</code></td>
+<td><code>obj_bandage</code></td>
+<td><code>CSE_ALifeItem</code> (L345)</td>
+</tr>
+<tr>
+<td><code>CAntirad</code></td>
+<td><code>CLSID_IITEM_ANTIRAD</code></td>
+<td><code>obj_antirad</code></td>
+<td><code>CSE_ALifeItem</code> (L346)</td>
+</tr>
+</tbody>
+</table>
+<p><code>CMedkit</code> зарегистрирован <strong>дважды</strong> (medkit + bandage) — один класс, два CLSID. <code>CAntirad</code>/<code>CMedkit</code> используют базовый <code>CSE_ALifeItem</code> (без специфичных полей); у <code>CPda</code> — отдельный <code>CSE_ALifeItemPDA</code> с <code>m_original_owner</code> / <code>m_specific_character</code> / <code>m_info_portion</code> (<code>xrServer_Objects_ALife_Items.h</code> L253–261).</p>
+<p>Выгрузка в Lua (<code>src/xrGame/torch_script.cpp</code> L17–18): <code>CPda</code> — <code>class_&lt;CPda, CGameObject&gt;("CPda")</code> <strong>без методов</strong> (только конструктор-заглушка; реальный доступ — через общий API <code>CScriptGameObject</code>, ит. 14). <code>CMedkit</code>/<code>CAntirad</code> — в <code>script_game_object.h</code> доступны только через <code>cast_Medkit</code> / <code>cast_Antirad</code> (L993–994).</p>
+<h2 id="3-api">3. Публичный API<a class="headerlink" href="#3-api" title="Permanent link">&para;</a></h2>
+<h3 id="cpda-pdah"><code>CPda</code> (<code>PDA.h</code>)<a class="headerlink" href="#cpda-pdah" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TurnOn()</code> / <code>TurnOff()</code> / <code>IsOn()</code> / <code>IsOff()</code> / <code>IsActive()</code></td>
+<td>Логическое включение PDA (не «выдран из руки», а «принадлежит ли текущему владельцу оригиналу»)</td>
+</tr>
+<tr>
+<td><code>bool Action(u16 cmd, u32 flags)</code></td>
+<td>Диспетчеризация команд: <code>kQUIT</code>, <code>kWPN_RELOAD</code> (zoom), <code>kWPN_ZOOM</code>/<code>kWPN_FIRE</code> (вкл. меню), <code>kWPN_FUNC</code>, <code>kINVENTORY</code></td>
+</tr>
+<tr>
+<td><code>void OnStateSwitch(u32 S, u32 oldState)</code> / <code>OnAnimationEnd(u32 state)</code></td>
+<td>FSM: <code>eShowing</code> / <code>eHiding</code> / <code>eHidden</code> / <code>eIdle</code> / <code>eEmptyBattery</code> (7)</td>
+</tr>
+<tr>
+<td><code>void UpdateCL()</code></td>
+<td>Состояние экрана PDA: видимость/яркость/psi-глич, батарея, deferred-enable, показ/скрытие <code>CUIPdaWnd</code></td>
+</tr>
+<tr>
+<td><code>void UpdateHudAdditional(Fmatrix&amp; trans)</code></td>
+<td>HUD-смещение, стрейф-инерция, зум (≈370 строк, см. §4)</td>
+</tr>
+<tr>
+<td><code>void shedule_Update(u32 dt)</code></td>
+<td>Позиция = позиция родителя; при <code>IsOn()</code> и владелец = текущая сущность — <code>feel_touch_update</code> + контакты</td>
+</tr>
+<tr>
+<td><code>void OnH_A_Chield()</code> / <code>OnH_B_Independent(bool)</code></td>
+<td>Включение при переходе к оригинальному владельцу; выключение/деташ при освобождении</td>
+</tr>
+<tr>
+<td><code>void OnMoveToRuck(const SInvItemPlace&amp;)</code></td>
+<td>Скрытие PDA при переносе в рюкзак</td>
+</tr>
+<tr>
+<td><code>void OnActiveItem()</code> / <code>OnHiddenItem()</code></td>
+<td><code>SwitchState(eShowing)</code> / <code>SwitchState(eHiding)</code></td>
+</tr>
+<tr>
+<td><code>void OnMovementChanged(ACTOR_DEFS::EMoveCommand cmd)</code></td>
+<td>Спринт отключает зум/меню PDA</td>
+</tr>
+<tr>
+<td><code>float GetNearWallOffset()</code> / <code>Fmatrix RayTransform()</code></td>
+<td>HUD-корректировки (смещение у стены, ray-матрица = camera basis)</td>
+</tr>
+<tr>
+<td><code>void feel_touch_new(CObject*)</code> / <code>feel_touch_delete(CObject*)</code> / <code>bool feel_touch_contact(CObject*)</code></td>
+<td>Тактильные контакты: <code>NewPdaContact</code>/<code>LostPdaContact</code> на владельце (MP-обмен PDA)</td>
+</tr>
+<tr>
+<td><code>CInventoryOwner* GetOriginalOwner()</code> / <code>CObject* GetOwnerObject()</code> / <code>u16 GetOriginalOwnerID()</code></td>
+<td>«Чей» PDA (по <code>m_idOriginalOwner</code>)</td>
+</tr>
+<tr>
+<td><code>void ActivePDAContacts(xr_vector&lt;CPda*&gt;&amp; res)</code> / <code>CPda* GetPdaFromOwner(CObject*)</code> / <code>u32 ActiveContactsNum()</code></td>
+<td>Список PDA-контактов (для UI/MP)</td>
+</tr>
+<tr>
+<td><code>void PlayScriptFunction()</code> / <code>bool CanPlayScriptFunction()</code></td>
+<td>Вызов Lua-функции <code>m_functor_str</code> (из ini <code>play_function</code>)</td>
+</tr>
+<tr>
+<td><code>void save(NET_Packet&amp;)</code> / <code>void load(IReader&amp;)</code> / <code>net_Spawn</code> / <code>net_Destroy</code></td>
+<td>Сериализация <code>m_sFullName</code>; сеть (ит. 12): <code>m_original_owner</code>, <code>m_specific_character</code></td>
+</tr>
+<tr>
+<td><code>static _BCL JoystickCallback(CBoneInstance* B)</code></td>
+<td>Bone-callback: вращение/нажатие виртуального джойстика PDA</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cdosimeter-dosimeterh-cuidosimeter-uidosimeterh"><code>CDosimeter</code> (<code>Dosimeter.h</code>) + <code>CUIDosimeter</code> (<code>UIDosimeter.h</code>)<a class="headerlink" href="#cdosimeter-dosimeterh-cuidosimeter-uidosimeterh" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>void CreateUI()</code> (protected)</td>
+<td>Создаёт <code>CUIDosimeter</code> из <code>ui_dosimeter.xml</code></td>
+</tr>
+<tr>
+<td><code>CUIDosimeter&amp; ui()</code> (protected)</td>
+<td>Прямой доступ к UI-объекту</td>
+</tr>
+<tr>
+<td><code>void render_item_3d_ui()</code></td>
+<td><code>ui().Draw()</code> + <code>inherited::render_item_3d_ui()</code></td>
+</tr>
+<tr>
+<td><code>void update()</code> (<code>CUIDosimeter</code>)</td>
+<td>Числовой индикатор: <code>g_Radiation × 38.7 + noise</code>, 4 сегмента <code>green_N</code></td>
+</tr>
+<tr>
+<td><code>void Draw()</code> / <code>void construct(CDosimeter*)</code></td>
+<td>Рендер в world-space (bone <code>cover</code> + <code>ui_p</code>/<code>ui_r</code> из ini), сборка UI</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cflare-flareh"><code>CFlare</code> (<code>flare.h</code>)<a class="headerlink" href="#cflare-flareh" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>void ActivateFlare()</code> / <code>bool IsFlareActive()</code></td>
+<td>Вкл. (FSM <code>eFlareShowing</code>), активность = <code>IsAttachedToHUD</code> &amp;&amp; <code>eFlareIdle</code></td>
+</tr>
+<tr>
+<td><code>void DropFlare()</code></td>
+<td><code>SwitchState(eFlareDropping)</code> (если не <code>eFlareHidden</code>)</td>
+</tr>
+<tr>
+<td><code>void UpdateCL()</code></td>
+<td>Яркость/цвет/позиция света, частицы, таймер <code>m_work_time_sec</code></td>
+</tr>
+<tr>
+<td><code>void OnStateSwitch</code> / <code>OnAnimationEnd</code></td>
+<td>FSM: <code>eFlareHidden/Showing/Idle/Hiding/Dropping</code></td>
+</tr>
+<tr>
+<td><code>void Load(LPCSTR section)</code></td>
+<td><code>work_time_sec</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="cmedkit-cantirad-medkith-antiradh"><code>CMedkit</code> / <code>CAntirad</code> (<code>medkit.h</code> / <code>antirad.h</code>)<a class="headerlink" href="#cmedkit-cantirad-medkith-antiradh" title="Permanent link">&para;</a></h3>
+<p>Публичный API — только конструктор/деструктор и <code>DECLARE_SCRIPT_REGISTER_FUNCTION</code>. <strong>Никакого собственного кода</strong> (<code>.cpp</code> — 16–17 строк). Поведение «лечение»/«вывод радиации» — в Lua (<code>CEatableItem::UseBy</code> вызывается из скриптов).</p>
+<h2 id="4">4. Внутреннее устройство<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<h3 id="cpda"><code>CPda</code><a class="headerlink" href="#cpda" title="Permanent link">&para;</a></h3>
+<p>Поля (<code>PDA.h</code>): <code>m_bTurnedOff</code> (логическое выключение), <code>m_fRadius</code> (радиус <code>Feel::Touch</code>), <code>m_idOriginalOwner</code> (NET-ID «родного» владельца, из <code>CSE_ALifeItemPDA</code>), <code>m_SpecificChracterOwner</code> (специфичный NPC-владелец), <code>m_sFullName</code> (сериязуется: <code>NameItem + " " + Name()</code>, создаётся в <code>OnH_A_Chield</code> при первом переходе к оригинальному владельцу), <code>m_functor_str</code> (Lua-функция <code>play_function</code>), <code>m_fZoomfactor</code> (0–1, плавно), <code>m_fDisplayBrightnessPowerSaving</code> (0.6 def), <code>m_fPowerSavingCharge</code> (0.15 def), <code>m_screen_on_delay</code>/<code>m_screen_off_delay</code>, <code>m_thumb_rot[2]</code>, <code>m_nearwall_zoomed_range</code> (0.1 def), <code>m_joystick_bone</code>/<code>joystick</code> (bone ID), <code>m_fLR_CameraFactor</code>/<code>m_fLR_MovingFactor</code>/<code>m_fLR_InertiaFactor</code>/<code>m_fUD_InertiaFactor</code> (инерция HUD), <code>m_bNoticedEmptyBattery</code>, <code>m_LastMBZoom</code>, <code>m_bZoomed</code>, <code>m_eDeferredEnable</code> (<code>eDefault/eDisable/eEnable/eEnableZoomed</code>), <code>m_bPowerSaving</code>, <code>m_psy_factor</code>, <code>m_PdaEnabled</code> (глобальный вкл.), <code>m_active_contacts</code> (<code>CObject*</code>), <code>m_hud_offset[2]</code> (текущее смещение HUD).</p>
+<p><code>ePDAState</code>: <code>eEmptyBattery = 7</code> (привязан к <code>CHudItem</code>-FSM-номенклатуре, номер 7).</p>
+<p><strong>FSM</strong> (<code>OnStateSwitch</code>/<code>OnAnimationEnd</code>):</p>
+<ul>
+<li><code>eShowing</code>: <code>attach_item</code> в <code>g_player_hud</code>, звук (<code>sndShow</code>/<code>sndShowEmpty</code>), анимация <code>anm_show</code>/<code>anm_show_empty</code>, <code>pda_display_factor = 0</code>, <code>SetPending(TRUE)</code>, <code>target_screen_switch = now + m_screen_on_delay</code>.</li>
+<li><code>eHiding</code>: звук + анимация hide, <code>m_bZoomed = false</code>, отключает <code>CUIPdaWnd</code>, <code>reset_thumb</code>, <code>ResetJoystick</code>, сброс bone-callback джойстика, <code>target_screen_switch = now + m_screen_off_delay</code>.</li>
+<li><code>eHidden</code>: <code>m_fZoomfactor = 0</code>; если <code>CUIPdaWnd</code> видна — либо <code>Enable(true)</code> (без <code>AF_3D_PDA</code>), либо <code>HideDialog()</code> (с флагом); <code>reset_thumb(true)</code>, <code>ResetJoystick(true)</code>.</li>
+<li><code>eIdle</code>: <code>PlayAnimIdle()</code>; ленивая установка <code>joystick</code> (по имени bone из ini) + <code>set_callback(bctCustom, JoystickCallback, this)</code>.</li>
+<li><code>eEmptyBattery</code>: звук <code>sndEmptyBattery</code>, анимация <code>anm_empty</code>, <code>m_bNoticedEmptyBattery = true</code>.</li>
+</ul>
+<p>После <code>eShowing</code> → <code>OnAnimationEnd</code>: если <code>!hasEnoughBatteryPower() &amp;&amp; !m_bNoticedEmptyBattery</code> → <code>eEmptyBattery</code>, иначе → <code>eIdle</code>.</p>
+<p><strong><code>UpdateCL()</code></strong> (ядро экрана PDA):</p>
+<ul>
+<li>Early-return если <code>!ParentIsActor()</code> или PDA не активный предмет.</li>
+<li><code>pda-&gt;m_power = GetCondition()</code> (иконка батареи в UI).</li>
+<li>Если <code>!psActorFlags.test(AF_3D_PDA)</code> — PDA не 3D-модель: <code>Activate(NO_ACTIVE_SLOT)</code> и return (только UI).</li>
+<li>Если <code>CUIPdaWnd</code> видна:</li>
+<li>при <code>!enoughBatteryPower || state == eHidden</code> → <code>HideDialog()</code>, <code>m_bZoomed = false</code>, при <code>eIdle</code> → <code>SwitchState(eEmptyBattery)</code>;</li>
+<li>иначе: если меню не вкл. — <code>Update()</code> + при <code>m_eDeferredEnable == eEnable/eEnableZoomed</code> и <code>cam_freelook == eflDisabled</code> → <code>Enable(true)</code> (с учётом zoom);</li>
+<li>при <code>condition &lt; m_fPowerSavingCharge</code> (и <code>IsUsingCondition()</code>) → разовый Lua-вызов <code>pda.on_low_battery</code> + <code>m_bPowerSaving = true</code>; при заряде выше — <code>m_bPowerSaving = false</code>.</li>
+<li>Если <code>CUIPdaWnd</code> не видна и <code>!IsMainMenuActive() &amp;&amp; state != eHiding/eHidden &amp;&amp; enoughBatteryPower</code> → <code>ShowDialog(false)</code>, сброс <code>m_bNoticedEmptyBattery</code>, deferred-enable → <code>eDefault</code> либо <code>Enable(false)</code>.</li>
+<li>Если <code>state != eHidden</code>: плавная яркость (<code>pda_displaybrightness</code>: при power-saving — снижение до <code>m_fDisplayBrightnessPowerSaving</code> за 0.25 c), <code>pda_psy_influence = m_psy_factor</code> (видимый «глич» экрана), прозрачность экрана <code>pda_display_factor</code>: после <code>target_screen_switch</code> — плавный 0.75 c включение / 0.25 c выключение.</li>
+</ul>
+<p><strong><code>UpdateHudAdditional(trans)</code></strong> (~370 строк, PDA.cpp L540–915) — самый большой метод порциона:</p>
+<ol>
+<li>При <code>cam_freelook != eflDisabled</code> или <code>script_anim_part != u8(-1)</code> — отключает меню, ставит <code>m_eDeferredEnable = eEnable/eEnableZoomed</code> (востановление после выхода из freelook).</li>
+<li>Выбор целевого смещения: <code>m_adjust_mode</code> (режим калибровки) — <code>m_adjust_offset[*][5/1]</code>, иначе <code>m_hands_offset[0/1][5/1]</code> (индекс 5 = от бедра, 1 = прицел; выбор по <code>m_bZoomed</code>).</li>
+<li>Плавное доведение <code>m_hud_offset[0/1]</code> к цели: <code>factor = fTimeDelta / 0.2</code> × 2.5; при близости <code>&lt; 0.02</code> — сброс <code>SetPending(FALSE)</code> (если zoom) + <code>m_LastMBZoom = m_bZoomed</code>.</li>
+<li>Применение: <code>trans.mulB_43(hud_rotation)</code>, где <code>hud_rotation</code> = rotXYZ(<code>m_hud_offset[1]</code>) + translate(<code>m_hud_offset[0]</code>).</li>
+<li>Плавный <code>m_fZoomfactor</code> (0.25 c на полный диапазон).</li>
+<li>Если <code>inertion_allowed()</code>:</li>
+<li>Стрейф от поворота камеры (yaw): <code>m_fLR_CameraFactor</code> — накопление при <code>|fYMag| &gt; fStrafeMinAngle</code> (lerp по <code>m_fZoomfactor</code>), затухание при покое (ускорение <code>fCamReturnSpeedMod = 1.5</code> при <code>!m_bZoomed</code>); clamp <code>±fCamLimitBlend</code>.</li>
+<li>Стрейф от боковой ходьбы: <code>m_fLR_MovingFactor</code> по <code>MovingState() &amp; mcLStrafe/mcRStrafe</code> (×3 при смене направления), возврат к 0 при прямой ходьбе; clamp <code>[-1, 1]</code>.</li>
+<li>Итоговый <code>fLR_Factor = m_fLR_MovingFactor + (m_fLR_CameraFactor if !freelook)</code>; применяется к <code>m_strafe_offset[0/1/2/3][idx]</code> (2 набора: от бедра / прицел, блендинг по <code>m_fZoomfactor</code>).</li>
+<li>Инерция: <code>m_fLR_InertiaFactor</code> / <code>m_fUD_InertiaFactor</code> — накопление от <code>fYMag/fPMag</code> (×2 при движении в противоположную сторону), экспоненциальное затухание (<code>clampr(1 - dt*fInertiaReturnSpeedMod, 0, 1)</code>) + линейный возврат при покое (<code>fRetSpeedMod = fInertiaReturnSpeedMod * 0.075</code>); clamp <code>[-1, 1]</code>; применение — смещение <code>vIOffsets.x/y/z/w</code> (L/R/U/D, lerp по zoom).</li>
+</ol>
+<p><strong><code>JoystickCallback</code></strong> (bone-callback, static): EMA-сглаживание <code>fAvgTimeDelta</code>, доведение <code>joystickrot</code> к <code>target_joystickrot</code> (за 0.1 c), доведение <code>buttonpress</code> к <code>target_buttonpress</code> (звук <code>sndButtonPress</code>/<code>sndButtonRelease</code> на переходе через 0), применение rotXYZ + translate(press) к <code>B-&gt;mTransform</code>.</p>
+<p><strong><code>shedule_Update</code></strong>: позиция = позиция <code>H_Parent</code>; при <code>IsOn()</code> и <code>Level().CurrentEntity()-&gt;ID() == H_Parent()-&gt;ID()</code> (только текущий игрок): <code>g_Alive()</code>-проверка родителя (иначе <code>TurnOff()</code>), <code>feel_touch_update(Position(), m_fRadius)</code> + <code>UpdateActiveContacts()</code>.</p>
+<p><strong><code>UpdateActiveContacts</code></strong>: из <code>feel_touch</code> — живые <code>CEntityAlive</code> без <code>cast_base_monster()</code> (т.е. только «люди», не монстры) → <code>m_active_contacts</code>.</p>
+<p><strong><code>feel_touch_contact</code></strong>: монстры — всегда <code>true</code>; <code>CInventoryOwner</code> — <code>true</code> только если <strong>не</strong> его собственный PDA; иначе <code>false</code>.</p>
+<p><strong><code>Action</code></strong> (диспетчер команд): <code>kQUIT</code>/<code>kACTIVE_JOBS</code> — закрыть PDA (если видно или не kQUIT); <code>kWPN_RELOAD</code> — toggle zoom (при zoom — <code>StopSprint</code>); <code>kWPN_ZOOM</code>/<code>kWPN_FIRE</code> — <code>Enable(true)</code> + <code>StopSprint</code>; <code>kWPN_FUNC</code> — toggle меню (только если не <code>AF_SIMPLE_PDA</code>); <code>kINVENTORY</code> — закрыть PDA + <code>ShowActorMenu()</code>.</p>
+<p><strong><code>OnH_A_Chield</code></strong>: <code>VERIFY(IsOff())</code>; включение (<code>TurnOn()</code>) только если <code>H_Parent()-&gt;ID() == m_idOriginalOwner</code>; при первом включении — <code>m_sFullName = NameItem + " " + Name()</code>. <code>OnH_B_Independent</code> — <code>TurnOff()</code>, звук hide, <code>SwitchState(eHidden)</code>, reset thumb/joystick, <code>detach_item</code>.</p>
+<p><strong><code>hasEnoughBatteryPower</code></strong>: <code>!IsUsingCondition() || (m_PdaEnabled &amp;&amp; IsUsingCondition() &amp;&amp; GetCondition() &gt; m_fLowestBatteryCharge)</code> (последний — базовое поле <code>CInventoryItem</code>, порц. 10).</p>
+<h3 id="cdosimeter"><code>CDosimeter</code><a class="headerlink" href="#cdosimeter" title="Permanent link">&para;</a></h3>
+<p><code>Dosimeter.cpp</code> — 23 строки: <code>CreateUI</code> (assert <code>!m_ui</code>, <code>xr_new&lt;CUIDosimeter&gt;</code>, <code>construct(this)</code>), <code>ui()</code> (cast <code>m_ui</code>), <code>render_item_3d_ui</code> (<code>ui().Draw()</code> + inherited).</p>
+<p><code>CUIDosimeter</code> (<code>UIDosimeter.cpp</code>):</p>
+<ul>
+<li><code>construct</code>: XML <code>ui_dosimeter.xml</code> (окно <code>dosimeter</code> + 4 <code>seg*</code> + <code>wrk_area</code> + <code>work</code>), <code>m_map_attach_offset</code> из ini <code>ui_p</code>/<code>ui_r</code> (градусы → радианы, HPB + translate).</li>
+<li><code>update</code>: <code>rad = Actor()-&gt;g_Radiation() * 38.7f + m_noise</code>, clamp <code>MAX_RAD = 5000.f</code>; <code>sprintf_s("%05.0lf", rad)</code> → 4 сегмента <code>green_&lt;цифра&gt;</code> из <code>hud\p3d</code> (атлас 7-сегментного дисплея); индикатор «работы» мигает раз в <code>WORK_PERIOD = 1000</code> мс (при <code>rad &gt;= MAX_RAD</code> — постоянно включён); шум <code>m_noise = 0.5 * Random.randF()</code> раз в <code>NOISE_PERIOD = 3000</code> мс.</li>
+<li><code>Draw</code>: world-space — <code>CacheSetXformWorld(LM)</code> (LM = <code>m_item_transform × cover_bone × m_map_attach_offset</code>), <code>CUIWindow::Draw()</code>, <code>ScreenFrustumLIT().Clear()</code>.</li>
+</ul>
+<h3 id="cflare"><code>CFlare</code><a class="headerlink" href="#cflare" title="Permanent link">&para;</a></h3>
+<p>Поля: <code>light_lanim</code> (<code>CLAItem*</code>), <code>light_render</code> (<code>ref_light</code>), <code>m_pFlareParticles</code> (<code>CParticlesObject*</code>), <code>m_work_time_sec</code>.</p>
+<p>FSM: <code>eFlareHidden</code> → <code>eFlareShowing</code> (<code>ActivateFlare</code>: <code>attach_item</code>, <code>anm_show</code>, <code>SwitchOn</code>) → <code>eFlareIdle</code> (lanim <code>flare_lanim_idle</code>, <code>PlayAnimIdle</code>) → <code>eFlareHiding</code> (<code>anm_hide</code>) → <code>eFlareHidden</code>; параллельно <code>eFlareDropping</code> (<code>anm_drop</code> → <code>SetDropManual(TRUE)</code> → <code>eFlareHidden</code> + <code>processing_activate()</code> — физика).</p>
+<p><code>SwitchOn</code>: <code>light_create</code> (POINT, с тенью), lanim <code>flare_lanim_showing</code>, <code>CParticlesObject::Create(working_particles)</code>. <code>SwitchOff</code>: <code>SetCondition(0)</code>, destroy light + particles, <code>processing_deactivate()</code>.</p>
+<p><code>UpdateCL</code>: <code>t = CurrStateTime()/1000</code>; при <code>t &gt;= m_work_time_sec</code> — <code>SwitchOff</code>; при <code>t + 2 &gt; m_work_time_sec</code> — <code>DropFlare()</code> (за 2 c до конца); <code>fBrightness = 1 - pow(t/work, 4)</code>; <code>SetCondition(1 - t/work)</code>; цвет — из lanim (<code>CalculateBGR</code>), <strong>но затем override <code>fclr.set(1,1,1,1)</code></strong> (цвет lanim не применяется — форк-заглушка); позиция — <code>FirePoint</code> (firedeps при HUD / bone <code>flare_point</code> вне HUD); частицы — <code>UpdateParent(ParticlesMatrix(...))</code>.</p>
+<h3 id="cmedkit-cantirad"><code>CMedkit</code> / <code>CAntirad</code><a class="headerlink" href="#cmedkit-cantirad" title="Permanent link">&para;</a></h3>
+<p>Пустые классы. Всё поведение — в <code>CEatableItem</code> (<code>m_iMaxUses</code>/<code>m_iRemainingUses</code>/<code>m_bRemoveAfterUse</code>/<code>m_fWeightFull</code>/<code>m_fWeightEmpty</code>, <code>UseBy(CEntityAlive*)</code>, <code>Empty()</code>, <code>CanDelete()</code>, <code>Weight()</code>) + Lua-скрипты. Различие «аптечка vs антрад» — только в <code>section_name</code> (CLSID) и в данных секции ini, которые скрипты читают через <code>CScriptGameObject</code> (ит. 14).</p>
+<h2 id="5">5. Взаимодействие<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><code>CInventoryItemObject</code> / <code>CEatableItem</code> / <code>CPhysicItem</code></strong> (порц. 10, <code>inventory-item.md</code>) — базовые классы всех четырёх типов; события <code>OnMoveToRuck</code>/<code>OnH_*</code>, condition/uses.</li>
+<li><strong><code>CHudItem</code> / <code>CHudItemObject</code></strong> (порц. 10) — <code>CPda</code>/<code>CFlare</code>: FSM (<code>eShowing</code>/<code>eHiding</code>/<code>eIdle</code>/<code>eHidden</code>), <code>HudItemData()</code>, <code>PlayHUDMotion</code>, <code>firedeps</code>.</li>
+<li><strong><code>CCustomDevice</code></strong> (порц. 11, <code>misc-items.md</code>) — базовый класс <code>CDosimeter</code> (<code>CreateUI</code>, <code>render_item_3d_ui</code>, <code>UpdateCL</code>-обвязка).</li>
+<li><strong><code>Feel::Touch</code></strong> (порц. 27, <code>feel.md</code>) — <code>CPda</code>: наполнение <code>m_active_contacts</code>, обмен PDA в MP.</li>
+<li><strong><code>CInventoryOwner</code></strong> (порц. 10) — <code>NewPdaContact</code>/<code>LostPdaContact</code> (реализация в <code>CActor</code>, порц. 14–23), <code>GetPDA()</code>.</li>
+<li><strong><code>CActor</code></strong> (порц. 14–23) — носитель: <code>g_Radiation()</code> (дозиметр), <code>cam_freelook</code>, <code>MovingState()</code>, <code>fFPCamYaw/PitchMagnitude</code>, <code>inventory()</code>, <code>StopSprint</code>.</li>
+<li><strong><code>CUIPdaWnd</code></strong> (ит. 10, UI) — <code>GetPdaMenu()</code>: <code>ShowDialog/HideDialog/Enable/IsEnabled/IsShown</code>, <code>target_joystickrot</code>/<code>joystickrot</code>/<code>target_buttonpress</code>/<code>buttonpress</code>, <code>ResetJoystick</code>, <code>m_power</code>.</li>
+<li><strong><code>g_player_hud</code></strong> (порц. 21) — <code>attach_item</code>/<code>detach_item</code>, <code>reset_thumb</code>, <code>m_adjust_mode</code>/<code>m_adjust_offset</code>, <code>inertion_allowed()</code>, <code>attached_item(0)</code>.</li>
+<li><strong><code>g_pGamePersistent-&gt;pda_shader_data</code></strong> (порц. 14) — <code>pda_display_factor</code>, <code>pda_displaybrightness</code>, <code>pda_psy_influence</code> (передаются в PDA-шейдер).</li>
+<li><strong><code>CParticlesObject</code></strong> (ит. 4) — <code>CFlare::SwitchOn</code>/<code>SwitchOff</code>.</li>
+<li><strong><code>LALib</code></strong> (<code>LightAnimLibrary</code>, порц. 10 ит. 2) — <code>flare_lanim_idle</code>/<code>flare_lanim_showing</code> у <code>CFlare</code>.</li>
+<li><strong>Lua</strong> (ит. 14) — <code>pda.on_low_battery</code> (разовый при первом входе в power-saving), <code>play_function</code> (<code>m_functor_str</code> из ini), <code>CEatableItem::UseBy</code> — применение аптечки/антрада.</li>
+<li><strong>Сеть</strong> (ит. 12) — <code>CSE_ALifeItemPDA</code>: <code>m_original_owner</code>, <code>m_specific_character</code>, <code>m_info_portion</code>; <code>CPda::save/load</code> — <code>m_sFullName</code>. <code>CFlare</code>/<code>CMedkit</code>/<code>CAntirad</code> — базовый <code>CSE_ALifeItem</code>.</li>
+</ul>
+<h2 id="6">6. Потоки<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<h3 id="pda">PDA: показ → экран → зум<a class="headerlink" href="#pda" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Inv as инвентарь
+    participant Pda as CPda
+    participant FSM as OnStateSwitch/OnAnimationEnd
+    participant UI as CUIPdaWnd
+    participant Shd as pda_shader_data
+    Inv-&gt;&gt;Pda: OnActiveItem() → SwitchState(eShowing)
+    FSM-&gt;&gt;Pda: eShowing: attach_item, sndShow, anm_show
+    FSM-&gt;&gt;Shd: pda_display_factor = 0
+    Note over Pda: target_screen_switch = now + screen_on_delay
+    loop каждый кадр, state != eHidden
+        Pda-&gt;&gt;Pda: UpdateCL()
+        Pda-&gt;&gt;UI: ShowDialog/HideDialog/Enable по battery/state
+        Pda-&gt;&gt;Shd: brightness, display (плавное 0.25/0.75 c), psy_influence
+        Pda-&gt;&gt;Pda: UpdateHudAdditional: смещение, стрейф, инерция, zoom
+    end
+    Note over Pda: kWPN_RELOAD → m_bZoomed = !m_bZoomed
+    Pda-&gt;&gt;UI: Enable(true/false)
+    Inv-&gt;&gt;Pda: OnHiddenItem() → eHiding → eHidden → detach</code></pre>
+<h3 id="pda-mp-">PDA: тактильный контакт (MP-обмен)<a class="headerlink" href="#pda-mp-" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Sched as shedule_Update
+    participant Touch as Feel::Touch
+    participant Pda as CPda
+    participant Owner as CInventoryOwner (H_Parent)
+    loop каждый кадр, IsOn и владелец = CurrentEntity
+        Sched-&gt;&gt;Pda: shedule_Update(dt)
+        Pda-&gt;&gt;Touch: feel_touch_update(Position(), m_fRadius)
+        Touch-&gt;&gt;Pda: feel_touch_new(CObject*)
+        Pda-&gt;&gt;Owner: NewPdaContact(CInventoryOwner*)
+        Touch-&gt;&gt;Pda: feel_touch_delete(CObject*)
+        Pda-&gt;&gt;Owner: LostPdaContact(CInventoryOwner*)
+        Pda-&gt;&gt;Pda: UpdateActiveContacts() → m_active_contacts
+    end
+    Note over Pda: feel_touch_contact: монстры — true; чужие PDA — true; свой — false</code></pre>
+<h3 id="ui">Дозиметр: цикл UI<a class="headerlink" href="#ui" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Dev as CDosimeter
+    participant UI as CUIDosimeter
+    participant Actor as CActor
+    loop каждый кадр (device shown)
+        Dev-&gt;&gt;UI: update()
+        UI-&gt;&gt;Actor: g_Radiation() * 38.7 + noise
+        UI-&gt;&gt;UI: 4 сегмента green_N (hud\p3d)
+        UI-&gt;&gt;UI: work-индикатор (1 c период)
+        Dev-&gt;&gt;UI: Draw() (render_item_3d_ui)
+        UI-&gt;&gt;UI: world-space: item_transform × cover_bone × ui_p/ui_r
+    end</code></pre>
+<h3 id="_1">Сигнальная ракета: жизненный цикл<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Pda as CFlare
+    participant FSM as OnStateSwitch
+    participant Light as light_render
+    participant Part as CParticlesObject
+    Pda-&gt;&gt;Pda: ActivateFlare()
+    Pda-&gt;&gt;FSM: eFlareShowing: attach_item, anm_show
+    Pda-&gt;&gt;Light: SwitchOn: light_create, lanim, particles
+    FSM-&gt;&gt;FSM: eFlareIdle (lanim flare_lanim_idle)
+    loop каждый кадр, пока active
+        Pda-&gt;&gt;Pda: UpdateCL: t = CurrStateTime/1000
+        alt t + 2 &gt; work_time
+            Pda-&gt;&gt;FSM: eFlareDropping: anm_drop
+            Note over Pda: SetDropManual, физика
+        else t &gt;= work_time
+            Pda-&gt;&gt;Light: SwitchOff: destroy light+particles, condition=0
+        end
+    end</code></pre>
+<h2 id="7">7. Конфигурация<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<p>Секции <code>lts_alife/lts_alife_devices</code> / <code>lts_alife/lts_alife_items</code> (ключи по <code>Load</code>):</p>
+<ul>
+<li><strong><code>device_pda</code></strong> (<code>CPda::Load</code>): <code>radius</code> → <code>m_fRadius</code>, <code>play_function</code> → <code>m_functor_str</code> (Lua-функция), <code>power_saving_brightness</code> (def 0.6), <code>power_saving_charge</code> (def 0.15), <code>joystick_bone</code> (имя bone), звуки <code>snd_draw</code>/<code>snd_holster</code>/<code>snd_draw_empty</code>/<code>snd_holster_empty</code>/<code>snd_btn_press</code>/<code>snd_btn_release</code>/<code>snd_empty</code>, <code>screen_on_delay</code>/<code>screen_off_delay</code>, <code>thumb_rot_x</code>/<code>thumb_rot_y</code>, <code>nearwall_zoomed_range</code> (def 0.1).</li>
+<li><strong><code>device_flare</code></strong> (<code>CFlare::Load</code>): <code>work_time_sec</code> (время горения), <code>working_particles</code> (имя particle-системы).</li>
+<li><strong><code>obj_medkit</code></strong> / <strong><code>obj_bandage</code></strong> / <strong><code>obj_antirad</code></strong> (<code>CEatableItem::Load</code> + <code>CPhysicItem::Load</code>): <code>max_uses</code>, <code>remaining_uses</code>, <code>remove_after_use</code>, <code>weight_full</code>, <code>weight_empty</code> (+ физика: <code>ph_type</code> и т.п. — порц. 10). Конкретные «лечебные» параметры (сколько здоровья/радиации) — <strong>не в C++</strong>, а в Lua-скриптах (читают секцию через <code>CScriptGameObject</code>).</li>
+<li><strong><code>ui_p</code> / <code>ui_r</code></strong> (секция предмета, для <code>CUIDosimeter::construct</code>): позиция/ориентация цифрового индикатора относительно bone <code>cover</code>.</li>
+<li><strong><code>ui_dosimeter.xml</code></strong> (<code>$ui_ltrs$</code>, <code>CUIDosimeter::construct</code>): раскладка окна дозиметра (<code>dosimeter:wrk_area</code>, <code>seg1..4</code>, <code>work</code>).</li>
+</ul>
+<h2 id="8">8. Ограничения и дебаг<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><code>CMedkit</code>/<code>CAntirad</code> — пустые маркеры.</strong> Если «аптечка не лечит» — проблема не в C++, а в Lua-скриптах (ит. 14) или в данных секции ini. C++-классы несут только uses/condition/физика.</li>
+<li><strong><code>CPda::m_idOriginalOwner</code></strong> — PDA «включается» только у оригинального владельца (<code>OnH_A_Chield</code>). При смене владельца PDA остаётся выключенным (до передачи оригиналу). <code>m_SpecificChracterOwner</code> — для привязки к конкретному NPC.</li>
+<li><strong><code>CFlare::UpdateCL</code></strong> — цвет lanim вычисляется, но <strong>override <code>fclr.set(1,1,1,1)</code></strong> (L162) — свет всегда белый (форк-заглушка, lanim-цвет не применяется).</li>
+<li><strong><code>CPda::UpdateCL</code></strong> — при <code>!AF_3D_PDA</code> (PDA без 3D-модели) — <code>Activate(NO_ACTIVE_SLOT)</code> + return: вся 3D-обвязка (зум, инерция) не работает, только UI.</li>
+<li><strong><code>CPda::UpdateHudAdditional</code></strong> — самый объёмный метод порциона (~370 строк); при отладке HUD-сдвигов PDA смотреть именно его. Параметры инерции — в <code>m_measures.m_inertion_params</code> (ini предмета, порц. 10).</li>
+<li><strong><code>CUIDosimeter</code></strong> — <code>MAX_RAD = 5000</code> (clamp), <code>g_Radiation * 38.7</code> — магический множитель (мКв → условные единицы); шум <code>0.5 * randF()</code> раз в 3 c.</li>
+<li><strong>Сеть</strong>: <code>CPda</code> реплицирует <code>m_sFullName</code> (<code>save/load</code>) + <code>m_original_owner</code>/<code>m_specific_character</code> через <code>CSE_ALifeItemPDA</code> (ит. 12). Состояние экрана/зум/инерция — <strong>клиентские</strong> (не реплицируются).</li>
+<li><strong><code>CFlare</code></strong> не экспортируется в Lua (в <code>torch_script.cpp</code> только <code>CTorch</code>, <code>CPda</code>, детекторы).</li>
+<li><strong><code>CMedkit</code> зарегистрирован дважды</strong> (<code>obj_medkit</code> + <code>obj_bandage</code>) — один C++-класс, два CLSID; различие только в данных секций.</li>
+</ul>
+<h2 id="9">9. Ссылки<a class="headerlink" href="#9" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../inventory-item/">inventory-item.md</a> — <code>CInventoryItemObject</code>, <code>CEatableItem</code>, <code>CPhysicItem</code> (порц. 10)</li>
+<li><a href="../misc-items/">misc-items.md</a> — <code>CCustomDevice</code> (базовый класс дозиметра), <code>CTorch</code>/<code>CFlashlight</code> (порц. 11)</li>
+<li><a href="../game-object/">game-object.md</a> — <code>CGameObject</code> (порц. 3)</li>
+<li><a href="../class-registry/">class-registry.md</a> — регистрация фабрики (порц. 2)</li>
+<li><a href="../feel/">feel.md</a> — <code>Feel::Touch</code> (порц. 27)</li>
+<li><a href="../entity/">entity.md</a> — <code>CEntity::g_Radiation</code>, condition (порц. 5)</li>
+<li><a href="../actor/">actor.md</a> — <code>CActor</code>: <code>NewPdaContact</code>/<code>LostPdaContact</code>, <code>cam_freelook</code>, <code>MovingState</code> (порц. 14)</li>
+<li><a href="../actor-hud/">actor-hud.md</a> — <code>g_player_hud</code> (порц. 21)</li>
+<li><a href="../script-game-object/">script-game-object.md</a> — Lua-доступ <code>CMedkit</code>/<code>CAntirad</code>/<code>CPda</code> (порц. 13, ит. 14)</li>
+<li><a href="../../../architecture/object-model/">architecture/object-model.md</a> — обновляется в порц. 30</li>
+</ul>
+<h2 id="10">10. Источник<a class="headerlink" href="#10" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Файл</th>
+<th>Строк</th>
+<th>Классы</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>src/xrGame/PDA.h</code></td>
+<td>133</td>
+<td><code>CPda</code>, <code>PDA_LIST</code></td>
+</tr>
+<tr>
+<td><code>src/xrGame/PDA.cpp</code></td>
+<td>1095</td>
+<td><code>CPda</code></td>
+</tr>
+<tr>
+<td><code>src/xrGame/Dosimeter.h</code></td>
+<td>17</td>
+<td><code>CDosimeter</code></td>
+</tr>
+<tr>
+<td><code>src/xrGame/Dosimeter.cpp</code></td>
+<td>23</td>
+<td><code>CDosimeter</code></td>
+</tr>
+<tr>
+<td><code>src/xrGame/UIDosimeter.h</code></td>
+<td>35</td>
+<td><code>CUIDosimeter</code></td>
+</tr>
+<tr>
+<td><code>src/xrGame/UIDosimeter.cpp</code></td>
+<td>120</td>
+<td><code>CUIDosimeter</code></td>
+</tr>
+<tr>
+<td><code>src/xrGame/flare.h</code></td>
+<td>37</td>
+<td><code>CFlare</code></td>
+</tr>
+<tr>
+<td><code>src/xrGame/flare.cpp</code></td>
+<td>215</td>
+<td><code>CFlare</code></td>
+</tr>
+<tr>
+<td><code>src/xrGame/medkit.h</code></td>
+<td>19</td>
+<td><code>CMedkit</code></td>
+</tr>
+<tr>
+<td><code>src/xrGame/medkit.cpp</code></td>
+<td>16</td>
+<td><code>CMedkit</code></td>
+</tr>
+<tr>
+<td><code>src/xrGame/antirad.h</code></td>
+<td>19</td>
+<td><code>CAntirad</code></td>
+</tr>
+<tr>
+<td><code>src/xrGame/antirad.cpp</code></td>
+<td>17</td>
+<td><code>CAntirad</code></td>
+</tr>
+<tr>
+<td><code>src/xrGame/eatable_item.h/.cpp</code></td>
+<td>53+190</td>
+<td><code>CEatableItem</code> (база: uses, weight, <code>UseBy</code>)</td>
+</tr>
+<tr>
+<td><code>src/xrGame/eatable_item_object.h/.cpp</code></td>
+<td>83+211</td>
+<td><code>CEatableItemObject</code> (композиция <code>CEatableItem</code> + <code>CPhysicItem</code>)</td>
+</tr>
+<tr>
+<td><code>src/xrGame/eatable_item_script.cpp</code></td>
+<td>24</td>
+<td>Lua-регистрация <code>CEatableItem</code></td>
+</tr>
+<tr>
+<td><code>src/xrGame/torch_script.cpp</code></td>
+<td>L17–18</td>
+<td>Lua-регистрация <code>CPda</code></td>
+</tr>
+<tr>
+<td><code>src/xrServerEntities/object_factory_register.cpp</code></td>
+<td>L344–346, L404–405</td>
+<td>Регистрация фабрики (medkit/bandage/antirad; pda/flare)</td>
+</tr>
+<tr>
+<td><code>src/xrServerEntities/xrServer_Objects_ALife_Items.h</code></td>
+<td>L253–261</td>
+<td><code>CSE_ALifeItemPDA</code> (<code>m_original_owner</code>, <code>m_specific_character</code>, <code>m_info_portion</code>)</td>
+</tr>
+</tbody>
+</table>
 
 
 

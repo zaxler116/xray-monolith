@@ -959,6 +959,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#xrcore_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Как читать xrCore
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -970,7 +981,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#xrcore_1" class="md-nav__link">
+  <a href="#xrcore_2" class="md-nav__link">
     <span class="md-ellipsis">
       
         Чего xrCore НЕ делает
@@ -1026,6 +1037,17 @@
       
         <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Частые вопросы
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         Связанные страницы
@@ -5926,6 +5948,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#xrcore_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Как читать xrCore
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5937,7 +5970,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#xrcore_1" class="md-nav__link">
+  <a href="#xrcore_2" class="md-nav__link">
     <span class="md-ellipsis">
       
         Чего xrCore НЕ делает
@@ -5995,6 +6028,17 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
+        Частые вопросы
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
         Связанные страницы
       
     </span>
@@ -6021,6 +6065,21 @@
 
 <h1 id="xrcore">xrCore — Фундамент<a class="headerlink" href="#xrcore" title="Permanent link">&para;</a></h1>
 <p><code>xrCore</code> — самый нижний слой движка. <strong>Без внутренних зависимостей</strong>: не <code>#include</code>'ит ни один другой модуль. От него начинается всё: типы, память, строки, лог, файловая система, конфиги, сжатие, архивы, математика.</p>
+<p>Что это значит на практике: «нижний слой» — это не про важность, а про <strong>то, что видно в вашем <code>#include</code></strong>. Если ваш код включает <code>xrMemory.h</code>, <code>xrstring.h</code>, <code>xr_ini.h</code> или <code>LocatorAPI.h</code> — вы уже работаете в <code>xrCore</code>, даже если пишете «игровой» код. Практически любой файл движка включает хотя бы один заголовок <code>xrCore</code> прямо или косвенно (через <code>xrCore.h</code>), поэтому правила этого слоя (единый аллокатор, <code>shared_str</code> вместо <code>std::string</code>, <code>Msg</code> вместо <code>printf</code>) действуют на весь проект.</p>
+<h2 id="xrcore_1">Как читать xrCore<a class="headerlink" href="#xrcore_1" title="Permanent link">&para;</a></h2>
+<p>Страницы модуля расположены <strong>по порядку слоёв</strong>: каждый следующий слой строится на предыдущем, так что чтение в этом порядке — кратчайший путь к пониманию.</p>
+<ol>
+<li><a href="types-math/">Типы и математика</a> — с этого начинается любой код движка: <code>s8</code>–<code>u64</code>, <code>Fvector</code>/<code>Fmatrix</code>, CPU-таймеры. Всё остальное использует эти типы.</li>
+<li><a href="memory/">Память</a> — единый аллокатор и <code>xr_alloc</code>/<code>xr_free</code>. Строки, FS и конфиги ниже выделяются память именно так.</li>
+<li><a href="strings/">Строки</a> — <code>shared_str</code> строится на памяти и CRC из типов; это базовая единица данных для логгера, FS и INI.</li>
+<li><a href="logging/">Логирование</a> — <code>Msg</code>/<code>Log</code> работают до инициализации всего остального и пишут через строки.</li>
+<li><a href="filesystem/">Файловая система</a> — <code>IReader</code>/<code>IWriter</code> и виртуальные файлы; поверх памяти и строк.</li>
+<li><a href="inifile/">INI / конфиги</a> — <code>CInifile</code> читает LTX-файлы через файловую систему.</li>
+<li><a href="compression/">Сжатие</a> — LZO/PPMd применяются к данным, которые читает ФС и упаковывает локализатор.</li>
+<li><a href="locator/">Локализатор</a> — LTX-архивы: объединяет сжатие, FS и INI в виртуальную файловую систему, через которую игра открывает файлы.</li>
+<li><a href="system/">Временны́е/системные</a> — инфраструктура (таймеры, синхронизация, CRC, профайлер), которая опирается на все предыдущие слои.</li>
+</ol>
+<p>Если времени мало: прочитайте хотя бы 1–3 (типы → память → строки) — на них опирается 90% кода движка.</p>
 <blockquote>
 <p><strong>Статус</strong>: ✅ разобрано (итерация 1).</p>
 </blockquote>
@@ -6039,7 +6098,7 @@
 <li><strong>Синхронизация</strong>: <code>xrCriticalSection</code>, <code>Lock</code>, <code>ScopeLock</code>, <code>xrSyncronize</code>.</li>
 <li><strong>Время</strong>: <code>CTimer</code>, <code>FTimer</code>, <code>CPU::QPC</code>, <code>CPU::GetCLK</code>.</li>
 </ul>
-<h2 id="xrcore_1">Чего xrCore НЕ делает<a class="headerlink" href="#xrcore_1" title="Permanent link">&para;</a></h2>
+<h2 id="xrcore_2">Чего xrCore НЕ делает<a class="headerlink" href="#xrcore_2" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Не знает про <code>CObject</code>, <code>CGameObject</code>, рендер, AI, физику, сеть.</li>
 <li>Не содержит игровых классов.</li>
@@ -6047,62 +6106,17 @@
 <li>Не содержит Lua.</li>
 </ul>
 <h2 id="_2">Структура модуля<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Подмодуль</th>
-<th>Файлы</th>
-<th>Страница</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Типы и математика</td>
-<td><code>_types.h</code>, <code>_vector3d.h</code>, <code>_matrix.h</code>, <code>_quaternion.h</code>, <code>_sphere.h</code>, <code>_fbox.h</code>, <code>_plane.h</code>, <code>_cylinder.h</code>, <code>_math.h</code>, <code>cpuid.h</code></td>
-<td><a href="types-math/">types-math</a></td>
-</tr>
-<tr>
-<td>Память</td>
-<td><code>xrMemory.h</code>/<code>.cpp</code>, <code>xrMemory_pso.h</code>, <code>xrMemory_POOL.h</code>, <code>xrMEMORY_POOL.h</code>, <code>memory_monitor.h</code>, <code>SubAlloc.hpp</code></td>
-<td><a href="memory/">memory</a></td>
-</tr>
-<tr>
-<td>Строки</td>
-<td><code>xrstring.h</code>/<code>.cpp</code>, <code>string_concatenations.h</code>, <code>xr_trims.h</code></td>
-<td><a href="strings/">strings</a></td>
-</tr>
-<tr>
-<td>Логирование</td>
-<td><code>log.h</code>/<code>.cpp</code></td>
-<td><a href="logging/">logging</a></td>
-</tr>
-<tr>
-<td>Файловая система</td>
-<td><code>FS.h</code>/<code>.cpp</code>, <code>FS_impl.h</code>, <code>FileSystem.h</code>/<code>.cpp</code>, <code>file_stream_reader.h</code>, <code>stream_reader.h</code></td>
-<td><a href="filesystem/">filesystem</a></td>
-</tr>
-<tr>
-<td>INI / конфиги</td>
-<td><code>xr_ini.h</code>/<code>.cpp</code>, <code>ini_id_loader.h</code>, <code>ini_table_loader.h</code></td>
-<td><a href="inifile/">inifile</a></td>
-</tr>
-<tr>
-<td>Сжатие</td>
-<td><code>rt_compressor.h</code>/<code>.cpp</code>, <code>rt_lzo1x*.cpp</code>, <code>ppmd_compressor.h</code>/<code>.cpp</code>, <code>lzhuf.h</code>/<code>.cpp</code>, <code>LzHuf.cpp</code>, <code>compression_ppmd_stream.h</code></td>
-<td><a href="compression/">compression</a></td>
-</tr>
-<tr>
-<td>Локализатор</td>
-<td><code>LocatorAPI.h</code>/<code>.cpp</code>, <code>LocatorAPI_defs.h</code>, <code>LocatorAPI_auth.cpp</code>, <code>LocatorAPI_Notifications.cpp</code>, <code>ELocatorAPI.h</code></td>
-<td><a href="locator/">locator</a></td>
-</tr>
-<tr>
-<td>Временны́е/системные</td>
-<td><code>FTimer.h</code>/<code>.cpp</code>, <code>_math.h</code> (CPU/QPC), <code>xrSyncronize.h</code>/<code>.cpp</code>, <code>Lock.hpp</code>, <code>ScopeLock.hpp</code>, <code>clsid.h</code>, <code>crc32.cpp</code>, <code>cpuid.h</code>/<code>.cpp</code>, <code>net_utils.h</code>/<code>.cpp</code>, <code>intrusive_ptr.h</code>, <code>profiler.h</code></td>
-<td><a href="system/">system</a></td>
-</tr>
-</tbody>
-</table>
+<p>| Подмодуль | Одним предложением | Файлы | Страница |
+|---|---|---|
+| Типы и математика | Базовые типы и математика, на которых построен весь движок: <code>s8</code>–<code>u64</code>, <code>Fvector</code>/<code>Fmatrix</code>/<code>Fquaternion</code>, CPU-таймеры | <code>_types.h</code>, <code>_vector3d.h</code>, <code>_matrix.h</code>, <code>_quaternion.h</code>, <code>_sphere.h</code>, <code>_fbox.h</code>, <code>_plane.h</code>, <code>_cylinder.h</code>, <code>_math.h</code>, <code>cpuid.h</code> | <a href="types-math/">types-math</a> |
+| Память | Единый аллокатор вместо разрозненных <code>malloc</code>'ов: все <code>new</code>/<code>delete</code> движка уходят в <code>Memory</code>, плюс пулы и <code>xr_alloc</code> | <code>xrMemory.h</code>/<code>.cpp</code>, <code>xrMemory_pso.h</code>, <code>xrMemory_POOL.h</code>, <code>xrMEMORY_POOL.h</code>, <code>memory_monitor.h</code>, <code>SubAlloc.hpp</code> | <a href="memory/">memory</a> |
+| Строки | <code>shared_str</code> — интернированные строки: одна копия в памяти, сравнение по CRC, а не побайтово | <code>xrstring.h</code>/<code>.cpp</code>, <code>string_concatenations.h</code>, <code>xr_trims.h</code> | <a href="strings/">strings</a> |
+| Логирование | <code>Msg</code>/<code>Log</code> — единственный канал вывода в консоль и файл; работает ещё до инициализации FS | <code>log.h</code>/<code>.cpp</code> | <a href="logging/">logging</a> |
+| Файловая система | Абстракция чтения/записи (<code>IReader</code>/<code>IWriter</code>) и виртуальные пути: код не знает, файл ли это или запись в LTX-архиве | <code>FS.h</code>/<code>.cpp</code>, <code>FS_impl.h</code>, <code>FileSystem.h</code>/<code>.cpp</code>, <code>file_stream_reader.h</code>, <code>stream_reader.h</code> | <a href="filesystem/">filesystem</a> |
+| INI / конфиги | <code>CInifile</code> — чтение LTX/INI-конфигов (<code>settings.ltx</code>, секции уровней) с поддержкой override'ов | <code>xr_ini.h</code>/<code>.cpp</code>, <code>ini_id_loader.h</code>, <code>ini_table_loader.h</code> | <a href="inifile/">inifile</a> |
+| Сжатие | LZO/PPMd/LzHuf — кодеки, которыми упакованы LTX-архивы и данные в них | <code>rt_compressor.h</code>/<code>.cpp</code>, <code>rt_lzo1x*.cpp</code>, <code>ppmd_compressor.h</code>/<code>.cpp</code>, <code>lzhuf.h</code>/<code>.cpp</code>, <code>LzHuf.cpp</code>, <code>compression_ppmd_stream.h</code> | <a href="compression/">compression</a> |
+| Локализатор | <code>CLocatorAPI</code> — виртуальная ФС над LTX-архивами: <code>FS.r_open("levels/test.ltx")</code> ищет файл и внутри архива | <code>LocatorAPI.h</code>/<code>.cpp</code>, <code>LocatorAPI_defs.h</code>, <code>LocatorAPI_auth.cpp</code>, <code>LocatorAPI_Notifications.cpp</code>, <code>ELocatorAPI.h</code> | <a href="locator/">locator</a> |
+| Временны́е/системные | Инфраструктура: таймеры (<code>CTimer</code>/<code>CPU::QPC</code>), критические секции (<code>Lock</code>/<code>ScopeLock</code>), CRC32, CPUID, профайлер | <code>FTimer.h</code>/<code>.cpp</code>, <code>_math.h</code> (CPU/QPC), <code>xrSyncronize.h</code>/<code>.cpp</code>, <code>Lock.hpp</code>, <code>ScopeLock.hpp</code>, <code>clsid.h</code>, <code>crc32.cpp</code>, <code>cpuid.h</code>/<code>.cpp</code>, <code>net_utils.h</code>/<code>.cpp</code>, <code>intrusive_ptr.h</code>, <code>profiler.h</code> | <a href="system/">system</a> |</p>
 <h2 id="_3">Ключевые глобалы<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -6146,19 +6160,34 @@
 </tbody>
 </table>
 <h2 id="_4">Инициализация<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p><code>xrCore::_initialize(ApplicationName, LogCallback, init_fs, fs_fname)</code> — вызывается при старте:
-1. Инициализирует <code>Memory</code>.
-2. Инициализирует <code>g_pStringContainer</code>.
-3. Инициализирует лог (<code>CreateLog</code>).
-4. Инициализирует CPU (<code>_initialize_cpu</code>).
-5. Если <code>init_fs</code> — инициализирует <code>CLocatorAPI</code> (архивы).</p>
+<p><code>xrCore::_initialize(ApplicationName, LogCallback, init_fs, fs_fname)</code> — вызывается при старте:</p>
+<ol>
+<li>Инициализирует <code>Memory</code>.</li>
+<li>Инициализирует <code>g_pStringContainer</code>.</li>
+<li>Инициализирует лог (<code>CreateLog</code>).</li>
+<li>Инициализирует CPU (<code>_initialize_cpu</code>).</li>
+<li>Если <code>init_fs</code> — инициализирует <code>CLocatorAPI</code> (архивы).</li>
+</ol>
 <p><code>xrCore::_destroy()</code> — обратный порядок.</p>
 <h2 id="_5">Связи<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Тянет</strong>: ничего (внутри движка).</li>
 <li><strong>Тянут</strong>: все остальные модули (<code>xrEngine</code>, <code>xrRender</code>, <code>xrGame</code>, ...).</li>
 </ul>
-<h2 id="_6">Связанные страницы<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h2 id="_6">Частые вопросы<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p><strong>Почему <code>shared_str</code>, а не <code>std::string</code>?</strong>
+Строки движка живут всю сессию и сравниваются постоянно (пути, имена секций INI, ключи). <code>shared_str</code> интернирует строки: одна физическая копия в <code>str_container</code>, сравнение — по 32-битному CRC и refcount, а не побайтовый <code>memcmp</code>. Это быстрее и экономит память. Подробности — <a href="strings/">Строки</a>.</p>
+<p><strong>Что такое LTX-архив?</strong>
+LTX-архив — папка, упакованная в один файл с каталогом (сжатие LZO/PPMd). Игровые данные (<code>gamedata/levels/...</code>, <code>settings.ltx</code>) лежат внутри таких архивов. Для кода движка это прозрачно: <code>FS.r_open("levels/test.ltx")</code> находит файл и внутри архива. Подробности — <a href="locator/">Локализатор</a> и <a href="compression/">Сжатие</a>.</p>
+<p><strong>Почему один аллокатор для всего движка?</strong>
+Все <code>new</code>/<code>delete</code> переопределены и уходят в <code>Memory.mem_alloc</code>. Это даёт единый учёт выделений (<code>mem_usage</code>, debug-имена), пулы для частых мелких объектов и возможность компактизировать память. <code>malloc</code> из CRT в движке не используется. Подробности — <a href="memory/">Память</a>.</p>
+<p><strong>Почему <code>Msg</code>, а не <code>printf</code>?</strong>
+<code>Msg</code> пишет одновременно в файл логирования и в callback (консоль/отладчик) и доступен <strong>до</strong> инициализации файловой системы — с него начинается отладка при старте. Подробности — <a href="logging/">Логирование</a>.</p>
+<p><strong>С чего начать читать код?</strong>
+С <a href="types-math/">Типов и математики</a>, затем <a href="memory/">Память</a> и <a href="strings/">Строки</a> — на них опирается всё остальное. Порядок и причины — в разделе «Как читать xrCore» выше.</p>
+<p><strong>Где в коде находится «старт» движка?</strong>
+В <code>xrCore::_initialize</code> (см. раздел «Инициализация» выше) — он последовательно поднимает память, лог, CPU и FS. Всё остальное в движке запускается поверх этого.</p>
+<h2 id="_7">Связанные страницы<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../../architecture/overview/">Архитектура: Обзор</a> — где <code>xrCore</code> в слоях.</li>
 <li><a href="../../architecture/dependencies/">Зависимости</a> — полный граф.</li>

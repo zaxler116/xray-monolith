@@ -1313,7 +1313,29 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Взаимодействие
+        Два алгоритма, две задачи
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rtc_csize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        rtc_csize — почему это важно
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ppmd-trained-model-multi-thread" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PPMd: trained model и multi-thread
       
     </span>
   </a>
@@ -1324,7 +1346,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Потоки данных
+        Пример: как сжать данные при записи в файл
       
     </span>
   </a>
@@ -1335,7 +1357,7 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Конфигурация
+        Когда что использовать (шпаргалка)
       
     </span>
   </a>
@@ -1344,6 +1366,39 @@
       
         <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Взаимодействие
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Потоки данных
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Конфигурация
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
         Ограничения / дебаг
@@ -6206,7 +6261,29 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Взаимодействие
+        Два алгоритма, две задачи
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rtc_csize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        rtc_csize — почему это важно
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ppmd-trained-model-multi-thread" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PPMd: trained model и multi-thread
       
     </span>
   </a>
@@ -6217,7 +6294,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Потоки данных
+        Пример: как сжать данные при записи в файл
       
     </span>
   </a>
@@ -6228,7 +6305,7 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Конфигурация
+        Когда что использовать (шпаргалка)
       
     </span>
   </a>
@@ -6237,6 +6314,39 @@
       
         <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Взаимодействие
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Потоки данных
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Конфигурация
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
         Ограничения / дебаг
@@ -6413,7 +6523,118 @@
 </ul>
 <h3 id="fs">Интеграция с FS<a class="headerlink" href="#fs" title="Permanent link">&para;</a></h3>
 <p><code>IWriter::w_compressed(ptr, count)</code> → <code>rtc_compress</code> (LZO). Chunk ID помечается <code>CFS_CompressMark</code> (бит 31). При чтении <code>find_chunk</code> возвращает <code>bCompressed=TRUE</code> → <code>r_chunk</code> распаковывает.</p>
-<h2 id="_5">Взаимодействие<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="_5">Два алгоритма, две задачи<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>В движке два основных алгоритма, и они <strong>не взаимозаменяемы</strong> — их выбирают по тому, когда данные читаются:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>LZO 1x</strong> (<code>rtc_*</code>)</th>
+<th><strong>PPMd</strong> (<code>ppmd_*</code>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Скорость</td>
+<td>очень быстрый (тысячи МБ/с)</td>
+<td>медленный (на порядки)</td>
+</tr>
+<tr>
+<td>Степень сжатия</td>
+<td>скромная (~1.1–1.5x на реальных данных)</td>
+<td>высокая (4–10x и более на повторяющихся данных)</td>
+</tr>
+<tr>
+<td>Когда данные читаются</td>
+<td>часто, в рантайме</td>
+<td>один раз, при загрузке</td>
+</tr>
+<tr>
+<td>Где используется</td>
+<td>чанки LTX (<code>w_chunk</code> с <code>CFS_CompressMark</code>), <code>CLocatorAPI</code>, сохранения</td>
+<td>архивы конфигов/скриншотов/гamedata-данных, которые распаковываются на старте</td>
+</tr>
+</tbody>
+</table>
+<p>Правило выбора: <strong>читается каждый кадр/секунду → LZO; сжимается один раз и читается редко → PPMd.</strong> Платить CPU каждый раз при чтении чанка LTX ради экономии дискового места — неверный обмен; наоборот, заставлять PPMd разворачиваться на горячем пути — тоже неверно.</p>
+<p>LZO 9x (<code>rtc9_*</code>) — промежуточный вариант: медленнее LZO 1x, сильнее сжимает. Единственное реальное применение в репозитории — <code>xrNetServer/NET_Compressor.cpp</code>, где он выбран как ENCODE/DECODE для сетевого потока.</p>
+<p>LZHUF (<code>_compressLZ</code>/<code>_decompressLZ</code> из <code>LzHuf.cpp</code>) — это <strong>не LZO</strong>, а наследие X-Ray 1.5. Именно через него идёт <code>IWriter::w_compressed</code> и декомпрессия чанков (<code>FS.cpp:291-303, 348-368</code>) — т.е. «чанки сжатые» в LTX на самом деле LZHUF. Для новых данных использовать не нужно: это легаси, оставшееся в коде ради совместимости со старыми файлами.</p>
+<h2 id="rtc_csize"><code>rtc_csize</code> — почему это важно<a class="headerlink" href="#rtc_csize" title="Permanent link">&para;</a></h2>
+<p>LZO <strong>может увеличить данные</strong>: если вход несжимаемый (случайные байты, уже сжатое видео и т.п.), выход будет чуть больше входа. Поэтому при ручном вызове <code>rtc_compress</code> размер выходного буфера заранее неизвестен — он известен только как верхняя граница.</p>
+<p><code>rtc_csize(in)</code> и возвращает эту границу — <code>in + in/64 + 16 + 3</code> (<code>rt_compressor.cpp:20-24</code>). Корректный шаблон:</p>
+<div class="highlight"><pre><span></span><code><span class="n">u32</span><span class="w"> </span><span class="n">cap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rtc_csize</span><span class="p">(</span><span class="n">src_len</span><span class="p">);</span>
+<span class="n">xr_alloc_buffer</span><span class="p">(</span><span class="n">BUF</span><span class="p">,</span><span class="w"> </span><span class="n">cap</span><span class="p">);</span>
+<span class="n">u32</span><span class="w"> </span><span class="n">out_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rtc_compress</span><span class="p">(</span><span class="n">BUF</span><span class="p">,</span><span class="w"> </span><span class="n">cap</span><span class="p">,</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="n">src_len</span><span class="p">);</span><span class="w">  </span><span class="c1">// out_size &lt;= cap</span>
+</code></pre></div>
+<p>Пропуск <code>rtc_csize</code> и выделение «на глаз» — классический источник переполнения буфера при сжатии. В <code>IWriter::w_compressed</code> эта забота спрятана: <code>_compressLZ</code> сам аллокирует выходной буфер (<code>LzHuf.cpp:725-732</code>), поэтому через <code>w_compressed</code>/<code>w_chunk</code> с <code>CFS_CompressMark</code> размер считать не нужно.</p>
+<h2 id="ppmd-trained-model-multi-thread">PPMd: trained model и multi-thread<a class="headerlink" href="#ppmd-trained-model-multi-thread" title="Permanent link">&para;</a></h2>
+<p><strong>Trained model.</strong> <code>trained_model</code> — глобальный <code>compression::ppmd::stream*</code> (<code>Model.cpp:30</code>). Это предобученное дерево контекстов PPMd: при <code>ppmd_trained_compress</code>/<code>ppmd_trained_decompress</code> начальный корневой контекст модели инициализируется из этой модели вместо «пустого» 256-символьного (<code>Model.cpp:1238-1253</code>). Модель «знает» частые паттерны gamedata, поэтому сжимает сильнее. Уничтожается в <code>xrCore::_destroy</code> (<code>xrCore.cpp:194-201</code>).</p>
+<p><strong>Multi-thread — это кооперативный yield, а не фоновые потоки.</strong> <code>ppmd_compress_mt</code>/<code>ppmd_decompress_mt</code> разбивают вход на куски по 100 КБ (<code>compress_chunk_size</code>, <code>ppmd_compressor.cpp:121</code>) и <strong>после каждого куска вызывают <code>ycb()</code></strong> (<code>ppmd_compressor.cpp:153-154</code>). Это не preemptive параллелизм — функция сама решает, когда отдать управление. Пример использования — <code>xrGame/configs_dumper.cpp:248-263</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ppmd_yield_callback_t</span><span class="w"> </span><span class="n">ts_cb</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">m_yield_cb</span><span class="p">)</span>
+<span class="w">    </span><span class="n">ts_cb</span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">configs_dumper</span><span class="o">::</span><span class="n">switch_thread</span><span class="p">);</span>
+<span class="n">m_buffer_for_compress_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ppmd_compress_mt</span><span class="p">(</span>
+<span class="w">    </span><span class="n">m_buffer_for_compress</span><span class="p">,</span>
+<span class="w">    </span><span class="n">m_buffer_for_compress_capacity</span><span class="p">,</span>
+<span class="w">    </span><span class="n">m_dump_result</span><span class="p">.</span><span class="n">pointer</span><span class="p">(),</span>
+<span class="w">    </span><span class="n">m_dump_result</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span>
+<span class="w">    </span><span class="n">ts_cb</span>
+<span class="p">);</span>
+</code></pre></div>
+<p><code>switch_thread</code> переключает на другой поток, и сжатие продолжается позже — так тяжёлый PPMd не блокирует кадр. Без <code>ycb</code> (или с <code>NULL</code>) функция просто делает всю работу подряд.</p>
+<h2 id="_6">Пример: как сжать данные при записи в файл<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>Пошагово, как устроено сжатие чанка в LTX-подобном файле:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// запись: чанк с меткой сжатия (бит 31)</span>
+<span class="n">W</span><span class="p">.</span><span class="n">open_chunk</span><span class="p">(</span><span class="n">my_chunk_id</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">CFS_CompressMark</span><span class="p">);</span>
+<span class="n">W</span><span class="p">.</span><span class="n">w</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">);</span><span class="w">            </span><span class="c1">// w_compressed внутри: LZHUF -&gt; w(sжатое)</span>
+<span class="n">W</span><span class="p">.</span><span class="n">close_chunk</span><span class="p">();</span>
+
+<span class="c1">// чтение:</span>
+<span class="n">IReader</span><span class="o">*</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FS</span><span class="p">.</span><span class="n">r_open</span><span class="p">(</span><span class="s">&quot;file.ltx&quot;</span><span class="p">);</span>
+<span class="n">IReader</span><span class="o">*</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">R</span><span class="o">-&gt;</span><span class="n">open_chunk</span><span class="p">(</span><span class="n">my_chunk_id</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">CFS_CompressMark</span><span class="p">);</span>
+<span class="c1">// open_chunk -&gt; find_chunk видит CFS_CompressMark</span>
+<span class="c1">//            -&gt; _decompressLZ -&gt; CTempReader (в памяти)</span>
+<span class="n">C</span><span class="o">-&gt;</span><span class="n">r</span><span class="p">(...);</span>
+<span class="n">C</span><span class="o">-&gt;</span><span class="n">close</span><span class="p">();</span><span class="w">                 </span><span class="c1">// обязательно — self-deleting reader</span>
+<span class="n">R</span><span class="o">-&gt;</span><span class="n">close</span><span class="p">();</span>
+</code></pre></div>
+<p>Внутри: <code>open_chunk</code> → <code>find_chunk(ID, &amp;bCompressed)</code> → если <code>bCompressed</code>, данные <code>_decompressLZ</code>-ятся в <code>CTempReader</code> (RAM) (<code>FS.cpp:348-368</code>). Метка сжатия — это просто бит 31 в ID чанка (<code>CFS_CompressMark = 1&lt;&lt;31</code>, <code>FS.h:8</code>), отдельной структуры «заголовок сжатия» нет.</p>
+<h2 id="_7">Когда что использовать (шпаргалка)<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Задача</th>
+<th>Алгоритм</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Чанк в LTX/level/sound, читаемый в рантайме</td>
+<td>LZO-чанк через <code>w_chunk(id                              | CFS_CompressMark)</code> (LZHUF под капотом) — не менять</td>
+</tr>
+<tr>
+<td>Ручное сжатие в рантайме (сохранения, сеть)</td>
+<td><code>rtc_compress</code> + <code>rtc_csize</code></td>
+</tr>
+<tr>
+<td>Сжатие архива конфигов/гamedata на старте</td>
+<td><code>ppmd_compress</code> (+ <code>_mt</code> с yield, если на горячем пути)</td>
+</tr>
+<tr>
+<td>Данные, сжатые и распаковываемые один раз</td>
+<td>PPMd, можно <code>trained</code></td>
+</tr>
+<tr>
+<td>Сеть (сервер)</td>
+<td><code>rtc9_*</code> (как в <code>NET_Compressor</code>)</td>
+</tr>
+<tr>
+<td>Новые «чужие» форматы</td>
+<td>не LZHUF; не reinvent — один из выше</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_8">Взаимодействие<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>graph TD
     A[rtc_compress / rtc_decompress] --&gt; B[LZO 1x]
     C[rtc9_*] --&gt; D[LZO 9x]
@@ -6429,7 +6650,7 @@
 <li><strong>Кто использует</strong>: <code>IWriter</code>/<code>IReader</code> (chunk сжатие), <code>CLocatorAPI</code> (LTX), PPMd — для архивов gamedata (высокая компрессия).</li>
 <li><strong>Зависимости</strong>: <code>Memory</code>, <code>fastdelegate</code> (PPMd mt).</li>
 </ul>
-<h2 id="_6">Потоки данных<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h2 id="_9">Потоки данных<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>sequenceDiagram
     participant Data
     participant LZO as rtc_compress
@@ -6438,14 +6659,14 @@
     LZO-&gt;&gt;Buf: сжатые данные
     LZO--&gt;&gt;Data: размер
     Note over Data,Buf: rtc_csize(src_len) — макс. размер буфера</code></pre>
-<h2 id="_7">Конфигурация<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h2 id="_10">Конфигурация<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
 <ul>
 <li><code>rtc_initialize()</code> — из <code>xrCore::_initialize</code>.</li>
 <li><code>rtc9_initialize/uninitialize</code> — вручную (по необходимости).</li>
 <li>PPMd — <code>ppmd_compress_mt</code> с <code>yield_callback</code> (кооперативная).</li>
 <li><code>trained_model</code> (глобальная) — инициализируется/уничтожается в <code>xrCore::_initialize/_destroy</code> (не <code>_EDITOR</code>).</li>
 </ul>
-<h2 id="_8">Ограничения / дебаг<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h2 id="_11">Ограничения / дебаг<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong><code>rtc_csize(in)</code></strong> — всегда вызывай перед сжатием, чтобы выделить буфер.</li>
 <li>LZO — <strong>быстрый</strong>, но компрессия ~2-3x. PPMd — <strong>медленный</strong>, 4-5x+.</li>
