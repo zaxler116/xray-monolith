@@ -1,8 +1,8 @@
 # Lua-обёртка CScriptGameObject: механика
 
-> **Модуль:** `xrGame` · **Файлы:** `src/xrGame/script_game_object.h` (1135 стр.), `script_game_object.cpp` (1403), `script_game_object2.cpp` (724), `script_game_object3.cpp` (1969), `script_game_object4.cpp` (518), `script_game_object_inventory_owner.cpp` (2649), `script_game_object_script.cpp` (238), `script_game_object_script2.cpp` (139), `script_game_object_script3.cpp` (43892 байта), `script_game_object_use.cpp` (8911 байта), `script_game_object_use2.cpp` (12396 байта) · **Порцион 13/30, итерация 5**
+> **Модуль:** `xrGame` · **Файлы:** `src/xrGame/script_game_object.h` (1352 стр.), `script_game_object.cpp` (1646), `script_game_object2.cpp` (816), `script_game_object3.cpp` (2229), `script_game_object4.cpp` (581), `script_game_object_trader.cpp` (69), `script_game_object_use.cpp` (266), `script_game_object_use2.cpp` (405), `script_game_object_inventory_owner.cpp` (2649), `script_game_object_script.cpp` (238), `script_game_object_script2.cpp` (139), `script_game_object_script3.cpp` (43892 байта) · **Порцион 13–14/30, итерация 5**
 >
-> **Страница общая для порционов 13–18.** Здесь (порц. 13) — только **механика обёртки**: класс, жизненный цикл, back-reference, down-cast-паттерн, Lua-регистрация, `SAFE_WRAP`/BusyHandsDebug, DEBUG-режимы, `CScriptBinder`-мост. Группы API: инвентарь/торг — **порц. 14**, AI/память/монстры — **порц. 15**, прочее (анимация, кости, шлейфы, снаряды) — **порц. 16–17**, actor-специфика — **порц. 18**. Полная сводка Lua API — **итерация 14**.
+> **Страница общая для порционов 13–18.** Порц. 13 — **механика обёртки**: класс, жизненный цикл, back-reference, down-cast-паттерн, Lua-регистрация, `SAFE_WRAP`/BusyHandsDebug, DEBUG-режимы, `CScriptBinder`-мост. Порц. 14 — **базовый API** (§3.3): идентификация/геометрия, состояние/статы, script-control, инвентарь-базовые, use/trade, feel-обвязка, сетевые примитивы, AI-базовые, зоны/транспорт, оружие-базовые, actor-специфика, артефакты, space-restrictor, касты/тест-классы, физика. Группы API: инвентарь/торг — **порц. 15**, AI/память/монстры — **порц. 15**, прочее — **порц. 16–17**, Lua-регистрация — **порц. 18**. Полная сводка Lua API — **итерация 14**.
 
 ## 1. Ответственность
 
@@ -94,6 +94,346 @@ graph TD
 | Прочее: анимация/кости/снаряды | `play_cycle`, `add_animation/clear_animations`, `bone_id/bone_name/bone_transform/bone_position/bone_direction/bone_parent/list_bones`, `set_item`, `aim_time/sniper_*`, `GetAmmoElapsed`, `hud_fire_point/bone*`                              | `script_game_object2.cpp`, `script_game_object4.cpp`, `script_game_object.cpp`                     | **16**  |
 | Прочее: эффекты/транспорт      | `start_particles/stop_particles`, `get_helicopter/get_car/get_stmgun/get_projector`, `set_color_animator`, `PhantomSetEnemy`, `get_physics_shell`, `explode`                                                                                   | `script_game_object2.cpp`, `script_game_object4.cpp`                                               | **17**  |
 | Actor-специфика                | `SetActorPosition/Direction`, `GetMovementSpeed/SetMovementSpeed`, `DisableHitMarks`, `GetActorObjectLookingAt`, `GetActorMaxWeight/...`, `get_scope_ui`, `ActorLookAtPoint`                                                                   | `script_game_object2.cpp`, `script_game_object3.cpp`, `script_game_object_use2.cpp`                | **18**  |
+
+### 3.3 Базовый API (порц. 14, эта страница)
+
+Порцион 14 покрывает **базовые поля/геттеры**, `net_*`-примитивы, `set_*`/`get_*` состояния, `feel_*`-обвязку и `use_*`-базовые методы. Методы распределены по файлам:
+
+#### 3.3.1 Идентификация и геометрия (cpp L58–176, use.cpp L78–106)
+
+| Метод | Возврат | Назначение |
+|-------|---------|------------|
+| `Name()` / `cName()` / `Section()` | `LPCSTR` / `shared_str` | Игровое имя, секция `game.ltx` (use.cpp L93–106) |
+| `clsid()` | `int` | Скриптовый CLSID (use.cpp L87–91) |
+| `Parent()` | `CScriptGameObject*` | Обёртка родителя через `H_Parent()` (use.cpp L78–85) |
+| `Position()` / `Direction()` | `Fvector` | BIND-макросы → `CGameObject` (cpp L107–108) |
+| `Center(bool bHud)` | `Fvector` | Центр; HUD-ветка через `CHudItem` (cpp L58–70) |
+| `Xform(bool bHud)` | `Fmatrix` | Матрица; HUD-ветка (cpp L72–93) |
+| `bounding_box(bool bHud)` | `Fbox` | Бокс; HUD-ветка (cpp L95–105) |
+| `Mass()` | `float` | BIND → `CPhysicsShellHolder::GetMass` (cpp L109) |
+| `ID()` | `u16` | BIND → `CGameObject::ID` (cpp L110) |
+| `getVisible()` / `getEnabled()` | `BOOL` | BIND → `CGameObject` (cpp L111, L113) |
+| `story_id()` | `_STORY_ID` | BIND → `CGameObject::story_id` (cpp L115) |
+| `level_vertex_id()` / `game_vertex_id()` | `u32` | `ai_location()` (cpp L163–171) |
+| `spawn_ini()` | `CScriptIniFile*` | INI-секция спавна (cpp L173–176) |
+| `get_visual_name()` | `LPCSTR` | Имя визуала (2.cpp L719–722) |
+| `set_visual_name(LPCSTR, bool)` | — | Смена визуала + `GE_CHANGE_VISUAL` (2.cpp L670–697) |
+| `Angle()` | `Fvector` | HPB из `XFORM()` (3.cpp L2028–2033) |
+| `ForceSetPosition(Fvector, bool)` | — | Физика-принудительная позиция (3.cpp L1954–1973) |
+| `ForceSetRotation(Fvector, bool)` | — | Физика-принудительная ротация (3.cpp L1976–1997) |
+| `ForceSetAngle(Fvector, bool)` | — | Физика-принудительный угол HPB (3.cpp L1999–2026) |
+| `GetLuminocityHemi()` / `GetLuminocity()` | `float` | Освещённость из renderable (3.cpp L1934–1952) |
+| `SetSpatialType(u32)` / `GetSpatialType()` | — | `spatial.type` (3.cpp L2090–2098) |
+| `GetBulletCheckVisual()` / `SetBulletCheckVisual(bool)` | `bool` | Флаг bullet-check (cpp L758–767, `#ifdef CBULLETMANAGER_EX`) |
+
+#### 3.3.2 Состояние: здоровье, статы, условия (cpp L116–159)
+
+Все — BIND-макросы → `CEntityAlive::conditions()` (порц. 6/7):
+
+| Метод | Тип |
+|-------|-----|
+| `GetHealth` / `SetHealth` / `ChangeHealth` | `float` |
+| `GetPsyHealth` / `SetPsyHealth` / `ChangePsyHealth` | `float` |
+| `GetPower` / `SetPower` / `ChangePower` | `float` |
+| `GetSatiety` / `SetSatiety` / `ChangeSatiety` | `float` |
+| `GetRadiation` / `SetRadiation` / `ChangeRadiation` | `float` |
+| `GetMorale` / `SetMorale` / `ChangeMorale` | `float` |
+| `GetBleeding` / `ChangeBleeding` | `float` |
+| `ChangeCircumspection` | `float` |
+| `MaxHealth` | `float` (BIND → `CEntity::GetMaxHealth`) |
+| `DeathTime` | `u32` (BIND → `CEntity::GetLevelDeathTime`) |
+| `Team` / `Squad` / `Group` | `int` (BIND → `CEntity`) |
+| `GetFOV` / `GetRange` | `float` (BIND → `CEntityAlive::ffGetFov/Range`) |
+| `Accuracy` | `float` (BIND → `CInventoryOwner::GetWeaponAccuracy`) |
+| `set_health_restore_boost(float)` | — (3.cpp L195–203, `CEntityAlive::conditions()`) |
+| `invulnerable()` / `invulnerable(bool)` | `bool` (cpp L1238–1262, `CCustomMonster`) |
+| `wounded()` / `wounded(bool)` | `bool` (4.cpp L228–252, `CAI_Stalker`) |
+| `critically_wounded()` | `bool` (4.cpp L291–302, `CCustomMonster`) |
+| `GetCondition()` / `SetCondition(float)` | `float` (cpp L984–1007, `CInventoryItem`) |
+| `GetPowerCritical()` | `float` (cpp L1009–1019, `CInventoryItem::GetLowestBatteryCharge`) |
+| `WhoHitName()` / `WhoHitSectionName()` | `LPCSTR` (cpp L281–309, `CEntityAlive::conditions().GetWhoHitLastTime()`) |
+| `GetPsyFactor()` / `SetPsyFactor(float)` | `float` (cpp L1021–1043, `CPda`) |
+| `IsDeviceEnabled()` / `SetDeviceEnabled(bool)` | `bool` (cpp L1046–1075, `CPda`/`CCustomDevice`) |
+
+#### 3.3.3 Script-control и действия (cpp L154–224)
+
+| Метод | Возврат | Назначение |
+|-------|---------|------------|
+| `SetScriptControl(LPCSTR, bool)` | — | BIND → `CScriptEntity::SetScriptControl` (cpp L154) |
+| `GetScriptControl()` | `bool` | BIND → `CScriptEntity` (cpp L155) |
+| `GetScriptControlName()` | `LPCSTR` | BIND → `CScriptEntity` (cpp L156) |
+| `GetEnemyStrength()` | `int` | BIND → `CScriptEntity::get_enemy_strength` (cpp L157) |
+| `GetActionCount()` | `u32` | BIND → `CScriptEntity` (cpp L158) |
+| `can_script_capture()` | `bool` | BIND → `CScriptEntity` (cpp L159) |
+| `ResetActionQueue()` | — | `CScriptEntity::ClearActionQueue` (cpp L182–190) |
+| `GetCurrentAction()` | `CScriptEntityAction*` | `CScriptEntity::GetCurrentAction` (cpp L192–201) |
+| `AddAction(const CScriptEntityAction*, bool)` | — | `CScriptEntity::AddAction` (cpp L203–211) |
+| `GetActionByIndex(u32)` | `const CScriptEntityAction*` | `CScriptEntity` (cpp L213–224) |
+
+#### 3.3.4 Инвентарь-базовые (cpp L944–1007, 3.cpp L1047–1164, 2.cpp L699–717)
+
+| Метод | Возврат | Назначение |
+|-------|---------|------------|
+| `Cost()` | `u32` | Цена предмета (cpp L944–954, `CInventoryItem`) |
+| `GetInvGridRect()` / `GetUpgrIconRect()` | `Frect` | Рект инвентаря (cpp L956–982) |
+| `GetCondition()` / `SetCondition(float)` | `float` | Состояние предмета (cpp L984–1007) |
+| `GetPowerCritical()` | `float` | Минимальный заряд батареи (cpp L1009–1019) |
+| `GetInventoryObjectCount()` | `u32` | Кол-во предметов (3.cpp L1047–1058) |
+| `GetActiveItem()` | `CScriptGameObject*` | Активный предмет (3.cpp L1060–1074) |
+| `GetObjectByName(LPCSTR)` | `CScriptGameObject*` | Поиск по имени; ветка `CInventoryBox` (3.cpp L1076–1108) |
+| `GetObjectByIndex(int)` | `CScriptGameObject*` | По индексу (3.cpp L1110–1128) |
+| `GetObjectById(u16)` | `CScriptGameObject*` | По ID; ветка `CInventoryBox` (3.cpp L1130–1164) |
+| `get_current_weight()` | `float` | `CInventoryOwner::inventory().TotalWeight()` (2.cpp L699–707) |
+| `get_max_weight()` | `float` | `CInventoryOwner::inventory().GetMaxWeight()` (2.cpp L709–717) |
+| `eat(CScriptGameObject*)` | — | `CInventoryOwner::inventory().Eat()` (cpp L1077–1103) |
+| `IsInvBoxEmpty()` | `bool` | `CInventoryBox::IsEmpty()` (4.cpp L304–311) |
+| `inv_box_closed(bool, LPCSTR)` / `inv_box_closed_status()` | `bool` | `CInventoryBox::set_closed/closed` (4.cpp L313–338) |
+| `inv_box_can_take(bool)` / `inv_box_can_take_status()` | `bool` | `CInventoryBox::set_can_take/can_take` (4.cpp L340–365) |
+| `deadbody_closed(bool)` / `deadbody_closed_status()` | `bool` | `CInventoryOwner` (3.cpp L294–316) |
+| `deadbody_can_take(bool)` / `deadbody_can_take_status()` | `bool` | `CInventoryOwner` (3.cpp L342–364) |
+| `SetRemainingUses(u8)` / `GetRemainingUses()` / `GetMaxUses()` | — | `CEatableItem` (3.cpp L2035–2072) |
+
+#### 3.3.5 Use-действия и trade (cpp L1286–1355, use.cpp L23–48)
+
+| Метод | Возврат | Назначение |
+|-------|---------|------------|
+| `Use(CScriptGameObject*)` | `bool` | `CGameObject::use()` + `CUIGameSP::StartCarBody` для actor+box/owner (cpp L1286–1317) |
+| `StartTrade(CScriptGameObject*)` | — | `CUIGameSP::StartTrade` (cpp L1319–1336) |
+| `StartUpgrade(CScriptGameObject*)` | — | `CUIGameSP::StartUpgrade` (cpp L1338–1355) |
+| `SetTipText(LPCSTR)` | — | `CUsableScriptObject::set_tip_text` (use.cpp L23–30) |
+| `SetTipTextDefault()` | — | `CUsableScriptObject::set_tip_text_default` (use.cpp L32–39) |
+| `SetNonscriptUsable(bool)` | — | `CUsableScriptObject::set_nonscript_usable` (use.cpp L41–48) |
+| `sell_condition(CScriptIniFile*, LPCSTR)` / `sell_condition(float, float)` | — | `CTradeParameters` (3.cpp L1374–1404) |
+| `buy_condition(CScriptIniFile*, LPCSTR)` / `buy_condition(float, float)` | — | `CTradeParameters` (3.cpp L1406–1436) |
+| `show_condition(CScriptIniFile*, LPCSTR)` | — | `CTradeParameters` (3.cpp L1438–1453) |
+| `buy_supplies(CScriptIniFile*, LPCSTR)` | — | `CInventoryOwner::buy_supplies` (3.cpp L1455–1469) |
+| `buy_item_condition_factor(float)` | — | `trade_parameters().buy_item_condition_factor` (3.cpp L1471–1482) |
+| `buy_item_exponent(float)` / `sell_item_exponent(float)` | — | `trade_parameters()` (3.cpp L1484–1508) |
+| `set_trader_global_anim(LPCSTR)` / `set_trader_head_anim(LPCSTR)` | — | `CAI_Trader::animation()` (trader.cpp L11–33) |
+| `set_trader_sound(LPCSTR, LPCSTR)` | — | `CAI_Trader::animation()` (trader.cpp L35–45) |
+| `external_sound_start(LPCSTR)` / `external_sound_stop()` | — | `CAI_Trader::animation()` (trader.cpp L47–68) |
+
+#### 3.3.6 Feel-обвязка (cpp L311–335, 3.cpp L2074–2088)
+
+| Метод | Возврат | Назначение |
+|-------|---------|------------|
+| `CheckObjectVisibility(const CScriptGameObject*)` | `bool` | Тройной down-cast: `CEntityAlive` → `CScriptEntity` / `CActor::memory().visual()` (cpp L311–335) |
+| `CheckTypeVisibility(const char*)` | `bool` | `CCustomMonster::CheckTypeVisibility` (3.cpp L268–279) |
+| `IterateFeelTouch(luabind::functor<bool>)` | — | Итерация `Feel::Touch::feel_touch` (3.cpp L2074–2088) |
+| `inside(const Fvector&, float)` / `inside(const Fvector&)` | `bool` | `CSpaceRestrictor::inside(Fsphere)` (cpp L1105–1123) |
+| `make_object_visible_somewhen(CScriptGameObject*)` | — | `CAI_Stalker::memory().make_object_visible_somewhen` (3.cpp L1353–1372) |
+| `memory_remove_links(const CScriptGameObject*)` | — | `CCustomMonster::memory().remove_links` (4.cpp L568–580) |
+
+#### 3.3.7 Сетевые примитивы и DestroyObject
+
+| Метод | Возврат | Назначение |
+|-------|---------|------------|
+| `DestroyObject()` | — | `CGameObject::DestroyObject` (3.cpp L2100–2103) |
+| `Kill(CScriptGameObject*, bool)` | — | `CEntity::KillEntity` (use.cpp L108–123) |
+| `Alive()` | `bool` | `CEntity::g_Alive()` (use.cpp L125–135) |
+| `GetRelationType(CScriptGameObject*)` | `ERelationType` | `CEntityAlive::tfGetRelationType` (use.cpp L137–157) |
+| `Hit(CScriptHit*)` | — | `GE_HIT`-пакет → `u_EventSend` (2.cpp L173–190) |
+| `set_fastcall(functor, object)` | — | `Level().ph_commander_scripts()` (use.cpp L229–236) |
+| `set_const_force(Fvector, float, u32)` | — | `Level().ph_commander_physics_worldstep()` (use.cpp L238–266) |
+| `set_enemy_callback(functor[, object])` | — | `CCustomMonster::memory().enemy().useful_callback()` (use.cpp L177–211) |
+| `SetCallback(ECallbackType, functor[, object])` | — | `CGameObject::callback(type)` (use.cpp L213–227) |
+
+#### 3.3.8 AI-базовые (3.cpp, 2.cpp)
+
+| Метод | Возврат | Назначение |
+|-------|---------|------------|
+| `set_fov(float)` / `GetFOV()` | — / `float` | `CCustomMonster::set_fov` / `CEntityAlive::ffGetFov` (cpp L1186–1196, L122) |
+| `set_range(float)` / `GetRange()` | — / `float` | `CCustomMonster::set_range` / `CEntityAlive::ffGetRange` (cpp L1198–1208, L123) |
+| `ChangeTeam(u8, u8, u8)` | — | `CCustomMonster::ChangeTeam` (3.cpp L135–143) |
+| `GetEnemy()` / `GetCorpse()` | `CScriptGameObject*` | `CCustomMonster::GetCurrentEnemy/Corpse` (3.cpp L234–266) |
+| `GetBestEnemy()` / `GetBestDanger()` / `GetBestItem()` | — | `CCustomMonster::memory()` (2.cpp L200–232) |
+| `memory_time(CScriptGameObject&)` / `memory_position(CScriptGameObject&)` | `u32` / `Fvector` | `CCustomMonster::memory()` (2.cpp L234–258) |
+| `enable_memory_object(CScriptGameObject*, bool)` | — | `CCustomMonster::memory().enable` (2.cpp L260–268) |
+| `not_yet_visible_objects()` | `const xr_vector<CNotYetVisibleObject>&` | `CCustomMonster::memory().visual()` (2.cpp L270–280) |
+| `visibility_threshold()` / `enable_vision(bool)` / `vision_enabled()` | — | `CCustomMonster::memory().visual()` (2.cpp L282–316) |
+| `set_sound_threshold(float)` / `restore_sound_threshold()` | — | `CCustomMonster::memory().sound()` (2.cpp L318–340) |
+| `memory_visible_objects()` / `memory_sound_objects()` / `memory_hit_objects()` | `const xr_vector<...>&` | `CCustomMonster::memory()` (3.cpp L99–133) |
+| `SetVisualMemoryEnabled(bool)` | — | `CCustomMonster::memory().visual().enable` (3.cpp L145–153) |
+| `set_vision_speed(float)` / `set_view_distance_factor(float)` | — | `CCustomMonster::memory().visual()` (3.cpp L155–193) |
+| `set_visible_enemy_bias(float, float)` / `set_hit_redirect(float, float)` | — | `CCustomMonster::memory().enemy()` (3.cpp L165–183) |
+| `GetObjectVisibleDistance(CScriptGameObject*)` / `GetObjectLuminocity(CScriptGameObject*)` | `float` | `CCustomMonster::visual_memory()` (3.cpp L205–232) |
+| `set_patrol_path(LPCSTR, ...)` / `inactualize_patrol_path()` | — | `CAI_Stalker::movement().patrol()` (3.cpp L547–566) |
+| `set_previous_point(int)` / `set_start_point(int)` / `get_current_patrol_point_index()` | — / `u32` | `CCustomMonster::movement().patrol()` (cpp L351–381) |
+| `set_patrol_extrapolate_callback(functor[, object])` | — | `CCustomMonster::movement().patrol().extrapolate_callback()` (cpp L1125–1160) |
+| `extrapolate_length()` / `extrapolate_length(float)` | `float` / — | `CCustomMonster::movement().detail()` (cpp L1162–1184) |
+| `set_dest_level_vertex_id(u32)` / `set_dest_game_vertex_id(u32)` | — | `CAI_Stalker::movement()` (3.cpp L568–615) |
+| `set_desired_position()` / `set_desired_position(const Fvector*)` | — | `CAI_Stalker::movement()` (3.cpp L710–731) |
+| `set_desired_direction()` / `set_desired_direction(const Fvector*)` | — | `CAI_Stalker::movement()` (3.cpp L733–767) |
+| `set_body_state(EBodyState)` / `body_state()` / `target_body_state()` | — / `EBodyState` | `CAI_Stalker::movement()` (3.cpp L769–853) |
+| `set_movement_type(EMovementType)` / `movement_type()` / `target_movement_type()` | — / `EMovementType` | `CAI_Stalker::movement()` (3.cpp L780–877) |
+| `set_mental_state(EMentalState)` / `mental_state()` / `target_mental_state()` | — / `EMentalState` | `CAI_Stalker::movement()` (3.cpp L790–901) |
+| `set_path_type(EPathType)` / `path_type()` | — / `EPathType` | `CAI_Stalker::movement()` (3.cpp L812–820, L904–914) |
+| `set_detail_path_type(EDetailPathType)` / `detail_path_type()` | — / `EDetailPathType` | `CAI_Stalker::movement()` (3.cpp L822–830, L916–926) |
+| `set_movement_selection_type(ESelectionType)` | — | `CAI_Stalker::movement().game_selector()` (3.cpp L617–624) |
+| `best_cover(Fvector, Fvector, float, float, float)` / `safe_cover(Fvector, float, float)` | `const CCoverPoint*` | `ai().cover_manager().best_cover` (3.cpp L70–97) |
+| `best_cover_invalidate()` | — | `CAI_Stalker::best_cover_invalidate` (3.cpp L665–676) |
+| `GetCurrentSmartCoverName()` / `GetCurrentLoopholeId()` | `LPCSTR` | `CAI_Stalker::get_current_smart_cover/loophole` (3.cpp L678–708) |
+| `affect_cover()` | `bool` | `CAI_Stalker::brain().affect_cover()` (3.cpp L652–663) |
+| `is_there_items_to_pickup()` | `bool` | `CAI_Stalker::memory().item().selected()` (2.cpp L645–655) |
+| `location_on_path(float, Fvector*)` | `u32` | `CCustomMonster::movement().detail()` (2.cpp L624–643) |
+| `set_ignore_monster_threshold(float)` / `ignore_monster_threshold()` / `restore_ignore_monster_threshold()` | — / `float` | `CAI_Stalker::memory().enemy()` (2.cpp L506–529) |
+| `set_max_ignore_monster_distance(float)` / `max_ignore_monster_distance()` / `restore_max_ignore_monster_distance()` | — / `float` | `CAI_Stalker::memory().enemy()` (2.cpp L543–577) |
+| `vertex_in_direction(u32, Fvector, float)` | `u32` | `ai().level_graph().farthest_vertex_in_direction` (cpp L1210–1236) |
+| `path_completed()` | `bool` | `CCustomMonster::movement().path_completed()` (3.cpp L1287–1297) |
+| `patrol_path_make_inactual()` | — | `CCustomMonster::movement().patrol().make_inactual()` (3.cpp L1299–1309) |
+| `head_orientation()` | `Fvector` | `CAI_Stalker::movement().head_orientation()` (3.cpp L1312–1323) |
+| `is_body_turning()` | `bool` | `CCustomMonster`/`CAI_Stalker` yaw-сравнение (4.cpp L61–80) |
+| `get_current_holder()` | `CHolderCustom*` | `CAI_Stalker::Holder()` / `CActor::Holder()` (2.cpp L488–504) |
+| `weapon_strapped()` / `weapon_unstrapped()` | `bool` | `CAI_Stalker` (3.cpp L1258–1285) |
+| `is_weapon_going_to_be_strapped(CScriptGameObject const*)` | `bool` | `CAI_Stalker` (3.cpp L1573–1591) |
+| `can_select_weapon(bool)` / `can_select_weapon()` | — / `bool` | `CAI_Stalker` (3.cpp L318–340) |
+| `get_actor_relation_flags()` / `set_actor_relation_flags(Flags32)` | `Flags32` / — | `CAI_Stalker::m_actor_relation_flags` (3.cpp L532–545) |
+| `GetRank()` / `GetRankName()` | `CHARACTER_RANK_VALUE` / `LPCSTR` | `CAI_Stalker::Rank()` (3.cpp L626–650) |
+| `GetPatrolPathName()` | `LPCSTR` | `CAI_Stalker`/`CScriptEntity` (3.cpp L424–441) |
+| `set_sight(...)` — 10 перегрузок | — | `CAI_Stalker::sight().setup(...)` (3.cpp L928–1040) |
+| `sight_params()` | `CSightParams` | `CAI_Stalker::sight().current_action()` (4.cpp L268–289) |
+| `g_fireParams()` | `luabind::object` | `CActor`/`CAI_Stalker::g_fireParams` (3.cpp L1593–1613) |
+| `set_enable_anomalies_pathfinding(bool)` / `get_enable_anomalies_pathfinding()` | — / `bool` | `CAI_Stalker` (3.cpp L2173–2194, `#ifdef GAME_OBJECT_EXTENDED_EXPORTS`) |
+| `set_enable_anomalies_damage(bool)` / `get_enable_anomalies_damage()` | — / `bool` | `CAI_Stalker` (3.cpp L2195–2216) |
+| `inside_anomaly()` | `bool` | `CAI_Stalker::inside_anomaly()` (3.cpp L2217–2227) |
+| `set_enable_movement_collision(bool)` | — | `CAI_Stalker` (4.cpp L255–266) |
+| `jump(Fvector, float)` | — | `CBaseMonster::jump` (3.cpp L1339–1350) |
+| `info_add(LPCSTR)` / `info_clear()` | — | DEBUG: `DBG().object_info` (3.cpp L1325–1337) |
+
+#### 3.3.9 Зоны, транспорт, прочее (3.cpp, 4.cpp, use2.cpp)
+
+| Метод | Возврат | Назначение |
+|-------|---------|------------|
+| `EnableAnomaly()` / `DisableAnomaly()` / `IsEnabledAnomaly()` | — / `bool` | `CCustomZone::ZoneEnable/Disable/IsEnabled` (3.cpp L1166–1185) |
+| `ChangeAnomalyIdlePart(LPCSTR, bool)` | — | `CCustomZone::ChangeIdleParticles` (3.cpp L1187–1192) |
+| `GetAnomalyPower()` / `SetAnomalyPower(float)` | `float` | `CCustomZone::GetMaxPower/SetMaxPower` (3.cpp L1194–1206) |
+| `GetAnomalyRadius()` / `SetAnomalyRadius(float)` | `float` | `CCustomZone::GetEffectiveRadius/SetEffectiveRadius` (3.cpp L1208–1220) |
+| `MoveAnomaly(Fvector)` | — | `CCustomZone::MoveScript` (3.cpp L1222–1227) |
+| `set_color_animator(LPCSTR, bool, int, float, int)` | — | `CTorch`/`CFlashlight::SetLanim` (3.cpp L1229–1242) |
+| `reset_color_animator()` | — | `CTorch`/`CFlashlight::ResetLanim` (3.cpp L1244–1256) |
+| `enable_level_changer(bool)` / `is_level_changer_enabled()` | — / `bool` | `CLevelChanger` (4.cpp L384–397) |
+| `set_level_changer_invitation(LPCSTR)` | — | `CLevelChanger::SetLEvelChangerInvitationStr` (4.cpp L399–404) |
+| `get_campfire()` / `get_artefact()` / `get_physics_object()` | `CZoneCampfire*` / `CArtefact*` / `CPhysicObject*` | smart-cast (4.cpp L367–380) |
+| `get_helicopter()` / `get_car()` / `get_stmgun()` / `get_projector()` | `CHelicopter*` / `CCar*` / ... | smart-cast (cpp L244–275, 2.cpp L579–609) |
+| `get_hanging_lamp()` / `get_custom_holder()` | `CHangingLamp*` / `CHolderCustom*` | smart-cast (cpp L256–275) |
+| `get_physics_shell()` | `cphysics_shell_scripted*` | `CPhysicsShellHolder::PPhysicsShell()` (cpp L230–238) |
+| `get_talking_npc()` | `CScriptGameObject*` | `CInventoryOwner::GetTalkPartner()` (2.cpp L744–760) |
+| `GetCurrentWeapon()` | `CScriptGameObject*` | `CAI_Stalker::GetCurrentWeapon()` (3.cpp L281–292) |
+| `GetCurrentOutfit()` / `GetCurrentOutfitProtection(int)` | `CScriptGameObject*` / `float` | `CInventoryOwner::GetOutfit()` (3.cpp L368–396) |
+| `GetFood()` / `GetMedikit()` | `CScriptGameObject*` | `CAI_Stalker` (3.cpp L398–422) |
+| `best_weapon()` | `CScriptGameObject*` | `CAI_Stalker::best_weapon()` + parent-check (2.cpp L82–103) |
+| `set_item(MonsterSpace::EObjectAction[, CScriptGameObject*, u32, u32])` | — | `CObjectHandler::set_goal` (2.cpp L105–147) |
+| `explode(u32)` | — | `CExplosive::GenExplodeEvent` (2.cpp L48–68) |
+| `active_zone_contact(u16)` | `bool` | `CScriptZone::active_contact` (2.cpp L70–80) |
+| `PhantomSetEnemy(CScriptGameObject*)` | — | `CPhantom::SetEnemy` (cpp L1276–1283) |
+| `AttachVehicle(CScriptGameObject*, bool)` / `DetachVehicle(bool)` | — | `CActor::use_HolderEx` (3.cpp L1756–1796, `#ifdef GAME_OBJECT_EXTENDED_EXPORTS`) |
+| `GetAttachedVehicle()` | `CScriptGameObject*` | `CActor::Holder()` / `CAI_Stalker::Holder()` (3.cpp L1798–1822) |
+| `skip_transfer_enemy(bool)` | — | `CBaseMonster` (use2.cpp L339–343) |
+| `set_home(LPCSTR/u32, float, float, bool, float)` | — | `CBaseMonster::Home->setup` (use2.cpp L345–355) |
+| `remove_home()` | — | `CBaseMonster::Home->remove_home()` (use2.cpp L357–361) |
+| `fake_death_fall_down()` / `fake_death_stand_up()` | `bool` / — | `CZombie` (use2.cpp L363–387) |
+| `berserk()` | — | `CBaseMonster::set_berserk()` (use2.cpp L389–393) |
+| `set_custom_panic_threshold(float)` / `set_default_panic_threshold()` | — | `CBaseMonster` (use2.cpp L395–405) |
+| `GetMonsterHitInfo()` | `CScriptMonsterHitInfo` | `CBaseMonster::HitMemory` (use2.cpp L315–335) |
+| `GetSoundInfo()` | `CScriptSoundInfo` | `CBaseMonster::sound()` (use2.cpp ~L280–313) |
+| `add_sound(LPCSTR, u32, ESoundTypes, u32, u32, u32[, LPCSTR])` | `u32` | `CCustomMonster::sound().add` (4.cpp L86–119) |
+| `add_combat_sound(...)` | `u32` | `CAI_Stalker::sound().add` + `CStalkerSoundData` (4.cpp L100–113) |
+| `remove_sound(u32)` | — | `CCustomMonster::sound().remove` (4.cpp L121–129) |
+| `set_sound_mask(u32)` | — | `CCustomMonster::sound().set_sound_mask` (4.cpp L131–146) |
+| `play_sound(u32[, u32, u32, u32, u32, u32])` | — | `CCustomMonster::sound().play` (4.cpp L148–208) |
+| `active_sound_count(bool)` | `int` | `CCustomMonster::sound().active_sound_count` (4.cpp L210–226) |
+| `sound_prefix()` / `sound_prefix(LPCSTR)` | `LPCSTR` / — | `CCustomMonster::sound().sound_prefix` (3.cpp L1547–1571) |
+| `start_particles(LPCSTR, LPCSTR)` / `stop_particles(LPCSTR, LPCSTR)` | — | `CParticlesPlayer` (4.cpp L406–445) |
+| `get_smart_cover_description()` | `LPCSTR` | `smart_cover::object::cover().description()` (cpp L1264–1274) |
+
+#### 3.3.10 Оружие-базовые (cpp L773–938, 2.cpp L728–816, 3.cpp L1824–1880)
+
+| Метод | Возврат | Назначение |
+|-------|---------|------------|
+| `GetAmmoElapsed()` / `SetAmmoElapsed(int)` | `u32` / — | `CWeapon`/`CWeaponStatMgun` (cpp L773–803) |
+| `GetAmmoCount(u8)` / `SetAmmoType(u8)` / `GetAmmoType()` / `HasAmmoType(u8)` | — | `CWeapon`/`CWeaponStatMgun` (cpp L806–904) |
+| `SetMainWeaponType(u32)` / `SetWeaponType(u32)` / `GetMainWeaponType()` / `GetWeaponType()` | — | `CWeapon::set_ef_*` (cpp L858–888) |
+| `GetWeaponSubstate()` | `u8` | `CWeapon::m_sub_state` (cpp L906–912) |
+| `GetSuitableAmmoTotal()` | `u32` | `CWeapon::GetSuitableAmmoTotal` (cpp L916–922) |
+| `SetQueueSize(u32)` | — | `CWeaponMagazined::SetQueueSize` (cpp L928–938) |
+| `AmmoGetCount()` / `AmmoSetCount(u16)` / `AmmoBoxSize()` | `u16` / — / `u16` | `CWeaponAmmo` (3.cpp L1617–1642, `#ifdef GAME_OBJECT_EXTENDED_EXPORTS`) |
+| `PlayHudMotion(LPCSTR, bool, u32, float, float)` | `u32` | `CWeapon`/`CHudItem::PlayHUDMotion` (3.cpp L1824–1843) |
+| `SwitchState(u32)` / `GetState()` | — / `u32` | `CWeapon`/`CHudItem` (3.cpp L1845–1880) |
+| `WeaponInGrenadeMode()` | `bool` | `CWeaponMagazinedWGrenade::m_bGrenadeMode` (3.cpp L1882–1889) |
+| `reload_weapon()` | — | `CActor::inventory().ActiveItem()->cast_weapon()->Action(kWPN_RELOAD)` (2.cpp L728–741) |
+| `get_scope_ui()` / `set_scope_ui(LPCSTR)` | `luabind::object` / — | `CWeapon::ZoomTexture()` / `SetUIScope` (2.cpp L763–816) |
+
+#### 3.3.11 Actor-специфика (2.cpp, use2.cpp)
+
+| Метод | Возврат | Назначение |
+|-------|---------|------------|
+| `SetActorPosition(Fvector, bool, bool)` | — | `CActor` XFORM/ForceTransform (2.cpp L363–390) |
+| `SetNpcPosition(Fvector)` | — | `CCustomMonster::ForceTransform` (2.cpp L392–408) |
+| `SetActorDirection(float[, float, float])` / `SetActorDirection(const Fvector&)` | — | `CActor::cam_Active()->Set` (2.cpp L411–437) |
+| `DisableHitMarks(bool)` / `DisableHitMarks()` | — / `bool` | `CActor::DisableHitMarks` (2.cpp L439–460) |
+| `GetMovementSpeed()` / `SetMovementSpeed(Fvector)` | `Fvector` / — | `CActor::character_physics_support()->movement()` (2.cpp L462–486) |
+| `play_cycle(LPCSTR[, bool])` | — | `IKinematicsAnimated::PlayCycle` (2.cpp L149–171) |
+| `ResetBoneProtections(LPCSTR, LPCSTR)` | — | `CAI_Stalker::ResetBoneProtections` (2.cpp L657–664) |
+| `add_animation(LPCSTR, bool, bool)` / `add_animation(LPCSTR, bool, Fvector, Fvector, bool)` | — | `CAI_Stalker::animation().add_script_animation` (3.cpp L443–506) |
+| `clear_animations()` / `animation_count()` | — / `int` | `CAI_Stalker::animation()` (3.cpp L508–530) |
+| `bone_id(LPCSTR, bool)` | `u16` | `IKinematics::LL_BoneID` (cpp L557–580) |
+| `bone_transform(u16, bool)` / `bone_position(u16, bool)` / `bone_direction(u16, bool)` | `Fmatrix` / `Fvector` | `IKinematics` (cpp L582–634) |
+| `bone_parent(u16, bool)` / `bone_name(u16, bool)` | `u16` / `LPCSTR` | `IKinematics` (cpp L636–680) |
+| `set_bone_visible(u16, bool, bool, bool)` / `is_bone_visible(u16, bool)` | — / `bool` | `IKinematics::LL_Set/GetBoneVisible` (cpp L682–728) |
+| `list_bones(bool)` | `luabind::object` | `IKinematics::LL_Bones()` (cpp L731–755) |
+| `SetBoneVisible(LPCSTR, bool, bool, bool)` / `IsBoneVisible(LPCSTR, bool)` | — / `bool` | `IKinematics` (3.cpp L1891–1932) |
+| `hud_fire_point()` / `hud_fire_point2()` / `hud_fire_point_silencer()` | `Fvector` | `CHudItem::HudItemData()->m_measures` (cpp L417–433) |
+| `set_hud_fire_point(Fvector)` / `set_hud_fire_point2(Fvector)` / `set_hud_fire_point_silencer(Fvector)` | — | `CHudItem` (cpp L435–461) |
+| `hud_fire_bone()` / `hud_fire_bone2()` / `hud_fire_bone_silencer()` | `u16` | `CHudItem` (cpp L463–479) |
+| `hud_fire_bone_name()` / `hud_fire_bone2_name()` / `hud_fire_bone_silencer_name()` | `LPCSTR` | `bone_name()` (cpp L481–494) |
+| `set_hud_fire_bone(u16/LPCSTR)` / `set_hud_fire_bone2(u16/LPCSTR)` / `set_hud_fire_bone_silencer(u16/LPCSTR)` | — | `CHudItem` (cpp L496–536) |
+| `hud_inertion_enabled()` / `set_hud_inertion_enabled(bool)` | `bool` / — | `CHudItem` (cpp L537–555) |
+| `GetShaders(bool)` / `GetDefaultShaders(bool)` | `luabind::object` | `IRenderVisual::getDebugShader/Texture` (cpp L1406–1518) |
+| `SetShaderTexture(int, LPCSTR, LPCSTR, bool)` / `ResetShaderTexture(int, bool)` | — | `IRenderVisual::Set/ResetShaderTexture` (cpp L1596–1646) |
+| `AddAttachment(LPCSTR, LPCSTR)` / `GetAttachment(LPCSTR)` / `RemoveAttachment(LPCSTR/script_attachment*)` / `IterateAttachments(functor)` | — | `CGameObject` attachments (cpp L1357–1383, порц. 29) |
+| `bind_object(CScriptBinderObject*)` / `binded_object()` | — | `CScriptBinder`-мост (cpp L341–349, порц. 46) |
+| `action_planner<T>()` | `T*` | `CAI_Stalker::brain()` (use.cpp L159–175, DEBUG) |
+| `operator CObject*()` | `CObject*` | Down-cast (2.cpp L195–198) |
+
+#### 3.3.12 Артефакты и расширенные экспорты (3.cpp, `#ifdef GAME_OBJECT_EXTENDED_EXPORTS`)
+
+| Метод | Возврат | Назначение |
+|-------|---------|------------|
+| `GetArtefactHealthRestoreSpeed()` / `SetArtefactHealthRestoreSpeed(float)` | `float` | `CArtefact::GetHealthPower/SetHealthPower` (3.cpp L1644–1698) |
+| `GetArtefactRadiationRestoreSpeed()` / `SetArtefactRadiationRestoreSpeed(float)` | `float` | `CArtefact` (3.cpp L1652–1706) |
+| `GetArtefactSatietyRestoreSpeed()` / `SetArtefactSatietyRestoreSpeed(float)` | `float` | `CArtefact` (3.cpp L1660–1714) |
+| `GetArtefactPowerRestoreSpeed()` / `SetArtefactPowerRestoreSpeed(float)` | `float` | `CArtefact` (3.cpp L1668–1722) |
+| `GetArtefactBleedingRestoreSpeed()` / `SetArtefactBleedingRestoreSpeed(float)` | `float` | `CArtefact` (3.cpp L1676–1728) |
+| `GetArtefactImmunity(EHitType)` / `SetArtefactImmunity(EHitType, float)` | `float` | `CArtefact::GetImmunity/SetImmunity` (3.cpp L1684–1738) |
+| `GetArtefactAdditionalInventoryWeight()` / `SetArtefactAdditionalInventoryWeight(float)` | `float` | `CArtefact::m_additional_weight` (3.cpp L1740–1754) |
+
+#### 3.3.13 Space-restrictor (3.cpp L2105–2170)
+
+| Метод | Возврат | Назначение |
+|-------|---------|------------|
+| `GetRestrictionType()` | `u8` | `CSpaceRestrictor::m_space_restrictor_type` (3.cpp L2105–2112) |
+| `SetRestrictionType(u8)` | — | `CSpaceRestrictor` + `Level().space_restriction_manager().register_restrictor` (3.cpp L2114–2123) |
+| `ForceSetRestrictionType(u8)` | — | Полный register/unregister (3.cpp L2125–2157) |
+| `InvalidateRestrictions()` | — | `CCustomMonster::movement().restrictions().actual(false)` (3.cpp L2159–2170) |
+
+#### 3.3.14 Касты и тест-классы (4.cpp L510–580)
+
+| Метод | Возврат | Назначение |
+|-------|---------|------------|
+| `cast_Actor()` / `cast_Car()` / `cast_Heli()` / `cast_InventoryOwner()` / `cast_InventoryBox()` / `cast_CustomZone()` / `cast_TorridZone()` / `cast_MosquitoBald()` / `cast_ZoneCampfire()` / `cast_InventoryItem()` / `cast_CustomOutfit()` / `cast_Helmet()` / `cast_Artefact()` / `cast_Ammo()` / `cast_Weapon()` / `cast_Knife()` / `cast_WeaponMagazined()` / `cast_WeaponMagazinedWGrenade()` / `cast_Missile()` / `cast_Explosive()` / `cast_Medkit()` / `cast_EatableItem()` / `cast_Antirad()` / `cast_FoodItem()` / `cast_BottleItem()` | Соответствующий тип / `nullptr` | `smart_cast` (4.cpp L521–565) |
+| `IsEntityAlive()` / `IsInventoryItem()` / `IsInventoryOwner()` / `IsActor()` / `IsCustomMonster()` / `IsWeapon()` / `IsCustomOutfit()` / `IsHelmet()` / `IsScope()` / `IsSilencer()` / `IsGrenadeLauncher()` / `IsWeaponMagazined()` / `IsSpaceRestrictor()` / `IsStalker()` / `IsAnomaly()` / `IsMonster()` / `IsTrader()` / `IsHudItem()` / `IsArtefact()` / `IsAmmo()` / `IsWeaponGL()` / `IsInventoryBox()` | `bool` | `#define TEST_OBJECT_CLASS` (4.cpp L461–507, `#ifdef GAME_OBJECT_TESTING_EXPORTS`) |
+
+#### 3.3.15 Физика и shell (use.cpp L238–266, 3.cpp L1954–2026)
+
+| Метод | Возврат | Назначение |
+|-------|---------|------------|
+| `set_const_force(const Fvector&, float, u32)` | — | `CPHConstForceAction` + `CPHExpireOnStepCondition` (use.cpp L238–266) |
+| `set_fastcall(functor, object)` | — | `CPHScriptGameObjectCondition` + `CPHDummiAction` (use.cpp L229–236) |
+| `get_physics_shell()` | `cphysics_shell_scripted*` | `CPhysicsShellHolder::PPhysicsShell()` (cpp L230–238) |
+| `ForceSetPosition(Fvector, bool)` | — | `CPhysicsShell::SetGlTransformDynamic` (3.cpp L1954–1973) |
+| `ForceSetRotation(Fvector, bool)` | — | `CPhysicsShell::SetGlTransformDynamic` (3.cpp L1976–1997) |
+| `ForceSetAngle(Fvector, bool)` | — | `CPhysicsShell::SetGlTransformDynamic` (3.cpp L1999–2026) |
+| `SetHealthEx(float)` | — | `CEntity::SetfHealth` (4.cpp L449–455, `#ifdef GAME_OBJECT_TESTING_EXPORTS`) |
 
 ## 4. Внутреннее устройство
 
