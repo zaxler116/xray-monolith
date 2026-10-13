@@ -1,8 +1,8 @@
 # Lua-обёртка CScriptGameObject: механика
 
-> **Модуль:** `xrGame` · **Файлы:** `src/xrGame/script_game_object.h` (1352 стр.), `script_game_object.cpp` (1646), `script_game_object2.cpp` (816), `script_game_object3.cpp` (2229), `script_game_object4.cpp` (581), `script_game_object_trader.cpp` (69), `script_game_object_use.cpp` (266), `script_game_object_use2.cpp` (405), `script_game_object_inventory_owner.cpp` (2649), `script_game_object_script.cpp` (238), `script_game_object_script2.cpp` (139), `script_game_object_script3.cpp` (43892 байта) · **Порцион 13–14/30, итерация 5**
+> **Модуль:** `xrGame` · **Файлы:** `src/xrGame/script_game_object.h` (1352 стр.), `script_game_object.cpp` (1646), `script_game_object2.cpp` (816), `script_game_object3.cpp` (2229), `script_game_object4.cpp` (581), `script_game_object_trader.cpp` (69), `script_game_object_use.cpp` (266), `script_game_object_use2.cpp` (405), `script_game_object_inventory_owner.cpp` (3031), `script_game_object_script.cpp` (238), `script_game_object_script2.cpp` (139), `script_game_object_script3.cpp` (43892 байта) · **Порцион 13–15/30, итерация 5**
 >
-> **Страница общая для порционов 13–18.** Порц. 13 — **механика обёртки**: класс, жизненный цикл, back-reference, down-cast-паттерн, Lua-регистрация, `SAFE_WRAP`/BusyHandsDebug, DEBUG-режимы, `CScriptBinder`-мост. Порц. 14 — **базовый API** (§3.3): идентификация/геометрия, состояние/статы, script-control, инвентарь-базовые, use/trade, feel-обвязка, сетевые примитивы, AI-базовые, зоны/транспорт, оружие-базовые, actor-специфика, артефакты, space-restrictor, касты/тест-классы, физика. Группы API: инвентарь/торг — **порц. 15**, AI/память/монстры — **порц. 15**, прочее — **порц. 16–17**, Lua-регистрация — **порц. 18**. Полная сводка Lua API — **итерация 14**.
+> **Страница общая для порционов 13–18.** Порц. 13 — **механика обёртки**: класс, жизненный цикл, back-reference, down-cast-паттерн, Lua-регистрация, `SAFE_WRAP`/BusyHandsDebug, DEBUG-режимы, `CScriptBinder`-мост. Порц. 14 — **базовый API** (§3.3): идентификация/геометрия, состояние/статы, script-control, инвентарь-базовые, use/trade, feel-обвязка, сетевые примитивы, AI-базовые, зоны/транспорт, оружие-базовые, actor-специфика, артефакты, space-restrictor, касты/тест-классы, физика. Порц. 15 — **инвентарь и персонаж** (§3.4): инфо-порции, разговоры/торговля, итерация инвентаря, предметы (перемещение/выброс/активация/торговля), деньги, отношения/симпатия, персонаж (имя/ранг/репутация/община), задачи, магазин, урон, ограничения движения, навески/фонарь/НВЗ, оружие-статусы, AI-stalker (гранаты/прицел/снайпинг/укрытия/бой), двери, расширенные экспорты (навески/апгрейды/коэфф. актёра/looking-at). Группы API: прочее — **порц. 16–17**, Lua-регистрация — **порц. 18**. Полная сводка Lua API — **итерация 14**.
 
 ## 1. Ответственность
 
@@ -89,7 +89,7 @@ graph TD
 
 | Группа                         | Примеры методов                                                                                                                                                                                                                                | Файл-основание                                                                                     | Порцион |
 | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | ------- |
-| Инвентарь/торг/персонаж        | `Cost`, `GetObjectByName/ByIndex/ById`, `GiveInfoPortion`, `GiveTaskToActor`, `Money`, `TransferItem`, `CharacterName/Icon/Rank/Reputation/Community`, `GetStartDialog`, `StartTrade`/`StartUpgrade`, `install_upgrade`                        | `script_game_object_inventory_owner.cpp` (2649 стр.), `script_game_object_use2.cpp`                | **14**  |
+| Инвентарь/торг/персонаж        | `Cost`, `GetObjectByName/ByIndex/ById`, `GiveInfoPortion`, `GiveTaskToActor`, `Money`, `TransferItem`, `CharacterName/Icon/Rank/Reputation/Community`, `GetStartDialog`, `StartTrade`/`StartUpgrade`, `install_upgrade`, `IterateInventory/Ruck/Belt`, `MoveItemToRuck/Slot/Belt`, `DropItem`, `GetGoodwill/SetGoodwill`, `GetSympathy/SetSympathy`, `GetActorMaxWeight/SetActorMaxWeight`, `GetActorJumpSpeed/...`, `Weapon_AddonAttach/Detach`, `InstallUpgrade/HasUpgrade` | `script_game_object_inventory_owner.cpp` (3031 стр.), `script_game_object_use2.cpp`                | **15**  |
 | AI/память/монстры              | `AddAction/ResetActionQueue`, `GetBestEnemy/Danger/Item`, `memory_time/position/remove_links`, `set_fov/set_range`, `ChangeTeam`, `set_body_state/set_movement_type/...`, `best_cover/safe_cover`, `set_patrol_path`, `memory_visible_objects` | `script_game_object3.cpp` (1969), `script_game_object2.cpp`, `script_game_object_smart_covers.cpp` | **15**  |
 | Прочее: анимация/кости/снаряды | `play_cycle`, `add_animation/clear_animations`, `bone_id/bone_name/bone_transform/bone_position/bone_direction/bone_parent/list_bones`, `set_item`, `aim_time/sniper_*`, `GetAmmoElapsed`, `hud_fire_point/bone*`                              | `script_game_object2.cpp`, `script_game_object4.cpp`, `script_game_object.cpp`                     | **16**  |
 | Прочее: эффекты/транспорт      | `start_particles/stop_particles`, `get_helicopter/get_car/get_stmgun/get_projector`, `set_color_animator`, `PhantomSetEnemy`, `get_physics_shell`, `explode`                                                                                   | `script_game_object2.cpp`, `script_game_object4.cpp`                                               | **17**  |
@@ -435,6 +435,230 @@ graph TD
 | `ForceSetAngle(Fvector, bool)` | — | `CPhysicsShell::SetGlTransformDynamic` (3.cpp L1999–2026) |
 | `SetHealthEx(float)` | — | `CEntity::SetfHealth` (4.cpp L449–455, `#ifdef GAME_OBJECT_TESTING_EXPORTS`) |
 
+### 3.4 Инвентарь и персонаж (порц. 15, `script_game_object_inventory_owner.cpp`, 3031 стр.)
+
+Порцион 15 покрывает API «инвентарь-владельца» (CInventoryOwner), персонажа (имя/ранг/репутация/община), денег, отношений (goodwill/relation), разговоров (talk), предметов (перемещение/выброс/торговля), слотов/ремня, весов, задач (GameTaskManager) и «расширенных экспортов» (`#ifdef GAME_OBJECT_EXTENDED_EXPORTS`: навески/апгрейды/коэфф. актёра). Основной down-cast — `CInventoryOwner` (инвентарь/персонаж) и `CActor` (вес/коэфф. движения); отдельные — `CAI_Stalker` (снайпинг/гранаты/укрытия), `CWeaponMagazined` (магазин/навески), `CCustomOutfit`/`CBackpack` (доп. вес), `CTorch` (фонарь), `CCustomMonster` (ограничения движения), `CEntityAlive` (урон/статгер).
+
+#### 3.4.1 Инфо-порции (информация)
+
+| Метод | Возврат | Назначение |
+|-------|---------|------------|
+| `GiveInfoPortion(LPCSTR)` / `DisableInfoPortion(LPCSTR)` | `bool` | `CInventoryOwner::TransferInfo(id, true/false)` (L69–83) |
+| `HasInfo(LPCSTR)` / `DontHasInfo(LPCSTR)` | `bool` | `CInventoryOwner::HasInfo` (L136–150) |
+
+#### 3.4.2 Разговоры и торговля (talk/trade)
+
+| Метод | Возврат | Назначение |
+|-------|---------|------------|
+| `IsTalking()` / `StopTalk()` / `EnableTalk()` / `DisableTalk()` / `IsTalkEnabled()` | `bool` / — | `CInventoryOwner` talk-флаги (L152–185) |
+| `EnableTrade()` / `DisableTrade()` / `IsTradeEnabled()` | — / `bool` | `CInventoryOwner` trade-флаги (L187–206) |
+| `EnableInvUpgrade()` / `DisableInvUpgrade()` / `IsInvUpgradeEnabled()` | — / `bool` | `CInventoryOwner` upgrade-флаги (L208–227) |
+| `RunTalkDialog(CScriptGameObject*, bool)` | — | `CActor::RunTalkDialog` (L1153–1167) |
+| `AllowBreakTalkDialog(bool)` | — | `CInventoryOwner::bDisableBreakDialog = !b` (L1146–1151) |
+| `SwitchToTrade()` / `SwitchToUpgrade()` | — | `CUIGameSP::TalkMenu->SwitchTo*` (только single, L1111–1139) |
+| `SwitchToTalk()` | — | **пустой** — `R_ASSERT("switch_to_talk called ;")` (L1141–1144) |
+| `AddIconedTalkMessage(caption, text, tex[, templ])` | — | → free fn `_AddIconedTalkMessage` → `TalkMenu->AddIconedMessage` (L87–102) |
+| `GiveGameNews(caption, news, tex, delay, show_time[, type])` | — | → free fn `_give_news` → `Actor()->AddGameNews[_deffered]` (L106–134) |
+
+#### 3.4.3 Итерация инвентаря
+
+| Метод | Возврат | Назначение |
+|-------|---------|------------|
+| `ForEachInventoryItems(functor)` | — | `AddAvailableItems` → список, callback `(lua_obj, this)`; `true` — стоп (L229–253) |
+| `IterateInventory(functor, obj)` | — | Обход `inventory().m_all`; callback `(obj, lua_obj)` (L256–271) |
+| `IterateRuck(functor, obj)` | — | Обход `inventory().m_ruck` (L273–288) |
+| `IterateBelt(functor, obj)` | — | Обход `inventory().m_belt` (L290–305) |
+| `IterateInventoryBox(functor, obj)` | — | Обход `CInventoryBox::m_items` (ID) → `Level().Objects.net_Find` (L307–326) |
+
+Важно: `ForEachInventoryItems` передаёт в functor **`CGameObject`** (через `lua_game_object()`), а не `CInventoryItem`. `Iterate*` — **все предметы** (включая невидимые), `ForEachInventoryItems` — только «доступные» (`AddAvailableItems`).
+
+#### 3.4.4 Предметы: перемещение, выброс, активация, торговля
+
+| Метод | Возврат | Назначение |
+|-------|---------|------------|
+| `MarkItemDropped(CScriptGameObject*, bool)` | — | `CInventoryItem::SetDropManual` (L328–347) |
+| `MarkedDropped(CScriptGameObject*)` | `bool` | `CInventoryItem::GetDropManual` (L349–368) |
+| `DropItem(CScriptGameObject*)` | — | Пакет `GE_OWNERSHIP_REJECT` (L445–460) |
+| `DropItemAndTeleport(CScriptGameObject*, Fvector)` | — | `DropItem` + пакет `GE_CHANGE_POS` (L462–470) |
+| `MakeItemActive(CScriptGameObject*)` | — | Пакеты `GEG_PLAYER_ITEM2SLOT` + `GEG_PLAYER_ACTIVATE_SLOT` (L472–496) |
+| `MoveItemToRuck(CScriptGameObject*)` | — | `CanPutInRuck` → пакет `GEG_PLAYER_ITEM2RUCK` (L498–516) |
+| `MoveItemToSlot(CScriptGameObject*, u16, bool)` | — | Пакет `GEG_PLAYER_ITEM2SLOT` (L518–554) |
+| `MoveItemToBelt(CScriptGameObject*)` | — | `CanPutInBelt` → пакет `GEG_PLAYER_ITEM2BELT` (L556–574) |
+| `ItemAllowTrade(CScriptGameObject*)` / `ItemDenyTrade(CScriptGameObject*)` | — | `CInventoryItem::AllowTrade/DenyTrade` (L576–600) |
+| `TransferItem(CScriptGameObject*, CScriptGameObject*)` | — | Пакеты `GE_TRADE_SELL` + `GE_TRADE_BUY` (L603–629) |
+| `TakeItem(CScriptGameObject*)` | — | Если есть parent → `GE_TRADE_SELL/BUY`; если нет → `Game().SendPickUpEvent` (L631–674) |
+| `ItemOnBelt(u32)` | `CScriptGameObject*` | `inventory().m_belt.at(id)` (L2399–2418) |
+| `IsOnBelt(CScriptGameObject*)` | `bool` | `inventory().InBelt(item)` (L2421–2440) |
+| `BeltSize()` | `u32` | `inventory().m_belt.size()` (L2442–2453) |
+| `item_in_slot(u32)` | `CScriptGameObject*` | `inventory().ItemFromSlot(id)` (L1637–1649) |
+| `active_slot()` / `activate_slot(u32)` | `u32` / — | `inventory().GetActiveSlot/Activate` (L1673–1695) |
+| `active_device()` / `show_device(bool)` / `hide_device(bool)` / `force_hide_device()` | `CScriptGameObject*` / — | `ItemFromSlot(DETECTOR_SLOT)` + `CCustomDevice` (L1559–1635) |
+
+#### 3.4.5 Деньги
+
+| Метод | Возврат | Назначение |
+|-------|---------|------------|
+| `Money()` | `u32` | `CInventoryOwner::get_money()` (L676–681) |
+| `GiveMoney(int)` | — | → free fn `GiveMoneySafe` (L735–741) |
+| `TransferMoney(int, CScriptGameObject*)` | — | Проверка `money >= 0`, `GiveMoneySafe` обоим (L710–733) |
+
+`GiveMoneySafe` (free fn, L684–708): overflow/underflow защита — `u32 max` cap при положительном, `0` cap при отрицательном. `TransferMoney` передаёт **реальную** разницу (после cap-а), а не запрошенную сумму.
+
+#### 3.4.6 Отношения и симпатия
+
+| Метод | Возврат | Назначение |
+|-------|---------|------------|
+| `GetGoodwill(CScriptGameObject*)` | `int` | `RELATION_REGISTRY().GetGoodwill` (L746–757) |
+| `SetGoodwill(int, CScriptGameObject*)` | — | `RELATION_REGISTRY().SetGoodwill` (L759–770) |
+| `ForceSetGoodwill(int, CScriptGameObject*)` | — | `RELATION_REGISTRY().ForceSetGoodwill` (L772–783) |
+| `ChangeGoodwill(int, CScriptGameObject*)` | — | `RELATION_REGISTRY().ChangeGoodwill` (L785–796) |
+| `SetRelation(ERelationType, CScriptGameObject*)` | — | `RELATION_REGISTRY().SetRelationType` (L800–820) |
+| `GetAttitude(CScriptGameObject*)` | `int` | `RELATION_REGISTRY().GetAttitude` (L882–889) |
+| `GetSympathy()` / `SetSympathy(float)` | `float` / — | `CInventoryOwner::Sympathy/CharacterInfo().SetSympathy` (L822–846) |
+| `GetCommunityGoodwill_obj(LPCSTR)` / `SetCommunityGoodwill_obj(LPCSTR, int)` | `int` / — | `RELATION_REGISTRY()` по индексу общины (L848–878) |
+
+#### 3.4.7 Персонаж: имя, ранг, репутация, община, иконка
+
+| Метод | Возврат | Назначение |
+|-------|---------|------------|
+| `ProfileName()` | `LPCSTR` | `CharacterInfo().Profile()` (L893–908) |
+| `CharacterName()` | `LPCSTR` | `CInventoryOwner::Name()` (L910–921) |
+| `CharacterIcon()` / `SetCharacterIcon(LPCSTR)` | `LPCSTR` / — | `CInventoryOwner::IconName/SetIcon` (L923–934, L2809–2820) |
+| `CharacterRank()` | `int` | `CInventoryOwner::Rank` / `CBaseMonster::Rank` (L936–952) |
+| `SetCharacterRank(int)` / `ChangeCharacterRank(int)` | — | `CInventoryOwner::SetRank/ChangeRank` (L976–1000) |
+| `CharacterReputation()` / `SetCharacterReputation(int)` / `ChangeCharacterReputation(int)` | `int` / — | `CInventoryOwner::Reputation` (L1002–1039) |
+| `CharacterCommunity()` | `LPCSTR` | `CharacterInfo().Community().id()` (L1041–1052) |
+| `SetCharacterCommunity(LPCSTR, int, int)` | — | `SetCommunity` + `entity->ChangeTeam` (L1054–1075) |
+| `CharacterDialogs()` | `luabind::object` | Lua-таблица dialog IDs (L954–974) |
+| `sound_voice_prefix()` | `LPCSTR` | `SpecificCharacter().sound_voice_prefix()` (L1077–1088) |
+
+#### 3.4.8 Задачи (GameTask)
+
+| Метод | Возврат | Назначение |
+|-------|---------|------------|
+| `GetGameTaskState(LPCSTR)` | `ETaskState` | `Level().GameTaskManager().HasGameTask` (L1092–1101) |
+| `SetGameTaskState(ETaskState, LPCSTR)` | — | `GameTaskManager().SetTaskState` (L1103–1107) |
+| `GiveTaskToActor(CGameTask*, u32, bool, u32)` | — | `GameTaskManager().GiveGameTaskToActor` (L1651–1654) |
+| `GetTask(LPCSTR, bool)` | `CGameTask*` | `GameTaskManager().HasGameTask` (L1656–1659) |
+| `SetActiveTask(CGameTask*)` / `IsActiveTask(CGameTask*)` | — / `bool` | `GameTaskManager().SetActiveTask/ActiveTask` (L1661–1671) |
+
+#### 3.4.9 Магазин (weapon magazine)
+
+| Метод | Возврат | Назначение |
+|-------|---------|------------|
+| `UnloadMagazine(bool)` | — | `CWeaponMagazined::UnloadMagazine`; skip если `hammer_is_clutched` (L370–394) |
+| `ForceUnloadMagazine(bool)` | — | Без проверки hammer (L396–415) |
+
+Оба: `#ifdef STATIONARYMGUN_NEW` — ветка `CWeaponStatMgun` (L372–379, L398–404).
+
+#### 3.4.10 Урон и can_be_harmed
+
+| Метод | Возврат | Назначение |
+|-------|---------|------------|
+| `SetCanBeHarmed(bool)` / `CanBeHarmed()` | — / `bool` | `CEntityAlive::conditions().SetCanBeHarmedState/CanBeHarmed` (L419–443) |
+| `is_hit_anim_playing()` | `bool` | `CEntityAlive::character_physics_support()->is_hit_anim_playing` (L1947–1958) |
+
+#### 3.4.11 Ограничения движения (monster)
+
+| Метод | Возврат | Назначение |
+|-------|---------|------------|
+| `add_restrictions(LPCSTR, LPCSTR)` / `remove_restrictions(LPCSTR, LPCSTR)` / `remove_all_restrictions()` | — | `CCustomMonster::movement().restrictions()` (L1199–1239) |
+| `in_restrictions()` / `out_restrictions()` / `base_in_restrictions()` / `base_out_restrictions()` | `LPCSTR` | `restrictions().in/out/base_in/base_out` (L1241–1287) |
+| `accessible_position(Fvector)` / `accessible_vertex_id(u32)` | `bool` | `restrictions().accessible` (L1289–1315) |
+| `accessible_nearest(Fvector, Fvector&)` | `u32` | `restrictions().accessible_nearest` (L1317–1333) |
+| `enable_movement(bool)` / `movement_enabled()` | — / `bool` | `CCustomMonster::movement().enable_movement/enabled` (L1697–1721) |
+| `construct_restriction_vector` (free fn) | — | Парсинг `shared_str` → `xr_vector<_OBJECT_ID>` через `FindObjectByName` (L1185–1197) |
+
+#### 3.4.12 Навески, фонарь, ночное зрение
+
+| Метод | Возврат | Назначение |
+|-------|---------|------------|
+| `enable_attachable_item(bool)` / `attachable_item_enabled()` | — / `bool` | `CAttachableItem::enable/enabled` (L1335–1357) |
+| `attachable_item_load_attach(LPCSTR)` | — | `CAttachableItem::load_attach_position` + `reattach_items` (L1432–1450) |
+| `night_vision_allowed(bool)` / `enable_night_vision(bool)` / `night_vision_enabled()` | — / `bool` | `CActor::SetNightVisionAllowed/SwitchNightVision/GetNightVisionStatus` (L1359–1393) |
+| `enable_torch(bool)` / `torch_enabled()` / `update_torch()` | — / `bool` | `CTorch::Switch/torch_active/UpdateCL` (L1395–1430) |
+
+#### 3.4.13 Оружие: статус навесок, show/hide, аним-слот
+
+| Метод | Возврат | Назначение |
+|-------|---------|------------|
+| `Weapon_GrenadeLauncher_Status()` / `Weapon_Scope_Status()` / `Weapon_Silencer_Status()` | `int` | `CWeapon::get_*Status` (L1470–1504) |
+| `Weapon_IsGrenadeLauncherAttached()` / `Weapon_IsScopeAttached()` / `Weapon_IsSilencerAttached()` | `bool` | `CWeapon::Is*Attached` (L1506–1540) |
+| `RestoreWeapon()` / `HideWeapon()` | — | `Actor()->SetWeaponHideState(INV_STATE_BLOCK_ALL, false/true)` (L1452–1468) |
+| `animation_slot()` | `int` | `CHudItem::animation_slot()` (L1547–1557) |
+| `AllowSprint(bool)` | — | `Actor()->SetCantRunState(!b)` (L1542–1545) |
+
+#### 3.4.14 AI Stalker: гранаты, прицел, снайпинг, укрытия, бой
+
+| Метод | Возврат | Назначение |
+|-------|---------|------------|
+| `can_throw_grenades()` / `can_throw_grenades(bool)` | `bool` / — | `CAI_Stalker::can_throw_grenades` (L1723–1747) |
+| `throw_time_interval()` / `throw_time_interval(u32)` | `u32` / — | `CAI_Stalker::throw_time_interval` (L1749–1773) |
+| `group_throw_time_interval()` / `group_throw_time_interval(u32)` | `u32` / — | `agent_manager().member().throw_time_interval` (L1775–1799) |
+| `aim_time(CScriptGameObject*)` / `aim_time(CScriptGameObject*, u32)` | `u32` / — | `CAI_Stalker::aim_time(weapon)` (L1801–1841) |
+| `special_danger_move()` / `special_danger_move(bool)` | `bool` / — | `CAI_Stalker::animation().special_danger_move` (L1843–1867) |
+| `sniper_update_rate()` / `sniper_update_rate(bool)` | `bool` / — | `CAI_Stalker::sniper_update_rate` (L1869–1893) |
+| `sniper_fire_mode()` / `sniper_fire_mode(bool)` | `bool` / — | `CAI_Stalker::sniper_fire_mode` (L1895–1919) |
+| `set_aim_params(float, float, float, float)` | — | `CAI_Stalker::set_aim_params` (L1921–1932) |
+| `set_fire_queue_scale(float, float)` | — | `CAI_Stalker::set_fire_queue_scale` (L1934–1945) |
+| `set_movement_hold(bool)` | — | `CAI_Stalker::movement_hold` (L1960–1971) |
+| `can_kill_enemy()` / `can_kill_member()` | `bool` | `CAI_Stalker::can_kill_*`; **early-return** если `!ActiveItem()` (L1973–2005) |
+| `fire_make_sense()` | `bool` | `CAI_Stalker::fire_make_sense` (L2007–2018) |
+| `aim_bone_id()` / `aim_bone_id(LPCSTR)` | `LPCSTR` / — | `CAI_Stalker::aim_bone_id` (L2020–2044) |
+| `register_in_combat()` / `unregister_in_combat()` | — | `agent_manager().member().register/unregister_in_combat` (L2046–2070) |
+| `make_enemy_visible(CScriptGameObject*)` | — | `CAI_Stalker::memory().make_object_visible_somewhen` (L2077–2103) |
+| `find_best_cover(Fvector)` | `CCoverPoint const*` | `CAI_Stalker::find_best_cover` (L2105–2116) |
+| `suitable_smart_cover(CScriptGameObject*)` | `bool` | `smart_cover::object::cover().can_fire` + `INV_SLOT_3` check (L2118–2156) |
+| `take_items_enabled()` / `take_items_enabled(bool)` | `bool` / — | `CAI_Stalker::take_items_enabled` (L2158–2182) |
+| `death_sound_enabled()` / `death_sound_enabled(bool)` | `bool` / — | `CAI_Stalker::death_sound_enabled` (L2196–2220) |
+| `SetPlayShHdRldSounds(bool)` | — | `CInventoryOwner::SetPlayShHdRldSounds` (L2184–2194) |
+
+#### 3.4.15 Двери (door)
+
+| Метод | Возврат | Назначение |
+|-------|---------|------------|
+| `register_door()` / `unregister_door()` | — | `ai().doors().register/unregister_door` (L2222–2239) |
+| `on_door_is_open()` / `on_door_is_closed()` | — | `ai().doors().on_door_is_*` (L2241–2253) |
+| `is_door_locked_for_npc()` / `lock_door_for_npc()` / `unlock_door_for_npc()` | `bool` / — | `ai().doors().lock/unlock/is_locked` (L2255–2275) |
+| `is_door_blocked_by_npc()` | `bool` | `ai().doors().is_door_blocked` (L2277–2283) |
+
+Все методы используют поле `m_door` (устанавливается в `register_door`, сбрасывается в `unregister_door` и деструкторе).
+
+#### 3.4.16 Расширенные экспорты (`#ifdef GAME_OBJECT_EXTENDED_EXPORTS`, L2286–3030)
+
+| Метод | Возврат | Назначение |
+|-------|---------|------------|
+| `Weapon_AddonAttach(CScriptGameObject*)` | — | `CWeaponMagazined::Attach` (L2287–2307) |
+| `Weapon_AddonDetach(LPCSTR, bool)` | — | `CWeaponMagazined::Detach` (L2309–2323) |
+| `Weapon_SetCurrentScope(u8)` / `Weapon_GetCurrentScope()` | — / `u8` | `CWeaponMagazined::m_cur_scope` (L2325–2348) |
+| `InstallUpgrade(LPCSTR)` / `HasUpgrade(LPCSTR)` | `bool` | `inventory_upgrade_manager().upgrade_install` / `CInventoryItem::has_upgrade` (L2350–2380) |
+| `IterateInstalledUpgrades(functor)` | — | Обход `CInventoryItem::get_upgrades()` (L2382–2396) |
+| `GetActorMaxWeight()` / `SetActorMaxWeight(float)` | `float` / — | `CActor::inventory().Get/SetMaxWeight` (L2455–2477) |
+| `GetActorMaxWalkWeight()` / `SetActorMaxWalkWeight(float)` | `float` / — | `CActor::conditions().Max/SetMaxWalkWeight` (L2480–2502) |
+| `GetAdditionalMaxWeight()` / `SetAdditionalMaxWeight(float)` | `float` / — | `CCustomOutfit`/`CBackpack::m_additional_weight2` (L2506–2554) |
+| `GetAdditionalMaxWalkWeight()` / `SetAdditionalMaxWalkWeight(float)` | `float` / — | `CCustomOutfit`/`CBackpack::m_additional_weight` (L2523–2572) |
+| `GetTotalWeight()` / `UpdateWeight()` / `GetTotalWeightForceUpdate()` | `float` / — | `inventory().TotalWeight/CalcTotalWeight` (L2576–2612) |
+| `Weight()` / `SetWeight(float)` | `float` / — | `CInventoryItem::Weight/SetWeight` (L2615–2637) |
+| `GetActorVisibility()` | `float` | `CActor::GetVisibility` (L2639–2649) |
+| `GetActorJumpSpeed()` / `SetActorJumpSpeed(float)` | `float` / — | `CActor::m_fJumpSpeed` + `movement()->SetJumpUpVelocity` (L2651–2674) |
+| `GetActorSprintKoef()` / `SetActorSprintKoef(float)` | `float` / — | `CActor::m_fSprintFactor` (L2676–2698) |
+| `GetActorRunCoef()` / `SetActorRunCoef(float)` | `float` / — | `CActor::m_fRunFactor` (L2700–2722) |
+| `GetActorRunBackCoef()` / `SetActorRunBackCoef(float)` | `float` / — | `CActor::m_fRunBackFactor` (L2724–2746) |
+| `SetActorCamBoxYOffset(u32, float)` | — | `CActor::set_actor_box_y_offset` (L2748–2758) |
+| `GetActorWalkAccel()` / `SetActorWalkAccel(float)` | `float` / — | `CActor::m_fWalkAccel` (L2761–2782) |
+| `GetActorWalkBackCoef()` / `SetActorWalkBackCoef(float)` | `float` / — | `CActor::m_fWalkBackFactor` (L2785–2806) |
+| `GetActorLookoutCoef()` / `SetActorLookoutCoef(float)` | `float` / — | `CActor::m_fLookoutFactor` (L2823–2844) |
+| `GetActorDamageStaggerTimeFactor()` / `SetActorDamageStaggerTimeFactor(float)` | `float` / — | `CActor::DamageStaggerTimeFactor` (L2847–2868) |
+| `GetActorCrouchCoef()` / `SetActorCrouchCoef(float)` | `float` / — | `CActor::m_fCrouchFactor` (L2871–2892) |
+| `GetActorClimbCoef()` / `SetActorClimbCoef(float)` | `float` / — | `CActor::m_fClimbFactor` (L2893–2914) |
+| `GetActorWalkStrafeCoef()` / `SetActorWalkStrafeCoef(float)` | `float` / — | `CActor::m_fWalk_StrafeFactor` (L2915–2936) |
+| `GetActorRunStrafeCoef()` / `SetActorRunStrafeCoef(float)` | `float` / — | `CActor::m_fRun_StrafeFactor` (L2937–2958) |
+| `GetActorSprintStrafeCoef()` / `SetActorSprintStrafeCoef(float)` | `float` / — | `CActor::m_fSprint_StrafeFactor` (L2959–2980) |
+| `GetActorObjectLookingAt()` | `CScriptGameObject*` | `CActor::ObjectWeLookingAt()` (L2982–2996) |
+| `GetActorPersonLookingAt()` | `CScriptGameObject*` | `CActor::PersonWeLookingAt()` + `cast_game_object` (L2998–3016) |
+| `GetActorDefaultActionForObject()` | `LPCSTR` | `CActor::GetDefaultActionForObject()` (L3018–3028) |
+| `ActorLookAtPoint(Fvector)` / `ActorStopLookAtPoint()` | — | `CCameraFirstEye::LookAtPoint/StopLookAtPoint` (L1169–1181) |
+
 ## 4. Внутреннее устройство
 
 ### 4.1 Класс и поля
@@ -628,6 +852,29 @@ void CScriptGameObject::bind_object(CScriptBinderObject* game_object) { object()
 - **`save`/`load`** (L544–550): **пустые** в `CGameObject`; payload — `CScriptBinder::save/load` → `m_object->save/load`.
 - **`net_SaveRelevant`** (L1095–1098): `return CScriptBinder::net_SaveRelevant();` → `m_object->net_SaveRelevant()`.
 
+### 4.11 Детали реализации порц. 15 (инвентарь/персонаж)
+
+1. **Free functions как «мост»**: `_AddIconedTalkMessage` (L85–102) и `_give_news` (L104–134) — **не-членовые** функции, вызываемые из методов-членов. Это позволяет Lua-скриптам вызывать их как глобальные (через `luabind::object`), а не только как методы. `GiveGameNews` (L106–115) — 2 перегрузки: 5-arg (type=0) и 6-arg.
+2. **`GiveMoneySafe`** (free fn, L684–708): **overflow/underflow-защита** — при положительном `money` проверяет `u32 max - current < u_money` → cap at max; при отрицательном — `abs` через `long long` (защита от `INT_MIN`), `current < deduction` → cap at 0. `TransferMoney` (L710–733) передаёт **реальную** разницу после cap-а, а не запрошенную сумму (комментарий: «Leave negative money transfer possibility intact, unknown how it is used in 3rd party»).
+3. **`MoveItemToSlot`** (L518–554): **закомментирована** проверка `CanPutInSlot` (L530–537, комментарий «Have a crash if you want») — намеренный bypass: проверка вызывала crash в некоторых случаях.
+4. **`TakeItem`** (L631–674): **двойная логика** — если `pIItem->object().H_Parent()` существует: parent → `CInventoryOwner`/`CInventoryBox` → `GE_TRADE_SELL` + `GE_TRADE_BUY`; если нет parent → `Game().SendPickUpEvent` (подбор с земли). Ветка «Unknown parent type» (L666) — `script_log` + `return` (без действия).
+5. **`UnloadMagazine`** (L370–394) vs **`ForceUnloadMagazine`** (L396–415): разница — `UnloadMagazine` проверяет `stalker->hammer_is_clutched()` (не разряжать при заклиненном затворе), `ForceUnloadMagazine` — нет. Оба: `#ifdef STATIONARYMGUN_NEW` → ветка `CWeaponStatMgun`.
+6. **`can_kill_enemy`/`can_kill_member`** (L1973–2005): **early-return** `false` если `!stalker->inventory().ActiveItem()` — без оружия нет выстрела. Комментарий: «Callable from script at any time; the engine's own readers (CObjectActionFire) only run with a weapon out».
+7. **`suitable_smart_cover`** (L2118–2156): логика — `cover.can_fire()` → `true` (из укрытия можно стрелять); иначе → проверка `ActiveItem()->BaseSlot() == INV_SLOT_3` (снайперская винтовка) или `best_weapon()->BaseSlot() == INV_SLOT_3`.
+8. **`CharacterDialogs`** (L954–974): создаёт **новый Lua-таблица** при каждом вызове (не кэшируется) — O(n) аллокация на каждый вызов из Lua.
+9. **`ItemOnBelt`** (L2399–2418): `belt->at(item_id)` — **bounds check** `belt->size() < item_id` (L2410) — если ID вне диапазона → `script_log` + `return 0`. В отличие от `m_belt[item_id]` (без проверки).
+10. **`SwitchToTalk`** (L1141–1144): **пустой** — только `R_ASSERT("switch_to_talk called ;")`. Намеренно: переключение на разговор — только через `RunTalkDialog` (L1153).
+11. **`SetCharacterCommunity`** (L1054–1075): **два** действия — `pInventoryOwner->SetCommunity(community.index())` + `entity->ChangeTeam(community.team(), squad, group)`. Если община не найдена (`community.index() < 0`) → `script_log` + `return` (без изменения).
+12. **`accessible_vertex_id`** (L1301–1315): **двойная проверка** — `ai().level_graph().valid_vertex_id` + `THROW2` (L1312–1313). Вторая проверка избыточна (первая уже вернула `false` при невалидном).
+13. **Двери** (L2222–2283): все методы используют `m_door` (поле класса, §4.1). `register_door` — **идемпотентен** (проверка `if (!m_door)`); `unregister_door` — **идемпотентен** (`if (m_door)`). Деструктор обёртки вызывает `unregister_door()` — если `m_door` указывает на мёртвую дверь → crash (ограничение §8.5).
+14. **`GetAdditionalMaxWeight`/`SetAdditionalMaxWeight`** (L2506–2554): **два** down-cast — `CCustomOutfit` **и** `CBackpack` — если ни один → ошибка; если оба → **только** `CCustomOutfit` (проверка `if (outfit)` первая, `if (pBackpack)` — только если `!outfit`).
+15. **`ActorLookAtPoint`** (L1169–1181): **два** down-cast — `CCameraBase*` → `CCameraFirstEye*` — если камера не `CCameraFirstEye` → `smart_cast` вернёт `NULL` → **crash** (нет NULL-проверки).
+16. **`GetActorPersonLookingAt`** (L2998–3016): **три** уровня — `CActor::PersonWeLookingAt()` → `cast_game_object()` → `lua_game_object()`. Каждый уровень проверяет NULL.
+17. **Коэффициенты актёра** (L2651–2980): **прямое** чтение/запись полей `CActor` (`m_fJumpSpeed`, `m_fSprintFactor`, `m_fRunFactor`, …) — **без** делегирования в методы `CActor`. `SetActorJumpSpeed` (L2663–2674) — **единственное** исключение: также вызывает `movement()->SetJumpUpVelocity` (синхронизация физики).
+18. **`UpdateWeight`** (L2589–2599): `const`-метод, но вызывает `CalcTotalWeight()` (мутающий) — **const-correctness** нарушена (намеренно: «demonized: force update of weight»).
+19. **`#include` внутри файла**: L1090 `#include "GameTaskManager.h"` — **не** в начале файла (после метода `sound_voice_prefix`). Некомфортно для чтения, но компилируется.
+20. **`#ifdef GAME_OBJECT_EXTENDED_EXPORTS`** (L2286–3030): **745 строк** — весь блок расширенных экспортов (навески/апгрейды/коэфф. актёра/looking-at) **не компилируется** без этого define. В стандартной сборке (без define) эти методы **недоступны** из Lua.
+
 ## 5. Взаимодействие
 
 **Кто вызывает `CScriptGameObject`:**
@@ -650,7 +897,16 @@ void CScriptGameObject::bind_object(CScriptBinderObject* game_object) { object()
 | `CEntityAlive` (`conditions()`, `ffGetFov/Range`, `tfGetRelationType`, `DisableHitMarks`, `character_physics_support()`)                                                                     | down-cast                | 7, 18     |
 | `CActor` (`cam_Active()`, `ForceTransform`, `memory().visual()`)                                                                                                                             | down-cast                | 14–23     |
 | `CCustomMonster` (`memory()`, `movement()`, `set_fov/range`, `ChangeTeam`, `GetCurrentEnemy/Corpse`, `invulnerable`, `animation_movement_controlled`)                                        | down-cast                | 9, 15     |
-| `CInventoryItemObject`/`CInventoryItem`/`CInventoryBox`/`CInventoryOwner`                                                                                                                    | down-cast                | 10–12, 14 |
+| `CInventoryItemObject`/`CInventoryItem`/`CInventoryBox`/`CInventoryOwner`                                                                                                                    | down-cast                | 10–12, 15 |
+| `RELATION_REGISTRY()` (`GetGoodwill/SetGoodwill/ForceSetGoodwill/ChangeGoodwill/SetRelationType/GetAttitude/GetCommunityGoodwill/SetCommunityGoodwill`)                                   | напрямую                 | 15        |
+| `Level().GameTaskManager()` (`HasGameTask/SetTaskState/GiveGameTaskToActor/SetActiveTask/ActiveTask`)                                                                                          | напрямую                 | 15        |
+| `CWeaponMagazined` (`UnloadMagazine/Attach/Detach/m_cur_scope`)                                                                                                                                | down-cast                | 15        |
+| `CCustomOutfit`/`CBackpack` (`m_additional_weight/2`)                                                                                                                                          | down-cast                | 15        |
+| `CTorch` (`Switch/torch_active/UpdateCL`)                                                                                                                                                       | down-cast                | 15        |
+| `CCameraFirstEye` (`LookAtPoint/StopLookAtPoint`)                                                                                                                                                | down-cast                | 15        |
+| `Game().SendPickUpEvent`                                                                                                                                                                        | напрямую                 | 15        |
+| `ai().doors()` (`register/unregister_door/on_door_is_*/lock/unlock/is_door_locked/is_door_blocked`)                                                                                              | напрямую                 | 15        |
+| `ai().alife().inventory_upgrade_manager()` (`upgrade_install`)                                                                                                                                  | напрямую                 | 15        |
 | `CScriptEntity` (`SetScriptControl`, `AddAction`, `GetCurrentAction`)                                                                                                                        | down-cast / BIND         | 28        |
 | `CScriptBinder` (`set_object`, `object()`)                                                                                                                                                   | напрямую                 | 46        |
 | `CScriptHit` / `CScriptEntityAction` / `CScriptSoundInfo` / `CScriptMonsterHitInfo`                                                                                                          | аргументы/возврат        | 28        |
@@ -764,7 +1020,7 @@ sequenceDiagram
 | `src/xrGame/script_game_object2.cpp`                | 724   | `Hit`, `operator CObject*`, `GetBestEnemy/Danger/Item`, `memory_time/position`, `set_fov/range`, `play_cycle`, `SetActorPosition/Direction`, `SetNpcPosition`, `DisableHitMarks`, `GetMovementSpeed/SetMovementSpeed`, `explode`, `best_weapon` |
 | `src/xrGame/script_game_object3.cpp`                | 1969  | `ChangeTeam`, `GetEnemy/GetCorpse`, `GetInventoryObjectCount`, `GetActiveItem`, `GetObjectByName/ByIndex/ById`, `DestroyObject`, `IsInvBoxEmpty`, `memory_remove_links`, `cast_BottleItem`, actor-методы                                        |
 | `src/xrGame/script_game_object4.cpp`                | 518   | `IsInvBoxEmpty`, `memory_remove_links`, `sound_voice_prefix`, прочее                                                                                                                                                                            |
-| `src/xrGame/script_game_object_inventory_owner.cpp` | 2649  | Инвентарь/торг/персонаж (порц. 14)                                                                                                                                                                                                              |
+| `src/xrGame/script_game_object_inventory_owner.cpp` | 3031  | Инвентарь/торг/персонаж (порц. 15): инфо-порции, разговоры, итерация, предметы, деньги, отношения, персонаж, задачи, магазин, урон, ограничения, навески, НВЗ/фонарь, оружие-статусы, AI-stalker (гранаты/прицел/снайпинг/укрытия), двери, расширенные экспорты (навески/апгрейды/коэфф. актёра/looking-at) |
 | `src/xrGame/script_game_object_script.cpp`          | 238   | Lua-регистрация (details — порц. 14–18)                                                                                                                                                                                                         |
 | `src/xrGame/script_game_object_script2.cpp`         | 139   | Lua-регистрация: enums, properties, core methods                                                                                                                                                                                                |
 | `src/xrGame/script_game_object_script3.cpp`         | ~44K  | Lua-регистрация: инвентарь/AI/прочее (порц. 14–17)                                                                                                                                                                                              |
