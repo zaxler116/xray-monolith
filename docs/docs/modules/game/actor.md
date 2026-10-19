@@ -29,174 +29,107 @@ graph TD
 
 ## 3. CActor: каркас (порцион 19)
 
-См. полный каркас в рамках порциона 19 (инициализация, боксы, камера, `shedule_Update/UpdateDefferedMessages`, жизненный цикл, геттеры/флаги, инвентарь-события каркас, оружейная обвязка каркас, анимация/коллбэки, сеть/save/load — каркас, связи). Детали по подсистемам ниже.
+См. каркас в рамках порциона 19 (инициализация, боксы, камера, `shedule_Update/UpdateDefferedMessages`, жизненный цикл, геттеры/флаги, инвентарь-события каркас, оружейная обвязка каркас, анимация/коллбэки, сеть/save/load — каркас, связи).
 
 ## 4. CActorCondition: условия и статы (порцион 20)
 
 ### 4.1 Ответственность
 
-`CActorCondition` — класс состояний игрока, наследник `CEntityCondition` (порц. 6). Управляет:
-- **Базовыми статами** актёра: здоровье/психика, сила (power), сытость (satiety), радиация, алкоголь, кровотечение, ожоги/раны, психическое воздействие.
-- **Условиями движения**: хромота (`IsLimping`), неспособность ходить/бегать (`IsCantWalk`, `IsCantSprint`), перегруз по весу (`IsCantWalkWeight`, `MaxWalkWeight`, `GetCarryWeightBoost`).
-- **Влияниями (boosters/medicine)**: бустеры параметров (`Boost*`), текущие влияния (`GetCurBoosterInfluences()`), применение `SMedicineInfluenceValues`/`SBooster` (`ApplyInfluence`, `ApplyBooster`).
-- **Зонами/опасностями**: радиация/ядовитые материалы, опасности зон (`SetZoneDanger`, `GetZoneDanger`, `GetZoneMaxPower` по `ALife::EInfluenceType/EHitType`).
-- **Удар/повреждения условий**: обработка `ConditionHit(SHit*)` (переопределение `CEntityCondition`), расчёт хромоты/блокировки спринта (`DisableSprint`, `PlayHitSound`, `HitSlowmo`), `PowerHit`, `ConditionJump/Walk/Stand`.
-- **Обновление состояний**: `UpdateCondition()`, `UpdateBoosters()`, `UpdateSatiety()`, `UpdateRadiation()`, `UpdateTutorialThresholds()`.
-- **Сон**: режим сна (`IsSleeping()`), отдельные коэффициенты сна (`V_Satiety()`, `V_SatietyPower()`, `V_SatietyHealth()`, `m_change_v_sleep`).
-- **Psy-bar**: `GetPsyBar()`/`SetPsyBar(float)`, `GetPsy()` как `1.0f - GetPsyHealth()`.
-- **Death-effector**: `m_death_effector` (`CActorDeathEffector*`) — создаётся/используется при смерти (связь с порц. 22).
+`CActorCondition` — наследник `CEntityCondition` (порц. 6). Управляет статами актёра, условиями движения (limping/cant_walk/cant_sprint, перегруз), бустерами/медицинскими влияниями, зонами/опасностями, обработкой попаданий, режимом сна, death-effector'ом.
 
 ### 4.2 Место в архитектуре
 
-```mermaid
-graph TD
-    CEntityCondition(CEntityCondition — порц. 6) --> CActorCondition(CActorCondition — ЭТОТ КЛАСС)
-    CActorCondition -.owns.-> Obj[CActor* m_object]
-    CActorCondition -.uses.-> Inv[CInventory/Artefacts — ит. 8,10]
-    CActorCondition -.uses.-> Wnd[Wound — порц. 8]
-    CActorCondition -.uses.-> Eff[CActorDeathEffector — порц. 22]
-```
-
 - **Наследует:** `CEntityCondition` (порц. 6).
-- **Владеет/использует:** указатель на `CActor* m_object` (`ActorCondition.h:36`), `CActorDeathEffector* m_death_effector` (`ActorCondition.h:37`), `SMedicineInfluenceValues m_curr_medicine_influence`, `BOOSTER_MAP m_booster_influences` (базовый класс), `SConditionChangeV m_change_v_sleep` (`ActorCondition.h:137`).
-- **Создаётся:** `CActor::create_entity_condition(CEntityConditionSimple*&)` (порц. 19) — создаёт `CActorCondition*` (`new CActorCondition(object)`), см. `ActorCondition.cpp:35–77` (ctor).
-- **Lua-экспорт:** `ActorCondition_script.cpp` (177) — регистрация методов `CActorCondition` в скриптах (порц. 18/14 контекст).
+- **Связи:** владеет `m_object` (CActor*), `m_death_effector` (CActorDeathEffector*, порц. 22), использует `CWound` (порц. 8).
+- **Создаётся:** `CActor::create_entity_condition(CEntityConditionSimple*&)` → `new CActorCondition(object)`.
+- **Lua:** `ActorCondition_script.cpp` (177) — экспорт методов (порц. 18/ит. 14).
 
-### 4.3 Конструктор, деструктор, reinit
+### 4.3 ctor/dtor/reinit/Load
 
 | Метод | Файл:строка | Назначение |
 |---|---|---|
-| `CActorCondition(CActor* object)` | `ActorCondition.cpp:35–77` | Инициализация полей: `m_fJumpPower/m_fStandPower/m_fWalkPower`, `m_fJumpWeightPower/m_fWalkWeightPower`, `m_fOverweightWalkK/m_fOverweightJumpK`, `m_fAccelK/m_fSprintK`, `m_fAlcohol=0.f`, `m_fSatiety=1.0f`, `m_fSatietyChange=0.f`, `m_MaxWalkWeight=50.f`, `m_CarryWeightBoost=0.f`, `m_object=object`, `m_condition_flags.zero()`, `m_death_effector=NULL`, `m_zone_max_power[...] = 1.0f` (infl_rad/fire/acid/psi/electra), `m_zone_danger[...] = 0.f`, `m_f_time_affected = Device.fTimeGlobal`, `m_max_power_restore_speed=0.f`, `m_max_wound_protection=0.f`, `m_max_fire_wound_protection=0.f`. Вызывает `inherited(object)`. |
+| `CActorCondition(CActor* object)` | `ActorCondition.cpp:35–77` | Инициализация satiety=1.0, `zone_max_power[...] = 1.0f` (infl_rad/fire/acid/psi/electra), `zone_danger[...] = 0.f`, `m_f_time_affected = Device.fTimeGlobal`, дефолтные коэфф. движения, `m_death_effector=NULL`, `m_condition_flags.zero()`. |
 | `~CActorCondition()` | `ActorCondition.cpp:79–82` | `xr_delete(m_death_effector)`. |
-| `reinit()` | `ActorCondition.h:46`, `ActorCondition.cpp` | Переинициализация состояния (вызывается из `CActor::reinit()` — порц. 19). |
-| `LoadCondition(LPCSTR section)` | `ActorCondition.h:45`, `ActorCondition.cpp:84–250+` | Загрузка параметров из INI. Читает `condition_sect` (fallback на `entity_section`), загружает `m_change_v_sleep.load(section, "_sleep")`, параметры движения (`jump_power`, `stand_power`, `walk_power`, `jump_weight_power`, `walk_weight_power`, `overweight_walk_k`, `overweight_jump_k`, `accel_k`, `sprint_k`), пороги хромоты (`limping_health_begin/end`, `limping_power_begin/end`), пороги `cant_walk`/`cant_sprint` (`cant_walk_power_begin/end`, `cant_sprint_power_begin/end`), утечка силы (`max_power_leak_speed`, `max_power_leak_speed_sleep`), а также satiety/radiation/psy/wound/boosters/thresholds (см. cpp). |
+| `reinit()` | `ActorCondition.h:46` | Переинициализация состояния. |
+| `LoadCondition(LPCSTR section)` | `ActorCondition.h:45`, `ActorCondition.cpp:84+` | Загружает `condition_sect` (fallback), `m_change_v_sleep.load(section,"_sleep")`, параметры движения, пороги хромоты/cant_walk/cant_sprint, утечку силы. |
 
-### 4.4 Флаги условий (m_condition_flags)
+### 4.4 Флаги условий
 
-`enum` в `ActorCondition.h:21–32`:
-- `eCriticalPowerReached` (1<<0)
-- `eCriticalMaxPowerReached` (1<<1)
-- `eCriticalBleedingSpeed` (1<<2)
-- `eCriticalSatietyReached` (1<<3)
-- `eCriticalRadiationReached` (1<<4)
-- `eWeaponJammedReached` (1<<5)
-- `ePhyHealthMinReached` (1<<6)
-- `eCantWalkWeight` (1<<7)
-- `eCantWalkWeightReached` (1<<8)
+`m_condition_flags` (Flags16), enum `ActorCondition.h:21–32`:
+- `eCriticalPowerReached`, `eCriticalMaxPowerReached`, `eCriticalBleedingSpeed`, `eCriticalSatietyReached`, `eCriticalRadiationReached`, `eWeaponJammedReached`, `ePhyHealthMinReached`, `eCantWalkWeight`, `eCantWalkWeightReached`.
 
-`Flags16 m_condition_flags` (`ActorCondition.h:34`) — битовые флаги критических состояний (используются в `UpdateCondition()`/проверках).
+## 5. CActor: Hit/PHHit и урон (порцион 21)
 
-### 4.5 Движение, вес, хромота (cant_walk/cant_sprint/limping)
+### 5.1 Ответственность
 
-| Метод | Возврат | Файл/строка | Назначение |
-|---|---|---|---|
-| `IsLimping()` const | `bool` | `ActorCondition.h:79` | Хромание при потере сил/здоровья (пороговые значения из `LoadCondition`: `limping_health_begin/end`, `limping_power_begin/end`) |
-| `IsCantWalk()` const | `bool` | `ActorCondition.h:80` | Неспособность ходить (по мощности) |
-| `IsCantWalkWeight()` | `bool` | `ActorCondition.h:81` | Перегруз по весу (влияние на ходьбу) |
-| `IsCantSprint()` const | `bool` | `ActorCondition.h:82` | Неспособность бегать (спринт) |
-| `IsSleeping()` const | `bool` | `ActorCondition.h:83` | Режим сна |
-| `ConditionJump(float weight)` | `void` | `ActorCondition.h:87` | Обновление условий прыжка (учёт веса) |
-| `ConditionWalk(float weight, bool accel, bool sprint)` | `void` | `ActorCondition.h:88` | Обновление условий ходьбы (вес, ускорение, спринт) |
-| `ConditionStand(float weight)` | `void` | `ActorCondition.h:89` | Обновление условий стояния |
-| `MaxWalkWeight()` const | `float` | `ActorCondition.h:90` (`IC`) | Макс. допустимый вес для ходьбы |
-| `SetMaxWalkWeight(float mww)` | `void` | `ActorCondition.h:91` (`IC`) | Установка макс. веса ходьбы |
-| `GetCarryWeightBoost()` const | `float` | `ActorCondition.h:92` (`IC`) | Буст переносимого веса |
-| `DisableSprint(SHit* pHDS)` | `bool` | `ActorCondition.h:127` | Блокировка спринта по удару/условиям |
-| `HitSlowmo(SHit* pHDS)` | `float` | `ActorCondition.h:129` | Замедление времени при попадании (slow-mo) |
+Обработка попаданий актёра: физический хит `PHHit(SHit&)` и общий хит `Hit(SHit*)`. Включает: проверку типа урона, звуки попаданий, slow-mo, блокировку спринта, hit-markers (эффекторы огненного попадания), backstab-логику в MP, инвок скриптового коллбэка `_G.CActor__BeforeHitCallback` (SP), применение `CScriptHit` (`ApplyScriptHit`), учёт артефактов на поясе (`HitArtefactsOnBelt`), вызов базового `CEntityAlive::Hit`, сетевую статистику взрывов (MP), обработку GodMode.
 
-### 4.6 Сытость, алкоголь, психика (satiety/alcohol/psy)
+### 5.2 Методы
 
-| Метод | Возврат | Файл/строка | Назначение |
-|---|---|---|---|
-| `ChangeAlcohol(const float value)` | `virtual void` | `ActorCondition.h:54` | Изменение уровня алкоголя |
-| `ChangeSatiety(const float value)` | `virtual void` | `ActorCondition.h:55` | Изменение сытости |
-| `GetAlcohol()` | `float` | `ActorCondition.h:97` (`xr_stdcall`) | Текущий алкоголь |
-| `GetPsy()` | `float` | `ActorCondition.h:98` (`xr_stdcall`) | Психика = `1.0f - GetPsyHealth()` |
-| `GetSatiety()` | `virtual float` | `ActorCondition.h:99` | Текущая сытость |
-| `SetSatiety(float satiety)` | `virtual void` | `ActorCondition.h:100` | Установка сытости |
-| `GetSatietyPower()` const | `float` | `ActorCondition.h:101` (`IC`) | Мощность, связанная с сытостью: сон/не сон (`m_fV_SatietyPowerSleep*m_fSatiety` или `m_fV_SatietyPower*m_fSatiety`) |
-| `SatietyCritical()` const | `float` | `ActorCondition.h:122` (`IC`) | Критический порог сытости |
-| `V_Satiety()` const | `float const&` | `ActorCondition.h:119` (`IC`) | Коэффициент сытости (сон/не сон) |
-| `V_SatietyPower()` const | `float const&` | `ActorCondition.h:120` (`IC`) | Коэффициент мощности по сытости (сон/не сон) |
-| `V_SatietyHealth()` const | `float const&` | `ActorCondition.h:121` (`IC`) | Коэффициент здоровья по сытости (сон/не сон) |
-| `GetPsyBar()` | `float` | `ActorCondition.h:94` | Значение психо-бара |
-| `SetPsyBar(float psybar)` | `void` | `ActorCondition.h:95` | Установка психо-бара |
-| `UpdateSatiety()` | `void` | `ActorCondition.cpp/h` | Обновление сытости (порц. 20) |
+| Метод | Файл:строка | Назначение |
+|---|---|---|
+| `PHHit(SHit& H)` | `Actor.cpp:541–544` | Делегирует физике: `m_pPhysics_support->in_Hit(H,false)`. |
+| `Hit(SHit* pHDS)` | `Actor.cpp:554–764` | Главный обработчик попадания. |
+| `HitMark(float P, Fvector dir, CObject* who, s16 element, Fvector pos_in_bone_space, float impulse, ALife::EHitType hit_type_)` | `Actor.cpp:766–832` | Отображение hit-marker'а: вычисляет угол между направлением камеры и направлением попадания, выбирает сектор 0–7, добавляет эффектор `effFireHit` (`effector_fire_hit_%d`) при локальном игроке, живом, в 1st-person виде. |
+| `HitSignal(float perc, Fvector& vLocalDir, CObject* who, s16 element)` | `Actor.cpp:834–862` | Анимационный отклик на попадание: вычисляет yaw/pitch локального направления попадания, выбирает damage-motion по ориентации (`m_anims->m_normal.m_damage[...]`, с учётом `r_model_yaw+r_model_yaw_delta`), проигрывает FX через `IKinematicsAnimated::PlayFX(motion_ID, power_factor)`. |
+| `HitSector(CObject* who, CObject* weapon)` | `Actor.h:203` | Обработка hit-sector при огненном ранении в режиме камеры актёра (вызывается из `Hit`). |
+| `SetHitInfo(CObject* who, CObject* weapon, s16 element, Fvector Pos, Fvector Dir)` | `Actor.h:750` | Установка информации о последнем попадании. |
+| `OnHitHealthLoss(float NewHealth)`, `OnCriticalHitHealthLoss()`, `OnCriticalWoundHealthLoss()`, `OnCriticalRadiationHealthLoss()` | `Actor.h:752–755` | Коллбэки потери здоровья/критических состояний (порц. 21/8). |
 
-### 4.7 Урон, раны, попадания (Hit/ConditionHit)
+### 5.3 Ключевые детали `Hit(SHit*)` (по коду)
 
-| Метод | Возврат | Файл/строка | Назначение |
-|---|---|---|---|
-| `ConditionHit(SHit* pHDS)` | `virtual CWound*` | `ActorCondition.h:49` | Обработка попадания (переопределение `CEntityCondition`). Возвращает рану (`CWound*`) — связь с порц. 8 (`wounds-death.md`) |
-| `PowerHit(float power, bool apply_outfit)` | `void` | `ActorCondition.h:85` | Удар по силе (power) с учётом одежды |
-| `PlayHitSound(SHit* pHDS)` | `bool` | `ActorCondition.h:128` | Проигрывание звука попадания |
-| `HitSlowmo(SHit* pHDS)` | `float` | `ActorCondition.h:129` | Slow-mo при попадании |
-| `AffectDamage_InjuriousMaterialAndMonstersInfluence()` | `void` | `ActorCondition.h:103` | Влияние ядовитых материалов/монстров на урон |
-| `GetInjuriousMaterialDamage()` | `float` | `ActorCondition.h:104` | Урон от ядовитых материалов |
+- **Валидация типа урона:** проверка `hit_type < ALife::eHitTypeBurn || hit_type >= ALife::eHitTypeMax` → `R_ASSERT2` (`Actor.cpp:561–566`).
+- **Флаг `b_initiated`:** берётся из `pHDS->aim_bullet` (физический удар полтергейста), затем сбрасывается в `false` (`Actor.cpp:556–558`).
+- **GodMode (SP):** если `GodMode()` → `HDS.power = 0.0f`, `inherited::Hit(&HDS)`, возврат (`Actor.cpp:673–678`).
+- **Инвок скриптового коллбэка перед применением (SP):** при `g_Alive()` получает `CScriptHit tLuaHit(&HDS)`, ищет functor `_G.CActor__BeforeHitCallback` через `ai().script_engine().functor`, если есть и возвращает `false` — досрочный выход; иначе вызывает `HDS.ApplyScriptHit(&tLuaHit)` (`Actor.cpp:683–693`).
+- **Учёт артефактов:** `HDS.power = HitArtefactsOnBelt(HDS.damage(), HDS.hit_type)` (`Actor.cpp:693`, `754`).
+- **Скриптовый callback `eHit`:** вызывает `callback(GameObject::eHit)(lua_game_object(), HDS.damage(), HDS.direction(), smart_cast<const CGameObject*>(HDS.who)->lua_game_object(), HDS.boneID)` (`Actor.cpp:697–704`).
+- **Базовый вызов:** `inherited::Hit(&HDS)` (`Actor.cpp:705, 756`).
+- **Звуки попаданий:** при наличии `sndHit[HDS.hit_type]` и `conditions().PlayHitSound(pHDS)` выбирает случайный звук; для `ALife::eHitTypeExplosion` при локальном контроле ставит `SndShockEffector` (если нет) с длительностью по длине звука и силой по `HDS.damage()`; играет только если нет уже играющего такого же типа (`playing_pred` по `s._feedback() != NULL`) (`Actor.cpp:610–638`).
+- **Slow-mo:** `m_hit_slowmo = conditions().HitSlowmo(pHDS)` (`Actor.cpp:642`).
+- **HitMark:** при локальном игроке, живом и `!m_disabled_hitmarks`, если `b_fireWound` или `b_initiated` (b_initiated истинно только для strike и `aim_bullet` исходно) — вызывает `HitMark(...)` (`Actor.cpp:662–669`).
+- **Блокировка спринта:** если в спринте и `conditions().DisableSprint(pHDS)`, снимает флаг `mcSprint` (кроме специального случая `pHDS->who == this && pHDS->boneID == BI_NONE`) (`Actor.cpp:654–661`).
+- **MP-логика backstab:** в `!IsGameTypeSingle()` вычисляет локальное направление попадания, сравнивает с `a={0,0,1}` (`dotproduct < -0.707`) при `hit_type == ALife::eHitTypeWound_2` и валидном backstab-элементе кости — выставляет `m_bWasBackStabbed = true`. Для backstab при нулевом уроне `hit_power = 100000.0f`, иначе `hit_power = HitArtefactsOnBelt(HDS.damage(), HDS.hit_type)` (`Actor.cpp:724–757`).
+- **MP-статистика:** на сервере при смерти от взрыва (`OnServer() && !g_Alive() && HDS.hit_type == ALife::eHitTypeExplosion`) — `Game().m_WeaponUsageStatistic->OnExplosionKill(ps, HDS)` (`Actor.cpp:758–763`).
+- **Инвинисибилити-визуал (MP):** при `!IsGameTypeSingle() && !g_dedicated_server` и флаге `GAME_PLAYER_FLAG_INVINCIBLE` у игрока — не играет звук попадания, но раз в кадр (`Device.dwFrame != last_hit_frame` и кость валидна) создаёт частицу щита (`invincibility_fire_shield_1st` при камере 1-го лица/локальный, иначе `invincibility_fire_shield_3rd`) и добавляет в `GamePersistent().ps_needtoplay` (`Actor.cpp:579–608`).
+- **Хит-сектор при огненном ранении:** при локальном просмотре и `HDS.hit_type == ALife::eHitTypeFireWound` — вызывает `HitSector(pLastHitter, pLastHittingWeapon)` с последним хиттером/оружием (`Actor.cpp:645–652`).
 
-### 4.8 Зоны, опасности, радиация
+### 5.4 HitMark (детали)
 
-| Метод | Возврат | Файл/строка | Назначение |
-|---|---|---|---|
-| `UpdateRadiation()` | `virtual void` | `ActorCondition.h:40` | Обновление радиации |
-| `SetZoneDanger(float danger, ALife::EInfluenceType type)` | `void` | `ActorCondition.h:106` | Установка опасности зоны по типу влияния |
-| `GetZoneDanger()` const | `float` | `ActorCondition.h:107` | Текущая опасность зоны |
-| `GetZoneMaxPower(ALife::EInfluenceType type)` const | `float` | `ActorCondition.h:124` | Макс. мощность зоны по типу влияния |
-| `GetZoneMaxPower(ALife::EHitType hit_type)` const | `float` | `ActorCondition.h:125` | Макс. мощность зоны по типу урона |
+- Работает только при локальном игроке, живом, `Level().CurrentEntity() == this`.
+- Вычисляет угол между `cam_dir` и `dir` (`angle_difference(cam_dir.getH(), dir.getH())`), определяет сторону по `crossproduct(cam_dir,dir).y > 0` (`bUp`).
+- Сектора по углам `_s1=PI_DIV_8`, `_s2=_s1+PI_DIV_4`, `_s3=_s2+PI_DIV_4`, `_s4=_s3+PI_DIV_4` → id 0–7 (0 — прямо сзади, 1/3/5/7 — промежуточные, 2 — спереди).
+- Добавляет эффектор: `AddEffector(this, effFireHit, sect_name="effector_fire_hit_%d", P*0.001f)` (`Actor.cpp:830`).
 
-### 4.9 Boosters/Medicine (влияния)
+### 5.5 HitSignal (детали)
 
-| Метод | Возврат | Файл/строка | Назначение |
-|---|---|---|---|
-| `UpdateBoosters()` | `void` | `ActorCondition.h:51` | Обновление бустеров |
-| `GetBoosterValue(LPCSTR name, bool type)` | `float` | `ActorCondition.h:52` | Значение бустера |
-| `BoostParameters(const SBooster& B)` | `void` | `ActorCondition.h:57` | Применение параметров бустера |
-| `DisableBoostParameters(const SBooster& B)` | `void` | `ActorCondition.h:58` | Отключение параметров бустера |
-| `BoostMaxWeight(float value)` | `void` | `ActorCondition.h:59` | Буст макс. веса |
-| `BoostHpRestore(float value)` | `void` | `ActorCondition.h:60` | Буст восстановления здоровья |
-| `BoostPowerRestore(float value)` | `void` | `ActorCondition.h:61` | Буст восстановления силы |
-| `BoostRadiationRestore(float value)` | `void` | `ActorCondition.h:62` | Буст восстановления от радиации |
-| `BoostBleedingRestore(float value)` | `void` | `ActorCondition.h:63` | Буст остановки кровотечения |
-| `BoostBurnImmunity(float value)` | `void` | `ActorCondition.h:64` | Иммунитет к ожогам |
-| `BoostShockImmunity(float value)` | `void` | `ActorCondition.h:65` | Иммунитет к шоку |
-| `BoostRadiationImmunity(float value)` | `void` | `ActorCondition.h:66` | Радиационный иммунитет |
-| `BoostTelepaticImmunity(float value)` | `void` | `ActorCondition.h:67` | Телепатический иммунитет |
-| `BoostChemicalBurnImmunity(float value)` | `void` | `ActorCondition.h:68` | Иммунитет к хим. ожогам |
-| `BoostExplImmunity(float value)` | `void` | `ActorCondition.h:69` | Иммунитет к взрыву |
-| `BoostStrikeImmunity(float value)` | `void` | `ActorCondition.h:70` | Иммунитет к удару |
-| `BoostFireWoundImmunity(float value)` | `void` | `ActorCondition.h:71` | Иммунитет к огн. ранениям |
-| `BoostWoundImmunity(float value)` | `void` | `ActorCondition.h:72` | Иммунитет к ранениям |
-| `BoostRadiationProtection(float value)` | `void` | `ActorCondition.h:73` | Защита от радиации |
-| `BoostTelepaticProtection(float value)` | `void` | `ActorCondition.h:74` | Телепатическая защита |
-| `BoostChemicalBurnProtection(float value)` | `void` | `ActorCondition.h:75` | Защита от хим. ожогов |
-| `GetCurBoosterInfluences()` | `BOOSTER_MAP` | `ActorCondition.h:76` | Текущие влияния бустеров |
-| `ApplyInfluence(const SMedicineInfluenceValues& V, const shared_str& sect)` | `virtual bool` | `ActorCondition.h:130` | Применение медицинского влияния |
-| `ApplyBooster(const SBooster& B, const shared_str& sect)` | `virtual bool` | `ActorCondition.h:131` | Применение бустера |
-| `GetMaxPowerRestoreSpeed()` | `float` | `ActorCondition.h:132` | Макс. скорость восстановления силы |
-| `GetMaxWoundProtection()` | `float` | `ActorCondition.h:133` | Макс. защита от ран |
-| `GetMaxFireWoundProtection()` | `float` | `ActorCondition.h:134` | Макс. защита от огн. ран |
-| `m_curr_medicine_influence` | `SMedicineInfluenceValues` | `ActorCondition.h:139` | Текущее мед. влияние |
-| `m_change_v_sleep` | `SConditionChangeV` | `ActorCondition.h:137` | Изменения условий во сне |
+- Работает только `g_Alive()`.
+- Трансформирует локальное направление `vLocalDir` в мировое `D`, берёт HP: `D.getHP(yaw,pitch)`.
+- Получает `IKinematicsAnimated* tpKinematics` из `Visual()`.
+- Выбирает motion по `iFloor(pK->LL_GetBoneInstance(element).get_param(1) + (angle_difference(r_model_yaw + r_model_yaw_delta, yaw) <= PI_DIV_2 ? 0 : 1))` из `m_anims->m_normal.m_damage[...]`.
+- Вычисляет `power_factor = clamp(perc/100.f, 0,1)`, вызывает `tpKinematics->PlayFX(motion_ID, power_factor)`.
+- Есть `#pragma todo` о некорректности направления импульса вперед-назад.
 
-### 4.10 Обновление, сериализация, доступ к объекту
+### 5.6 PHHit
 
-| Метод | Возврат | Файл/строка | Назначение |
-|---|---|---|---|
-| `UpdateCondition()` | `virtual void` | `ActorCondition.h:50` | Основной цикл обновления условий (порц. 20) |
-| `UpdateTutorialThresholds()` | `void` | `ActorCondition.h:38` | Обновление туториальных порогов |
-| `change_v()` | `virtual SConditionChangeV&` | `ActorCondition.h:47` | Доступ к вектору изменений условий (переопределение `CEntityCondition`) |
-| `object()` const | `IC CActor&` | `ActorCondition.h:110–114` | Доступ к актёру-владельцу |
-| `save(NET_Packet& output_packet)` | `virtual void` | `ActorCondition.h:116` | Сериализация состояния (ит. 12 — каркас) |
-| `load(IReader& input_packet)` | `virtual void` | `ActorCondition.h:117` | Десериализация состояния (ит. 12 — каркас) |
-| `m_object` | `CActor*` | `ActorCondition.h:36` | Указатель на актёра |
-| `m_death_effector` | `CActorDeathEffector*` | `ActorCondition.h:37` | Эффектор смерти (порц. 22) |
-| `m_fPsyBar` | `float` | `ActorCondition.h:140` | Психо-бар |
-| `m_condition_flags` | `Flags16` | `ActorCondition.h:34` | Флаги критических состояний (enum 21–32) |
+`PHHit(SHit& H)` — минимальный делегат в физику: `m_pPhysics_support->in_Hit(H,false)` (`Actor.cpp:541–544`).
 
-### 4.11 Примечания
+### 5.7 Связи
 
-- `CActorCondition` наследует `CEntityConditionSimple` (через `CEntityCondition`) — базовые статы/методы обновления берутся из `EntityCondition` (порц. 6).
-- `LoadCondition` загружает как секцию актёра, так и `condition_sect` (переопределение/доп. параметры).
-- `ActorCondition_script.cpp` (177) экспортирует методы класса в Lua (скриптовый доступ к условиям актёра) — относится к механике Lua-регистрации (порц. 18) и Lua API (ит. 14).
-- Связь со смертью: `m_death_effector`, `ConditionHit`, пороги критических состояний — детали смерти актёра в порц. 22 (`actor-death.md`).
-- Обновление `UpdateCondition()`/`UpdateBoosters()`/`UpdateSatiety()`/`UpdateRadiation()` — ключевые методы цикла (вызываются из `CEntityAlive`/`CActor` — каркас обновления).
+- **CActorCondition** (порц. 20): `conditions().PlayHitSound(pHDS)`, `conditions().HitSlowmo(pHDS)`, `conditions().DisableSprint(pHDS)`.
+- **Артефакты на поясе/защита** (порц. 33): `HitArtefactsOnBelt(float hit_power, ALife::EHitType hit_type)` (`Actor.h:226`), `GetProtection_ArtefactsOnBelt(ALife::EHitType hit_type)` (`Actor.h:227`), `UpdateArtefactsOnBeltAndOutfit()` (`Actor.h:225`, `Actor.cpp:2089`).
+- **CEntityAlive/CGameObject**: `inherited::Hit(&HDS)` (`Actor.cpp:705,756`), доступ к `lua_game_object()` (`Actor.cpp:688,698–703`).
+- **Lua**: `_G.CActor__BeforeHitCallback` (функтор), `CScriptHit` (`#include "script_hit.h"`, используется `Actor.cpp:683,692`), коллбэк `GameObject::eHit` (порц. 13–18/44).
+- **HUD/эффекторы**: `HUD().HitMarked(...)` (`Actor.cpp:778`), `AddEffector(this, effFireHit, ...)` (`Actor.cpp:830`), `SndShockEffector` (`Actor.h:242`, `Actor.cpp:623–628`).
+- **Сеть/MP**: backstab-логика, `OnServer()`, `game_PlayerState`, `WeaponUsageStatistic->OnExplosionKill` (`Actor.cpp:758–763`), `m_bWasBackStabbed` (`Actor.h:746`), `last_hit_frame` (`Actor.cpp:607`), частицы invincibility (`Actor.cpp:594–603`).
+- **Звуки**: `sndHit[ALife::eHitTypeMax]` (`Actor.h:243`), `m_sndShockEffector` (`Actor.h:242`), `m_HeavyBreathSnd/m_BloodSnd/m_DangerSnd` (`Actor.h:231–233`).
+- **Движение/анимация**: `mstate_wishful &= ~mcSprint` (`Actor.cpp:659`), `PlayFX` через IKinematicsAnimated (`Actor.cpp:860`), `m_anims->m_normal.m_damage` (`Actor.cpp:854–856`), `r_model_yaw+r_model_yaw_delta` (`Actor.cpp:856`).
+- **Информация о последнем ударе**: `m_iLastHitterID`, `m_iLastHittingWeaponID`, `m_s16LastHittedElement`, `m_vLastHitDir`, `m_vLastHitPos`, `m_fLastHealth`, `m_bWasHitted`, `m_bWasBackStabbed` (`Actor.h:739–747`), `SetHitInfo` (`Actor.h:750`).
+
+### 5.8 Примечания
+
+- `ActorCondition::PlayHitSound`/`HitSlowmo`/`DisableSprint` — см. порц. 20.
+- `CScriptHit` и Lua-обвязка попаданий — порц. 44 (`script_hit`).
+- HitMark использует только огненные ранения (`b_fireWound`) и инициированные strike-попадания (`b_initiated`) — логика ограничивает показ метки определёнными типами хита.
+- В MP invincibility-эффект частиц создаётся только когда локальный игрок под invincibility и кость валидна; звук попадания при этом подавляется.
+- Backstab: сравнение с вектором (0,0,1) в локальной системе координат (инвертированный XFORM) при `dotproduct < -0.707`.
