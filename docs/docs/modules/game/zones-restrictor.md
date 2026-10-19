@@ -34,20 +34,20 @@ CSpaceRestrictionHolder          — реестр мостов по строке
   3. **Alundaio** (80–84): если объект — не `CCustomZone`, либо `CRadioactiveZone`, либо `CZoneCampfire` → `spatial.type &= ~STYPE_VISIBLEFORAI` (глобал `g_ai_die_in_anomaly` объявлен на 25, но в условии не используется — закомментирован);
   4. `setEnabled(FALSE); setVisible(FALSE);` — ристриктор невидим/выключен как объект;
   5. без level graph или тип `eRestrictorTypeNone` → выход без регистрации; иначе **`Level().space_restriction_manager().register_restrictor(this, type)`** (93–94).
-- **`net_Destroy`** (99–110): симметрично `unregister_restrictor` (при наличии graph и типа ≠ None).
+- **`net_Destroy`** (99–110): `inherited::net_Destroy()` → при наличии graph и типа ≠ None — `unregister_restrictor` (без проверки уровня/level graph).
 
 ## 3. Геометрия `CSpaceRestrictor` (`space_restrictor.cpp`)
 
 | Метод | Строки | Логика |
 |---|---|---|
 | `Center(Fvector&)` / `Radius()` | 32–40 | `XFORM().transform_tiny(C, CFORM()->getSphere().P)` / `CFORM()->getRadius()` |
-| `inside(const Fsphere&)` | 112–121 | `!actual()` → `prepare()`; быстрый отказ по `m_selfbounds.intersect(sphere)`; иначе `prepared_inside` |
+| `inside(const Fsphere&)` | 112–121 | `!actual()` → `prepare()`; быстрый отказ `!m_selfbounds.intersect(sphere)` → false; иначе `prepared_inside` |
 | `prepare() const` | 134–205 | `m_selfbounds` = Center+Radius; для каждой формы `CCF_Shape`: **сфера** (type 0) → мировая `XFORM().transform_tiny`; **бокс** (type 1) → `sphere.mul_43(XFORM(), box)`, 8 углов (полубокс ±0.5) → 6 плоскостей `m_planes[i].build(...)`; `actual(true)` |
 | `prepared_inside(sphere)` | 207–233 | сферы: `sphere.intersect(*I)` → true; боксы: `m_planes[i].classify(sphere.P) > sphere.R` для любой плоскости → следующий бокс (`goto continue_loop`), все 6 → true |
-| `UsedAI_Locations()` | 123–126 | всегда `FALSE` |
+| `UsedAI_Locations()` | 123–126 | всегда `FALSE` (не использует точки AI-позиций) |
 | `spatial_move()` | 128–132 | `inherited::spatial_move(); actual(false)` — инвалидация кэша при сдвиге |
 
-**DEBUG `OnRender`** (242–331): при `bDebug` и флаге `dbg_draw_customzone` — эллипсы сфер/ОBB боксов (cyan — включённая `CCustomZone`, red — иначе); при близости `<100` — 2D-надпись `Name()` + состояние `ZoneState()` (IDLE/AWAKING/BLOWOUT/ACCUMULATE/DISABLED). Диспатч рендера — `Level.cpp:1333–1335` (цикл bDebug).
+**DEBUG `OnRender`** (242–331): при `bDebug` и флаге `dbg_net_Draw_Flags.dbg_draw_customzone` — `DRender->OnFrameEnd()`, эллипсы сфер/ОBB боксов (cyan — включённая `CCustomZone` (`IsEnabled()`), red — иначе); при близости камеры `<100` — 2D-надпись `Name()` + состояние `ZoneState()` (IDLE/AWAKING/BLOWOUT/ACCUMULATE/DISABLED).
 
 ## 4. `CSpaceRestriction` (`space_restriction.h/.cpp`, 96+377 + inline 88)
 
@@ -58,18 +58,18 @@ CSpaceRestrictionHolder          — реестр мостов по строке
 - **`accessible(Fsphere)`** (56–87): lazy-init (нет инициализации → `true`); далее `valid_vertex_position` && (out: `inside && !on_border && !out_of_border`) && (in: `!inside && !on_border`).
 - **`accessible(vertex, radius)`** (89–107): out `inside(id,false,radius)` && !in `inside(id,true,radius)`.
 - **`inside(Fsphere)`** = `accessible` (inline 72–75); **`inside(vertex, partially)`** (inline 77–88): out `inside(partially)` && in `!inside(!partially)`.
-- **`intersects`** (109–138): пересечение бордеров двух мостов (загон бордера одного внутрь другого + `set_intersection`); `intersects(bridge)` — через out-мост.
+- **`intersects(bridge0, bridge1)`** (109–130): по каждой вершине бордера bridge1 → `bridge0->inside(*I, true)` → true; затем первый элемент бордера bridge0 внутри bridge1; затем `set_intersection` бордеров. **`intersects(bridge)`** (132–138) — без out-моста → false, иначе `intersects(out, bridge)`.
 - **`merge(bridge, temp)`** (190–212): склейка имён через запятую → `m_space_restriction_manager->restriction(temp)` (кэшируемая композиция).
 - **`add_border` / `remove_border`** (inline 37–65 / cpp 296–323): `ai().level_graph().set_mask(border())` / `clear_mask(...)` — маскирование вершин графа; `m_applied`-флаг; при out-мосте маскируется out-бордер, иначе in-бордер.
-- **`accessible_nearest`** (325–332): делегат мосту (out → `out->accessible_nearest(this, ..., true)`, иначе in-на-себя).
-- **`affect`** (334–372): 4 перегрузки (сфера/vertex+radius/две позиции/два vertex) — фактически `!bridge->inside(...)`; старое тело (distance ≤ radius + `dependent_distance = 100.f`, строка 17) — закомментировано.
+- **`accessible_nearest`** (325–332): out → `out->accessible_nearest(this, position, result, true)`, иначе `VERIFY(in)` + `in->accessible_nearest(in, ..., false)`.
+- **`affect(bridge, ...)`** (334–372): 4 перегрузки (сфера/vertex+radius/две позиции/два vertex) — фактически `bridge->inside(sphere) == false`; старое тело (distance ≤ radius + `dependent_distance = 100.f`, строка 17) — закомментировано.
 - **`name()`** (374–377) → `m_out_restrictions`.
 
 ## 5. `CSpaceRestrictionShape` (`space_restriction_shape.h/.cpp`, 47+237)
 
 Обёртка `CSpaceRestrictor`: поля `m_restrictor`, `m_default` (`default_restrictor`).
 
-- **`fill_shape(shape)`** (57–106): AABB формы в мировых координатах (сфера: `P ± (R,0,R)` + `Position()`; бокс: 8 полуточек через `Q.mul_43(XFORM(), box)`), затем **`ai().level_graph().iterate_vertices(start, dest, CBorderMergePredicate)`** — сбор вершин, попавших в объём.
+- **`fill_shape(shape)`** (57–106): AABB формы в мировых координатах (сфера: `P ± (R,0,R)` + `Position()`; бокс: 8 полуточек через `Q.mul_43(XFORM(), box)`), затем **`ai().level_graph().iterate_vertices(start, dest, CBorderMergePredicate)`** — сбор вершин, попавших в объём; DEBUG: второй проход `CShapeTestPredicate` → `m_test_storage` (все «полностью внутри» для `test_correctness`).
 - **`CBorderMergePredicate`** (16–36): вершина кладётся в `m_border`, если `inside(id, true) && !inside(id, false)` (**частично внутри** — кандидат в бордер); второй `operator()` (bool) — «полностью вне» для `remove_if`.
 - **`build_border()`** (108–136): очистка → `fill_shape` для всех форм → `remove_if(!inside(false))` → **`process_borders()`** (из `CSpaceRestrictionBase`) → `VERIFY3(!border().empty(), "space restrictor has no border", ...)` → DEBUG `test_correctness`.
 - **DEBUG `test_correctness`** (139–215): `set_mask(border())` → `graph_engine().search(..., CFlooder())` (flood внутри ограничения) → `clear_mask` → `m_correct = (m_test_storage.size() == nodes.size())` (все собранные вершины достижимы; дамп-код закомментирован).
@@ -89,7 +89,7 @@ CSpaceRestrictionHolder          — реестр мостов по строке
 
 Мост между intrusive-пользователями (`CSpaceRestriction`) и реализацией (`CSpaceRestrictionBase`): `RestrictionSpace::CTimeIntrusiveBase`, `m_object`; деструктор — `xr_delete(m_object)` (16–19); **`change_implementation`** (21–25) — удалить старый объект, поставить новый (используется holder'ом при register/unregister).
 
-Делегирование: `border/initialized/initialize/name/shape/default_restrictor/sphere` (27–65); **`inside`×3** (67–89) — под `START_PROFILE("Restricted Object/Bridge/Inside ...")`; **`on_border(position)`** (99–135): `lower_bound` бордера по `position().xz()` (`CFindByXZ_predicate`) + совпадение `vertex_id` в группе одинаковых xz; **`out_of_border(position)`** (137–155): невалидная вершина → `true`, иначе сфера `EPS_L` на плоскости вершины (`vertex_plane_y`) → `!inside(temp)`; `accessible_nearest`/`accessible_neighbour_border` — шаблоны (inline-заголовок).
+Делегирование: `object()` (inline-заголовок), `border/initialized/initialize/name/accessible_nearest/shape/default_restrictor/sphere` (27–65); **`inside`×3** (67–89) — под `START_PROFILE("Restricted Object/Bridge/Inside Vertex|Position")`; **`on_border(position)`** (99–135): VERIFY valid position; `lower_bound` бордера по `position().xz()` (`CFindByXZ_predicate`); при промахе → false; иначе `vertex_id(position)` и поиск его в группе вершин с равным xz; **`out_of_border(position)`** (137–155): невалидная вершина → `true`, иначе сфера `EPS_L` с `P.y = vertex_plane_y(id, x, z)` → `!inside(temp)`.
 
 ## 8. Связи
 
@@ -106,6 +106,10 @@ CSpaceRestrictionHolder          — реестр мостов по строке
 2. **`on_restrictions_change` / `restrictions()` — не методы `CSpaceRestrictor`** (их в классе нет): это виртуалы `CMovementManager`/`CRestrictedObject` и вся AI-иерархии (список в §8); план отнёс их к этому блоку как связи.
 3. **`g_ai_die_in_anomaly`** (`space_restrictor.cpp:25`) объявлен, но в условии `net_Spawn` не используется (закомментировано на 82) — действует только безусловное снятие `STYPE_VISIBLEFORAI` у не-зон/радио/костров (83).
 4. Ветка `USE_FREE_IN_RESTRICTIONS` (`space_restriction.h:16`) **выключена** — `merge_free_in_retrictions`/`m_free_in_restrictions`/`FREE_IN_RESTRICTIONS`-ветки в `add_border/remove_border` не компилируются; фактически работает только out/in-модель.
+
+## 18. Краткое резюме (порц. 35)
+
+`CSpaceRestrictor` — невидимый (`setEnabled/setVisible(FALSE)`) объект-оболочка: `CCF_Shape` (сферы/ОBB) из `CSE_ALifeSpaceRestrictor::shapes`, `register_schedule = false`, mutable-кэш мировых сфер/6-плоскостных боксов (`prepare`/`spatial_move`-инвалидация) и `inside(Fsphere)`; при спавне/деструкции регистрируется в `Level().space_restriction_manager()`. Слой ограничений: `CSpaceRestrictionShape` строит бордер из вершин level graph (частично-внутренние), `CSpaceRestrictionBridge` — intrusive-мост с делегированием и `on_border`/`out_of_border`, `CSpaceRestriction` — пара out/in для объекта с ленивой инициализацией, слиянием бордеров (`merge_in_out_restrictions`) и маскированием графа (`set_mask/clear_mask`); `CSpaceRestrictionHolder` кэширует мосты по нормализованным (отсортированным) строкам имён, хранит default in/out-строки, GC — отложенное удаление неиспользуемых мостов через 300 с.
 
 ---
 
@@ -199,4 +203,8 @@ CSpaceRestrictionHolder          — реестр мостов по строке
 ## 17. Краткое резюме (порционы 35–36)
 
 `CSpaceRestrictor` — невидимый объект-оболочка (`CCF_Shape`: сферы/ОBB), кэширует мировые сферы/6-плоскостные боксы и проверяет `inside(Fsphere)`; при спавне регистрируется в `Level().space_restriction_manager()`. Слой ограничений: `CSpaceRestrictionShape` строит бордер из вершин level graph (частично-внутренние), `CSpaceRestrictionBridge` — intrusive-мост с делегированием и `on_border`/`out_of_border`, `CSpaceRestriction` — пара out/in для объекта с ленивой инициализацией, слиянием бордеров и маскированием графа (`set_mask/clear_mask`); `CSpaceRestrictionHolder` кэширует мосты по нормализованным строкам имён и хранит default in/out-строки, GC удаляет неиспользуемые композиции через 300 с. Порц. 36: `CSpaceRestrictionAbstract` даёт border+`accessible_neighbour_border`, `CSpaceRestrictionComposition` склеивает N зон (общая оболочка-сфера, бордер = внешняя кромка, flood-проверка в DEBUG), а `CSpaceRestrictionManager` (наследник holder, синглтон через `Level()`) ведёт карту клиентов `id → {out,in}` с join/difference-алгеброй строк, default-пересозданием через `on_default_restrictions_changed` и кэшем `out\x01in → CSpaceRestriction`; главный клиент — `CRestrictedObject` (порц. 14–16).
+
+---
+
+*Порционы 35–36 (итерация 5) · далее: порц. 37–38 — `zones-custom.md` (CCustomZone/CRadioactiveZone)*
 
