@@ -108,7 +108,7 @@
 
 - **`Actor_Sleep.cpp`** — фактически **1 строка**: `#include "stdafx.h"` (файл без реализации).
 - `UpdateSleep()` — закомментированный вызов в конце `shedule_Update` (`Actor.cpp:2086`).
-- `actor_defs.h:73–75` — `typedef const char* EActorSleep; extern EActorSleep easCanSleepResult; extern string32 g_quick_use_slots[4];`; старый `enum EActorSleep` (easCanSleep/easNotSolidGround/easEnemies) закомментирован (77–85).
+- `actor_defs.h:73–75` — `typedef const char* EActorSleep; extern EActorSleep easCanSleepResult; extern string32 g_quick_use_slots[4];` (`g_quick_use_slots` — быстрая смена слотов, порц. 24); старый `enum EActorSleep` (easCanSleep/easNotSolidGround/easEnemies) закомментирован (77–85).
 - Вывод: сон либо вынесен в скрипты/Lua, либо мёртв; C++-реализации нет.
 
 ## 12. Ночное зрение
@@ -126,34 +126,35 @@
 
 ### `CActor::SwitchNightVision(vision_on, use_sounds, send_event)` (`Actor.cpp:3049–3110`, `Actor.h:862`)
 
-1. `m_bNightVisionOn = vision_on`; lazy-создание `m_night_vision = xr_new<CNightVisionEffector>(cNameSect())`; `bIsActiveNow = IsActive()`.
-2. Источник секции NV: **приоритет шлем** (`HELMET_SLOT` → `CHelmet::m_NightVisionSect`), иначе **костюм** (`OUTFIT_SLOT` → `CCustomOutfit::m_NightVisionSect`):
-   - `m_bNightVisionAllow` и вкл. и не активен → `m_night_vision->Start(sect, this, use_sounds)`;
-   - не разрешено → `OnDisabled(this, use_sounds)` + `m_bNightVisionOn = false`.
-3. Выключение при активном → `Stop(100000.0f, use_sounds)`.
-4. **Alun** (`send_event`): `m_trader_flags.set(eTraderFlagNightVisionActive, ...)` + `u_EventGen(GE_TRADER_FLAGS)` → `u_EventSend`.
+1. `m_bNightVisionOn = vision_on` **независимо от разрешения** (3051); lazy-создание `m_night_vision = xr_new<CNightVisionEffector>(cNameSect())` (3053–3054); `bIsActiveNow = IsActive()`.
+2. Источник секции NV: **приоритет шлем** (`HELMET_SLOT` → `CHelmet::m_NightVisionSect`), иначе **костюм** (`OUTFIT_SLOT` → `CCustomOutfit::m_NightVisionSect`) — ветки **не взаимоисключающиe**: костюм проверяется, только если у шлема нет секции (3059):
+    - `m_bNightVisionAllow` и вкл. и не активен → `m_night_vision->Start(sect, this, use_sounds)` (3065/3083);
+    - не разрешено → `OnDisabled(this, use_sounds)` (звук слома) + `m_bNightVisionOn = false`.
+    - Если ни шлем, ни костюм с NV не экипированы — ничего не происходит (PP-эффектор не создаётся).
+3. Выключение при `!m_bNightVisionOn && bIsActiveNow` → `Stop(100000.0f, use_sounds)` (3094–3097).
+4. **Alun** (`send_event`): `m_trader_flags.set(eTraderFlagNightVisionActive, m_bNightVisionOn)` + `u_EventGen(GE_TRADER_FLAGS, ID())` → `w_u32(flags)` → `u_EventSend` (3099–3109) — порц. 4/28.
 
 **Состояние:** инициализация `Actor.cpp:245–247` (`m_night_vision=NULL`, allow=true, on=false), деструктор `xr_delete` (288); **восстановление из флага** при спавне — `Actor_Network.cpp:711–712` (`eTraderFlagNightVisionActive`, комментарий: при спавне шлема/костюма в слот сработает `SwitchNightVision(true)`); геттеры `Actor.h:864–866` (`GetNightVisionStatus/SetNightVisionAllowed/GetNightVision`).
 
-**Вызовы:** переключатель-обёртка `CActor::SwitchNightVision()` (`ActorInput.cpp:775–778`, бинд `kNIGHT_VISION` в DEBUG-режиме 827–829; игровой бинд закомментирован — «controlled via LUA scripts», `ActorInput.cpp:172`); `CHelmet::OnMoveToSlot/Ruck` (`ActorHelmet.cpp:117–131`), `CCustomOutfit` (285–286/355), `Weapon.cpp:1372–1398` (зум оружия → NV off→on), Lua `script_game_object_inventory_owner.cpp:1380/1392`.
+**Вызовы:** переключатель-обёртка `CActor::SwitchNightVision()` (`ActorInput.cpp:775–778` — инверсия `!m_bNightVisionOn`, `Actor.h:760`; бинд `kNIGHT_VISION` в DEBUG-режиме `NoClipFly` 827–829; игровой бинд закомментирован — «controlled via LUA scripts for timing and animations», `ActorInput.cpp:172`); `CHelmet::OnMoveToSlot/Ruck` (`ActorHelmet.cpp:109–134`), `CCustomOutfit::OnMoveToSlot/Ruck` (`CustomOutfit.cpp:285–286/355` — NV только при `!bIsHelmetAvaliable`), `Weapon.cpp:1366–1401` (зум оружия: запоминает `GetNightVisionStatus()` → `SwitchNightVision(false, false, false)` → `EnableActorNVisnAfterZoom` с idle-звуком), Lua `enable_night_vision`/`night_vision_enabled` (`script_game_object_inventory_owner.cpp:1371–1393`, бинд `script_game_object_script3.cpp:196` — порц. 18).
 
 ## 13. `CHelmet` (`ActorHelmet.cpp`, 344 строки)
 
 **Наследование:** `class CHelmet : public CInventoryItemObject` (`ActorHelmet.h:8`) — **не `CEquipment`** (см. «Замечания к плану»). `DECLARE_SCRIPT_REGISTER_FUNCTION`.
 
-- **Ctor** (15–23): `FUsingCondition=TRUE`, `m_HitTypeProtection` на `eHitTypeMax` = 1.0f, `xr_new<SBoneProtections>`.
+- **Ctor** (15–23): `FUsingCondition=TRUE`, `m_HitTypeProtection.resize(eHitTypeMax)` со всеми = 1.0f (18–20), `xr_new<SBoneProtections>`; деструктор `xr_delete(m_boneProtection)` (25–28).
 - **`Load`** (30–68): 8 защит `*_protection` (Burn/Strike/Shock/Wound/Radiation/Telepatic/ChemicalBurn/Explosion); `FireWound` = **0.0f жёстко** (параметр отключён), `LightBurn := Burn`; `hit_fraction_actor`, опциональные `fire_wound_param_1/2` (`std::optional`, демонизед-формула Юрко), `nightvision_sect`, 5 `*_restore_speed`, `power_loss` (clamp EPS..1), `bones_koeff_protection`, `nearest_enemies_show_dist`, `use_condition`.
-- **Кости:** `ReloadBonesProtection` (70–78) — в SP parent = `Level().CurrentViewEntity()`, `m_boneProtection->reload(sect, IKinematics)`; `net_Spawn` (80–87) вызывает в SP; `AddBonesProtection` (219–227), `get_HitFracActor` (229–232).
+- **Кости:** `ReloadBonesProtection` (70–78) — `parent = H_Parent()`; в SP `parent = Level().CurrentViewEntity()`; при наличии `parent->Visual()` и `m_BonesProtectionSect` → `m_boneProtection->reload(sect, IKinematics)`; `net_Spawn` (80–87) вызывает в SP; `AddBonesProtection` (219–227, `add`), `get_HitFracActor` (229–232).
 - **Сеть:** `net_Export/Import` (89–101) — condition `w_float_q8/r_float_q8` (в отличие от `CBackpack`, см. §14).
-- **НВ-мост:** `OnMoveToSlot` (109–121) — при выходе из слота и `GetNightVisionStatus()` → `SwitchNightVision(true, false)`; `OnMoveToRuck` (123–134) → `SwitchNightVision(false)`.
+- **НВ-мост:** `OnMoveToSlot` (109–121) — при **выходе** из слота (`previous_place.type == eItemPlaceSlot`) и `GetNightVisionStatus()` → `SwitchNightVision(true, false)` (рестарт NV с секцией шлема); `OnMoveToRuck` (123–134) → `SwitchNightVision(false)`; `OnH_A_Chield` (103–107) — `ReloadBonesProtection` закомментирован.
 - **`Hit`** (136–141): `hit_power *= GetHitImmunity(hit_type)` → `ChangeCondition(-hit_power)` (при `IsUsingCondition`).
 - **Защиты:** `GetDefHitTypeProtection` = `protection × GetCondition()` (143–146); `GetHitTypeProtection` = ещё × `getBoneProtection(element)` (148–153); `GetBoneArmor` (155–158).
 - **Апгрейды** `install_upgrade_impl` (160–217): все `*_protection` + `nightvision_sect` + 5 restore + `power_loss` + `nearest_enemies_show_dist` + `bones_koeff_protection` (→ `ReloadBonesProtection`) + `bones_koeff_protection_add` (→ `AddBonesProtection`) + `hit_fraction_actor` (demonized).
-- **`HitThroughArmor`** (234–344) — ключевой метод попаданий в голову:
-  - **`eHitTypeFireWound`** с `m_fireWoundParam1/2` (альтернативная формула Юрко): при `ap ≤ BoneArmor/var2` — `d_hit = HitFracActor` (× `var1` если `ap ≤ BoneArmor*var2`); иначе `d_hit = (ap − BoneArmor*var2)/(ap*(1.1 − BoneArmor*var1))`, при `ap/2 > BoneArmor/var2` — ещё `/var1`; `clamp(d_hit, HitFracActor, 1)`; `NewHitPower *= d_hit`.
-  - **`FireWound` без параметров** (vanilla): `ap ≤ BoneArmor` → `× HitFracActor` (коммент «пуля НЕ пробила бронь»); иначе `d_hit = (ap − BoneArmor)/(ap*APScale)`, clamp `HitFracActor..1`.
+- **`HitThroughArmor`** (234–344) — ключевой метод попаданий в голову; **вход:** `hit_power` (основной урон), `element` (кость), `ap` (бронепробитие), `add_wound` (не используется), `hit_type`:
+  - **`eHitTypeFireWound`** с `m_fireWoundParam1/2` (альтернативная формула Юрко): `ba = GetBoneArmor(element)`; `ba <= 0` → возврат без изменений; `BoneArmor = ba * GetCondition()`. При `ap ≤ BoneArmor/var2` — `d_hit = HitFracActor` (× `var1` если `ap ≤ BoneArmor*var2`); иначе `d_hit = (ap − BoneArmor*var2)/(ap*(1.1 − BoneArmor*var1))`, при `ap/2 > BoneArmor/var2` — ещё `/var1`; `clamp(d_hit, HitFracActor, 1)`; `NewHitPower *= d_hit`.
+  - **`FireWound` без параметров** (vanilla): `ap ≤ BoneArmor` → `× HitFracActor` (коммент «пуля НЕ пробила бронь», `add_wound = false` закомментирован); иначе `d_hit = (ap − BoneArmor)/(ap*APScale)`, clamp `HitFracActor..1`.
   - **Прочие хиты:** `one = 1.0f` для Strike/Wound/Wound_2/Explosion, иначе `0.1f`; `NewHitPower −= GetDefHitTypeProtection × one`, clamp ≥ 0.
-  - Завершение: `Hit(hit_power, hit_type)` — **изношенность шлема растёт от полной силы удара** (338); везде отладка `-dbgbullet`.
+  - Завершение: `Hit(hit_power, hit_type)` — **изношенность шлема растёт от полной силы удара** (338), независимо от `NewHitPower`; везде отладка `-dbgbullet`.
 
 ## 14. `CBackpack` (`ActorBackpack.cpp`, 102 строки)
 
@@ -177,27 +178,27 @@
 | `GE_TRADE_BUY`/`GE_OWNERSHIP_TAKE` | 35–87 | `net_Find(id)` → VERIFY; MP-мёртвый → отказ; `inventory().CanTakeItem` → `H_SetParent` + `Take(GO,false,true)` + `SelectBestWeapon`; иначе SP → `GE_OWNERSHIP_REJECT`-ответ, MP → ошибка; MP_LOGGING-логи |
 | `GE_TRADE_SELL`/`GE_OWNERSHIP_REJECT` | 88–159 | `just_before_destroy = r_u8()`, `dont_create_shell` (SELL или destroy), `SetTmpPreDestroy`; проверки `H_Parent` и владельца; `inventory().DropItem(...)` → `m_feel_deny.feel_touch_deny(Obj, 1000)`; расширенный пакет: `dropPosition` → `GO->MoveTo`; `SelectBestWeapon` (если не destroy) |
 | `GE_INV_ACTION` | 160–185 | `cmd/flags/ZoomRndSeed/ShotRndSeed`; MP-мёртвый → break; `CMD_START` → `SetZoomRndSeed` (kWPN_ZOOM) / `SetShotRndSeed` (kWPN_FIRE) + `IR_OnKeyboardPress(cmd)`, иначе `IR_OnKeyboardRelease` (порц. 24/19) |
-| `GEG_PLAYER_ITEM2SLOT/2BELT/2RUCK/EAT/ACTIVATEARTEFACT` | 186–266 | VERIFY объекта/нев destroy/MP-мёртвый; `ACTIVATEARTEFACT` → `CArtefact::ActivateArtefact`; `ITEM2SLOT` → `Slot(slot_id, iitem, bDoNotActivate=r_u8()==1)`; `2BELT` → `Belt`; `2RUCK` → `Ruck`; `EAT` → Lua `_G.CInventory__eat` (bool) → `inventory().Eat` (порц. 18) |
+| `GEG_PLAYER_ITEM2SLOT/2BELT/2RUCK/EAT/ACTIVATEARTEFACT` | 186–266 | VERIFY объекта/не destroy/MP-мёртвый; `ACTIVATEARTEFACT` → `CArtefact::ActivateArtefact`; `ITEM2SLOT` → `Slot(slot_id, iitem, bDoNotActivate=r_u8()==1)` (коммент: консервативно — старое поведение, если не явно 1); `2BELT` → `Belt`; `2RUCK` → `Ruck`; `EAT` → Lua `_G.CInventory__eat` (bool) → `inventory().Eat` (порц. 18) |
 | `GEG_PLAYER_ACTIVATE_SLOT` | 267–274 | `inventory().Activate(slot_id)` |
 | `GEG_PLAYER_DISABLE_SPRINT` | 276–288 | `m_block_sprint_counter += cmd (s8)`; `>0` → `mstate_wishful &= ~mcSprint`; иначе clamp 0 (счётчик блокировок) |
 | `GEG_PLAYER_WEAPON_HIDE_STATE` | 290–296 | `inventory().SetSlotsBlocked(State, Set)` |
 | `GE_MOVE_ACTOR` | 297–305 | `MoveActor(NewPos, NewRot)` |
 | `GE_ACTOR_MAX_POWER` | 306–311 | `conditions().MaxPower()` + `ClearWounds()` |
 | `GE_ACTOR_MAX_HEALTH` | 312–316 | `SetfHealth(GetMaxHealth())` |
-| `GEG_PLAYER_ATTACH_HOLDER` | 317–330 | `net_Find` → `VERIFY(m_holder==NULL)` → `CHolderCustom::Engaged()` → `use_Holder(holder)` (порц. 26) |
+| `GEG_PLAYER_ATTACH_HOLDER` | 317–330 | `net_Find` → `VERIFY(m_holder==NULL)` → `CHolderCustom::Engaged()`-проверка → `use_Holder(holder)` (порц. 26) |
 | `GEG_PLAYER_DETACH_HOLDER` | 331–339 | `VERIFY(id==holder ID)` → `use_Holder(NULL)` |
-| `GEG_PLAYER_PLAY_HEADSHOT_PARTICLE` | 340–344 | `OnPlayHeadShotParticle(P)` |
+| `GEG_PLAYER_PLAY_HEADSHOT_PARTICLE` | 340–344 | `OnPlayHeadShotParticle(P)` — детали в порц. 28 (`Actor_Network.cpp:1925`) |
 | `GE_ACTOR_JUMPING` | 345–358 | **мёртвый кейс** — тело закомментировано (NET_Jump/mcJump-заготовка) |
 
-**`MoveActor(NewPos, NewDir)`** (362–378): `M.translate(NewPos)` → `r_model_yaw/r_torso.yaw = NewDir.y`, `r_torso.pitch = −NewDir.x`, `unaffected_r_torso` (roll=0), `r_torso_tgt_roll=0`, `cam_Active()->Set(...)`, `ForceTransform(M)`, `m_bInInterpolation = false` (телепорт-телепорт-перемещение без интерполяции; см. порц. 23/28).
+**`MoveActor(NewPos, NewDir)`** (362–378): `M = XFORM(); M.translate(NewPos)`; `r_model_yaw/r_torso.yaw = NewDir.y`, `r_torso.pitch = −NewDir.x`, `unaffected_r_torso` (roll=0), `r_torso_tgt_roll=0`, `cam_Active()->Set(...)`; `ForceTransform(M)` (порц. 23), `m_bInInterpolation = false` (порц. 28) — перемещение без интерполяции.
 
 ## 16. Связи и смежное
 
 - **`SetActorVisibility`/`GetActorVisibility`** (`Actor.cpp:2094–2120`) — обёртки над `Level().CurrentViewEntity()` (single-only) → `SetVisibilityFromObject`/`GetVisibility`; `CActor::GetVisibility` (2122–2149) — сортировка `m_npc_visibility`, сглаживание `m_visibility_cur` по `Device.fTimeDelta`; `SetVisibilityValue` (2151+) — порц. 28 (связь видимости).
 - **`actor_defs.h`** (154) — `ACTOR_DEFS`: `EActorSleep`/`easCanSleepResult`/`g_quick_use_slots` (73–75, §11), `EMoveCommand`/`EActorAction`/`EFreelookStates` (порц. 23/24), `EActorCameras` (порц. 23), `net_input`/`net_update`/`net_update_A`/`InterpData` (89–153, структуры порц. 28).
-- **`actor_statistic_defs.h` / `actor_communication.cpp` (221)** — детали в порц. 30 (см. `actor-mp.md` §20–22).
+- **`actor_communication.cpp` (221)** — SP-диалоги (`AddGameNews` 34, `OnDisableInfo` 73, `ReceivePhrase` 88, `UpdateAvailableDialogs` 100, `TryToTalk` 115); `actor_statistic_defs.h` (33) — детали в порц. 30 (`actor-mp.md` §20–21).
 - **`CHelmet`-связки:** `UpdateArtefactsOnBeltAndOutfit`/`GetRestoreSpeed` используют `CHelmet` только через `HELMET_SLOT` (§3, §7); `HitThroughArmor` вызывается из Hit-пути `CEntityCondition` (порц. 21); `SBoneProtections` — ит. 3/7 (`BoneProtections.h`).
-- **`Weapon.cpp:1366–1401`** — зум оружия запоминает/гасит NV актёра (`GetNightVisionStatus`/`SwitchNightVision(false)`/`EnableActorNVisnAfterZoom` из `OnItemDrop`, §2/§12).
+- **`Weapon.cpp:1366–1401`** — зум оружия запоминает/гасит NV актёра (`GetNightVisionStatus`/`SwitchNightVision(false, false, false)`/`EnableActorNVisnAfterZoom` из `OnItemDrop`, §2/§12); `EnableActorNVisnAfterZoom` дополнительно включает idle-звук NV.
 
 ## 17. Замечания к плану
 
@@ -208,8 +209,9 @@
 5. **`GetRestoreSpeed`/`can_attach`/`GetMass`/`is_on_ground`/`is_ai_obstacle`** в составе порциона 33 (план) не упомянуты явно — фактический диапазон `Actor.cpp:2896–2914` (физ.-геттеры) и `2916–3032` (`GetRestoreSpeed`) входит в «прочее» плана; включены в эту страницу.
 6. **`OnDifficultyChanged` (2875–2889)** в плане порциона 33 не упомянут — смежный с `LoadImmunities` блок, включён в §8.
 7. **`CBackpack`-роль в весе** (`get_additional_weight`, `MaxCarryWeight`/`MaxWalkWeight` — `Actor_Movement.cpp:693–733`, порц. 23) и в Lua `GetAdditionalMaxWeight`/`SetAdditionalMaxWalkWeight` (порц. 15/18) не охвачены планом порциона 34 (только «`CBackpack` (102): `CActorBackpack`») — включена в §14/§16.
+8. **`CActorMP`-зависимости** (`actor_mp_client.h:12`, `actor_mp_client_import.cpp:68`, `actor_communication.cpp:170`) — `m_trader_flags` (NV-флаг, §12) и `GE_GENDER`-обработчики (порц. 30), не в плане порциона 34.
 
 ## 18. Краткое резюме (порц. 34)
 
-Сон в C++ отсутствует (`Actor_Sleep.cpp` — 1 строка, `UpdateSleep()` закомментирован, `EActorSleep` — только typedef/extern в `actor_defs.h`). Ночное зрение: `CNightVisionEffector` (4 звука + PP-эффектор `effNightvision`), `CActor::SwitchNightVision` выбирает секцию NV из шлема, затем из костюма, уважает `m_bNightVisionAllow`, при `send_event` публикует `eTraderFlagNightVisionActive` через `GE_TRADER_FLAGS` (восстановление при спавне — `Actor_Network.cpp:711`). `CHelmet : CInventoryItemObject` (не `CEquipment`) — 8 типов защиты, костная броня `SBoneProtections`, `HitThroughArmor` с опциональной формулой Юрко для FireWound и изношенностью от полного удара; `CBackpack` — тот же класс без NV/костей, condition-сеть закомментирована, износ по умолчанию выключен, но `m_additional_weight`/`m_additional_weight2` реально участвуют в весе (`get_additional_weight`, порц. 23) и в Lua-обёртках. `CActor::OnEvent` — приём `GE_TRADE_*`/`GE_OWNERSHIP_*` (take/drop с `SelectBestWeapon` и `feel_touch_deny`), `GE_INV_ACTION` (зеркало ввода с RNG-сидами), `GEG_PLAYER_*` (слот/пояс/рюкак/еда через Lua, holder'ы, блок спринта, скрытие слотов), `GE_MOVE_ACTOR`→`MoveActor` (телепорт без интерполяции); кейсы `GE_ACTOR_JUMPING` мёртвые.
+Сон в C++ отсутствует (`Actor_Sleep.cpp` — 1 строка, `UpdateSleep()` закомментирован, `EActorSleep` — только typedef/extern в `actor_defs.h`). Ночное зрение: `CNightVisionEffector` (4 звука + PP-эффектор `effNightvision`), `CActor::SwitchNightVision` выбирает секцию NV из шлема, затем из костюма, уважает `m_bNightVisionAllow`, при `send_event` публикует `eTraderFlagNightVisionActive` через `GE_TRADER_FLAGS` (восстановление при спавне — `Actor_Network.cpp:711`). `CHelmet : CInventoryItemObject` (не `CEquipment`) — 8 типов защиты, костная броня `SBoneProtections`, `HitThroughArmor` с опциональной формулой Юрко для FireWound и изношенностью от полного удара; `CBackpack` — тот же класс без NV/костей, condition-сеть закомментирована, износ по умолчанию выключен, но `m_additional_weight`/`m_additional_weight2` реально участвуют в весе (`get_additional_weight`, порц. 23) и в Lua-обёртках; `m_fPowerLoss` — в `HitPowerEffect` (порц. 20). `CActor::OnEvent` — приём `GE_TRADE_*`/`GE_OWNERSHIP_*` (take/drop с `SelectBestWeapon` и `feel_touch_deny`), `GE_INV_ACTION` (зеркало ввода с RNG-сидами), `GEG_PLAYER_*` (слот/пояс/рюкак/еда через Lua, holder'ы, блок спринта, скрытие слотов, headshot-частицы), `GE_MOVE_ACTOR`→`MoveActor` (перемещение без интерполяции); кейсы `GE_ACTOR_JUMPING` мёртвые.
 
