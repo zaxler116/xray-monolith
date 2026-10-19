@@ -1,8 +1,8 @@
-# CActor: holder (транспорт) (порцион 26)
+# CActor: holder (транспорт) и оружие-обвязка (порционы 26–27)
 
-> **Модуль:** `xrGame` · **Файлы:** `Actor.cpp` (3128), `ActorInput.cpp` (855), `Actor_Events.cpp` (378), `ActorAnimation.cpp` (783), `holder_custom.h` (80), `holder_custom.cpp` (37), `Actor.h` (922) · **Порцион 26, итерация 5**
+> **Модуль:** `xrGame` · **Файлы:** `Actor.cpp` (3128), `Actor_Weapon.cpp` (406), `ActorInput.cpp` (855), `Actor_Events.cpp` (378), `ActorAnimation.cpp` (783), `holder_custom.h` (80), `holder_custom.cpp` (37), `Actor.h` (922) · **Порционы 26–27, итерация 5**
 >
-> **Страница:** использование holder-объектов (транспорт, стационарные пулемёты, `HolderEntityObject`): `CHolderCustom`-интерфейс, `use_Holder/use_HolderEx`, `attach_Vehicle/detach_Vehicle`, `ActorUse`, `steer_Vehicle`, сетевые события `GEG_PLAYER_ATTACH_HOLDER/GEG_PLAYER_DETACH_HOLDER`, `on_requested_spawn`, влияние на ввод/камеру/HUD.
+> **Страница:** §1–11 — holder-объекты (транспорт, стационарные пулемёты, `HolderEntityObject`) (порц. 26); §12–19 — оружие-обвязка: снаряды/drop, точность, отдача камеры, артефакты на поясе, misc (порц. 27).
 
 ## 1. Ответственность
 
@@ -134,3 +134,87 @@
 ## 11. Краткое резюме
 
 Holder-режим: `CHolderCustom` задаёт интерфейс (ввод/камера/выход). Пункт USE → `ActorUse()` шлёт `GEG_PLAYER_ATTACH_HOLDER/DETACH_HOLDER`; события исполняются через `use_Holder()` → `use_HolderEx()` (2 реализации под `HOLDERCUSTOM_NEW`), где `attach_Vehicle` уничтожает физику персонажа, прячет оружие, ставит idle-анимацию машины, а `detach_Vehicle` наоборот восстанавливает персонажа (`CreateCharacter`) на `ExitPosition/ExitVelocity` и слот оружия. Всё время в holder'е ввод/мышь/камера/HUD делегируются объекту (`allowWeapon()/HUDView()`), рендер ног отключён, смерть и `on_requested_spawn` форсируют посадку/высадку, сеть синхронизирует `m_holderID` через spawn-менеджер.
+
+---
+
+# Оружие-обвязка (порцион 27)
+
+## 12. Ответственность
+
+`Actor_Weapon.cpp` (406) + блоки `Actor.cpp`: связка актёра с оружием и предметами — расчёт точности (`GetWeaponAccuracy`), параметры выстрела (`g_fireParams/GetPick/g_WeaponBones`), состояние (`g_State`), сетевые управляющие события (`SetCantRunState/SetWeaponHideState`), автоподбор оружия (`SelectBestWeapon`), индикация попаданий (`HitSector`), отдача камеры (`on_weapon_shot_*`, `weapon_recoil_*`), автоспавн патронов (`Spawn/RemoveAmmoForWeapon`), drop предметов (`g_PerformDrop`), бросок снарядов (`use_default_throw_force/missile_throw_force`), артефакты на поясе/вышмоде (`UpdateArtefactsOnBeltAndOutfit`, `HitArtefactsOnBelt`, `GetProtection_ArtefactsOnBelt`), misc (`Set/SetShotRndSeed`, `Get/SetMissileOffset`, `unlimited_ammo`, `SwitchNightVision`).
+
+## 13. Точность и параметры выстрела (`Actor_Weapon.cpp`)
+
+| Метод | Строки | Назначение |
+|---|---|---|
+| `GetWeaponAccuracy() const` | 33–101 | Текущий разброс (рад) с учётом движения. `m_fDispBase * GetWeaponParam(W, ...)` (PDM-множители базы/подавителя/прицела/гранатомёта), множители скорости: угловая (`fAVelocity`/`VEL_A_MAX=10.f`, опция `g_fix_avelocity_spread` → `fCurAVelocity`) и линейная (`state.fVelocity/VEL_MAX=10.f`), множитель ускорения/приседа (`m_fDispAccelFactor`, `m_fDispCrouchFactor`, `m_fDispCrouchNoAccelFactor`), buckShot. Прицеливание: `m_fDispAim` (опции `g_apply_pdm_to_ads`, `g_smooth_ads_transition` — `_lerp(m_fDispAim, 1, GetInertionAimFactor())`). Глобальные `g_fix_avelocity_spread/g_apply_pdm_to_ads/g_smooth_ads_transition` (29–31). |
+| `GetPick()` | 103–112 | `SPickParam&` — pick-параметры от HUD-прикрепления `g_player_hud->attached_item(0/1)`, иначе `HUD().GetPick()`. |
+| `g_fireParams(const CHudItem*, Fvector& fire_pos, Fvector& fire_dir)` | 114–128 | Заполняет позицию/направление выстрела: `item_0/1->m_parent_hud_item->g_fireParams(pp)`, результат из `pp.defs.start/dir`. |
+| `g_WeaponBones(int& L, int& R1, int& R2)` | 130–135 | Кости оружия: `R1 = m_r_hand`, `R2 = m_r_finger2`, `L = m_l_finger1`. |
+| `g_State(SEntityState& state) const` | 137–146 | Флаги `bJump/bCrouch/bFall/bSprint` из `mstate_real` (порц. 23), `fVelocity` из `movement()->GetVelocityActual()`, `fAVelocity = fCurAVelocity`. |
+| `GetWeaponAccuracyStm()` (STATIONARYMGUN_NEW) | 397–405 | Если `Holder()` — `CWeaponStatMgun` с зумом камеры → `m_fDispAim`, иначе `m_fDispBase` (связь с порц. 26). |
+
+## 14. Управляющие события (`SetCantRunState`, `SetWeaponHideState`)
+
+- `SetCantRunState(bool bDisable)` (148–157): если жив и это текущий контролируемый объект — шлёт `GEG_PLAYER_DISABLE_SPRINT` (`P.w_s8(+1/-1)`).
+- `SetWeaponHideState(u16 State, bool bSet)` (159–169): шлёт `GEG_PLAYER_WEAPON_HIDE_STATE` (`P.w_u16(State)`, `P.w_u8(bSet)`).
+- **Обработчики** (`Actor_Events.cpp:276–296`): `GEG_PLAYER_DISABLE_SPRINT` → `m_block_sprint_counter += cmd`; при `>0` снимает `mstate_wishful &= ~mcSprint`, иначе обнуляет счётчик. `GEG_PLAYER_WEAPON_HIDE_STATE` → `inventory().SetSlotsBlocked(State, !!Set)`.
+- Вызывающие: `SetWeaponHideState(INV_STATE_BLOCK_ALL, ...)` при посадке/высадке из holder'а (порц. 26), ladder (порц. 23); `GEG_PLAYER_WEAPON_HIDE_STATE` также шлётся из `controller_psy_hit.cpp` (107, 297).
+
+## 15. Автоподбор и индикация попаданий
+
+- `SelectBestWeapon(CObject* O)` (178–233): только для MP (`IsGameTypeSingle() → return`); если `O` — оружие/граната/артефакт (артефакт с `H_Parent()` пропускается), в режимах `eGameIDArtefactHunt`/`eGameIDCaptureTheArtefact` не выбирает, если в `BaseSlot` уже есть другое. Перебирает `BestWeaponSlots[] = {INV_SLOT_3, INV_SLOT_2, GRENADE_SLOT, KNIFE_SLOT}` (171–176), при `can_kill()` → `inventory().Activate(slot)`.
+- `HitSector(CObject* who, CObject* weapon)` (238–263): если `g_bShowHitSectors`, жив, `who` — другой `CEntityAlive`, оружие не с подавителем (`IsSilencerAttached()`) → `Level().MapManager().AddMapLocation("mp_hit_sector_location", who->ID())` (MP-индикация, `ENEMY_HIT_SPOT` 235).
+
+## 16. Отдача камеры (`on_weapon_shot_*`, `weapon_recoil_*`)
+
+- `on_weapon_shot_start(CWeapon*)` (265–292): выбирает `weapon->zoom_cam_recoil` при `IsZoomAimingMode()`, иначе `cam_recoil`; находит/создаёт `CCameraShotEffector` (`eCEShot`), `Initialize/UpdateCameraRecoil` при смене оружия, `SetRndSeed(GetShotRndSeed())`, `SetActor(this)`, `Shot(weapon)`.
+- `on_weapon_shot_update()` (294–301) → `update_camera(effector)`.
+- `on_weapon_shot_remove(CWeapon*)` (303–306) → `RemoveCamEffector(eCEShot)`.
+- `on_weapon_shot_stop()` (308–315) → `effector->StopShoting()` если активен.
+- `on_weapon_hide(CWeapon*)` (317–322) → `effector->Reset()` если активен.
+- `weapon_recoil_delta_angle()/weapon_recoil_last_delta()` (324–344) → `GetDeltaAngle/GetLastDelta` (или нулевой вектор).
+
+## 17. Патроны и drop
+
+- `SpawnAmmoForWeapon(CInventoryItem*)` (348–359): `OnClient → return`; если `CWeaponMagazined::AutoSpawnAmmo()` → `pWM->SpawnAmmo(0xffffffff, NULL, ID())`.
+- `RemoveAmmoForWeapon(CInventoryItem*)` (361–394): `OnClient → return`; находит `CWeaponAmmo` по `m_ammoTypes[0]` (`inventory().GetAny`) → `pAmmo->DestroyObject()` (проверка «не нужен ли другим оружию» закомментирована).
+- `g_PerformDrop()` (`Actor.cpp:2368–2381`): сбрасывает `b_DropActivated`; активный предмет, не `IsQuestItem()`, слот не `SlotIsPersistent(s)` → `pItem->SetDropManual(TRUE)`. Вызывается из input по `kDROP` при `GAME_PHASE_INPROGRESS` (`ActorInput.cpp:345`), а также монстрами (`burer.cpp:283`, `controller.cpp:759` — `Actor()->g_PerformDrop()`).
+- `use_default_throw_force()` (`Actor.cpp:2383–2389`): `g_Alive()` (для мёртвого — false, сила по умолчанию не применяется).
+- `missile_throw_force()` (`Actor.cpp:2391–2394`): `0.f` (у актёра своя сила не задана — дефолтная). Используются в `Missile.cpp:565–568` (`m_fake_missile->m_fThrowForce = inventory_owner->missile_throw_force()` при `use_default_throw_force()`).
+- `OnItemDropUpdate()` (`Actor.cpp:2647–2657`): вызывается из `Inventory.cpp:908`; `CInventoryOwner::OnItemDropUpdate()` + прикрепляет к актёру невалидные/неприкреплённые предметы (`attach(*I)`).
+- `OnItemRuck/OnItemBelt` (2660–2668) — делегируют `CInventoryOwner`.
+
+## 18. Артефакты на поясе и вышмод (`Actor.cpp`)
+
+- **`UpdateArtefactsOnBeltAndOutfit()` (2672–2742):** вызывается в конце `shedule_Update` (2089). Троттлинг `ARTEFACTS_UPDATE_TIME = 0.100f` по `conditions().fdelta_time()`. Для каждого `CArtefact` из `inventory().m_belt` (с учётом `GetCondition()`) применяет `conditions().Change*`: Bleeding/Health/Power/Satiety/`m_f*RestoreSpeed`; радиация — с вычетом `GetBoostRadiationImmunity()` при положительном `m_fRadiationRestoreSpeed` (`clamp(val, 0, val)`). Затем суммирует те же `m_f*RestoreSpeed` от `GetOutfit()` + шлема из `HELMET_SLOT` (`CHelmet`). Закомментированная ветка выключения NV у факела при отсутствии шлема (2730–2741).
+- **`HitArtefactsOnBelt(float hit_power, ALife::EHitType)` (2744–2774):** сначала Lua `_G.CActor__HitArtefactsOnBelt(table, hit_power, hit_type)` — если возвращает таблицу с `override==true`, результат берётся из неё; иначе по `inventory().m_belt`: `hit_power -= artefact->m_ArtefactHitImmunities.AffectHit(1.0f, hit_type)`, затем `clamp(hit_power, 0, flt_max)`. Вызывается при обработке урона (`Actor.cpp:693, 752`); детали — порц. 21.
+- **`GetProtection_ArtefactsOnBelt(ALife::EHitType)` (2776–2790):** сумма `AffectHit(1, hit_type) * GetCondition()` по артефактам пояса. Детали применения — порц. 21.
+
+## 19. Misc (`Actor.cpp`)
+
+| Метод | Строки | Назначение |
+|---|---|---|
+| `SetZoomRndSeed(s32 Seed)` | 2792–2796 | `m_ZoomRndSeed = Seed` или `Level().timeServer_Async()` если 0 (детали использования — порц. 19) |
+| `SetShotRndSeed(s32 Seed)` | 2798–2802 | `m_ShotRndSeed` аналогично; используется `on_weapon_shot_start` → `effector->SetRndSeed` |
+| `GetMissileOffset()/SetMissileOffset(const Fvector&)` | 2804–2812 | `m_vMissileOffset` — смещение снаряда (детали — порц. 19) |
+| `unlimited_ammo()` | 3044–3047 | `!!psActorFlags.test(AF_UNLIMITEDAMMO)` |
+| `SwitchNightVision(bool vision_on, bool use_sounds, bool send_event)` | 3049–3110 | Обвязка NV: `m_bNightVisionOn`; лениво `xr_new<CNightVisionEffector>(cNameSect())`; приоритет секции шлема (`HELMET_SLOT`, `m_NightVisionSect`), иначе вышмода (`OUTFIT_SLOT`); при `m_bNightVisionAllow` — `m_night_vision->Start(sect, this, use_sounds)`, иначе `OnDisabled` + сброс флага; выключение → `Stop(100000.f, use_sounds)`; при `send_event` обновляет `m_trader_flags.set(eTraderFlagNightVisionActive, ...)` и шлёт `GE_TRADER_FLAGS`. Тоггл-обёртка `SwitchNightVision()` (без аргументов) — `ActorInput.cpp:775–777`; вызовы из `ActorHelmet.cpp:118/131`, `CustomOutfit.cpp:286/355`, `Weapon.cpp:1375/1398`, Lua `script_game_object_inventory_owner.cpp:1380` (детали порц. 34) |
+
+## 20. Связи оружие-обвязки
+
+- **Оружие (ит. 8):** `CWeapon/CWeaponMagazined/CWeaponAmmo/CGrenade/CHudItem`, PDM-параметры (`Get_PDM_*`), `zoom_cam_recoil/cam_recoil`.
+- **Прицеливание/движение:** `IsZoomAimingMode`, `mstate_real` (порц. 23), `character_physics_support()->movement()` (`GetVelocityActual`).
+- **Сеть (порц. 28):** `GEG_PLAYER_DISABLE_SPRINT`/`GEG_PLAYER_WEAPON_HIDE_STATE` (обработчики `Actor_Events.cpp`, `xrServer_process_event.cpp:319–320` — relay), `OnClient/OnServer`-проверки в Spawn/RemoveAmmo.
+- **Урон (порц. 21):** `HitArtefactsOnBelt/GetProtection_ArtefactsOnBelt` в `HDS.damage()`-цепочке.
+- **Условия (порц. 20):** весь блок `UpdateArtefactsOnBeltAndOutfit` работает через `conditions().Change*/fdelta_time()/GetBoostRadiationImmunity()`.
+- **HUD (порц. 32):** `GetPick`, `g_fireParams`, `g_player_hud->attached_item`.
+- **Камера/эффекторы (порц. 32):** `CCameraShotEffector` (`eCEShot`), `update_camera`.
+- **Holder (порц. 26):** `GetWeaponAccuracyStm` от `Holder()`; `SetWeaponHideState(INV_STATE_BLOCK_ALL)`.
+- **Lua:** `_G.CActor__HitArtefactsOnBelt`.
+- **Смерть (порц. 22):** `use_default_throw_force` возвращает false для мёртвого.
+
+## 21. Краткое резюме порциона 27
+
+Оружие-обвязка актёра: `Actor_Weapon.cpp` даёт точность (`GetWeaponAccuracy` — база × PDM × скорость × присед × прицел), параметры выстрела (`g_fireParams/GetPick/g_WeaponBones/g_State`), управляющие события (спринт-блок, скрытие слотов), автоподбор лучшего оружия (MP), карту попаданий, отдачу камеры (`on_weapon_shot_*` + `CCameraShotEffector`), автоспавн/удаление патронов. В `Actor.cpp` — drop активного предмета (`g_PerformDrop` через `kDROP`), сила броска снарядов, `OnItemDropUpdate` (прикрепление предметов), артефакты на поясе и вышмоде (`UpdateArtefactsOnBeltAndOutfit` по таймеру 0.1 c через `conditions()`, иммунитеты `HitArtefactsOnBelt` с Lua-override), misc: rnd-сиды, `m_vMissileOffset`, `unlimited_ammo`, `SwitchNightVision` (шлем → вышмод → `CNightVisionEffector`, сеть `GE_TRADER_FLAGS`).
+
