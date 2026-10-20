@@ -59,7 +59,7 @@
 
 ## 4. GlobalFeelTouch: глобальный список запретов
 
-`xrGame/GlobalFeelTouch.hpp` (19) / `.cpp` (56): `class GlobalFeelTouch : public Feel::Touch` — по комментарию в hpp, **«implements only denial functionality»**.
+`xrGame/GlobalFeelTouch.hpp` (19) / `.cpp` (56): `class GlobalFeelTouch : public Feel::Touch` — по комментарию в hpp (L6), **«this class implements only denie functionality»**.
 
 - **`feel_touch_update(P, R)` переопределён** (cpp:33–42): аргументы `P`/`R` **игнорируются** — вместо кадрового поиска выполняется только `std::remove_if` по истёкшим `DenyTouch` (`delete_predicate_by_time`, cpp:13–21). Т.е. объект-поиск здесь **не идёт**.
 - **`is_object_denied(CObject const*)`** (cpp:44–56): `find_if` по `O` (`objects_ptrs_equal`) — есть ли активный запрет.
@@ -81,7 +81,7 @@
 Детекторный слой `Feel::Touch` — в `xrGame/CustomDetector.h` (153 строк, **не 58** — см. §14), полный разбор — [misc-items.md](misc-items.md) (порц. 11):
 
 - `ITEM_TYPE` (h:13–20): `freq (min,max)`, `detect_snds`, `zone_map_location`, `nightvision_particle` — описание типа обнаруживаемого объекта.
-- `ITEM_INFO` (h:23–34): `curr_ref → ITEM_TYPE`, `snd_time`, `curPeriod`, `pParticle` — состояние обнаружения конкретного объекта.
+- `ITEM_INFO` (h:23–34): `curr_ref → ITEM_TYPE`, `snd_time`, `cur_period`, `pParticle` — состояние обнаружения конкретного объекта.
 - `CDetectList<K> : Feel::Touch` (h:36–107): `m_TypesMap (sect → ITEM_TYPE)`, `m_ItemInfos (K* → ITEM_INFO)`; `feel_touch_new` (h:49–57) — `R_ASSERT` что секция есть в `m_TypesMap`, инициализация `curr_ref`; `feel_touch_delete` (h:59–64) — erase; `load(sect, prefix)` (h:80–106) — читает `prefix_class_N` / `prefix_freq_N` / `prefix_sound_N_` из `pSettings`.
 - `CAfList : CDetectList<CArtefact>` (h:109–119) — фильтр по `m_af_rank`; `CZoneList : CDetectList<CCustomZone>` (h:146–153) — зоны для `CScientificDetector`. Владелец — `CCustomDetector::m_artefacts` (h:143).
 
