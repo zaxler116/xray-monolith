@@ -107,10 +107,6 @@ CSpaceRestrictionHolder          — реестр мостов по строке
 3. **`g_ai_die_in_anomaly`** (`space_restrictor.cpp:25`) объявлен, но в условии `net_Spawn` не используется (закомментировано на 82) — действует только безусловное снятие `STYPE_VISIBLEFORAI` у не-зон/радио/костров (83).
 4. Ветка `USE_FREE_IN_RESTRICTIONS` (`space_restriction.h:16`) **выключена** — `merge_free_in_retrictions`/`m_free_in_restrictions`/`FREE_IN_RESTRICTIONS`-ветки в `add_border/remove_border` не компилируются; фактически работает только out/in-модель.
 
-## 18. Краткое резюме (порц. 35)
-
-`CSpaceRestrictor` — невидимый (`setEnabled/setVisible(FALSE)`) объект-оболочка: `CCF_Shape` (сферы/ОBB) из `CSE_ALifeSpaceRestrictor::shapes`, `register_schedule = false`, mutable-кэш мировых сфер/6-плоскостных боксов (`prepare`/`spatial_move`-инвалидация) и `inside(Fsphere)`; при спавне/деструкции регистрируется в `Level().space_restriction_manager()`. Слой ограничений: `CSpaceRestrictionShape` строит бордер из вершин level graph (частично-внутренние), `CSpaceRestrictionBridge` — intrusive-мост с делегированием и `on_border`/`out_of_border`, `CSpaceRestriction` — пара out/in для объекта с ленивой инициализацией, слиянием бордеров (`merge_in_out_restrictions`) и маскированием графа (`set_mask/clear_mask`); `CSpaceRestrictionHolder` кэширует мосты по нормализованным (отсортированным) строкам имён, хранит default in/out-строки, GC — отложенное удаление неиспользуемых мостов через 300 с.
-
 ---
 
 # Порцион 36: composition/manager/abstract + обвязка
@@ -135,15 +131,15 @@ CSpaceRestrictionHolder          — реестр мостов по строке
 - **`merge(restriction)`** (50–54): push в `m_restrictions` + конкатенация его `border()` в `m_border`.
 - **`inside(Fsphere)`** (56–75): lazy-init (не инициализирован → `initialize()`, всё ещё нет → `true`); быстрый отказ по `m_sphere.intersect`; затем OR по всем элементам.
 - **`initialize()`** (77–156):
-  1. `n = _GetItemCount`; **`n == 1`** → только DEBUG `m_correct=true` + `check_restrictor_type()` и выход (граница уже у shape);
+  1. `n = _GetItemCount`; VERIFY(n); **`n == 1`** → только DEBUG `m_correct=true` + `check_restrictor_type()` и выход **без `m_initialized = true`** — следствие: `inside()` всегда возвращает `true` (одиночное имя не ограничивает; так живёт композиция после удалённой зоны, §6 `unregister_restrictor`), а `border()` у такой композиции дойдёт до `THROW(initialized())` (в `NON_FATAL_VERIFY`/по умолчанию → `VERIFY` (debug-only), при `XRAY_EXCEPTIONS` → `throw`; `StdAfx.h:28–40`);
   2. если хоть один элемент не `initialized()` → return (ждём);
   3. `merge` каждого элемента + сбор его `sphere()`;
   4. **оболочка**: `Fbox3` по всем сферам → `m_sphere.P` = центр бокса (`mad(min,max,.5f)`), `m_sphere.R` = максимум `dist(P, center_i)+R_i`, `+= EPS_L`;
-  5. `m_initialized = true`; `m_border.erase(remove_if(CMergePredicate — внутри → выкинуть))` — из бордеров остаются только **внешние** кромки композиции;
+  5. `m_initialized = true`; `m_border.erase(remove_if(CMergePredicate — полностью внутри → выкинуть))` — из бордеров остаются только **внешние/частичные** кромки композиции;
   6. `process_borders()`; DEBUG `test_correctness()`.
-- **DEBUG `test_correctness`** (159–207): слияние `m_test_storage` всех элементов (sort+unique); для каждого элемента flood под маской общей границы: `nodes.size() == 65535` → ok (спец-значение), иначе `m_correct = (m_test_storage.size() <= nodes.size())`.
-- **`sphere()`** (210–216): `NODEFAULT` — в релизе **нет возврата** (DEBUG возвращает `m_sphere`); в `initialize`-ветке `n==1` `m_sphere` не заполняется.
-- **DEBUG `check_restrictor_type`** (219–235): при >1 элементе ищет объект по имени в `Level().Objects` (только `n==1` поддержан? — guard `if (_GetItemCount == 1) return`), `VERIFY3` «you are trying to use object as a restrictor», `VERIFY2` по `restrictor_type()` (второй VERIFY2 с тем же условием — логически противоречив, фактически гарантирует ветку `net_Spawn`).
+- **DEBUG `test_correctness`** (159–207): слияние `m_test_storage` всех элементов (sort+unique); пустое хранилище → `m_correct = false` + выход; далее для каждого элемента flood под маской общей границы от его `m_test_storage.back()`: `nodes.size() == 65535` → ok (спец-значение), иначе `m_correct = (m_test_storage.size() <= nodes.size())`; при `!m_correct` — break.
+- **`sphere()`** (210–216): `NODEFAULT` — в релизе **нет возврата** (DEBUG возвращает `m_sphere`); в ветке `n==1` `m_sphere` не заполняется.
+- **DEBUG `check_restrictor_type`** (219–235): guard `if (_GetItemCount == 1) return` (из ctor тоже) → работает **только при n>1**; guard `!ai().get_alife()`; ищет объект по имени **всей строки** (`Level().Objects.FindObjectByName(m_space_restrictors)` — для "a,b" почти не находит) → `VERIFY3` «you are trying to use object as a restrictor»; далее **два `VERIFY2` с противоположными условиями** (`restrictor_type() == eDefaultRestrictorTypeNone` и `!= eDefaultRestrictorTypeNone`) — при найденном объекте срабатывает ровно один (сообщения взаимно противоречивы: «...with type eRestrictorTypeNone» / «impossible situation: wrong net_Spawn branch used»).
 
 ## 12. `CSpaceRestrictionManager` (`space_restriction_manager.h/.cpp`, 85+318 + inline 24)
 
@@ -156,9 +152,10 @@ CSpaceRestrictionHolder          — реестр мостов по строке
 
 | Метод | Строки | Логика |
 |---|---|---|
+| `CSpaceRestrictionManager()` / `~` | 25–34 | `m_clients = xr_new<CLIENT_RESTRICTIONS>()`; в деструкторе `xr_delete(m_clients)` + `delete_data(m_space_restrictions)` |
 | `restrict(id, out, in)` | 123–144 | из default-строк вычесть конфликтующие (`difference_restrictions`: default_out − merged_in, default_in − merged_out), затем слить (`join_restrictions`); `VERIFY2` «Restriction cannot be changed since its border is still applied!»; `(*m_clients)[id] = {restriction(merged_out, merged_in), base_out, base_in}`; `collect_garbage` |
 | `unrestrict(id)` | 146–152 | erase клиента + GC |
-| `add_restrictions/remove_restrictions/change_restrictions` | 242–310 | `VERIFY(!applied)`; работа с **base**-строками клиента (join/difference) → повторный `restrict` (без клиентов `add` → `restrict`, `remove` → no-op) |
+| `add_restrictions/remove_restrictions/change_restrictions` | 242–310 | `VERIFY(!applied)`; работа с **base**-строками клиента (join/difference) → повторный `restrict` (без клиента: `add`/`change` → `restrict(add)`, `remove` → no-op) |
 | `restriction(out, in)` (protected) | 172–192 | обе пустые → 0; `normalize_string` обеих; ключ `out + "\x01" + in`; кэш-попадание или `xr_new<CSpaceRestriction>(this, out, in)` |
 | `restriction(id)` | 98–103 | поиск клиента (VERIFY) |
 | `accessible(id, sphere/vertex,radius)` | 154–170 | делегат `CSpaceRestriction::accessible`; vertex `-1` → `false`; без клиента → `true` |
@@ -166,8 +163,8 @@ CSpaceRestrictionHolder          — реестр мостов по строке
 | `add_border(id, p1, p2)` (template, inline 18–24) / `remove_border(id)` | 61–66 | делегат `CSpaceRestriction::add_border/remove_border` — маскирование вершин графа |
 | `in_restrictions/out_restrictions(id)` | 68–82 | строки из `CSpaceRestriction`; без клиента `""` |
 | `base_in/out_restrictions(id)` | 84–96 | строки клиента (VERIFY) |
-| `restriction_presented(restrictions, restriction)` | 201–208 | есть ли имя в строке (использует `CAnomalyDetector`, `anomaly_detector.cpp:90`) |
-| `join_restrictions` / `difference_restrictions` | 210–240 | макросы-«типа» (`IC void`, строковые операции через `_GetItemCount/_GetItem`) — добавить/вычесть элементы строк |
+| `restriction_presented(restrictions, restriction)` | 201–208 | есть ли имя в строке (проверяет каждый элемент через `_GetItem`/`xr_strcmp`; вызывается также `ai/monsters/anomaly_detector.cpp:90`) |
+| `join_restrictions` / `difference_restrictions` | 210–240 | инлайн-методы (`IC void`), строковые операции через `_GetItemCount/_GetItem` + `restriction_presented` — добавить/вычесть элементы строк |
 | `collect_garbage()` | 105–121 | удалить `CSpaceRestriction` без ссылок и старше `time_to_delete` |
 | **`on_default_restrictions_changed()`** | 312–318 | **пересоздать все клиентские ограничения**: цикл `restrict(base_out, base_in)` по `m_clients` (вызывается holder'ом при register/unregister default-зон) |
 | `clear()` | 53–59 | клиенты + `delete_data(m_space_restrictions)` + `CSpaceRestrictionHolder::clear()` |
@@ -177,8 +174,8 @@ CSpaceRestrictionHolder          — реестр мостов по строке
 
 ## 13. Клиенты менеджера
 
-- **`CRestrictedObject`** (`restricted_object.cpp`) — основной потребитель: `restrict` (104), `unrestrict` (113), `add_border` (182/199/216 — сфера/позиция/пара вершин), `remove_border` (229), `add/remove_restrictions` (374/390/405), сброс `restrict(id, "", "")` (434); геттеры `in/out_restrictions` (235–256) → цепочка `on_restrictions_change` (443, порц. 14–16).
-- **`CAnomalyDetector`** — `restriction_presented` (`anomaly_detector.cpp:90`).
+- **`CRestrictedObject`** (`restricted_object.cpp`) — основной потребитель: `restrict` (104), `unrestrict` (113), `accessible`/`accessible_nearest` (129/148/166), `add_border` (182/199/216 — верш+радиус/две позиции/пара вершин), `remove_border` (229), `add_restrictions` (vector 347, shared_str 390), `remove_restrictions` (vector 374, shared_str 405), сброс `restrict(id, "", "")` (434); геттеры `in/out/base_in/base_out_restrictions` (235–259) → цепочка `on_restrictions_change` (443, порц. 14–16).
+- **`CAnomalyDetector`** — `restriction_presented` (`ai/monsters/anomaly_detector.cpp:90`).
 - **DEBUG** — `level_graph_debug2.cpp:174` (итерация `restrictions()`).
 - **Регистрация зон** — из `CSpaceRestrictor::net_Spawn/net_Destroy` (§2); default-типы `eDefaultRestrictorTypeOut/In` → `m_default_*_restrictions` holder'а → `on_default_restrictions_changed` менеджера.
 
