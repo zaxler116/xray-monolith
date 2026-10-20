@@ -150,7 +150,7 @@ nav:
             - "CGameObject: каркас": modules/game/game-object.md
             - "CGameObject: сеть и жизненный цикл": modules/game/game-object-net.md
             - "CEntity: здоровье и урон": modules/game/entity.md
-            - "EntityCondition: статы": modules/game/entity-condition.md
+            - "CEntityCondition: статы": modules/game/entity-condition.md
             - "CEntityAlive: живое существо": modules/game/entity-alive.md
             - "Травмы, раны, смерть": modules/game/wounds-death.md
             - "CCustomMonster: мост в AI": modules/game/custom-monster.md
@@ -159,17 +159,18 @@ nav:
             - "PDA/Dosimeter/Antirad/Medkit": modules/game/medical-items.md
             - "Lua-обёртка CScriptGameObject": modules/game/script-game-object.md
             - "CActor: каркас и условия": modules/game/actor.md
-            - "CActor: камеры и эффекторы": modules/game/actor-camera.md
-            - "CActor: движение": modules/game/actor-movement.md
+            - "CActor: смерть": modules/game/actor-death.md
+            - "CActor: движение и физика": modules/game/actor-movement.md
             - "CActor: input и feel": modules/game/actor-input.md
-            - "CActor: оружие-обвязка": modules/game/actor-weapon.md
+            - "CActor: оружие-обвязка и holder": modules/game/actor-weapon.md
             - "CActor: сеть и интерполяция": modules/game/actor-net.md
+            - "CActorMP: клиент и сервер": modules/game/actor-mp.md
             - "CActor: анимация": modules/game/actor-animation.md
             - "CActor: HUD и рендер": modules/game/actor-hud.md
-            - "CActor: сон, смерть, прочее": modules/game/actor-misc.md
-            - "CActor: MP-обвязка": modules/game/actor-mp.md
+            - "CActor: инвентарь, сон, НВЗ, прочее": modules/game/actor-misc.md
             - "Зоны: CSpaceRestrictor": modules/game/zones-restrictor.md
             - "Зоны: CCustomZone FSM": modules/game/zones-custom.md
+            - "Зоны: подклассы": modules/game/zones-subclasses-2.md
             - "Зоны: аномалии и smart-террейн": modules/game/zones-anomaly.md
             - "Feel: Touch/Vision/Sound": modules/game/feel.md
             - "Script: script_entity + script_hit": modules/game/script-entity.md
