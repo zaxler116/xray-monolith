@@ -107,7 +107,7 @@ CGameObject → CSpaceRestrictor + Feel::Touch
 
 - **`SwitchZoneState(new_state)`** (1310–1322): только на сервере (`OnServer()`) шлёт `GE_ZONE_STATE_CHANGE` с `u8(state)`; локально лишь обнуляет `m_iPreviousStateTime`/`m_iStateTime`. Состояние меняется не здесь!
 - **`OnEvent(P, type)`** (1278–1291): `GE_ZONE_STATE_CHANGE` → `r_u8` → **`OnStateSwitch(state)`**; иначе делегат `inherited` (каркас события — ит. 4).
-- **`OnStateSwitch(new_state)`** (1293–1308): `Disabled` → `Disable()`, иначе → `Enable()` (свет/частицы, порц. 38); `Accumulate` → `PlayAccumParticles()`, `Awaking` → `PlayAwakingParticles()`; запись `m_eZoneState` и сброс таймеров. Виртуальные — подклассы переопределяют (например, `CVisualZone::SwitchZoneState`).
+- **`OnStateSwitch(new_state)`** (1293–1308): `Disabled` → `Disable()`, иначе → `Enable()` (свет/частицы, порц. 38); `Accumulate` → `PlayAccumParticles()`, `Awaking` → `PlayAwakingParticles()`; запись `m_eZoneState` и сброс таймеров. Оба метода виртуальны: `OnStateSwitch` переопределяет `CMincer` (Mincer.h:36), `SwitchZoneState` — `CVisualZone` (ZoneVisual.h:15) и `CAmebaZone` (AmebaZone.h:23) (порц. 39).
 - **`save`/`load`** (1690–1706): `save` пишет `u8(m_eZoneState)`; `load` восстанавливает **только два** варианта: `eZoneStateDisabled` → Disabled, всё прочее → Idle (промежуточные состояния не сохраняются).
 
 ## 7. Объекты в зоне: `Feel::Touch`, `enter_Zone`/`exit_Zone`
@@ -117,6 +117,7 @@ CGameObject → CSpaceRestrictor + Feel::Touch
 - **`feel_touch_contact`** (751–768): отказы — другая `CCustomZone`, `CBreakableObject`, нет `IKinematics`-визуала, это сам объект, `!IsVisibleForZones()`; затем `((CCF_Shape*)CFORM())->Contact(O)` и делегат `object->feel_touch_on_contact(this)`.
 - **`feel_touch_on_contact`** (1577–1583): требует `spatial.type & STYPE_VISIBLEFORAI`, иначе `false`; далее `inherited` (см. порц. 41).
 - **`enter_Zone`** (1470–1477): при `eAffectPickDOF` и входе текущего актора → `GamePersistent().SetPickableEffectorDOF(true)`; **`exit_Zone`** (1479–1488): `StopObjectIdleParticles` + снятие DOF.
+- **`net_Relcase`** (1453–1468): объект (в т.ч. владелец по `m_owner_id` или актор-носитель `m_actor_effector`) покидает мир → `exit_Zone` + `erase` из `m_ObjectInfoMap`, сброс `m_owner_id` и `Stop` эффектора; делегат `inherited`.
 
 ## 8. Воздействие: `AffectObjects`, `Hit`, `CreateHit`
 
@@ -141,6 +142,8 @@ CGameObject → CSpaceRestrictor + Feel::Touch
 - **`MoveScript(Fvector pos)`** (1271–1276): `XFORM().translate_over(pos)` + `OnMove()` — перемещение зоны из Lua (скрипты, ит. 14).
 - **`OnMove()`** (1231–1269): первый вызов — только фиксация `m_dwLastTimeMoved`/`m_vPrevPos`; далее вычисление скорости `(P - P_prev)/dt` → `m_pIdleParticles->UpdateParent(XFORM(), vel)`, перестановка активных светов, обновление позиции grassbender (1262–1267).
 - **`register_schedule() = true`** (`.h:365`) — зона в расписании (в отличие от голого `CSpaceRestrictor`).
+- **`UpdateSecondaryHit()` — пустая виртуальная заглушка** (`.h:200–202`, тело `{}`), не чисто виртуальная: базовый класс конкретен, подклассы переопределяют её при необходимости (реализация — `CMosquitoBald::UpdateSecondaryHit`, MosquitoBald.cpp:82; порц. 39).
+- **`UpdateBlowout()`** (`.h:235`, 1199–1229) — **в базовом классе нигде не вызывается**: её дёргают подклассы из `BlowoutState`/`UpdateWorkload` (`CMosquitoBald` MosquitoBald.cpp:30/35, `CBaseGraviZone` GraviZone.cpp:68, `CHairsZone` HairsZone.cpp:13, `CRadioactiveZone` RadioactiveZone.cpp:27, `CAmebaZone` AmebaZone.cpp:33), а `CVisualZone` **переопределяет** метод (`ZoneVisual.h:17`, cpp:77–79) и зовёт `inherited::UpdateBlowout()`. Для `CCustomZone` это мёртвая точка расширения (детали — порц. 38/39).
 
 ## 11. Связи
 
@@ -159,6 +162,7 @@ CGameObject → CSpaceRestrictor + Feel::Touch
 2. **`EZoneState` в плане описана как «eDisabled/eEnabled/eBlowout…»** — фактически: `Idle/Awaking/Blowout/Accumulate/Disabled/Max` (без «Enabled»).
 3. **`generate_orthonormal_basis` — не метод `CCustomZone`**, а `Fvector::generate_orthonormal_basis`, вызывается в `PlayBoltEntranceParticles` (1020).
 4. **Диапазон плана «1–900» не покрывает заявленные функции**: `AffectObjects` (1180), `OnMove` (1231), `OnEvent` (1278), `CreateHit` (1428), `net_Relcase` (1453), `enter_Zone`/`exit_Zone` (1470/1479), `feel_touch_on_contact` (1577), `AlwaysTheCrow` (1585), `CalcDistanceTo` (1594), `save`/`load` (1690/1696) — задокументирован весь файл (1–1764); функции света/ветра/grass/частиц отложены в порц. 38 по смыслу.
+9. **`load`** (1696–1706) нормализует только два состояния, но **поле `m_eZoneState` устанавливается напрямую** (без сброса таймеров/`OnStateSwitch`) — после загрузки переменные состояния `m_iPreviousStateTime`/`m_iStateTime` остаются от предыдущего состояния.
 5. **Кросс-ссылки в плане:** `Hit`/`CreateHit` и `AffectObjects` формально частично относятся к порц. 38 (`UpdateBlowout` вызывает `AffectObjects`); `feel_touch_*` целиком отданы порц. 41 — здесь описаны только реализации `CCustomZone`.
 6. **Возможная особенность `Load` (218–222):** `line_exist(section, "idle_small_particles")` читает ключ `idle_big_particles` (и наоборот) — читается корректно только при наличии **обеих** строк; при наличии одной — обращение к несуществующему ключу.
 7. **`accamulate_time`** — опечатка в имени ключа настроек, воспроизведена и в коде, и в `.ltx` (менять нельзя — совместимость).
@@ -167,7 +171,7 @@ CGameObject → CSpaceRestrictor + Feel::Touch
 ## 13. Быстрый/медленный режим: `o_switch_2_*` (порцион 38)
 
 - **`o_switch_2_fast()`** (1669–1676): если уже fast — выйти; иначе `eFastMode = TRUE`, `StartIdleLight()`, `PlayIdleParticles(true)`, **`processing_activate()`** — объект начинает получать `UpdateCL` каждый кадр.
-- **`o_switch_2_slow()`** (1678–1688): если уже slow — выйти; иначе `eFastMode = FALSE`, `StopIdleLight()` (если `light_in_slow_mode()` == false — свет может пережить slow), `StopIdleParticles(true)`, **`processing_deactivate()`** — `UpdateCL` больше не вызывается.
+- **`o_switch_2_slow()`** (1678–1688): если уже slow — выйти; иначе `eFastMode = FALSE`, при `!light_in_slow_mode()` → `StopIdleLight()`, `StopIdleParticles(true)`, **`processing_deactivate()`** — `UpdateCL` больше не вызывается. (База — `light_in_slow_mode() = true` (`.h:375`), т.е. idle-свет по умолчанию переживает slow; свет гасит только переопределение — `CTorridZone::light_in_slow_mode` (TorridZone.cpp:70), порц. 39.)
 - Переключение происходит в `shedule_Update` (647–654): дистанция до актора (по сфере `CFORM`) `> FASTMODE_DISTANCE` (100 м) и нет `eAlwaysFastmode` → slow; иначе fast. В slow-mode `UpdateWorkload` выполняется разово из `shedule_Update`; в fast-mode — каждый кадр из `UpdateCL` (581–586). Плюс `eAlwaysFastmode` задаётся spawn_ini `fast_mode/always_fast` (431–434), а `AlwaysTheCrow()` (1585–1592, §10) форсирует присутствие в расписании при активной зоне.
 
 ## 14. Вкл/выкл-цикл: `Enable`/`Disable`, on/off-таймеры
@@ -175,7 +179,7 @@ CGameObject → CSpaceRestrictor + Feel::Touch
 | Метод | Строки | Логика |
 |---|---|---|
 | `UpdateOnOffState()` | 1520–1548 | только при `eUseOnOffTime`; фаза `t = (now - m_StartTime + m_TimeShift) % (Enable + Disable)`; `t < Enable` → вкл, в Disable-фазе → выкл; из `Disabled` и «пора включиться» → `GoEnabledState()`, из `Idle` и «пора выключиться» → `GoDisabledState()`. Вызывается из `IdleState` (473) и `shedule_Update` (682) |
-| `GoEnabledState()` | 1568–1575 | шлёт `GE_ZONE_STATE_CHANGE` + `eZoneStateIdle` (см. §9) |
+| `GoEnabledState()` | 1568–1575 | шлёт `GE_ZONE_STATE_CHANGE` + `eZoneStateIdle` (мимо `SwitchZoneState`, см. §9) |
 | `GoDisabledState()` | 1550–1566 | шлёт `GE_ZONE_STATE_CHANGE` + `eZoneStateDisabled`; **выгружает все объекты**: `exit_Zone` по каждому, `m_ObjectInfoMap.clear()`, `feel_touch.clear()` |
 | `Enable()` | 1324–1340 | если уже включена → `false`; `o_switch_2_fast()`; по всем объектам в зоне `PlayEntranceParticles` + `PlayObjectIdleParticles`; `PlayIdleParticles()`; → `true` |
 | `Disable()` | 1342–1360 | если уже выключена → `false`; `o_switch_2_slow()`; `StopObjectIdleParticles` по всем, `StopIdleParticles()`, `m_actor_effector->Stop()`; → `false` (всегда `false` — значение для подклассов) |
@@ -222,7 +226,7 @@ CGameObject → CSpaceRestrictor + Feel::Touch
 | постоянно | `UpdateWind()` |
 | `m_dwBlowoutExplosionTime` | **`AffectObjects()`** (§8) + при `m_BendGrass_Blowout` → `GrassBendersAddExplosion(...)` |
 
-Вызывается из `BlowoutState`? Нет — из наследуемых мест: `CMosquitoBald` и др. дёргают `UpdateBlowout()` внутри своих `BlowoutState`/`UpdateWorkload` (подклассы — порц. 39/40); в базовом `CCustomZone` прямого вызова `UpdateBlowout` в `UpdateWorkload` нет.
+Моменты задаются в `Load` (240–294) и обрезаются по `m_StateTime[eZoneStateBlowout]`. **Вызова из `CCustomZone` нет**: `UpdateBlowout()` дёргают подклассы внутри своих `BlowoutState`/`UpdateWorkload` (`CMosquitoBald` MosquitoBald.cpp:30/35, `CBaseGraviZone` GraviZone.cpp:68, `CHairsZone` HairsZone.cpp:13, `CRadioactiveZone` RadioactiveZone.cpp:27, `CAmebaZone` AmebaZone.cpp:33), а `CVisualZone` **переопределяет** его (`ZoneVisual.h:17`, cpp:77–79) и зовёт `inherited::UpdateBlowout()` — не «делегат», а override с пробросом (порц. 39/40). Для базового класса это мёртвая точка расширения (§10, §22).
 
 ## 19. Частицы зоны (собственные)
 
@@ -243,7 +247,7 @@ CGameObject → CSpaceRestrictor + Feel::Touch
 
 | Метод | Строки | Логика |
 |---|---|---|
-| `PlayObjectIdleParticles(obj)` | 1054–1081 | только `CParticlesPlayer`; выбор имени по `Radius() < SMALL_OBJECT_RADIUS` (`m_sIdleObjectParticlesSmall/Big`); `StopParticles` (reset) → `StartParticles(str, (0,1,0), ID())`; выключена зона → сразу `StopParticles` |
+| `PlayObjectIdleParticles(obj)` | 1054–1081 | только `CParticlesPlayer`; выбор имени по `Radius() < SMALL_OBJECT_RADIUS` (`m_sIdleObjectParticlesSmall/Big`); `StopParticles(str, BI_NONE, true)` (reset) → `StartParticles(str, (0,1,0), ID())` (без кости); выключена зона → сразу `StopParticles`. Примечание: **не проверяет `eFastMode`** (в отличие от прочих `Play*`) |
 | `StopObjectIdleParticles(obj)` | 1083–1110 | пропуск при `eIdleObjectParticlesDontStop` и не-акторе; объект должен быть в `m_ObjectInfoMap`; `StopParticles(str, BI_NONE, true)` |
 | `PlayHitParticles(obj)` | 888–916 | `m_hit_sound`; выбор small/big-имени по радиусу; `PP->StartParticles(str, play_bone=GetRandomBone(), (0,1,0), ID())` |
 | `PlayEntranceParticles(obj)` | 920–975 | `m_entrance_sound`; направление = нормализованный `PHGetLinearVell` (иначе `(0,1,0)`); `MakeXFORM` по случайной косточке → Create(TRUE) + `UpdateParent(xform, vel)`; при `eBoltEntranceParticles` и `CBolt` дополнительно `PlayBoltEntranceParticles` |
@@ -269,7 +273,7 @@ CGameObject → CSpaceRestrictor + Feel::Touch
 1. **Диапазон «900–1764» неточен**: `ChangeIdleParticles` (788), `PlayIdleParticles` (795), `StopIdleParticles` (817), `StartIdleLight` (832), `StopIdleLight` (845), `UpdateIdleLight` (851), `PlayBlowoutParticles` (875) начинаются раньше 900.
 2. **`UpdateCL`/`UpdateWorkload`** заявлены в порц. 38, но описаны в §5 (порц. 37) как часть FSM-расписания; здесь они упоминаются только в контексте fast/slow (§13).
 3. **«аномалии-эффекторы»** в названии порциона — на деле `CZoneEffector` (сам объект пост-эффекта) живёт в `zone_effector.cpp` и документируется в порц. 40; в этом порционе только вызовы `m_actor_effector->Update/Stop` (532–533, 565–568, 1356–1357, 1464–1465).
-4. `UpdateBlowout()` в базовом классе **нигде не вызывается** — диспетчеризация отдана подклассам (`CMosquitoBald::BlowoutState` и др., порц. 39); для `CCustomZone` это мёртвая точка расширения.
+4. `UpdateBlowout()` в базовом классе **нигде не вызывается** — grep по `UpdateBlowout()` даёт вызовы только в подклассах (`CMosquitoBald`, `CGraviZone`, `CHairsZone`, `CRadioactiveZone`, `CAmebaZone`, `CVisualZone`) — диспетчеризация отдана подклассам (порц. 39); для `CCustomZone` это мёртвая точка расширения.
 5. `GoDisabledState`/`GoEnabledState` шлют сетевое событие напрямую (мимо `SwitchZoneState`) — фактически это те же `SwitchZoneState(Disabled/Idle)`, дублирование кода.
 
 ## 23. Краткое резюме (порционы 37–38)

@@ -152,7 +152,7 @@ struct feel_visible_Item {
     Fvector cp_LR_src, cp_LR_dst;
     Fvector cp_LAST;            // последняя «видимая» точка
     CObject* O;
-    float fuzzy;                // комментарий (-1..1), clamp [-0.5..1]
+    float fuzzy;                // комментарий в коде: (-1[no]..1[yes])
     float Cache_vis;
     u16 bone_id;
 };

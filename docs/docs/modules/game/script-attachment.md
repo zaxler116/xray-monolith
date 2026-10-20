@@ -162,7 +162,7 @@ CLevel::m_script_attachments ──────┘  (вложение на ур�
 
 - строковые варианты резолвят имя кости родителя через `m_parent_object->lua_game_object()->bone_id(parent_bone, m_type == eSA_HUD)` или `m_parent_attachment->bone_id(...)`; без родителя — `Msg("![SetBoneCallback]: Parent has no bone with name %i", parent_bone)` (**`%i` для строки** — §25);
 - ядро (cpp:967–983): проверка `bone_id < LL_BoneCount`, сброс прежнего колбэка, `m_bone_callbacks[bone_id] = new cb`, `LL_GetBoneInstance(...).set_callback(bctCustom, ScriptAttachmentBoneCallback, cb, overwrite)`;
-- functor-вариант (cpp:985–1003): в `m_mat` сразу кладётся `mTransformHidden` (видимая поза без модификаторов);
+- functor-вариант (cpp:985–1003): в `m_mat` сразу кладётся стартовая поза — `GetBoneVisible(bone_id) ? bInst.mTransformHidden : bInst.mTransform` (cpp:1002), затем перезаписывается результатом Lua-functor'а в `Update`;
 - `RemoveBoneCallback` (cpp:1005–1012): `reset_callback` + `erase`.
 
 **`ScriptAttachmentBoneCallback(CBoneInstance*)`** (cpp:925–931): `target = GetBoneVisible(bone) ? mTransform : mTransformHidden`; `target = cb->m_mat` — то есть **видимость кости внутри вложения переключает, какую позу получает модификатор**.

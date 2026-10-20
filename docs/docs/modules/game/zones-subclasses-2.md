@@ -21,10 +21,10 @@
 
 «Комар» — самая распространённая «ударная» зона: наследует `CCustomZone`, реализует три виртуальных точки расширения.
 
-- **Данные** (`.h:18–23`): `m_bLastBlowoutUpdate` — «blowout обновился один раз после переключения состояния»; ctor (`.cpp:8–12`) ставит `m_fHitImpulseScale = 1.f`. `Load` (18–21) — только делегат `inherited` (без новых ключей).
+- **Данные** (`.h:18–23`): `m_bLastBlowoutUpdate` — «blowout обновился один раз после переключения состояния»; ctor (`.cpp:8–12`) ставит `m_fHitImpulseScale = 1.f` **и `m_bLastBlowoutUpdate = false`**. `Load` (18–21) — только делегат `inherited` (без новых ключей).
 - **`BlowoutState()`** (24–39): вызывает `inherited::BlowoutState()`; пока состояние не переключилось — каждый тик `UpdateBlowout()` (моменты эффектов срабатывают, §18 `zones-custom.md`); на тике переключения (результат `true` и `m_bLastBlowoutUpdate == false`) — последний `UpdateBlowout()` и флаг в `true`. Т.е. `UpdateBlowout` гоняется ровно в Blowout-состоянии, включая кадр выхода.
 - **`Affect(SZoneObjectInfo*)`** (50–80): только `CPhysicsShellHolder` и не `zone_ignore`; центр `P` — мировая центральная сфера; случайное `hit_dir` `(-0.5..0.5, 0..1, -0.5..0.5)` + normalize; `dist = distance_to(P) - Radius()` (обрезка по 0), **`power = Power(dist, Radius())`** (§9 `zones-custom.md`), `impulse = m_fHitImpulseScale * power * GetMass()`; при `power > 0.01` → `CreateHit(...)` (bone 0, `m_eHitTypeBlowout`) + `PlayHitParticles`.
-- **`UpdateSecondaryHit()`** (82–123): защита по кадру (`m_dwAffectFrameNum`) и `dwPrecacheFrame` — тот же приём, что в `AffectObjects`; обход `m_ObjectInfoMap`, пропуск не-`CPhysicsShellHolder` и `zone_ignore`; **`power = m_fSecondaryHitPower * RelativePower(...)`** (постоянный урон по нахождению, без жёсткого порога, обрезка `< 0` → `return`), `CreateHit` без частиц. Включается флагом `eUseSecondaryHit` из конфига (`use_secondary_hit`/`secondary_hit_power`) — вызов идёт из `UpdateWorkload` каждый тик вне Idle/Disabled (`zones-custom.md` §5).
+- **`UpdateSecondaryHit()`** (82–123): защита по кадру (`m_dwAffectFrameNum`) и `dwPrecacheFrame` — тот же приём, что в `AffectObjects`; обход `m_ObjectInfoMap`; **баг: на не-`CPhysicsShellHolder`/`zone_ignore` стоит `return`, а не `continue`** (97–99) — цикл обрывается на первом же неподходящем объекте; **`power = m_fSecondaryHitPower * RelativePower(...)`** (постоянный урон по нахождению, без жёсткого порога, обрезка `< 0` → `return`), `CreateHit` без частиц. Включается флагом `eUseSecondaryHit` из конфига (`use_secondary_hit`/`secondary_hit_power`) — вызов идёт из `UpdateWorkload` каждый тик вне Idle/Disabled (`zones-custom.md` §5).
 - Мёртвый закомментированный `SecondaryHitState()` (41–48).
 
 ## 2. `CZoneCampfire` (`ZoneCampfire.h/.cpp`, 32+191)
@@ -57,7 +57,7 @@
 - **Данные**: `float m_min_speed_to_react` (`.h:18`); `Load` (39–43) читает `min_speed_to_react`.
 - **`CheckForAwaking()`** (18–37): вместо базового «есть неигнорируемый объект» — перебор `m_ObjectInfoMap`, для `CEntityAlive` берётся **фактическая скорость** `character_physics_support()->movement()->GetVelocityActual()`; при `sp > m_min_speed_to_react` → `SwitchZoneState(eZoneStateAwaking)` и выход. Зона будится только от движущихся существ.
 - **`BlowoutState()`** (10–16): как у `CMosquitoBald`, но без флага-одноразовика: пока не переключилось — каждый тик `UpdateBlowout()`.
-- **`Affect`** (45–77): калька `CMosquitoBald::Affect` с двумя отличиями: `P.y = pGameObject->Position().y` (64 — горизонтальное расстояние, без вертикальной разницы) и **`dist` не обрезается по 0**: `Power(distance_to(P), Radius())`; порог и `CreateHit`+`PlayHitParticles` те же.
+- **`Affect`** (45–77): калька `CMosquitoBald::Affect` с отличиями: `P.y = pGameObject->Position().y` (64 — горизонтальное расстояние, без вертикальной разницы); **`dist` не обрезается по 0**: `Power(distance_to(P), Radius())` (66); нет `VERIFY(!pGameObject->getDestroy())` (есть только в MosquitoBald); `hit_dir`, порог `> 0.01f` и `CreateHit`+`PlayHitParticles` те же.
 
 ## 5. `CTeamBaseZone` (`team_base_zone.h/.cpp`, 39+184)
 
@@ -112,7 +112,8 @@
 5. **`CVisualZone::UpdateBlowout` нигде не вызывается из её собственного кода**: в отличие от `CMosquitoBald`/`CHairsZone`, у `CVisualZone` нет переопределённого `BlowoutState`, а базовый `CCustomZone` `UpdateBlowout` не дёргает → анимации attack/возврата, возможно, не работают (или подключаются через иной путь — не найден). Фактически это потенциальный баг/мёртвый код.
 6. **`CTeamBaseZone` не наследует `CCustomZone`** — в плане перечислен в том же блоке, но это независимая ветка (`CGameObject` + `Feel::Touch`), без FSM и настроек зон.
 7. `CustomOutfit_script.cpp` — про экипировку, а не про зоны; в порционе 39 по плану (кросс-ссылка на порц. 33–34 сохранена).
-8. В `CHairsZone::Affect` расстояние считается по горизонтали (`P.y` подменяется) и **не обрезается по 0** — отличие от `CMosquitoBald::Affect`, отмечено в §4.
+8. В `CHairsZone::Affect` расстояние считается по горизонтали (`P.y` подменяется) и **не обрезается по 0** — отличие от `CMosquitoBald::Affect`, отмечено в §4. Плюс в `CHairsZone::Affect` нет `VERIFY(!getDestroy())`, который есть в MosquitoBald.
+9. **Баг в `CMosquitoBald::UpdateSecondaryHit`** (97–99): при первом объекте, не являющемся `CPhysicsShellHolder` или помеченном `zone_ignore`, стоит `return` вместо `continue` — обход `m_ObjectInfoMap` обрывается, остальные объекты не получают secondary-урон. Аналогичный приём в `AffectObjects` ведёт себя корректно (там просто перебираются все объекты).
 
 ## 9. Краткое резюме
 

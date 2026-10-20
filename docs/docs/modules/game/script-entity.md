@@ -366,7 +366,7 @@ graph LR
 
 **ctor'ы**: 7 базовых (bone/position-варианты: `LPCSTR`-имя или `CScriptSound*`); **monster-specific** `(MonsterSound::EType[, delay])` — `completed = false`, исполняется контрол-менеджером монстра (§12); **trader-specific** `(LPCSTR, LPCSTR, EMonsterHeadAnimType)` — head-анимация трейдера. `initialize()` сбрасывает `m_bStartedToPlay`. Дефолтный — `completed = true`, goal `Dummy`. Исполнение в базе — `bfAssignSound` (конечный автомат, §7).
 
-**Lua `sound`**: enum `type` (9 monster-звуков: `idle`, `eat`, `attack`, `attack_hit`, `take_damage`, `die`, `threaten`, `steal`, `panic`); **16 перегрузок ctor** (воспроизводят C++-набор); методы `set_sound` ×2, `set_sound_type`, `set_bone`, `set_position`, `set_angles`, `completed`.
+**Lua `sound`**: enum `type` (9 monster-звуков: `idle`, `eat`, `attack`, `attack_hit`, `take_damage`, `die`, `threaten`, `steal`, `panic`); **17 перегрузок ctor** (14 базовых + 2 monster + 1 trader); методы `set_sound` ×2, `set_sound_type`, `set_bone`, `set_position`, `set_angles`, `completed`.
 
 ## 22. CScriptParticleAction — Lua `particle`
 
@@ -400,7 +400,7 @@ graph LR
 
 `script_movement_action.h` (136) / `_inline.h` (130) / `.cpp` (141) / `_script.cpp` (118).
 
-**`EGoalType`** (8): `Object`, `PatrolPath`, `PathPosition`, `NoPathPosition`, `PathNodePosition`, `Input`, `JumpToPosition`, `FollowLeader` (+`Dummy`). **`EInputKeys`** (10 бит): `Forward`, `Back`, `Left`, `Right`, `ShiftUp/Down`, `Breaks`, `EngineOn/Off`.
+**`EGoalType`** (8): `Object`, `PatrolPath`, `PathPosition`, `NoPathPosition`, `PathNodePosition`, `Input`, `JumpToPosition`, `FollowLeader` (+`Dummy`). **`EInputKeys`**: в C++-enum 11 констант (`None`=1<<0, `Forward`, `Back`, `Left`, `Right`, `ShiftUp/Down`, `Breaks`, `EngineOn/Off`, `Dummy`=1<<10); в Lua-энум `input` экспортированы **10** (без `Dummy`).
 
 **Поля** (19): `m_path_name`, `m_tBodyState`, `m_tMovementType`, `m_tPathType`, `m_tpObjectToGo`, `m_path` (`const CPatrolPath*`), `m_tPatrolPathStart/Stop`, `m_tDestinationPosition`, `m_tNodeID`, `m_tGoalType`, `m_fSpeed`, `m_bRandom`, `m_tInputKeys`, `m_tMoveAction`, `m_tSpeedParam`, `m_previous_patrol_point`, `m_fDistToEnd`, `m_jump_factor`.
 
