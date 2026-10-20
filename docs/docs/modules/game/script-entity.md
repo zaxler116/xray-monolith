@@ -471,7 +471,7 @@ graph TD
 - **`CScriptHit` в потоке урона** — [actor.md](actor.md) (порц. 21), [wounds-death.md](wounds-death.md) (`ApplyScriptHit` в таблице создания хитов), [script-game-object.md](script-game-object.md) (`CScriptGameObject::Hit` → `GE_HIT`).
 - **`bfAssign*` и исполнение под-действий** — §6–§8 этой же страницы; переопределения наследников — §12.
 - **`HitMemory` монстра** (источник `MonsterHitInfo`) — итерация 6.
-- **`CEffectorPP`/`CameraManager`** (xrEngine) — [xr-engine](../xr-engine/index.md); `ActorEffector` актёра — [actor-camera.md](actor-camera.md).
+- **`CEffectorPP`/`CameraManager`** (xrEngine) — [xr-engine](../xr-engine/index.md); `ActorEffector`/`CActorCameraManager` актёра — [actor-hud.md](actor-hud.md) (порц. 32), [actor-movement.md](actor-movement.md) (порц. 23).
 - **`CScriptSound`** (импортимый Lua-звук, аргумент `sound`-action) — итерация 14 ([script-game-object.md](script-game-object.md)).
 
 ## 29. Замечания к плану

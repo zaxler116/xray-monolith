@@ -80,7 +80,7 @@ classDiagram
 
 > **Примечание о множественном наследовании** (на диаграмме показана одна «главная» ветка на класс):
 > - `CGameObject` = `CObject` + `CUsableScriptObject` + `CScriptBinder` (`GameObject.h:53`)
-> - `CPhysicsShellHolder` = `CGameObject` + `CDamageReceiver` и др. (`PhysicsShellHolder.h:26`)
+> - `CPhysicsShellHolder` = `CGameObject` + `CParticlesPlayer` + `IObjectPhysicsCollision` + `IPhysicsShellHolder` (`PhysicsShellHolder.h:26`)
 > - `CEntity` = `CPhysicsShellHolder` + `CDamageManager` (`Entity.h:17`)
 > - `CCustomMonster` = `CEntityAlive` + `CScriptEntity` + `Feel::Vision` + `Feel::Sound` + `Feel::Touch` (`CustomMonster.h:34`)
 > - `CAI_Stalker` = `CCustomMonster` + `CObjectHandler` + `CAI_PhraseDialogManager` + `CStepManager` (`ai_stalker.h:89`)
