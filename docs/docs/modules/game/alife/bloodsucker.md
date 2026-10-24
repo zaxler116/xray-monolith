@@ -183,4 +183,4 @@ capture-jump), 3-ступенчатая невидимость со сменой
 
 ---
 
-*Порцион 5 (итерация 6). Далее: порц. 6 — `CAI_Burer` ([burer.md](burer.md)).*
+*Порцион 5 (итерация 6). Далее: порц. 6 — `CAI_Controller` ([controller.md](controller.md)).*
