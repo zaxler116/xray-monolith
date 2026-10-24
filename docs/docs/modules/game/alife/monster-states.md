@@ -1189,4 +1189,4 @@ graph TD
 
 ---
 
-Порцион 19 (итерация 6). Далее: порц. 20 — `monster-state-groups.md` — `CStateGroup*`: группы с приоритетом и `check_force_state` ([monster-state-groups.md](monster-state-groups.md)).
+Порцион 19 (итерация 6). Далее: порц. 20 — `monster-group-states.md` — `CStateGroup*`: группы с приоритетом и `check_force_state` ([monster-group-states.md](monster-group-states.md)).
