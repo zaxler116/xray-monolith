@@ -59,9 +59,9 @@
 | 45  | Script: attachments                                  | [script-attachment.md](script-attachment.md)                    | ✅     |
 | 46  | Script: `CScriptBinder`                              | [script-attachment.md](script-attachment.md)                    | ✅     |
 | 47  | Script: `CScriptObject` и прочее (actions/sound/…)   | [script-object-api-2.md](script-object-api-2.md)                | ✅     |
-| 48  | Связность: object-model + зависимости + `index.md`   | [object-model.md](../../architecture/object-model.md)           | ✅     |
+| 48  | Связность: object-model + зависимости + `index.md`   | [object-model.md](../../architecture/object-model.md), [dependencies.md](../../architecture/dependencies.md) | ✅     |
 
-Остальные итерации: [Иерархия](objects.md) (переходная заглушка), [ALIFE](alife/index.md) (ит. 6), [Физика](physics.md) (ит. 7), [Оружие](weapons.md) (ит. 8), [Инвентарь](inventory.md) (ит. 8), [Зоны и эффекты](zones.md) (ит. 9), [UI](ui.md) (ит. 10). Сетевой код (`Level_*`, `net_*` детали) — итерация 12; полный Lua API — итерация 14.
+Остальные итерации: [Иерархия](objects.md) (переходная заглушка), [ALIFE](alife/index.md) (ит. 6, **завершена**), [Физика](physics.md) (ит. 7), [Оружие](weapons.md) (ит. 8), [Инвентарь](inventory.md) (ит. 8), [Зоны и эффекты](zones.md) (ит. 9), [UI](ui.md) (ит. 10). Сетевой код (`Level_*`, `net_*` детали) — итерация 12; полный Lua API — итерация 14.
 
 ## Карта связей
 
@@ -78,13 +78,21 @@ graph TD
         Cond[CEntityCondition]
         EA[CEntityAlive]
         Actor[CActor]
-        Mon[CCustomMonster]
-        PI[CPhysicItem]
-        Item[CInventoryItemObject]
-        SR[CSpaceRestrictor]
-        CZ[CCustomZone]
-        SGO[CScriptGameObject Lua-обёртка]
-        AI[ai/ — итерация 6]
+    Mon[CCustomMonster]
+    BM[CBaseMonster]
+    M15[15 видов монстров]
+    ST[CAI_Stalker]
+    RAT[CAI_Rat]
+    TRD[CAI_Trader]
+    CRW[CAI_Crow]
+    PH[CPhantom]
+    PI[CPhysicItem]
+    Item[CInventoryItemObject]
+    SR[CSpaceRestrictor]
+    CZ[CCustomZone]
+    SGO[CScriptGameObject Lua-обёртка]
+    AI[ai/ — итерация 6 ✅]
+    ALIFE[CALifeSimulator + CSE_ALife*]
     end
     subgraph Lua
         LAPI[Lua API — итерация 14]
@@ -101,15 +109,23 @@ graph TD
     PI --> Item
     GO --> SR
     SR --> CZ
-    Mon -.Think / интерфейс.-> AI
+    Mon --> BM
+    BM --> M15
+    Mon --> ST
+    Mon --> RAT
+    EA --> TRD
+    Ent --> CRW
+    Ent --> PH
+    Mon -.Think / FSM / planner.-> AI
+    AI --> ALIFE
     SGO -.обёртка.-> GO
     LAPI -.полный API — ит. 14.-> SGO
-```
+    ```
 
 - **`CObject`** (xrEngine) — каркас: пространство, crow, родитель, сетевой ID — [xr-object](../xr-engine/xr-object.md).
 - **`CGameObject`** — «настоящий» игровой объект (C++-ядро + Lua-обёртка); исторический предок `CGO` (legacy) упоминается в порц. 2 и 48, отдельно не документируется.
 - **`CEntity`/`CEntityAlive`** — здоровье, урон, статы, живые существа (порц. 5–8). Ветка идёт через `CPhysicsShellHolder` (порц. 3).
 - **`CActor`** — игрок: 10 страниц (порц. 19–34).
-- **`CCustomMonster`** — мост в AI: только класс, `Think()`, интерфейс (порц. 9); внутренности `ai/` — итерация 6.
+- **`CCustomMonster`** — мост в AI: только класс, `Think()`, интерфейс (порц. 9); внутренности `ai/` — итерация 6 (**завершена**, [alife/index.md](alife/index.md)).
 - **`CScriptGameObject`** — обёртка для Lua: механика — порц. 13, полный API — итерация 14.
 - **Зоны** — `CSpaceRestrictor`/`CCustomZone` (порц. 35–40); **вещи** — `CInventoryItemObject` (порц. 10–12, оружие — итерация 8).

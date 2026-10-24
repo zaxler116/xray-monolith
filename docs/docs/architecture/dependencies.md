@@ -78,6 +78,8 @@ graph TD
 | `xrCDB` | `xrCore`, `xrEngine` | CSE (серверные сущности) |
 | `xrServerEntities` | `xrCore`, `xrCDB`, `xrEngine` | Мост CSE ↔ логика |
 | `xrNetServer` | `xrCore`, `xrServerEntities` | Сетевой протокол |
+| `xrGame/ai/` | `xrEngine`, `xrServerEntities` | AI-логика: FSM, planner'ы, монстры, сталкеры |
+| `xrGame/alife_*` | `xrEngine`, `xrServerEntities`, `xrCDB` | Симулятор ALife: регистры, менеджеры, abstract-обёртки |
 
 ## Прямые `#include` между `xrGame` и другими
 
@@ -89,6 +91,12 @@ graph TD
 - `xrSound` — звук
 - `xrParticles` — частицы
 - `xrXMLParser` — XML
+
+**AI/ALife** (ит. 6) тянет:
+- `xrEngine` — `ISheduled`, `CObject`, `CAI_ObjectLocation`, `ai_space`
+- `xrServerEntities` — `CSE_ALife*` (abstract-обёртки)
+- `xrSound` — `ai_sounds` (типы звуков)
+- `xrCDB` — `CSE` (сериализация)
 
 Обратных зависимостей нет: ни `xrEngine`, ни `xrRender` не знают про `xrGame`.
 

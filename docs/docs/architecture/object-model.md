@@ -68,7 +68,20 @@ classDiagram
     CEntity <|-- CEntityAlive : entity_alive.h:18
     CEntityAlive <|-- CActor : Actor.cpp:120
     CEntityAlive <|-- CCustomMonster : CustomMonster.h:34
+    CCustomMonster <|-- CBaseMonster : base_monster.h:42
+    CBaseMonster <|-- CAI_Bloodsucker : ai_bloodsucker.h:28
+    CBaseMonster <|-- CAI_Controller : ai_controller.h:30
+    CBaseMonster <|-- CBurer : ai_burer.h:29
+    CBaseMonster <|-- CPoltergeist : ai_poltergeist.h:28
+    CBaseMonster <|-- CChimera : ai_chimera.h:29
+    CBaseMonster <|-- CAI_Dog : ai_dog.h:27
+    CBaseMonster <|-- CAI_Boar : ai_boar.h:27
+    CBaseMonster <|-- CZombie : ai_zombie.h:28
+    CCustomMonster <|-- CAI_Rat : ai_rat.h:25
     CCustomMonster <|-- CAI_Stalker : ai_stalker.h:89
+    CEntityAlive <|-- CAI_Trader : ai_trader.h:22
+    CEntity <|-- CAI_Crow : ai_crow.h:18
+    CEntity <|-- CPhantom : phantom.h:15
     CPhysicsShellHolder <|-- CPhysicItem : physic_item.h:15
     CPhysicItem <|-- CInventoryItemObject : inventory_item_object.h:14
     CInventoryItemObject <|-- CHudItemObject : hud_item_object.h:6
@@ -83,7 +96,9 @@ classDiagram
 > - `CPhysicsShellHolder` = `CGameObject` + `CParticlesPlayer` + `IObjectPhysicsCollision` + `IPhysicsShellHolder` (`PhysicsShellHolder.h:26`)
 > - `CEntity` = `CPhysicsShellHolder` + `CDamageManager` (`Entity.h:17`)
 > - `CCustomMonster` = `CEntityAlive` + `CScriptEntity` + `Feel::Vision` + `Feel::Sound` + `Feel::Touch` (`CustomMonster.h:34`)
+> - `CBaseMonster` = `CCustomMonster` + `CStepManager` (`base_monster.h:42`)
 > - `CAI_Stalker` = `CCustomMonster` + `CObjectHandler` + `CAI_PhraseDialogManager` + `CStepManager` (`ai_stalker.h:89`)
+> - `CAI_Rat` = `CCustomMonster` + `CEatableItem` (`ai_rat.h:25`)
 > - `CPhysicItem` = `CPhysicsShellHolder` + `CPHShellSimpleCreator` (`physic_item.h:15`)
 > - `CInventoryItem` = `CAttachableItem` + `CHitImmunity` (`inventory_item.h:63`)
 > - `CInventoryItemObject` = `CInventoryItem` + `CPhysicItem` (`inventory_item_object.h:14`)
@@ -163,6 +178,8 @@ CSE_Abstract                                     (SERVER_ENTITY_DECLARE_BEGIN, x
 ```
 
 > `CSE_ALifeTrader` — это `CSE_ALifeDynamicObjectVisual` + `CSE_ALifeTraderAbstract` (а не наследник `CSE_ALifeObject`). Игрок на сервере — `CSE_ALifeCreatureActor`, отдельного `CSE_Paragon` нет.
+> 
+> **Слой ALife** (ит. 6, порц. 28–32): `CALifeSimulator` — композиция 7 менеджеров через множественное наследование. Каждый объект мира — `CSE_ALife*`-abstract-обёртка (порц. 30). Регистры: `CALifeSpawnRegistry`, `CALifeObjectRegistry`, `CALifeGraphRegistry`, `CALifeScheduleRegistry`, `CALifeStoryRegistry`, `CALifeSmartTerrainRegistry`, `CALifeGroupRegistry` (порц. 29). Менеджеры: `CALifeUpdateManager` (shedule), `CALifeSwitchManager` (online/offline), `CALifeSurgeManager` (spawn), `CALifeStorageManager` (save/load), `CALifeTimeManager` (игровое время), `CALifeInteractionManager` (бой/торговля), `CALifeCombatManager` (offline-бои), `CALifeCommunicationManager` (offline-торговля).
 
 CSE — **сериализуемые** структуры, состояние которых передаётся по сети. Клиентский объект и серверная CSE связаны через `xrServerEntities` (мост): см. [Граница скриптинга](scripting-boundary.md) и [Сеть](../modules/network.md).
 
