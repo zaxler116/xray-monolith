@@ -283,4 +283,4 @@ graph TD
 15+ потребителей в FSM (group_states и states). Не содержит логики поведения —
 только отвечает «где?», «внутри?», «куда идти?».
 
-Порцион 21 (итерация 6). Далее: порц. 22 — `monster-memory.md` — `monster_memory.h` (память монстра: hit, sound, enemy) ([monster-memory.md](monster-memory.md)).
+Порцион 21 (итерация 6). Далее: порц. 22 — `memory.md` — память монстров (enemy/sound/hit/corpse memory + enemy/corpse manager) ([memory.md](memory.md)).
