@@ -433,4 +433,4 @@ graph TD
 4 источника обнаружения (hit/sound/visual/actor),
 формула danger с кубом relation.
 
-Порцион 22 (итерация 6). Далее: порц. 23 — `monster-enemy.md` — `enemy_manager.h` (глобальный CEnemyManager, useful/evaluate, wounded) ([monster-enemy.md](monster-enemy.md)).
+Порцион 22 (итерация 6). Далее: порц. 23 — `enemy.md` — враги: `CEnemyManager`, `CAgentEnemyManager`, `CMemberEnemy` ([enemy.md](enemy.md)).
