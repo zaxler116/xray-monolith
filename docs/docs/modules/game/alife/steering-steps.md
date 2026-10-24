@@ -323,4 +323,4 @@ graph TD
 - **`steering_behaviour` (2008)** — 6 поведений (evade, pursue, restrictor, wander, containment, grouping) + `manager` (set). `calc_dist_factor` = `x + y/r + z/r²`.
 - **`steering_behaviour` (2007, CAI_Rat)** — `base` + `alignment`/`cohesion`/`separation` + `manager` (map с факторами). Другой API.
 
-Порцион 25 (итерация 6). Далее: порц. 26 — `ai-space.md` — пространства AI: `ai_space`, `CAI_ObjectLocation`, `ai_obstacle`, `member_*` ([ai-space.md](ai-space.md)).
+Порцион 25 (итерация 6). Далее: порц. 26 — `ai-space.md` — пространства AI: `ai_space`, `CAI_ObjectLocation`, `ai_obstacle`, `moving_objects` ([ai-space.md](ai-space.md)).
