@@ -287,4 +287,4 @@ graph TD
 - **`CMemberEnemy`** — враг для squad: `m_mask`, `m_distribute_mask`, `m_probability`.
 - **`population`** — popcount для маск squad.
 
-Порцион 23 (итерация 6). Далее: порц. 24 — `smart-terrain.md` — `smart_terrain` (smart-terrain: задачи, зоны) ([smart-terrain.md](smart-terrain.md)).
+Порцион 23 (итерация 6). Далее: порц. 24 — `cover.md` — покрытия: `cover_evaluators`, `smart_cover_evaluators`, `monster_cover_manager` ([cover.md](cover.md)).
